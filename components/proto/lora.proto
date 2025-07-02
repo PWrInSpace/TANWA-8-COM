@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+message LoRaFrame {
+    //TANWA COM
+    uint32 tanwa_state = 1;
+    uint32 uptime = 2;
+    int32 engine_work_time = 3;
+    
+    float pressure_fuel = 4;
+    float pressure_after_fill = 5;
+    float pressure_before_fill = 6;
+    float pressure_oxy = 7;
+    float pressure_injector_fuel = 8;
+    float pressure_injector_oxi = 9;
+    float pressure_combustion_chamber = 10;
+
+    bool status_fill = 11;
+    bool status_depr = 12;
+    bool status_vent = 13;
+    bool status_arm = 14;
+    bool igniter_cont1 = 15;
+    bool igniter_cont2 = 16;
+    
+    float tanwa_battery = 17;
+    
+    //TANWA HX
+    float engine_thrust = 18;
+    float rocket_weight = 19;
+    float tank_weight = 20;
+    
+    //TANWA FLC
+
+    float temp_injector = 21;
+    float temp_combustion_chamber = 22;
+    float temp_external_tank = 23;
+
+    //TANWA FAC
+
+    bool status_oxy = 24;
+    bool status_fuel = 25;
+
+}
+
+message LoRaCommand {
+    //Command frame
+    uint32 lora_dev_id = 1;
+    uint32 sys_dev_id = 2;
+    uint32 command = 3;
+    int32 payload = 4;
+}
+
+message LoRaSettings{
+    // Settings frame
+    int32 lora_freq_khz = 1;
+    int32 lora_transmit_ms = 2;
+    int32 countdown_time = 3;
+    int32 ingition_time = 4;
+    uint32 flash_enable = 5;
+    uint32 buzzer_enable = 6;
+}

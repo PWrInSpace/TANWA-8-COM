@@ -1,0 +1,243 @@
+menu "TANWA BOARD CONFIGURATION"
+
+    menu "TASK CONFIGURATION"
+
+        menu "SETUP TASK"
+
+            config SETUP_TASK_STACK_SIZE
+                int "Stack size"
+                default 4096
+                help
+                    Stack size for setup task.
+            
+            config SETUP_TASK_PRIORITY
+                int "Priority"
+                default 5
+                help
+                    Priority for setup task.
+
+            config SETUP_TASK_CORE_ID
+                int "Core ID"
+                default 0
+                help
+                    Core ID for setup task.
+            
+        endmenu
+
+        menu "CAN TASK"
+
+            config CAN_TASK_STACK_SIZE
+                int "Stack size"
+                default 4096
+                help
+                    Stack size for CAN task.
+            
+            config CAN_TASK_PRIORITY
+                int "Priority"
+                default 5
+                help
+                    Priority for CAN task.
+
+            config CAN_TASK_CORE_ID
+                int "Core ID"
+                default 0
+                help
+                    Core ID for CAN task.
+
+        endmenu
+
+        menu "APP TASK"
+
+            config APP_TASK_STACK_SIZE
+                int "Stack size"
+                default 4096
+                help
+                    Stack size for main task.
+            
+            config APP_TASK_PRIORITY
+                int "Priority"
+                default 5
+                help
+                    Priority for main task.
+
+            config APP_TASK_CORE_ID
+                int "Core ID"
+                default 0
+                help
+                    Core ID for main task.
+
+        endmenu
+    endmenu
+
+    menu "GPIO CONFIGURATION"
+
+        config GPIO_LED
+            int "LED GPIO"
+            default 46
+            help
+                GPIO number for LED.
+        
+        config LORA_RS
+            int "LORA RS pin number"
+            default 16
+            help
+                GPIO pin number for LORA RS
+
+        config LORA_CS
+            int "LORA CS pin number"
+            default 17
+            help
+                GPIO pin number for LORA CS
+
+        config GPIO_ABORT
+            int "GPIO ABORT pin number"
+            default 14
+            help
+                GPIO pin number for ABORT button
+        
+        config LORA_D0
+            int "LORA D0 pin number"
+            default 18
+            help
+                GPIO pin number for LORA D0
+
+        config GPIO_FIRE
+            int "FIRE_1 pin number"
+            default 5
+            help
+                GPIO pin number for Igniter Fire 1
+        
+        config GPIO_ARM1
+            int "ARM1 pin number"
+            default 8
+            help
+                GPIO pin number for ARM1
+        
+        config GPIO_ARM2
+            int "ARM2 pin number"
+            default 19
+            help
+                GPIO pin number for ARM2
+        
+    endmenu
+
+    menu "CAN CONFIGURATION"
+
+        config CAN_RX_GPIO
+            int "TWAI RX PIN"
+            default 35
+            help
+                GPIO number for TWAI RX pin.
+        
+        config CAN_TX_GPIO
+            int "CAN TX PIN"
+            default 36
+            help
+                GPIO number for TWAI TX pin.
+
+        config CAN_TX_QUEUE_LENGTH
+            int "TX Queue Length"
+            default 50
+            help
+                Length of the TX queue for CAN messages.
+
+        config CAN_RX_QUEUE_LENGTH
+            int "RX Queue Length"
+            default 50
+            help
+                Length of the RX queue for CAN messages.
+        
+        config TWAI_ACCEPTANCE_CODE
+            int "Acceptance Code"
+            default 0
+            help
+                Acceptance code for TWAI filter.
+        
+        config TWAI_ACCEPTANCE_MASK
+            int "Acceptance Mask"
+            default 2147483647
+            help
+                Acceptance mask for TWAI filter.
+    endmenu
+
+    menu "SPI CONFIGURATION"
+
+        config SPI_MOSI
+            int "SPI MOSI GPIO"
+            default 11
+            help
+                GPIO number for SPI MOSI pin.
+        
+        config SPI_MISO
+            int "SPI MISO GPIO"
+            default 10
+            help
+                GPIO number for SPI MISO pin.
+        
+        config SPI_SCK
+            int "SPI SCLK GPIO"
+            default 9
+            help
+                GPIO number for SPI SCLK pin.
+        
+        config SD_CS
+            int "SPI CS GPIO"
+            default 15
+            help
+                GPIO number for SD CS pin.
+    endmenu
+
+    menu "I2C configuration"
+
+
+        config I2C_MASTER_PORT_NUM
+            int "Port Number"
+            default 0
+            help
+                Port number for I2C Master device.
+
+        config I2C_MASTER_FREQUENCY
+            int "Master Frequency"
+            default 400000
+            help
+                I2C frequency of Master device.
+
+        config I2C_MASTER_TIMEOUT_MS
+            int "Master Timeout"
+            default 1000
+            help
+                Timeout of I2C Master device.
+
+        config I2C_SDA
+            int "I2C SDA pin number"
+            default 12
+            help
+                GPIO pin number for I2C SDA
+
+        config I2C_SCL
+            int "I2C SCL pin number"
+            default 13
+            help
+                GPIO pin number for I2C SCL
+
+        config I2C_MCP23018_ADDR
+            int "MCP23018 I2C address 0x27"
+            default 39
+            help
+                I2C address of MCP23018 device.
+
+        config I2C_TMP1075_TS1_ADDR
+            int "TMP1075 TS1 I2C address 0x4E"
+            default 78
+            help
+                I2C address of TMP1075 TS1 device.
+
+        config I2C_TMP1075_TS2_ADDR
+            int "TMP1075 TS2 I2C address 0x4F"
+            default 79
+            help
+                I2C address of TMP1075 TS2 device.
+
+    endmenu
+
+endmenu

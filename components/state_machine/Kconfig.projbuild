@@ -1,0 +1,18 @@
+menu "State Machine Task"
+
+    config SM_TASK_STACK_DEPTH
+        int "task stack depth"
+        default 4096
+
+
+    config SM_TASK_PRIORITY
+        int "task priority"
+        range 0 20
+        default 3
+
+    config SM_TASK_CORE_ID
+        int "task core id"
+        range 0 1
+        default 0
+
+endmenu
