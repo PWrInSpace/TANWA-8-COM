@@ -62,11 +62,12 @@ esp_err_t can_send_message(uint32_t id, uint8_t *data, uint8_t length) {
 
     // Prepare the message
     message.identifier = id;
+    message.extd = 1;
     message.data_length_code = length;
     memcpy(message.data, data, length);
 
     // Send the message
-    err = twai_transmit(&message, pdMS_TO_TICKS(10));
+    err = twai_transmit(&message, pdMS_TO_TICKS(100));
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to send CAN message: %s", esp_err_to_name(err));
         return err;
@@ -106,7 +107,7 @@ void can_task(void *arg) {
     esp_err_t err;
     twai_message_t message;
 
-    while (1) {
+     while (1) {
         // Receive a message
         err = twai_receive(&message, pdMS_TO_TICKS(10));
         if (err == ESP_OK) {
@@ -120,6 +121,7 @@ void can_task(void *arg) {
         } else if (err != ESP_ERR_TIMEOUT) {
             ESP_LOGE(TAG, "Failed to receive CAN message: %s", esp_err_to_name(err));
         }
+        vTaskDelay(pdMS_TO_TICKS(10)); // Adjust delay as needed
     }
 }
 

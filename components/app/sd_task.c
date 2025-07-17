@@ -49,6 +49,25 @@ static struct {
     .data_write_mutex = NULL,
 };
 
+static size_t convert_data_to_frame(char *buf, size_t buf_size, void* data, size_t size);
+void on_error(SD_TASK_ERR error);
+
+sd_task_cfg_t cfg = {
+    .cs_pin = CONFIG_SD_CS,
+    .data_path = "data",
+    .data_path_size = 9,
+    .spi_host = SDSPI_DEFAULT_HOST,
+    .log_path = "log",
+    .log_path_size = 5,
+    .stack_depth = SD_TASK_STACK_SIZE,
+    .priority = SD_TASK_PRIORITY,
+    .core_id = SD_TASK_CORE_ID,
+    .error_handler_fnc = on_error,
+    .data_size = sizeof(tanwa_data_t),
+    .create_sd_frame_fnc = convert_data_to_frame,
+    .spi_mutex = NULL,
+};
+
 static void report_error(SD_TASK_ERR error_code) {
     if (mem.error_handler_fnc == NULL) {
         return;
@@ -233,8 +252,8 @@ static bool create_unique_path(char *path, size_t size) {
 
 static bool initialize_sd_card(sd_task_cfg_t *task_cfg) {
     sd_card_config_t card_cfg = {
-        .spi_host = task_cfg->spi_host,
-        .cs_pin = task_cfg->cs_pin,
+        .spi_host = SDSPI_DEFAULT_HOST,
+        .cs_pin = 15,
         .mount_point = SDCARD_MOUNT_POINT,
     };
 
@@ -319,7 +338,7 @@ static size_t convert_data_to_frame(char *buf, size_t buf_size, void* data, size
     tanwa_data_t* tanwa_data = (tanwa_data_t*)data;
     // Create a char buffer from the data with newline ending
     size_t frame_size = 0;
-    frame_size = snprintf(buf, buf_size, " ");
+    frame_size = snprintf(buf, buf_size, "DUPA\n");
     return frame_size;
 }
 
@@ -334,21 +353,8 @@ void on_error(SD_TASK_ERR error) {
 bool init_sd_card(void) {
     // esp_timer_init();
     ESP_LOGI(TAG, "Initializing sd task");
-    sd_task_cfg_t cfg = {
-        .cs_pin = CONFIG_SD_CS,
-        .data_path = "data",
-        .data_path_size = 9,
-        .spi_host = SPI3_HOST,
-        .log_path = "log",
-        .log_path_size = 5,
-        .stack_depth = SD_TASK_STACK_SIZE,
-        .priority = SD_TASK_PRIORITY,
-        .core_id = SD_TASK_CORE_ID,
-        .error_handler_fnc = on_error,
-        .data_size = sizeof(tanwa_data_t),
-        .create_sd_frame_fnc = convert_data_to_frame,
-        .spi_mutex = mutex_spi,
-    };
+    
+    cfg.spi_mutex = mutex_spi;
 
     return SDT_init(&cfg);
 }

@@ -3,6 +3,9 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+#include <string.h>
+#include "driver/twai.h"
+
 #include "esp_log.h"
 
 #include "can_api.h"
@@ -37,9 +40,18 @@ esp_err_t app_task_deinit(void) {
 int gpio_state = 0;
 
 void app_task(void *arg) {
-    // YOUR IMAGINATION IS THE ONLY LIMITATION
+
     while(1) {
-        
+    
+        uint8_t data[8] = {0};
+        can_send_message(CAN_SOL_GET_DATA_ID, data, 0);
+        can_send_message(CAN_SOL_GET_STATUS_ID, data, 0);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
+        ESP_LOGI("APP_TASK", "Sending CAN messages");
+
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+        vTaskDelay(500 / portTICK_PERIOD_MS);
     }
 }

@@ -25,10 +25,14 @@ esp_err_t mcu_spi_init(void) {
     ret = spi_bus_initialize(spi_config.host_id, &spi_config.bus_config, SDSPI_DEFAULT_DMA);
     ESP_ERROR_CHECK(ret);
 
-    // ret = spi_bus_add_device(spi_config.host_id, &spi_config.dev_config,
-    //                         &spi_config.spi_handle);
+    ret = spi_bus_add_device(spi_config.host_id, &spi_config.dev_config,
+                            &spi_config.spi_handle);
     ESP_ERROR_CHECK(ret);
     mutex_spi = xSemaphoreCreateMutex();
+    if(mutex_spi == NULL) {
+        ESP_LOGE(TAG, "Failed to create SPI mutex");
+        return ESP_FAIL;
+    }
     spi_config.spi_init_flag = true;
     return ret;
 }

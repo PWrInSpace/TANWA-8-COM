@@ -10,6 +10,9 @@
 #include "mcu_spi_config.h"
 #include "sd_task.h"
 #include "app_task.h"
+#include "lora_task.h"
+
+#include "can_api.h"
 
 #define SETUP_TASK_STACK_SIZE CONFIG_SETUP_TASK_STACK_SIZE
 #define SETUP_TASK_PRIORITY CONFIG_SETUP_TASK_PRIORITY

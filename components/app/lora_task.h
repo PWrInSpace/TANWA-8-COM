@@ -35,6 +35,7 @@ typedef struct {
     lora_struct_t *lora;
     uint32_t frequency_khz;
     uint32_t transmiting_period;
+    uint8_t workspace[256]; // Workspace for LoRa task
 } lora_api_config_t;
 
 /**

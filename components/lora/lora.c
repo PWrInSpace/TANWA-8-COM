@@ -42,13 +42,15 @@ lora_err_t lora_default_config(lora_struct_t *lora) {
   return ret;
 }
 
-lora_err_t lora_write_reg(lora_struct_t *lora, int16_t reg, int16_t val) {
+  lora_err_t lora_write_reg(lora_struct_t *lora, int16_t reg, int16_t val) {
   uint8_t out[2] = {0x80 | reg, val};
   uint8_t in[2];
 
   if(lora == NULL) {
     lora->log("ERROR: lora struct is NULL!");
+    // ESP_LOGE(TAG, "ERROR: lora struct is NULL!");
   }
+  
   if(lora->_spi_transmit == NULL) {
     lora->log("ERROR: SPI transmit function is not set!");
   }
@@ -236,6 +238,8 @@ lora_err_t lora_write_irq_flags(lora_struct_t *lora) {
 }
 
 lora_err_t lora_send_packet(lora_struct_t *lora, uint8_t *buf, int16_t size) {
+
+  ESP_LOGI(TAG, "Sending packet of size %d", size);
   lora_err_t ret = LORA_OK;
   ret |= lora_fill_fifo_buf_to_send(lora, buf, size);
   ret |= lora_start_transmission(lora);
@@ -290,6 +294,7 @@ lora_err_t lora_received(lora_struct_t *lora) {
   if (lora_read_reg(lora, REG_IRQ_FLAGS) & IRQ_RX_DONE_MASK) {
     return LORA_OK;
   }
+  lora->log("ERROR: No packet received");
   return LORA_RECEIVE_ERR;
 }
 
@@ -303,7 +308,15 @@ float lora_packet_snr(lora_struct_t *lora) {
 }
 
 lora_err_t lora_map_d0_interrupt(lora_struct_t *lora, lora_dio0_mapping_t mode) {
-  return lora_write_reg(lora, REG_DIO_MAPPING_1, (mode << 6));
+  lora_err_t ret = lora_write_reg(lora, REG_DIO_MAPPING_1,(mode << 6));
+  if(ret != LORA_OK) {
+    lora->log("ERROR: Failed to map DIO0 interrupt");
+    ESP_LOGE(TAG, "ERROR: Failed to map DIO0 interrupt");
+    return ret;
+  }
+  lora->_delay(2);  // wait for the register to be updated
+  ESP_LOGD(TAG, "Mapped DIO0 to mode %d", mode);
+  return LORA_OK;
 }
 
 void lora_close(lora_struct_t *lora) {

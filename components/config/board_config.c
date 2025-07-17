@@ -36,6 +36,7 @@
 #include "board_data.h"
 #include "system_timer.h"
 #include "timers_config.h"
+#include "relay_driver.h"
 
 #define TAG "BOARD_CONFIG"
 
@@ -144,7 +145,7 @@ uint16_t ens_periods[ENS_ENUM_MAX] = {
     [ON_GROUND_MS] = 1000, // 1 second
     [HOLD_MS] = 500, // 1 second
     [ABORT_MS] = 200, // 1 second
-    [SLEEP_MS] = 15000, // 5 seconds
+    [SLEEP_MS] = 15000, // 15 seconds
 };
 
 esp_err_t board_config_init(void) {
@@ -155,7 +156,7 @@ esp_err_t board_config_init(void) {
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "SPI initialization failed");
     }
-    
+
     err = mcu_gpio_init();
 
     if (err != ESP_OK) {
@@ -187,6 +188,13 @@ esp_err_t board_config_init(void) {
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "CAN initialization failed");
         return err;
+    }
+
+    if(relay_driver_init(_relay_gpio_set_level) != RELAY_DRIVER_OK) {
+        ESP_LOGE(TAG, "Relay driver initialization failed");
+        return ESP_FAIL;
+    } else {
+        ESP_LOGI(TAG, "Relay driver initialized");
     }
 
     uint8_t ret = 0;
@@ -251,23 +259,36 @@ esp_err_t board_config_init(void) {
         ESP_LOGI(TAG, "### Timers initialization success ###");
     }
 
+
+     ESP_LOGI(TAG, "Initializing LoRa...");
+
+    if (!initialize_lora(LORA_TASK_FREQUENCY_KHZ, LORA_TASK_TRANSMIT_MS)) {
+        ESP_LOGE(TAG, "LoRa initialization failed");
+    } else {
+        ESP_LOGI(TAG, "### LoRa initialization success ###");
+    }
+
+    //HAS TO BE AFTER LORA- DOESN'T WORK OTHERWISE
+
+    ESP_LOGI(TAG, "Initializing SD Card...");
+
+    if (!init_sd_card()) {
+        ESP_LOGE(TAG, "SD Card initialization failed");
+    } else {
+        ESP_LOGI(TAG, "### SD Card initialization success ###");
+    }
+
     //SD CARD TIMER
-    // if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
-    //     ESP_LOGE(TAG, "SD CARD | Timer start failed");
-    // } else {
-    //     ESP_LOGI(TAG, "SD CARD | Timer started");
-    // }
-
-    ESP_LOGI(TAG, "Initializing LoRa...");
-
-    // if (!initialize_lora(LORA_TASK_FREQUENCY_KHZ, LORA_TASK_TRANSMIT_MS)) {
-    //     ESP_LOGE(TAG, "LoRa initialization failed");
-    // } else {
-    //     ESP_LOGI(TAG, "### LoRa initialization success ###");
-    // }
+    if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
+        ESP_LOGE(TAG, "SD CARD | Timer start failed");
+    } else {
+        ESP_LOGI(TAG, "SD CARD | Timer started");
+    }
 
     state_machine_change_state(IDLE);
     //*********** ADD HARDWARE CONFIGURATION HERE ***********//
+
+    
 
     err = console_config_init();
 

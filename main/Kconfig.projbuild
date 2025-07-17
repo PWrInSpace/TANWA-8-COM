@@ -119,6 +119,30 @@ menu "TANWA BOARD CONFIGURATION"
             help
                 GPIO pin number for ARM2
         
+        config RELAY_1_GPIO
+            int "RELAY 1 GPIO"
+            default 20
+            help    
+                GPIO number for Relay 1.
+        
+        config RELAY_2_GPIO
+            int "RELAY 2 GPIO"
+            default 21
+            help
+                GPIO number for Relay 2.
+
+        config RELAY_3_GPIO
+            int "RELAY 3 GPIO"
+            default 22
+            help
+                GPIO number for Relay 3.
+        
+        config RELAY_4_GPIO
+            int "RELAY 4 GPIO"
+            default 23
+            help
+                GPIO number for Relay 4.
+        
     endmenu
 
     menu "CAN CONFIGURATION"

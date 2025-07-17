@@ -181,9 +181,11 @@ void tanwa_soft_arm(void) {
 
     if(ign_status == IGNITER_OK){
         data.arm_state = true;
+        ESP_LOGI(TAG, "IGN | Igniter armed successfully");
     }
     else{
         data.arm_state = false;
+        ESP_LOGE(TAG, "IGN | Igniter arm failed");
     }
 
     tanwa_data_update_com_data(&data);
@@ -230,6 +232,8 @@ void tanwa_soft_restart_esp(void) {
 }
 
 bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
+
+    ESP_LOGI(TAG, "LORA | Command parsing | ID: %d, CMD: %d, PAYLOAD: %d", lora_id, command, payload);
     if (lora_id == LORA_DEV_ID_ALL || lora_id == LORA_DEV_ID_ALL_SUDO || 
         lora_id == LORA_DEV_ID_TANWA || lora_id == LORA_DEV_ID_TANWA_SUDO) { 
 

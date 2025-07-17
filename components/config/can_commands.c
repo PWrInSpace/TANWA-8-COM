@@ -10,3 +10,21 @@ esp_err_t example_command_handler(uint8_t *data, uint8_t length) {
     
     return ESP_OK;
 }
+
+esp_err_t parse_solenoid_status(uint8_t *data, uint8_t length) {
+
+    for(int i = 0; i < length; i++) {
+        ESP_LOGI("CAN_COMMANDS", "Solenoid status byte %d: %02X", i, data[i]);
+    }
+    
+    return ESP_OK;
+}
+
+esp_err_t parse_solenoid_data(uint8_t *data, uint8_t length) {
+
+    for(int i = 0; i < length; i++) {
+        ESP_LOGI("CAN_COMMANDS", "Solenoid data byte %d: %02X", i, data[i]);
+    }
+    
+    return ESP_OK;
+}

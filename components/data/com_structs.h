@@ -19,12 +19,10 @@ typedef struct {
     float vbat;
     bool abort_button;
     bool arm_state;
-    bool solenoid_state_fill: 1;
-    bool solenoid_state_depr: 1;
-    float pressure_1;
-    float pressure_2;
-    float pressure_3;
-    float pressure_4;
+    bool relay_state1;
+    bool relay_state2;
+    bool relay_state3;
+    bool relay_state4;
     float temperature_1;
     float temperature_2;
     bool igniter_cont_1;

@@ -24,10 +24,10 @@ pin_configuration_t pin_config = {
 };
 
 bool SD_init(sd_card_t *sd_card, sd_card_config_t *cfg) {
-  sd_card->spi_host = cfg->spi_host;
-  sd_card->cs_pin = cfg->cs_pin;
-  sd_card->card_detect_pin = cfg->cd_pin;
-  sd_card->mount_point = cfg->mount_point;
+  sd_card->spi_host = SDSPI_DEFAULT_HOST;
+  sd_card->cs_pin = 15;
+  sd_card->card_detect_pin = -1;
+  sd_card->mount_point = "/sdcard";
 
   // Options for mounting the filesystem
   if (SD_mount(sd_card) == false) {
@@ -54,15 +54,23 @@ bool SD_mount(sd_card_t *sd_card) {
       .allocation_unit_size = 16 * 1024};
 
   sdmmc_host_t host = SDSPI_HOST_DEFAULT();
+
   // host.slot = sd_card->spi_host;
   // host.max_freq_khz = SDMMC_FREQ_PROBING;
   sdspi_device_config_t slot_config = SDSPI_DEVICE_CONFIG_DEFAULT();
-  slot_config.gpio_cs = sd_card->cs_pin;
-  slot_config.host_id = host.slot;
+  slot_config.gpio_cs = 15;
+  slot_config.host_id = SDSPI_DEFAULT_HOST;
+  
+  // sdspi_dev_handle_t sd_handle;
+
+  // sdspi_host_init();
+
+  // sdspi_host_init_device(&slot_config, &sd_handle);
 
   res = esp_vfs_fat_sdspi_mount(sd_card->mount_point, &host, &slot_config,
                                 &mount_config, &sd_card->card);
   if (res != ESP_OK) {
+    ESP_LOGE("SD_INIT", "esp_vfs_fat_sdspi_mount failed: %s (0x%x)", esp_err_to_name(res), res);
     if (res == ESP_FAIL) {
       ESP_LOGE(TAG,
                "Failed to mount filesystem. "
@@ -77,6 +85,7 @@ bool SD_mount(sd_card_t *sd_card) {
     }
     return false;
   }
+  ESP_LOGI(TAG, "SD card mounted");
   sd_card->mounted = true;
   return true;
 }
@@ -125,6 +134,7 @@ bool SD_write(sd_card_t *sd_card, const char *path, const char *data,
 
   FILE *file = fopen(path, "a");
   if (file == NULL) {
+    ESP_LOGE(TAG, "Base path %s", sd_card->mount_point);
     ESP_LOGE(TAG, "FILE OPEN ERROR %s", path);
     return false;
   }

@@ -17,7 +17,7 @@ message LoRaFrame {
     bool status_fill = 11;
     bool status_depr = 12;
     bool status_vent = 13;
-    bool status_arm = 14;
+    optional bool status_arm = 14;
     bool igniter_cont1 = 15;
     bool igniter_cont2 = 16;
     

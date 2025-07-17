@@ -11,7 +11,8 @@
 #define TAG "MCU_GPIO"
 
 static mcu_gpio_config_t mcu_gpio_config = {
-    .pins = {LED_GPIO, LORA_CS_GPIO, LORA_D0_GPIO, ABORT_GPIO, ARM1_GPIO, ARM2_GPIO, FIRE_GPIO},
+    .pins = {LED_GPIO, LORA_CS_GPIO, LORA_RS_GPIO, LORA_D0_GPIO, ABORT_GPIO, ARM1_GPIO, ARM2_GPIO, FIRE_GPIO, 
+             RELAY_1_GPIO, RELAY_2_GPIO, RELAY_3_GPIO, RELAY_4_GPIO},
     .num_pins = MAX_GPIO_INDEX,
     .configs = {
         {
@@ -23,42 +24,77 @@ static mcu_gpio_config_t mcu_gpio_config = {
         },
         {
             .pin_bit_mask = (1ULL << LORA_CS_GPIO),
-            .mode = GPIO_MODE_OUTPUT_OD,
+            .mode = GPIO_MODE_OUTPUT,
+            .pull_up_en = GPIO_PULLUP_DISABLE,
+            .pull_down_en = GPIO_PULLDOWN_DISABLE,
+            .intr_type = GPIO_INTR_DISABLE,
+        },
+        {
+            .pin_bit_mask = (1ULL << LORA_RS_GPIO),
+            .mode = GPIO_MODE_OUTPUT,
             .pull_up_en = GPIO_PULLUP_DISABLE,
             .pull_down_en = GPIO_PULLDOWN_DISABLE,
             .intr_type = GPIO_INTR_DISABLE,
         },
         {
             .pin_bit_mask = (1ULL << LORA_D0_GPIO),
-            .mode = GPIO_MODE_OUTPUT_OD,
+            .mode = GPIO_MODE_INPUT,
             .pull_up_en = GPIO_PULLUP_DISABLE,
             .pull_down_en = GPIO_PULLDOWN_ENABLE,
             .intr_type = GPIO_INTR_POSEDGE,
         },
         {
             .pin_bit_mask = (1ULL << ABORT_GPIO),
-            .mode = GPIO_MODE_OUTPUT_OD,
+            .mode = GPIO_MODE_INPUT,
             .pull_up_en = GPIO_PULLUP_DISABLE,
             .pull_down_en = GPIO_PULLDOWN_DISABLE,
             .intr_type = GPIO_INTR_NEGEDGE,
         },
         {
             .pin_bit_mask = (1ULL << ARM1_GPIO),
-            .mode = GPIO_MODE_OUTPUT_OD,
+            .mode = GPIO_MODE_OUTPUT,
             .pull_up_en = GPIO_PULLUP_DISABLE,
             .pull_down_en = GPIO_PULLDOWN_DISABLE,
             .intr_type = GPIO_INTR_DISABLE,
         },
         {
             .pin_bit_mask = (1ULL << ARM2_GPIO),
-            .mode = GPIO_MODE_OUTPUT_OD,
+            .mode = GPIO_MODE_OUTPUT,
             .pull_up_en = GPIO_PULLUP_DISABLE,
             .pull_down_en = GPIO_PULLDOWN_DISABLE,
             .intr_type = GPIO_INTR_DISABLE,
         },
         {
             .pin_bit_mask = (1ULL << FIRE_GPIO),
-            .mode = GPIO_MODE_OUTPUT_OD,
+            .mode = GPIO_MODE_OUTPUT,
+            .pull_up_en = GPIO_PULLUP_DISABLE,
+            .pull_down_en = GPIO_PULLDOWN_DISABLE,
+            .intr_type = GPIO_INTR_DISABLE,
+        },
+        {
+            .pin_bit_mask = (1ULL << RELAY_1_GPIO),
+            .mode = GPIO_MODE_OUTPUT,
+            .pull_up_en = GPIO_PULLUP_DISABLE,
+            .pull_down_en = GPIO_PULLDOWN_DISABLE,
+            .intr_type = GPIO_INTR_DISABLE,
+        },
+        {
+            .pin_bit_mask = (1ULL << RELAY_2_GPIO),
+            .mode = GPIO_MODE_OUTPUT,
+            .pull_up_en = GPIO_PULLUP_DISABLE,
+            .pull_down_en = GPIO_PULLDOWN_DISABLE,
+            .intr_type = GPIO_INTR_DISABLE,
+        },
+        {
+            .pin_bit_mask = (1ULL << RELAY_3_GPIO),
+            .mode = GPIO_MODE_OUTPUT,
+            .pull_up_en = GPIO_PULLUP_DISABLE,
+            .pull_down_en = GPIO_PULLDOWN_DISABLE,
+            .intr_type = GPIO_INTR_DISABLE,
+        },
+        {
+            .pin_bit_mask = (1ULL << RELAY_4_GPIO),
+            .mode = GPIO_MODE_OUTPUT,
             .pull_up_en = GPIO_PULLUP_DISABLE,
             .pull_down_en = GPIO_PULLDOWN_DISABLE,
             .intr_type = GPIO_INTR_DISABLE,
@@ -125,4 +161,8 @@ bool _lora_gpio_attach_d0_isr(gpio_isr_t interrupt_cb) {
         return false;
     }
     return true;
+}
+
+bool _relay_gpio_set_level(uint8_t gpio, bool level) {
+    return gpio_set_level(gpio, level) == ESP_OK ? true : false;
 }
