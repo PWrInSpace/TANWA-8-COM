@@ -256,19 +256,28 @@ esp_err_t parse_sensor_pressure2(uint8_t *data, uint8_t length) {
 }
 
 esp_err_t parse_sensor_temperature(uint8_t *data, uint8_t length) {
+
+    //ESP_LOGI(TAG, "Sensor Temperature Data: %02X %02X %02X", data[0], data[1], data[2]);
     if (length < 6) {
         ESP_LOGE(TAG, "Frame too short");
         return ESP_ERR_INVALID_ARG;
     }
 
+    int16_t raw_temp1, raw_temp2, raw_temp3;
     can_sensor_temp_data_t temp_data;
     // Odczytaj int16_t z dwóch bajtów (little-endian)
-    memcpy(&temp_data.temperature1, &data[0], sizeof(int16_t));
-    memcpy(&temp_data.temperature2, &data[2], sizeof(int16_t));
-    memcpy(&temp_data.temperature3, &data[4], sizeof(int16_t));
+    memcpy(&raw_temp1, &data[0], sizeof(int16_t));
+    memcpy(&raw_temp2, &data[2], sizeof(int16_t));
+    memcpy(&raw_temp3, &data[4], sizeof(int16_t));
+
+    temp_data.temperature1 = (float)raw_temp1/ 100.0f; // Przelicz na float
+    temp_data.temperature2 = (float)raw_temp2 / 100.0f; // Przelicz na float
+    temp_data.temperature3 = (float)raw_temp3 / 100.0f; // Przelicz na float
+    temp_data.temperature1_pt100 = (float)data[6]; // Jeśli masz dane z PT100, możesz je tutaj ustawić
+    temp_data.temperature2_pt100 = (float)data[7]; // Jeśli masz dane z
 
     // Możesz teraz używać temp_data.temperature1/2/3 jako int16_t
-    // tanwa_data_update_can_sensor_temp_data(&temp_data); // jeśli masz taką funkcję
+    tanwa_data_update_can_sensor_temp_data(&temp_data); // jeśli masz taką funkcję
 
     return ESP_OK;
 }
@@ -424,10 +433,18 @@ esp_err_t parse_weights_ads2_all_ch_weight2(uint8_t *data, uint8_t length) {
 
 esp_err_t parse_weights_ads_ch_weight(uint8_t *data, uint8_t length) {
     
-    for(int i = 0; i < length; i++) {
-        ESP_LOGI("CAN_COMMANDS", "Weights ADS channel weight byte %d: %02X", i, data[i]);
+    if (length < 4) {
+        ESP_LOGE(TAG, "Frame too short");
+        return ESP_ERR_INVALID_ARG;
     }
-    
+
+    can_weight_data_t weight_data = tanwa_data_read_can_weight_data();
+
+    // Odczytaj float z czterech bajtów (little-endian)
+    memcpy(&weight_data.rocket_weight, &data[0], sizeof(float));
+
+    tanwa_data_update_can_weight_data(&weight_data);
+
     return ESP_OK;
 }
 

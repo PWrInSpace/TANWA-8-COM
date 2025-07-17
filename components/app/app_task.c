@@ -20,7 +20,7 @@
 #include "relay_driver.h"
 #include "tmp1075.h"
 #include "system_timer.h"
-#include "mission_timer.h"
+    #include "mission_timer.h"
 #include "mission_timer_config.h"
 #include "timers_config.h"
 
@@ -105,12 +105,14 @@ void app_task(void *arg) {
         can_send_message(CAN_POWER_GET_STATUS_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_DATA_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_STATUS_ID, data, 0);
+        can_send_message(CAN_SENSOR_GET_TEMPERATURE_ID, data, 0);
         can_send_message(CAN_UTIL_GET_DATA_ID, data, 0);
         can_send_message(CAN_UTIL_GET_STATUS_ID, data, 0);
-        can_send_message(CAN_WEIGHTS_GET_WEIGHTS_ID, data, 0);
+        uint8_t data_weights[8] = {1, 2, 3, 4, 5, 6, 7, 8}; // Example data, adjust as needed
+        can_send_message(CAN_WEIGHTS_GET_ADS_CH_WEIGHT_ID, data, 2);
         can_send_message(CAN_WEIGHTS_GET_STATUS_ID, data, 0);
 
-        tanwa_read_i_sense(&i_sense);
+        //tanwa_read_i_sense(&i_sense);
 
         // Check igniter continuity
         igniter_check_continuity(&(tanwa_hardware.igniter[0]), &ign_cnt_1);
@@ -128,7 +130,7 @@ void app_task(void *arg) {
         tanwa_data_update_state((uint8_t) state_machine_get_current_state());
 
         com_data_t com_data = tanwa_data_read_com_data();
-        com_data.i_sense = i_sense;
+        //com_data.i_sense = i_sense;
         com_data.abort_button = abort_button;
         com_data.igniter_cont_1 = (ign_cnt_1 == IGNITER_CONTINUITY_OK) ? true : false;
         com_data.igniter_cont_2 = (ign_cnt_2 == IGNITER_CONTINUITY_OK) ? true : false;

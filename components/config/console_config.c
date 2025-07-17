@@ -20,6 +20,8 @@
 #include "igniter_driver.h"
 #include "can_commands.h"
 #include "can_api.h"
+#include "state_machine_config.h"
+#include "state_machine.h"
 
 #define TAG "CONSOLE_CONFIG"
 
@@ -173,7 +175,8 @@ int tanwa_data_print(int argc, char **argv) {
     can_sensor_pressure_data_t sensor_pressure_data = tanwa_data_read_can_sensor_pressure_data();
     can_solenoid_data_t solenoid_data = tanwa_data_read_can_solenoid_data();
     can_power_data_t power_data = tanwa_data_read_can_power_data();
-    can_utility_status_t utility_data = tanwa_data_read_can_utility_status();
+    can_utility_status_t utility_data = tanwa_data_read_can_utility_status();\
+    can_solenoid_status_t solenoid_status = tanwa_data_read_can_solenoid_status();
 
     ESP_LOGI(TAG, "TANWA Data:");
     ESP_LOGI(TAG, "COM Data: I_Sense: %.2f, Abort Button: %d, Arm State: %d", com_data.i_sense, com_data.abort_button, com_data.arm_state);
@@ -182,11 +185,13 @@ int tanwa_data_print(int argc, char **argv) {
              com_data.temperature_1, com_data.temperature_2,
              com_data.igniter_cont_1, com_data.igniter_cont_2);
     ESP_LOGI(TAG, "Weight Data: Rocket Weight: %.2f, Tank Weight: %.2f", weight_data.rocket_weight, weight_data.tank_weight);
-    ESP_LOGI(TAG, "Sensor Temp Data: Temperature 1: %d, Temperature 2: %d, Temperature 3: %d", sensor_temp_data.temperature1, sensor_temp_data.temperature2, sensor_temp_data.temperature3);
+    ESP_LOGI(TAG, "Sensor Temp Data: Temperature 1: %.2f, Temperature 2: %.2f, Temperature 3: %.2f", sensor_temp_data.temperature1, sensor_temp_data.temperature2, sensor_temp_data.temperature3);
     ESP_LOGI(TAG, "Pressure Data: Pressure 1: %.2f, Pressure 2: %.2f, Pressure 3: %.2f, Pressure 4: %.2f",
              sensor_pressure_data.pressure1, sensor_pressure_data.pressure2, sensor_pressure_data.pressure3, sensor_pressure_data.pressure4);
     ESP_LOGI(TAG, "Pressure Data: Pressure 5: %.2f, Pressure 6: %.2f, Pressure 7: %.2f, Pressure 8: %.2f",
              sensor_pressure_data.pressure5, sensor_pressure_data.pressure6, sensor_pressure_data.pressure7, sensor_pressure_data.pressure8);
+    ESP_LOGI(TAG, "Solenoid Data: Temperature 1: %d, Temperature 2: %d, i_sense: %d",
+             solenoid_status.temperature1, solenoid_status.temperature2, solenoid_status.i_sense);
     ESP_LOGI(TAG, "Solenoid Data: Servo Angle 1: %d, Servo Angle 2: %d", solenoid_data.servo_angle1, solenoid_data.servo_angle2);
     ESP_LOGI(TAG, "Solenoid Data: Servo Angle 3: %d, Servo Angle 4: %d", solenoid_data.servo_angle3, solenoid_data.servo_angle4);
     ESP_LOGI(TAG, "Solenoid Data: Motor State 1: %d, Motor State 2: %d",
@@ -478,6 +483,51 @@ int clear_weights_data(int argc, char **argv) {
     return 0;
 }   
 
+int tanwa_change_state(int argc, char **argv) {
+    // This function can be used to change the state of the system
+    if (argc != 2) {
+        return -1;
+    }
+
+    int state = atoi(argv[1]);
+    if (state == 11) {
+        if (state_machine_get_current_state() == HOLD) {
+            ESP_LOGI(TAG, "Leaving hold state");
+            if (state_machine_get_previous_state() == COUNTDOWN) {
+                state_machine_force_change_state(RDY_TO_LAUNCH);
+            } else {
+                state_machine_change_to_previous_state(true);
+            }
+        } else {
+            state_machine_force_change_state(HOLD);
+            ESP_LOGI(TAG, "HOLD");
+        }
+        return 0;
+    }
+    if (state_machine_force_change_state(state) != STATE_MACHINE_OK) {
+        return -1;
+    }
+
+    return 0;
+}
+
+int tanwa_countdown(int argc, char **argv) {
+
+    com_data_t data = tanwa_data_read_com_data();
+
+    if(data.arm_state == 1) {
+        ESP_LOGE(TAG, "Liquid arm state is not 1");
+        return -1;
+    }
+
+    if(state_machine_change_state(COUNTDOWN) != STATE_MACHINE_OK) {
+        ESP_LOGE(TAG, "Failed to change state to COUNTDOWN");
+        return -1;
+    }
+
+    return 0;
+}
+
  // Place for the console configuration
 
  static esp_console_cmd_t cmd [] = {
@@ -510,9 +560,9 @@ int clear_weights_data(int argc, char **argv) {
     {"pwr-channel", "Print power channel", NULL, print_power_channel, NULL, NULL, NULL},
     {"set-press-data-rate", "Set pressure data rate", NULL, set_pressure_data_rate, NULL, NULL, NULL},
     {"weights-clear-sd", "Clear weights data", NULL, clear_weights_data, NULL, NULL, NULL},
-   
-
- };
+    {"change-state", "Change state of the system", NULL, tanwa_change_state, NULL, NULL, NULL},
+    {"countdown", "Start countdown", NULL, tanwa_countdown, NULL, NULL, NULL},
+};
 
 esp_err_t console_config_init() {
     esp_err_t ret;

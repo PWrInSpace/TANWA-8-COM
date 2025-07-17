@@ -200,14 +200,14 @@ static void lora_process(uint8_t* packet, size_t packet_size) {
         return;
     }
 
-    ESP_LOGI(TAG, "Received packet: %s", packet + prefix_size);
+    //ESP_LOGI(TAG, "Received packet: %s", packet + prefix_size);
 
     struct lo_ra_command_t* received = lo_ra_command_new(&lora_api.workspace, sizeof(lora_api.workspace));
     size_t decoded_size = 0;
     decoded_size = lo_ra_command_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
     if (decoded_size > 0) {
-        ESP_LOGI(TAG, "Received LORA_ID %d, DEV_ID %d, COMMAND %d, PLD %d", received->lora_dev_id,
-                 received->sys_dev_id, received->command, received->payload);
+        //ESP_LOGI(TAG, "Received LORA_ID %d, DEV_ID %d, COMMAND %d, PLD %d", received->lora_dev_id,
+                // received->sys_dev_id, received->command, received->payload);
         // cmd_message_t received_command = cmd_create_message(received->command, received->payload);
         if(lora_command_parsing(received->lora_dev_id, received->command, received->payload) == false) {
             ESP_LOGE(TAG, "Unable to prcess command :C");
@@ -262,7 +262,7 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     frame->status_fuel = tanwa_data.can_solenoid_data.servo_state2;
     frame->status_arm.is_present = true;
     frame->status_arm.value = tanwa_data.com_data.arm_state;
-    ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
+    //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
 
     //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_liquid_data.arm_state);
     frame->tanwa_battery = tanwa_data.can_power_data.volatage_24V;
@@ -302,7 +302,7 @@ static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {
     prefix_size = add_prefix(buffer, size);
     data_size = lo_ra_frame_encode(frame, buffer + prefix_size, sizeof(struct lo_ra_frame_t));
 
-    ESP_LOGI(TAG, "LoRa frame packed size: %d", data_size);
+    //ESP_LOGI(TAG, "LoRa frame packed size: %d", data_size);
 
     return prefix_size + data_size;
 }

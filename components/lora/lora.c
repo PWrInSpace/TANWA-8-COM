@@ -239,7 +239,7 @@ lora_err_t lora_write_irq_flags(lora_struct_t *lora) {
 
 lora_err_t lora_send_packet(lora_struct_t *lora, uint8_t *buf, int16_t size) {
 
-  ESP_LOGI(TAG, "Sending packet of size %d", size);
+  //ESP_LOGI(TAG, "Sending packet of size %d", size);
   lora_err_t ret = LORA_OK;
   ret |= lora_fill_fifo_buf_to_send(lora, buf, size);
   ret |= lora_start_transmission(lora);

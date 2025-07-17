@@ -67,9 +67,9 @@ esp_err_t can_send_message(uint32_t id, uint8_t *data, uint8_t length) {
     memcpy(message.data, data, length);
 
     // Send the message
-    err = twai_transmit(&message, pdMS_TO_TICKS(100));
+    err = twai_transmit(&message, pdMS_TO_TICKS(10));
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to send CAN message: %s", esp_err_to_name(err));
+        //ESP_LOGE(TAG, "Failed to send CAN message: %s", esp_err_to_name(err));
         return err;
     }
 

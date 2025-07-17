@@ -73,6 +73,9 @@ void on_ignition_timer(void *arg){
 
     sys_timer_start(TIMER_IGNITION_OFF, IGNITION_OFF_TIMER, TIMER_TYPE_ONE_SHOT);
 
+    uint8_t data[8] = {1, 40, 0, 0, 0, 0, 0, 0};
+    can_send_message(CAN_WEIGHTS_START_MEASURE_ID, data, 2);
+
     return;
 
 }
