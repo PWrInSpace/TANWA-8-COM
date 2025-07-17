@@ -16,6 +16,8 @@
 
 #include "timers_config.h"
 #include "can_commands.h"
+#include "mission_timer_config.h"
+#include "settings_mem.h"
 
 #include "board_data.h"
 
@@ -35,6 +37,11 @@ static void on_idle(void *arg) {
 
     // valve_close_servo(&TANWA_utility.servo_valve[0]);
     // valve_close_servo(&TANWA_utility.servo_valve[1]);
+
+    uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
+    uint8_t data_fuel[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_fuel, 1);
 
     igniter_disarm(&tanwa_hardware.igniter[0]);
     igniter_disarm(&tanwa_hardware.igniter[1]);
@@ -72,10 +79,21 @@ static void on_countdown(void *arg) {
     buzzer_timer_change_period(500);
     if (sys_timer_stop(TIMER_DISCONNECT) == false) {
         ESP_LOGE(TAG, "Unable to stop disconnect timer");
+        goto abort_countdown;
     }
     ESP_LOGI(TAG, "ON COUNTDOWN");
 
+    Settings settings = settings_get_all();
+    if (liquid_ignition_test_timer_start(settings.countdownTime, settings.ignitTime) == false) {
+        ESP_LOGE(TAG, "Mission timer error");
+        goto abort_countdown;
+    }
+
     return;
+
+abort_countdown:
+    state_machine_change_to_previous_state(true);
+    sys_timer_start(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS, TIMER_TYPE_ONE_SHOT);
 }
 
 static void on_fire(void *arg) {
@@ -112,11 +130,18 @@ static void on_after_burnout(void *arg) {
 
     // valve_close_servo(&TANWA_utility.servo_valve[1]);
 
+    uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
+
     ESP_LOGI(TAG, "OXI CLOSE");
     vTaskDelay(80 / portTICK_PERIOD_MS);
     // valve_close_servo(&TANWA_utility.servo_valve[0]);
+    uint8_t data_fuel[8] = {0};
+    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_fuel, 1);
 
     sd_timer_change_period(TIMER_SD_DATA_PERIOD_MS);
+
+    liquid_ignition_test_timer_stop();
 }
 
 static void on_hold(void *arg) {

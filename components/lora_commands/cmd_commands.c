@@ -19,6 +19,9 @@
 
 #include "timers_config.h"
 #include "system_timer.h"
+#include "settings_mem.h"
+#include "mission_timer_config.h"
+#include "relay_driver.h"
 
 #include "board_data.h"
 
@@ -95,76 +98,23 @@ void tanwa_hold_out(void) {
     }
 }
 
-void tanwa_fill(uint8_t valve_cmd) {
-    return;
+void tanwa_soft_restart_rck(void) {
+    can_send_message(CAN_WEIGHTS_RESET_ID, NULL, 0);
 }
 
-void tanwa_fill_time(uint32_t open_time) {
-    // solenoid_driver_status_t sol_status = SOLENOID_DRIVER_OK;
-    // sol_status = solenoid_driver_valve_open(&(TANWA_utility.solenoid_driver), SOLENOID_DRIVER_VALVE_FILL);
-    // if (sol_status != SOLENOID_DRIVER_OK) {
-    //     ESP_LOGE(TAG, "SOL | Solenoid driver fill error | %d", sol_status);
-    // }
-    // vTaskDelay(pdMS_TO_TICKS(open_time));
-    // sol_status = solenoid_driver_valve_close(&(TANWA_utility.solenoid_driver), SOLENOID_DRIVER_VALVE_FILL);
-    // if (sol_status != SOLENOID_DRIVER_OK) {
-    //     ESP_LOGE(TAG, "SOL | Solenoid driver fill error | %d", (uint8_t)sol_status);
-    // }
+void tanwa_tare_weight(void){
+    uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    can_send_message(CAN_WEIGHTS_ADS_TARE_ID, data, 1);
+    data[0] = 1; // Tare for ADS1
+    can_send_message(CAN_WEIGHTS_ADS_TARE_ID, data, 1);
 }
 
-void tanwa_depr(uint8_t valve_cmd) {
-    // solenoid_driver_status_t sol_status = SOLENOID_DRIVER_OK;
-    // if (valve_cmd == CMD_VALVE_OPEN) {
-    //     sol_status = solenoid_driver_valve_open(&(TANWA_utility.solenoid_driver), SOLENOID_DRIVER_VALVE_DEPR);
-    // } else if (valve_cmd == CMD_VALVE_CLOSE){
-    //     sol_status = solenoid_driver_valve_close(&(TANWA_utility.solenoid_driver), SOLENOID_DRIVER_VALVE_DEPR);
-    // } else {
-    //     ESP_LOGE(TAG, "SOL | Invalid depr valve command | %d", valve_cmd);
-    // }
-    // if (sol_status != SOLENOID_DRIVER_OK) {
-    //     ESP_LOGE(TAG, "SOL | Solenoid driver depr error | %d", (uint8_t)sol_status);
-    // }
-}
-
-void tanwa_depr_time(uint32_t open_time) {
-    // solenoid_driver_status_t sol_status = SOLENOID_DRIVER_OK;
-    // sol_status = solenoid_driver_valve_open(&(TANWA_utility.solenoid_driver), SOLENOID_DRIVER_VALVE_DEPR);
-    // if (sol_status != SOLENOID_DRIVER_OK) {
-    //     ESP_LOGE(TAG, "SOL | Solenoid driver depr error | %d", sol_status);
-    // }
-    // vTaskDelay(pdMS_TO_TICKS(open_time));
-    // sol_status = solenoid_driver_valve_close(&(TANWA_utility.solenoid_driver), SOLENOID_DRIVER_VALVE_DEPR);
-    // if (sol_status != SOLENOID_DRIVER_OK) {
-    //     ESP_LOGE(TAG, "SOL | Solenoid driver depr error | %d", (uint8_t)sol_status);
-    // }
-}
-
-void tanwa_qd_1(uint8_t qd_cmd) {
-    // if (qd_cmd == CMD_QD_PUSH) {
-    //     twai_message_t fac_mess = CAN_FAC_QD_PUSH();
-    //     can_task_add_message(&fac_mess);
-    // } else if (qd_cmd == CMD_QD_STOP) {
-    //     twai_message_t fac_mess = CAN_FAC_QD_STOP();
-    //     can_task_add_message(&fac_mess);
-    // } else if (qd_cmd == CMD_QD_PULL) {
-    //     twai_message_t fac_mess = CAN_FAC_QD_PULL();
-    //     can_task_add_message(&fac_mess);
-    // } else {
-    //     ESP_LOGE(TAG, "QD | Invalid command | %d", qd_cmd);
-    // }
-}
-
-void tanwa_qd_2(uint8_t qd_cmd) {
-    // // ToDo: send command to FAC vid CAN to push/pull quick disconnect
-    // if (qd_cmd == CMD_QD_PUSH) {
-    //     // ToDo: send push command to FAC
-    // } else if (qd_cmd == CMD_QD_STOP) {
-    //     // ToDo: send stop command to FAC
-    // } else if (qd_cmd == CMD_QD_PULL) {
-    //     // ToDo: send pull command to FAC
-    // } else {
-    //     ESP_LOGE(TAG, "QD 2 | Invalid command | %d", qd_cmd);
-    // }
+void tanwa_set_offset_weight(float offset) {
+    uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    memcpy(&data[1], &offset, sizeof(float));
+    can_send_message(CAN_WEIGHTS_SET_ADS_OFFSET_ID, data, 3);
+    data[0] = 1; // Set offset for ADS1
+    can_send_message(CAN_WEIGHTS_SET_ADS_OFFSET_ID, data, 3);
 }
 
 void tanwa_soft_arm(void) {
@@ -231,11 +181,141 @@ void tanwa_soft_restart_esp(void) {
     esp_restart();
 }
 
+void tanwa_fill(uint8_t valve_state) {
+    uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    if (valve_state == CMD_VALVE_OPEN) {
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+    } else if (valve_state == CMD_VALVE_CLOSE) {
+        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+    } else {
+        ESP_LOGE(TAG, "Invalid fill valve state");
+    }
+}
+
+void tanwa_fill_time(uint32_t open_time) {
+    uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    uint16_t open_time_scaled = (uint16_t)open_time;
+    memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
+    can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
+}
+
+void tanwa_fill_n2(uint8_t valve_state) {
+    uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
+    if (valve_state == CMD_VALVE_OPEN) {
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+    } else if (valve_state == CMD_VALVE_CLOSE) {
+        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+    } else {
+        ESP_LOGE(TAG, "Invalid fill valve state");
+    }
+}
+
+void tanwa_fill_n2_time(uint32_t open_time) {
+    uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
+    uint16_t open_time_scaled = (uint16_t)open_time;
+    memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
+    can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
+}
+
+void tanwa_depr(uint8_t valve_state) {
+    uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+    if (valve_state == CMD_VALVE_OPEN) {
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+    } else if (valve_state == CMD_VALVE_CLOSE) {
+        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+    } else {
+        ESP_LOGE(TAG, "Invalid depr valve state");
+    }
+}
+
+void tanwa_depr_time(uint32_t open_time) {
+    uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+    uint16_t open_time_scaled = (uint16_t)open_time;
+    memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
+    can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
+}
+
+void tanwa_depr_n2(uint8_t valve_state) {
+    uint8_t data[8] = {3, 0, 0, 0, 0, 0, 0, 0};
+    if (valve_state == CMD_VALVE_OPEN) {
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+    } else if (valve_state == CMD_VALVE_CLOSE) {
+        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+    } else {
+        ESP_LOGE(TAG, "Invalid depr valve state");
+    }
+}
+
+void tanwa_depr_n2_time(uint32_t open_time) {
+    uint8_t data[8] = {3, 0, 0, 0, 0, 0, 0, 0};
+    uint16_t open_time_scaled = (uint16_t)open_time;
+    memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
+    can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
+}
+
+void tanwa_qd_n2o(uint8_t qd_cmd) {
+    uint8_t data[8] = {4, 0, 0, 0, 0, 0, 0, 0};
+    if(qd_cmd == CMD_QD_UNPLUG) {
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+    } else if(qd_cmd == CMD_QD_STOP) {
+        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+    } else {
+        ESP_LOGE(TAG, "Invalid QD N2O command");
+    }
+}
+
+void tanwa_qd_n2(uint8_t qd_cmd) {
+    uint8_t data[8] = {5, 0, 0, 0, 0, 0, 0, 0};
+    if(qd_cmd == CMD_QD_UNPLUG) {
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+    } else if(qd_cmd == CMD_QD_STOP) {
+        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+    } else {
+        ESP_LOGE(TAG, "Invalid QD O2 command");
+    }
+}
+
+void tanwa_heating_tank_start(void) {
+    relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[0]));
+    if (err != RELAY_DRIVER_OK) {
+        ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
+    } else {
+        ESP_LOGI(TAG, "Heating tank started");
+    }
+}
+
+void tanwa_heating_tank_stop(void) {
+    relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[0]));
+    if (err != RELAY_DRIVER_OK) {
+        ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
+    }
+}
+
+void tanwa_heating_valve_start(void) {
+    relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[1]));
+    if (err != RELAY_DRIVER_OK) {
+        ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
+    } else {
+        ESP_LOGI(TAG, "Heating valve started");
+    }
+}
+void tanwa_heating_valve_stop(void) {
+    relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[1]));
+    if (err != RELAY_DRIVER_OK) {
+        ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
+    } else {
+        ESP_LOGI(TAG, "Heating valve stopped");
+    }
+}
+
 bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
 
     ESP_LOGI(TAG, "LORA | Command parsing | ID: %d, CMD: %d, PAYLOAD: %d", lora_id, command, payload);
     if (lora_id == LORA_DEV_ID_ALL || lora_id == LORA_DEV_ID_ALL_SUDO || 
         lora_id == LORA_DEV_ID_TANWA || lora_id == LORA_DEV_ID_TANWA_SUDO) { 
+
+        settings_read_all();
+        Settings settings = settings_get_all();
 
         // Check if the command is for this device
         ESP_LOGI(TAG, "LORA | Command for TANWA");
@@ -274,13 +354,13 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 //lora_change_period(payload);
                 break;
             }
-            // case CMD_COUNTDOWN: {
-            //     ESP_LOGI(TAG, "LORA | Countdown");
-            //     settings.countdownTime = payload;
-            //     //settings_save(SETTINGS_COUNTDOWN_TIME, settings.countdownTime);
-            //     //liquid_ignition_test_timer_set_disable_val(settings.countdownTime);
-            //     break;
-            // }
+            case CMD_COUNTDOWN: {
+                ESP_LOGI(TAG, "LORA | Countdown");
+                settings.countdownTime = payload;
+                settings_save(SETTINGS_COUNTDOWN_TIME, settings.countdownTime);
+                liquid_ignition_test_timer_set_disable_val(settings.countdownTime);
+                break;
+            }
             case CMD_SEND_SETTINGS: {
                 ESP_LOGI(TAG, "LORA | Send settings");
                 break;
@@ -317,7 +397,7 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
             }
             case CMD_RESTART_WEIGHT: {
                 ESP_LOGI(TAG, "LORA | Restart RCK");
-                //tanwa_soft_restart_rck();
+                tanwa_soft_restart_rck();
                 break;
             }
             case CMD_CALIBRATE_WEIGHT: {
@@ -327,7 +407,7 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
             }
             case CMD_TARE_WEIGHT: {
                 ESP_LOGI(TAG, "LORA | Tare RCK");
-                //tanwa_tare_weight();
+                tanwa_tare_weight();
                 break;
             }
             case CMD_SET_CAL_FACTOR_WEIGHT: {
@@ -337,37 +417,107 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
             }
             case CMD_SET_OFFSET_WEIGHT: {
                 ESP_LOGI(TAG, "LORA | Set offset RCK");
-                //tanwa_set_offset_weight((float)payload);
+                tanwa_set_offset_weight((float)payload);
                 break;
             }
-            case CMD_FILL_OPEN: {
+            case CMD_N2O_FILL_OPEN: {
                 ESP_LOGI(TAG, "LORA | Fill open");
                 tanwa_fill(CMD_VALVE_OPEN);
                 break;
             }
-            case CMD_FILL_CLOSE: {
+            case CMD_N2O_FILL_CLOSE: {
                 ESP_LOGI(TAG, "LORA | Fill close");
                 tanwa_fill(CMD_VALVE_CLOSE);
                 break;
             }
-            case CMD_FILL_OPEN_TIME: {
+            case CMD_N2O_FILL_OPEN_TIME: {
                 ESP_LOGI(TAG, "LORA | Fill open time");
                 tanwa_fill_time((uint32_t)payload);
                 break;
             }
-            case CMD_DEPR_OPEN: {
+            case CMD_N2_FILL_OPEN: {
+                ESP_LOGI(TAG, "LORA | Fill open");
+                tanwa_fill_n2(CMD_VALVE_OPEN);
+                break;
+            }
+            case CMD_N2_FILL_CLOSE: {
+                ESP_LOGI(TAG, "LORA | Fill close");
+                tanwa_fill_n2(CMD_VALVE_CLOSE);
+                break;
+            }
+            case CMD_N2_FILL_OPEN_TIME: {
+                ESP_LOGI(TAG, "LORA | Fill open time");
+                tanwa_fill_n2_time((uint32_t)payload);
+                break;
+            }
+            case CMD_N2O_DEPR_OPEN: {
                 ESP_LOGI(TAG, "LORA | Depr open");
                 tanwa_depr(CMD_VALVE_OPEN);
                 break;
             }
-            case CMD_DEPR_CLOSE: {
+            case CMD_N2O_DEPR_CLOSE: {
                 ESP_LOGI(TAG, "LORA | Depr close");
                 tanwa_depr(CMD_VALVE_CLOSE);
                 break;
             }
-            case CMD_DEPR_OPEN_TIME: {
+            case CMD_N2O_DEPR_OPEN_TIME: {
                 ESP_LOGI(TAG, "LORA | Depr open time");
                 tanwa_depr_time((uint32_t)payload);
+                break;
+            }
+            case CMD_N2_DEPR_OPEN: {
+                ESP_LOGI(TAG, "LORA | Depr open");
+                tanwa_depr_n2(CMD_VALVE_OPEN);
+                break;
+            }
+            case CMD_N2_DEPR_CLOSE: {
+                ESP_LOGI(TAG, "LORA | Depr close");
+                tanwa_depr_n2(CMD_VALVE_CLOSE);
+                break;
+            }
+            case CMD_N2_DEPR_OPEN_TIME: {
+                ESP_LOGI(TAG, "LORA | Depr open time");
+                tanwa_depr_n2_time((uint32_t)payload);
+                break;
+            }
+            case CMD_QD_N2O_UNPLUG: {
+                ESP_LOGI(TAG, "LORA | QD N2O unplug");
+                tanwa_qd_n2o(CMD_QD_UNPLUG);
+                break;
+            }
+            case CMD_QD_N2O_STOP: {
+                ESP_LOGI(TAG, "LORA | QD N2O stop");
+                tanwa_qd_n2o(CMD_QD_STOP);
+                break;
+            }
+            case CMD_QD_N2_UNPLUG: {
+                ESP_LOGI(TAG, "LORA | QD N2 unplug");
+                tanwa_qd_n2(CMD_QD_UNPLUG);
+                break;
+            }
+            case CMD_QD_N2_STOP: {
+                ESP_LOGI(TAG, "LORA | QD N2 stop");
+                tanwa_qd_n2(CMD_QD_STOP);
+                break;
+            }
+            case CMD_HEATING_TANK_START: {
+                ESP_LOGI(TAG, "LORA | Heating tank start");
+                tanwa_heating_tank_start();
+                break;
+            }
+            case CMD_HEATING_TANK_STOP: {
+                ESP_LOGI(TAG, "LORA | Heating tank stop");
+                tanwa_heating_tank_stop();
+                break;
+            }
+            case CMD_HEATING_VALVE_START: {
+                ESP_LOGI(TAG, "LORA | Heating valve start");
+                tanwa_heating_valve_start();
+                break;
+            }
+            case CMD_HEATING_VALVE_STOP: {
+                ESP_LOGI(TAG, "LORA | Heating valve stop");
+                tanwa_heating_valve_stop();
                 break;
             }
             default: {

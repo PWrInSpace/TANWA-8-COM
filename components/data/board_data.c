@@ -31,6 +31,26 @@ bool tanwa_data_init(void) {
     return true;
 }
 
+uint8_t tanwa_data_get_state(void) {
+    if (xSemaphoreTake(tanwa_data_mutex, portMAX_DELAY) == pdTRUE) {
+        uint8_t state = tanwa_data.state;
+        xSemaphoreGive(tanwa_data_mutex);
+        return state;
+    } else {
+        ESP_LOGE(TAG, "Failed to take mutex");
+        return 0; // Return a default value in case of failure
+    }
+}
+
+void tanwa_data_update_state(uint8_t state) {
+    if (xSemaphoreTake(tanwa_data_mutex, portMAX_DELAY) == pdTRUE) {
+        tanwa_data.state = state;
+        xSemaphoreGive(tanwa_data_mutex);
+    } else {
+        ESP_LOGE(TAG, "Failed to take mutex");
+    }
+}
+
 tanwa_data_t tanwa_data_read(void) {
 
     if (xSemaphoreTake(tanwa_data_mutex, portMAX_DELAY) == pdTRUE) {
@@ -42,6 +62,15 @@ tanwa_data_t tanwa_data_read(void) {
         ESP_LOGE(TAG, "Failed to take mutex");
         tanwa_data_t empty_data = {0};
         return empty_data;
+    }
+}
+
+void tanwa_data_update(tanwa_data_t *data) {
+    if (xSemaphoreTake(tanwa_data_mutex, portMAX_DELAY) == pdTRUE) {
+        memcpy(&tanwa_data, data, sizeof(tanwa_data_t));
+        xSemaphoreGive(tanwa_data_mutex);
+    } else {
+        ESP_LOGE(TAG, "Failed to take mutex");
     }
 }
 

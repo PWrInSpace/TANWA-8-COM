@@ -62,12 +62,27 @@ typedef enum {
     CMD_TARE_WEIGHT = 0x35,
     CMD_SET_CAL_FACTOR_WEIGHT = 0x36,
     CMD_SET_OFFSET_WEIGHT = 0x37,
-    CMD_FILL_OPEN = 0x42,
-    CMD_FILL_CLOSE = 0x43,
-    CMD_FILL_OPEN_TIME = 0x44,
-    CMD_DEPR_OPEN = 0x45,
-    CMD_DEPR_CLOSE = 0x46,
-    CMD_DEPR_OPEN_TIME = 0x47
+    CMD_N2O_FILL_OPEN = 0x42,
+    CMD_N2O_FILL_CLOSE = 0x43,
+    CMD_N2O_FILL_OPEN_TIME = 0x44,
+    CMD_N2O_DEPR_OPEN = 0x45,
+    CMD_N2O_DEPR_CLOSE = 0x46,
+    CMD_N2O_DEPR_OPEN_TIME = 0x47,
+    CMD_QD_N2O_UNPLUG = 0x48,
+    CMD_QD_N2O_STOP = 0x49,
+    CMD_QD_N2_UNPLUG = 0x4A,
+    CMD_QD_N2_STOP = 0x4B,
+    CMD_HEATING_TANK_START = 0x4C,
+    CMD_HEATING_TANK_STOP = 0x4D,
+    CMD_HEATING_VALVE_START = 0x4E,
+    CMD_HEATING_VALVE_STOP = 0x4F,
+    CMD_N2_FILL_OPEN = 0x50,
+    CMD_N2_FILL_CLOSE = 0x51,
+    CMD_N2_FILL_OPEN_TIME = 0x52,
+    CMD_N2_DEPR_OPEN = 0x53,
+    CMD_N2_DEPR_CLOSE = 0x54,
+    CMD_N2_DEPR_OPEN_TIME = 0x55,
+
 } cmd_command_t;
 
 typedef enum {
@@ -76,9 +91,8 @@ typedef enum {
 } cmd_valve_t;
 
 typedef enum {
-    CMD_QD_PUSH = 0x01,
-    CMD_QD_STOP = 0x22,
-    CMD_QD_PULL = 0x00
+    CMD_QD_UNPLUG = 0x00,
+    CMD_QD_STOP = 0x01,
 } cmd_qd_t;
 
 typedef enum {

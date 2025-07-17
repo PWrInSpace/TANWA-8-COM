@@ -213,6 +213,10 @@ static void lora_process(uint8_t* packet, size_t packet_size) {
             ESP_LOGE(TAG, "Unable to prcess command :C");
             return;
         }
+
+        if (!sys_timer_restart(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS) == false) {
+            ESP_LOGE(TAG, "Unable to restart timer");
+        }
     } else {
         ESP_LOGE(TAG, "Unable to decode received package");
     }
@@ -241,44 +245,44 @@ static size_t add_prefix(uint8_t* buffer, size_t size) {
 #include "board_data.h"
 void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     
-    // tanwa_data_t tanwa_data = tanwa_data_read();   // fill struct with 0
-    // // mcb
-    // //frame->obc_state = data.mcb.state;
-    // frame->tanwa_state = tanwa_data.state;
-    // frame->uptime = 2137;
-    // frame->pressure_injector_fuel = tanwa_data.com_data.pressure_1;
-    // frame->pressure_injector_oxi = tanwa_data.com_data.pressure_2;
-    // frame->pressure_combustion_chamber = tanwa_data.com_data.pressure_3;
-    // frame->igniter_cont1 = tanwa_data.com_data.igniter_cont_1;
-    // frame->igniter_cont2 = tanwa_data.com_data.igniter_cont_2;
+    tanwa_data_t tanwa_data = tanwa_data_read();   // fill struct with 0
+    // mcb
+    //frame->obc_state = data.mcb.state;
+    frame->tanwa_state = tanwa_data.state;
+    frame->uptime = tanwa_data.uptime;;
+    frame->pressure_injector_fuel = tanwa_data.can_sensor_pressure_data.pressure1;
+    frame->pressure_injector_oxi = tanwa_data.can_sensor_pressure_data.pressure2;
+    frame->pressure_combustion_chamber = tanwa_data.can_sensor_pressure_data.pressure3;
+    frame->igniter_cont1 = tanwa_data.com_data.igniter_cont_1;
+    frame->igniter_cont2 = tanwa_data.com_data.igniter_cont_2;
 
-    // //ESP_LOGI(TAG, "IGNITER CONT 1: %d", tanwa_data.com_data.igniter_cont_1);
-    // //ESP_LOGI(TAG, "IGNITER CONT 2: %d", tanwa_data.com_data.igniter_cont_2);
-    // frame->status_oxy= 1;
-    // frame->status_fuel = 1;
-    // frame->status_arm.is_present = true;
-    // frame->status_arm.value = tanwa_data.com_data.arm_state;
-    // ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
+    //ESP_LOGI(TAG, "IGNITER CONT 1: %d", tanwa_data.com_data.igniter_cont_1);
+    //ESP_LOGI(TAG, "IGNITER CONT 2: %d", tanwa_data.com_data.igniter_cont_2);
+    frame->status_oxy= tanwa_data.can_solenoid_data.servo_state1;
+    frame->status_fuel = tanwa_data.can_solenoid_data.servo_state2;
+    frame->status_arm.is_present = true;
+    frame->status_arm.value = tanwa_data.com_data.arm_state;
+    ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
 
-    // //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_liquid_data.arm_state);
-    // frame->tanwa_battery = tanwa_data.com_data.vbat;
-    // frame->temp_injector = 0;
-    // frame->temp_combustion_chamber = 0;
-    // frame->temp_external_tank = 0;
-    // // hx rck
-    // frame->engine_thrust = 0;
-    // frame->rocket_weight = 0;
-    // frame->tank_weight = 0;
+    //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_liquid_data.arm_state);
+    frame->tanwa_battery = tanwa_data.can_power_data.volatage_24V;
+    frame->temp_injector = tanwa_data.can_sensor_temp_data.temperature1;
+    frame->temp_combustion_chamber = tanwa_data.can_sensor_temp_data.temperature2;
+    frame->temp_external_tank = tanwa_data.can_sensor_temp_data.temperature3;
+    // hx rck
+    frame->engine_thrust = tanwa_data.can_weight_data.rocket_weight;
+    frame->rocket_weight = 0;
+    frame->tank_weight = tanwa_data.can_weight_data.tank_weight;
 
-    // frame->engine_work_time = 696969699;
-    // frame->pressure_fuel = tanwa_data.com_data.pressure_4;
-    // frame->pressure_after_fill = 0;
-    // frame->pressure_before_fill = 0;
-    // frame->pressure_oxy = 0;
-    // frame->status_fill = tanwa_data.com_data.solenoid_state_fill;
+    frame->engine_work_time = tanwa_data.engine_work_time;
+    frame->pressure_fuel = tanwa_data.can_sensor_pressure_data.pressure4;
+    frame->pressure_after_fill = tanwa_data.can_sensor_pressure_data.pressure5;
+    frame->pressure_before_fill = tanwa_data.can_sensor_pressure_data.pressure6;
+    frame->pressure_oxy = tanwa_data.can_sensor_pressure_data.pressure7;
 
-    // frame->status_depr = tanwa_data.com_data.solenoid_state_depr;
-    //frame->status_vent = tanwa_data.com_data.solenoid_add_state;
+    frame->status_fill = tanwa_data.can_solenoid_data.state_sol1;
+    frame->status_depr = tanwa_data.can_solenoid_data.state_sol2;
+    frame->status_vent = tanwa_data.can_solenoid_data.state_sol3;
 
 }
 

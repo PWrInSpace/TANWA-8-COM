@@ -25,8 +25,8 @@ typedef struct {
 
 typedef struct {
     uint8_t i_sense;
-    uint8_t tempture_1;
-    uint8_t tempture_2;
+    uint8_t temperature_1;
+    uint8_t temperature_2;
 } can_weight_status_t;
 
 typedef struct {
@@ -38,6 +38,8 @@ typedef struct {
     float ads2_weight2;
     float ads2_weight3;
     float ads2_weight4;
+    float rocket_weight;
+    float tank_weight;
 } can_weight_data_t;
 
 typedef struct {

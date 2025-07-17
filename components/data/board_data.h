@@ -25,6 +25,8 @@
 
 typedef struct {
     uint8_t state;
+    uint64_t uptime;
+    uint64_t engine_work_time; // in seconds, time of engine work since last reset
     // COM
     com_data_t com_data;
     can_connected_slaves_t can_connected_slaves;
@@ -47,6 +49,9 @@ typedef struct {
 
 bool tanwa_data_init(void);
 
+uint8_t tanwa_data_get_state(void);
+void tanwa_data_update_state(uint8_t state);
+
 tanwa_data_t tanwa_data_read(void);
 com_data_t tanwa_data_read_com_data(void);
 can_connected_slaves_t tanwa_data_read_can_connected_slaves(void);
@@ -61,6 +66,7 @@ can_utility_status_t tanwa_data_read_can_utility_status(void);
 can_power_status_t tanwa_data_read_can_power_status(void);
 can_power_data_t tanwa_data_read_can_power_data(void);
 
+void tanwa_data_update(tanwa_data_t *data);
 void tanwa_data_update_com_data(com_data_t *data);
 void tanwa_data_update_can_connected_slaves(can_connected_slaves_t *data);
 void tanwa_data_update_can_weight_status(can_weight_status_t *data);

@@ -32,11 +32,13 @@
 #include "ens_task.h"
 #include "sd_task.h"
 #include "state_machine_config.h"
+#include "mission_timer_config.h"
 #include "lora_task.h"
 #include "board_data.h"
 #include "system_timer.h"
 #include "timers_config.h"
 #include "relay_driver.h"
+#include "settings_mem.h"
 
 #define TAG "BOARD_CONFIG"
 
@@ -100,6 +102,24 @@ tanwa_hardware_dev_t tanwa_hardware = {
             .gpio_num_fire = FIRE_GPIO_INDEX,
             .drive = IGNITER_DRIVE_POSITIVE,
             .state = IGNITER_STATE_WAITING,
+        },
+    },
+    .relay = {
+        {
+            .gpio_pin = CONFIG_RELAY_1_GPIO,
+            .state = RELAY_OFF,
+        },
+        {
+            .gpio_pin = CONFIG_RELAY_2_GPIO,
+            .state = RELAY_OFF,
+        },
+        {
+            .gpio_pin = CONFIG_RELAY_3_GPIO,
+            .state = RELAY_OFF,
+        },
+        {
+            .gpio_pin = CONFIG_RELAY_4_GPIO,
+            .state = RELAY_OFF,
         },
     },
 };
@@ -238,6 +258,29 @@ esp_err_t board_config_init(void) {
         
     }
 
+    ESP_LOGI(TAG, "Initializing settings...");
+
+    ret |= settings_init();
+
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "Settings initialization failed");
+    } else {
+        ESP_LOGI(TAG, "Settings initialized");
+    }
+
+    settings_init_default();
+
+    settings_read_all();
+    Settings settings = settings_get_all();
+
+    ESP_LOGI(TAG, "Initializing mission timer... JEBAC KURWY Z ZARZADU");
+
+    if (!liquid_ignition_test_timer_init(settings.countdownTime)) {
+        ESP_LOGE(TAG, "Mission timer initialization failed");
+    } else {
+        ESP_LOGI(TAG, "### Mission timer initialization success ###");
+    }
+
     if(ens_init(&ens_init_struct, ens_periods) != ENS_OK) {
         ESP_LOGE(TAG, "ENS initialization failed");
     } else {
@@ -285,7 +328,14 @@ esp_err_t board_config_init(void) {
         ESP_LOGI(TAG, "SD CARD | Timer started");
     }
 
+    if(!sys_timer_start(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS, TIMER_TYPE_ONE_SHOT)) {
+        ESP_LOGE(TAG, "DISCONNECT | Timer start failed");
+    } else {
+        ESP_LOGI(TAG, "DISCONNECT | Timer started");
+    }
+
     state_machine_change_state(IDLE);
+    led_state_display_state_update(&led_state_display, LED_STATE_DISPLAY_STATE_IDLE);
     //*********** ADD HARDWARE CONFIGURATION HERE ***********//
 
     
@@ -299,4 +349,18 @@ esp_err_t board_config_init(void) {
 
     return ESP_OK;
     
+}
+
+esp_err_t tanwa_read_i_sense(float *i_sense) {
+    if (i_sense == NULL) {
+        ESP_LOGE(TAG, "i_sense pointer is NULL");
+        return ESP_ERR_INVALID_ARG;
+    }
+
+    if (_mcu_adc_read_voltage(ISENSE_CHANNEL, i_sense) != ESP_OK) {
+        ESP_LOGE(TAG, "Failed to read i_sense");
+        return ESP_FAIL;
+    }
+
+    return ESP_OK;
 }

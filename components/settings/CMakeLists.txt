@@ -1,5 +1,5 @@
 idf_component_register( SRC_DIRS "."
                         INCLUDE_DIRS "."
-                        REQUIRES cmock lora settings app)
+                        REQUIRES cmock nvs_flash)
 
 target_compile_options(${COMPONENT_LIB} PRIVATE "-Wno-format" "-Wall" "-Werror")

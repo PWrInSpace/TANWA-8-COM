@@ -65,6 +65,12 @@ menu "TANWA BOARD CONFIGURATION"
                 default 0
                 help
                     Core ID for main task.
+            
+            config APP_TASK_FREQUENCY
+                int "Frequency"
+                default 100
+                help
+                    Frequency for main task in milliseconds.
 
         endmenu
     endmenu

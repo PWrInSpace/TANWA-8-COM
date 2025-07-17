@@ -21,6 +21,7 @@
 #include "tmp1075.h"
 #include "esp_err.h"
 #include "ens_config.h"
+#include "relay_driver.h"
 
 typedef struct {
     char board_name[32];
@@ -31,6 +32,7 @@ typedef struct {
     tmp1075_struct_t tmp1075[2];
     mcp23018_struct_t mcp23018;
     igniter_struct_t igniter[2];
+    relay_driver_t relay[4];
 } tanwa_hardware_dev_t;
 
 extern board_config_t config;
@@ -40,8 +42,6 @@ extern uint16_t ens_periods[ENS_ENUM_MAX];
 
 
 esp_err_t board_config_init(void);
+esp_err_t tanwa_read_i_sense(float *i_sense);
 
 #endif /* PWRINSPACE_BOARD_CONFIG_H */
-
-
-// RTR -> TEN SAM ID U MASTER I SLAVE BO RTR PRZEGRYWA WALKE O MIEJSCE!
