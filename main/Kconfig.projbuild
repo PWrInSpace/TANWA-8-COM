@@ -165,6 +165,12 @@ menu "TANWA BOARD CONFIGURATION"
             help
                 GPIO number for TWAI TX pin.
 
+        config CAN_STB
+            int "CAN STB GPIO"
+            default 37
+            help
+                GPIO number for CAN STB pin.
+
         config CAN_TX_QUEUE_LENGTH
             int "TX Queue Length"
             default 50

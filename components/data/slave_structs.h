@@ -115,7 +115,7 @@ typedef struct {
 
 typedef struct {
     uint16_t voltage_12V;
-    uint16_t volatage_24V;
+    uint16_t voltage_24V;
     uint16_t current_12V;
     uint16_t current_24V;
 } can_power_data_t;

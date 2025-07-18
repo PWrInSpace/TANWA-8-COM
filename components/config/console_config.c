@@ -151,7 +151,7 @@ int read_power_data(int argc, char **argv) {
     // This function can be used to read power data
     can_power_data_t data = tanwa_data_read_can_power_data();
     ESP_LOGI(TAG, "Power Data: 12V Voltage: %d, 24V Voltage: %d, 12V Current: %d, 24V Current: %d",
-             data.voltage_12V, data.volatage_24V, data.current_12V, data.current_24V);
+             data.voltage_12V, data.voltage_24V, data.current_12V, data.current_24V);
     return 0;
 }
 
@@ -202,7 +202,7 @@ int tanwa_data_print(int argc, char **argv) {
              solenoid_data.servo_state1, solenoid_data.servo_state2,
              solenoid_data.servo_state3, solenoid_data.servo_state4);
     ESP_LOGI(TAG, "Power Data: 12V Voltage: %d, 24V Voltage: %d, 12V Current: %d, 24V Current: %d",
-             power_data.voltage_12V, power_data.volatage_24V,
+             power_data.voltage_12V, power_data.voltage_24V,
              power_data.current_12V, power_data.current_24V);
     ESP_LOGI(TAG, "Utility Data: I_Sense: %d, Temperature 1: %d, Temperature 2: %d",
              utility_data.i_sense, utility_data.temperature1, utility_data.temperature2);

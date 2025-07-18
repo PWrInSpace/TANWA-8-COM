@@ -265,7 +265,7 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
 
     //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_liquid_data.arm_state);
-    frame->tanwa_battery = tanwa_data.can_power_data.volatage_24V;
+    frame->tanwa_battery = tanwa_data.can_power_data.voltage_24V;
     frame->temp_injector = tanwa_data.can_sensor_temp_data.temperature1;
     frame->temp_combustion_chamber = tanwa_data.can_sensor_temp_data.temperature2;
     frame->temp_external_tank = tanwa_data.can_sensor_temp_data.temperature3;

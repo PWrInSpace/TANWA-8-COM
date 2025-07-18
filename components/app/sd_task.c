@@ -47,6 +47,7 @@ static struct {
     .sd_task = NULL,
     .log_queue = NULL,
     .data_write_mutex = NULL,
+    .data_from_queue_size = sizeof(tanwa_data_t) + sizeof(uint64_t)
 };
 
 static size_t convert_data_to_frame(char *buf, size_t buf_size, void* data, size_t size);
@@ -63,7 +64,7 @@ sd_task_cfg_t cfg = {
     .priority = SD_TASK_PRIORITY,
     .core_id = SD_TASK_CORE_ID,
     .error_handler_fnc = on_error,
-    .data_size = sizeof(tanwa_data_t),
+    .data_size = sizeof(tanwa_data_t) + sizeof(uint64_t),
     .create_sd_frame_fnc = convert_data_to_frame,
     .spi_mutex = NULL,
 };
@@ -335,10 +336,76 @@ static bool initialize_task(sd_task_cfg_t *task_cfg) {
 }
 
 static size_t convert_data_to_frame(char *buf, size_t buf_size, void* data, size_t size) {
-    tanwa_data_t* tanwa_data = (tanwa_data_t*)data;
+    uint64_t timestamp = *(uint64_t*)data;
+    tanwa_data_t* tanwa_data = (tanwa_data_t*)(((uint8_t*)(data)) + sizeof(uint64_t));
     // Create a char buffer from the data with newline ending
     size_t frame_size = 0;
-    frame_size = snprintf(buf, buf_size, "DUPA\n");
+    frame_size = snprintf(buf, buf_size, 
+        "%llu;%u;%llu;%lld;"\
+        "%hhu;%hhu;%f;%hhu;%hhu;"\
+        "%hhu;%hhu;%hhu;%hhu;"\
+        "%f;%f;"\
+        "%hhu;%hhu;%hhu;%hhu;%hhu;"\
+        "%hu;%hu;"\
+        "%hu;%hu;"\
+        "%hhu;%hhu;%hhu;"\
+        "%f;%f;%f;%f;"\
+        "%f;%f;%f;%f;"\
+        "%f;%f;%f;"\
+        "%hhu;%hhu;"\
+        "%hhu;%hhu;%hhu;"\
+        "%hhu;%hhu;%hhu;"\
+        "%hhu;%hhu;%hhu;"\
+        "%hhu;%hhu;%hhu;%hhu;"\
+        "%hhu;%hhu;"\
+        "%hhu;%hhu;"\
+        "%hhu;%hhu;"\
+        "%hhu;%hhu;%hhu;"\
+        "%hhu;%hhu;%hhu;"\
+        "%hhu;%hhu;"\
+        "%hhu;%hhu;"\
+        "%hhu;%hhu;"\
+        "%hhu;%hhu;"\
+        "%f;%f;"\
+        "%f;%f;"\
+        "%f;%f;"\
+        "%f;%f;"\
+        "%f;%f;"\
+        "%hhu;%hhu;%hhu\n", 
+        timestamp, tanwa_data->state, tanwa_data->uptime, tanwa_data->engine_work_time, 
+        tanwa_data->com_data.abort_button, tanwa_data->com_data.arm_state, tanwa_data->com_data.i_sense, tanwa_data->com_data.igniter_cont_1, tanwa_data->com_data.igniter_cont_2, 
+        tanwa_data->com_data.relay_state1, tanwa_data->com_data.relay_state2, tanwa_data->com_data.relay_state3, tanwa_data->com_data.relay_state4,
+        tanwa_data->com_data.temperature_1, tanwa_data->com_data.temperature_2,
+        tanwa_data->can_connected_slaves.power, tanwa_data->can_connected_slaves.sensor, tanwa_data->can_connected_slaves.solenoid, tanwa_data->can_connected_slaves.utility, tanwa_data->can_connected_slaves.weights,
+        tanwa_data->can_power_data.current_12V, tanwa_data->can_power_data.current_24V,
+        tanwa_data->can_power_data.voltage_12V, tanwa_data->can_power_data.voltage_24V,
+        tanwa_data->can_power_status.i_sense, tanwa_data->can_power_status.temperature1, tanwa_data->can_power_status.temperature2,
+
+        tanwa_data->can_sensor_pressure_data.pressure1, tanwa_data->can_sensor_pressure_data.pressure2, tanwa_data->can_sensor_pressure_data.pressure3, tanwa_data->can_sensor_pressure_data.pressure4,
+        tanwa_data->can_sensor_pressure_data.pressure5, tanwa_data->can_sensor_pressure_data.pressure6, tanwa_data->can_sensor_pressure_data.pressure7, tanwa_data->can_sensor_pressure_data.pressure8,
+        tanwa_data->can_sensor_temp_data.temperature1, tanwa_data->can_sensor_temp_data.temperature2, tanwa_data->can_sensor_temp_data.temperature3,
+        (uint8_t)tanwa_data->can_sensor_temp_data.temperature1_pt100, (uint8_t)tanwa_data->can_sensor_temp_data.temperature2_pt100,
+        tanwa_data->can_sensor_status.i_sense, tanwa_data->can_sensor_status.temperature1, tanwa_data->can_sensor_status.temperature2,
+
+        tanwa_data->can_solenoid_data.state_sol1, tanwa_data->can_solenoid_data.state_sol2, tanwa_data->can_solenoid_data.state_sol3,
+        tanwa_data->can_solenoid_data.state_sol4, tanwa_data->can_solenoid_data.state_sol5, tanwa_data->can_solenoid_data.state_sol6,
+        tanwa_data->can_solenoid_data.servo_state1, tanwa_data->can_solenoid_data.servo_state2, tanwa_data->can_solenoid_data.servo_state3, tanwa_data->can_solenoid_data.servo_state4,
+        tanwa_data->can_solenoid_data.servo_angle1, tanwa_data->can_solenoid_data.servo_angle2,
+        tanwa_data->can_solenoid_data.servo_angle3, tanwa_data->can_solenoid_data.servo_angle4,
+        tanwa_data->can_solenoid_data.motor_state1, tanwa_data->can_solenoid_data.motor_state2,
+        tanwa_data->can_solenoid_status.i_sense, tanwa_data->can_solenoid_status.temperature1, tanwa_data->can_solenoid_status.temperature2,
+        tanwa_data->can_utility_status.i_sense, tanwa_data->can_utility_status.temperature1, tanwa_data->can_utility_status.temperature2,
+
+        tanwa_data->can_utility_status.switch_state1, tanwa_data->can_utility_status.switch_state2,
+        tanwa_data->can_utility_status.switch_state3, tanwa_data->can_utility_status.switch_state4,
+        tanwa_data->can_utility_status.switch_state5, tanwa_data->can_utility_status.switch_state6,
+        tanwa_data->can_utility_status.switch_state7, tanwa_data->can_utility_status.switch_state8,
+        tanwa_data->can_weight_data.ads1_weight1, tanwa_data->can_weight_data.ads1_weight2,
+        tanwa_data->can_weight_data.ads1_weight3, tanwa_data->can_weight_data.ads1_weight4,
+        tanwa_data->can_weight_data.ads2_weight1, tanwa_data->can_weight_data.ads2_weight2,
+        tanwa_data->can_weight_data.ads2_weight3, tanwa_data->can_weight_data.ads2_weight4,
+        tanwa_data->can_weight_data.rocket_weight, tanwa_data->can_weight_data.tank_weight,
+        tanwa_data->can_weight_status.i_sense, tanwa_data->can_weight_status.temperature_1, tanwa_data->can_weight_status.temperature_2);
     return frame_size;
 }
 
@@ -377,11 +444,12 @@ bool SDT_init(sd_task_cfg_t *task_cfg) {
 
 bool SDT_send_data(void *data, size_t data_size) {
     if (mem.data_queue == NULL) {
-        //ESP_LOGE(TAG, "Data queue is not initialized");
+        ESP_LOGE(TAG, "Data queue is not initialized");
         return false;
     }
 
     if (data_size != mem.data_from_queue_size) {
+        ESP_LOGE(TAG, "Data size not matching!");
         return false;
     }
 

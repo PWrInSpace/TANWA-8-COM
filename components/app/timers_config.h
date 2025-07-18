@@ -5,7 +5,7 @@
 #include "system_timer.h"
 #include "stdbool.h"
 
-#define TIMER_SD_DATA_PERIOD_MS 50
+#define TIMER_SD_DATA_PERIOD_MS 100
 #define TIMER_DISCONNECT_PERIOD_MS 10 * 60 * 1000
 #define ENGINE_BURN_TIME_MS 2500
 #define IGNITION_OFF_TIMER 55

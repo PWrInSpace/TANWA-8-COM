@@ -13,14 +13,25 @@
 #include "sd_task.h"
 
 #include "esp_log.h"
+#include "esp_timer.h"
 
 #define TAG "TIMERS"
 
 void on_sd_timer(void *arg){
     tanwa_data_t tanwa_data = tanwa_data_read();
-    if (SDT_send_data(&tanwa_data, sizeof(tanwa_data)) == false) {
+    uint64_t timestamp = esp_timer_get_time();
+
+    void* data = malloc(sizeof(tanwa_data_t) + sizeof(uint64_t));
+    if (data == NULL) {
+        ESP_LOGE(TAG, "Failed to allocate memory for data");
+        return;
+    }
+    memcpy(data, &timestamp, sizeof(uint64_t));
+    memcpy((uint8_t*)data + sizeof(uint64_t), &tanwa_data, sizeof(tanwa_data_t));
+    if (SDT_send_data(data, sizeof(tanwa_data_t) + sizeof(uint64_t)) == false) {
         ESP_LOGE(TAG, "Error while sending data to sd card");
     }
+    free(data);
 }
 
 void on_abort_button_timer(void *arg){

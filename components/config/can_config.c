@@ -43,23 +43,6 @@ esp_err_t can_config_init(void) {
         ESP_LOGE(TAG, "CAN command registration failed");
         return err;
     }
-
-    gpio_config_t io_config = {
-        .mode = GPIO_MODE_INPUT_OUTPUT,
-        .pull_up_en = GPIO_PULLUP_DISABLE,
-        .pull_down_en = GPIO_PULLDOWN_DISABLE,
-        .intr_type = GPIO_INTR_DISABLE,
-        .pin_bit_mask = 1ULL << 37,
-    };
-
-    // Configure GPIO for CAN
-    err = gpio_config(&io_config);
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "GPIO configuration failed: %s", esp_err_to_name(err));
-        return err;
-    }
-
-    gpio_set_level(37, 0); // Set GPIO 37 to low
     
     // Initialize CAN driver
     err = can_task_init();

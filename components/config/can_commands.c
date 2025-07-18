@@ -64,7 +64,7 @@ esp_err_t parse_solenoid_status(uint8_t *data, uint8_t length) {
         return ESP_ERR_INVALID_ARG;
     }
 
-    can_solenoid_status_t status;
+    can_solenoid_status_t status = tanwa_data_read_can_solenoid_status();
     status.i_sense = data[2];
     status.temperature1 = data[0];
     status.temperature2 = data[1];
@@ -91,6 +91,8 @@ esp_err_t parse_solenoid_data(uint8_t *data, uint8_t length) {
 
     can_solenoid_data_t sol_data = tanwa_data_read_can_solenoid_data();
 
+    // ESP_LOGI(TAG, "Parsing solenoid data");
+
     if (length < 8) {
         ESP_LOGE(TAG, "Frame too short");
         return ESP_ERR_INVALID_ARG;
@@ -107,7 +109,7 @@ esp_err_t parse_solenoid_data(uint8_t *data, uint8_t length) {
     }
 
     // Dekoduj stany serw
-    ret = parse_uint8_t_to_bool(data[1], 4, servo_states);
+    ret = parse_uint8_t_to_bool(data[1], 2, servo_states);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to decode servo states");
         return ret;
@@ -121,8 +123,6 @@ esp_err_t parse_solenoid_data(uint8_t *data, uint8_t length) {
     sol_data.state_sol6 = solenoid_states[5];
     sol_data.servo_state1 = servo_states[0];
     sol_data.servo_state2 = servo_states[1];
-    sol_data.servo_state3 = servo_states[2];
-    sol_data.servo_state4 = servo_states[3];
     sol_data.servo_angle1 = data[2];
     sol_data.servo_angle2 = data[3];
     sol_data.servo_angle3 = data[4];
@@ -156,18 +156,13 @@ esp_err_t parse_power_data(uint8_t *data, uint8_t length) {
         return ESP_ERR_INVALID_ARG;
     }
 
-    can_power_data_t power_data;
-    int16_t raw_voltage_24V, raw_current_24V, raw_voltage_12V, raw_current_12V;
 
-    memcpy(&raw_voltage_24V, &data[0], sizeof(int16_t));
-    memcpy(&raw_current_24V, &data[2], sizeof(int16_t));
-    memcpy(&raw_voltage_12V, &data[4], sizeof(int16_t));
-    memcpy(&raw_current_12V, &data[6], sizeof(int16_t));
+    can_power_data_t power_data = tanwa_data_read_can_power_data();
 
-    power_data.volatage_24V = ((float)raw_voltage_24V) / 100.0f;
-    power_data.current_24V  = ((float)raw_current_24V)  / 100.0f;
-    power_data.voltage_12V  = ((float)raw_voltage_12V)  / 100.0f;
-    power_data.current_12V  = ((float)raw_current_12V)  / 100.0f;
+    memcpy(&power_data.voltage_24V, &data[0], sizeof(uint16_t));
+    memcpy(&power_data.current_24V, &data[2], sizeof(uint16_t));
+    memcpy(&power_data.voltage_12V, &data[4], sizeof(uint16_t));
+    memcpy(&power_data.current_12V, &data[6], sizeof(uint16_t));
 
     tanwa_data_update_can_power_data(&power_data);
 

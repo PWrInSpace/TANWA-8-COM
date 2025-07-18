@@ -33,8 +33,6 @@ static void on_init(void *arg) {
 
 static void on_idle(void *arg) {
 
-    sys_timer_stop(TIMER_BUZZER);
-
     // valve_close_servo(&TANWA_utility.servo_valve[0]);
     // valve_close_servo(&TANWA_utility.servo_valve[1]);
 
@@ -42,6 +40,7 @@ static void on_idle(void *arg) {
     can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
     uint8_t data_fuel[8] = {1, 0, 0, 0, 0, 0, 0, 0};
     can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_fuel, 1);
+    can_send_message(CAN_UTIL_SET_BUZZER_ID, data, 1);
 
     igniter_disarm(&tanwa_hardware.igniter[0]);
     igniter_disarm(&tanwa_hardware.igniter[1]);
