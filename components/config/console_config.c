@@ -515,7 +515,7 @@ int tanwa_countdown(int argc, char **argv) {
 
     com_data_t data = tanwa_data_read_com_data();
 
-    if(data.arm_state == 1) {
+    if(data.arm_state == false) {
         ESP_LOGE(TAG, "Liquid arm state is not 1");
         return -1;
     }
