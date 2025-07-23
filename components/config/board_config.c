@@ -322,11 +322,11 @@ esp_err_t board_config_init(void) {
     }
 
     //SD CARD TIMER
-    if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
-        ESP_LOGE(TAG, "SD CARD | Timer start failed");
-    } else {
-        ESP_LOGI(TAG, "SD CARD | Timer started");
-    }
+    // if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
+    //     ESP_LOGE(TAG, "SD CARD | Timer start failed");
+    // } else {
+    //     ESP_LOGI(TAG, "SD CARD | Timer started");
+    // }
 
     if(!sys_timer_start(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS, TIMER_TYPE_ONE_SHOT)) {
         ESP_LOGE(TAG, "DISCONNECT | Timer start failed");
@@ -357,7 +357,7 @@ esp_err_t tanwa_read_i_sense(float *i_sense) {
         return ESP_ERR_INVALID_ARG;
     }
 
-    if (_mcu_adc_read_voltage(ISENSE_CHANNEL, i_sense) != ESP_OK) {
+    if (!_mcu_adc_read_voltage(ISENSE_CHANNEL_INDEX, i_sense)) {
         ESP_LOGE(TAG, "Failed to read i_sense");
         return ESP_FAIL;
     }

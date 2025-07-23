@@ -57,15 +57,30 @@ struct lo_ra_frame_t {
     float pressure_injector_fuel;
     float pressure_injector_oxi;
     float pressure_combustion_chamber;
-    bool status_fill;
-    bool status_depr;
-    bool status_vent;
+    struct {
+        bool is_present;
+        bool value;
+    } status_fill;
+    struct {
+        bool is_present;
+        bool value;
+    } status_depr;
+    struct {
+        bool is_present;
+        bool value;
+    } status_vent;
     struct {
         bool is_present;
         bool value;
     } status_arm;
-    bool igniter_cont1;
-    bool igniter_cont2;
+    struct {
+        bool is_present;
+        bool value;
+    } igniter_cont1;
+    struct {
+        bool is_present;
+        bool value;
+    } igniter_cont2;
     float tanwa_battery;
     float engine_thrust;
     float rocket_weight;
@@ -73,8 +88,14 @@ struct lo_ra_frame_t {
     float temp_injector;
     float temp_combustion_chamber;
     float temp_external_tank;
-    bool status_oxy;
-    bool status_fuel;
+    struct {
+        bool is_present;
+        bool value;
+    } status_oxy;
+    struct {
+        bool is_present;
+        bool value;
+    } status_fuel;
 };
 
 /**

@@ -14,12 +14,12 @@ message LoRaFrame {
     float pressure_injector_oxi = 9;
     float pressure_combustion_chamber = 10;
 
-    bool status_fill = 11;
-    bool status_depr = 12;
-    bool status_vent = 13;
+    optional bool status_fill = 11;
+    optional bool status_depr = 12;
+    optional bool status_vent = 13;
     optional bool status_arm = 14;
-    bool igniter_cont1 = 15;
-    bool igniter_cont2 = 16;
+    optional bool igniter_cont1 = 15;
+    optional bool igniter_cont2 = 16;
     
     float tanwa_battery = 17;
     
@@ -36,8 +36,8 @@ message LoRaFrame {
 
     //TANWA FAC
 
-    bool status_oxy = 24;
-    bool status_fuel = 25;
+    optional bool status_oxy = 24;
+    optional bool status_fuel = 25;
 
 }
 

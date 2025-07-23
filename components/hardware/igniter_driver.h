@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define IGNITER_CONTINUITY_THRESHOLD 1000
+#define IGNITER_CONTINUITY_THRESHOLD 2000
 
 typedef enum {
     IGNITER_STATE_WAITING = 0,

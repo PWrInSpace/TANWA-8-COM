@@ -253,13 +253,18 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     frame->pressure_injector_fuel = tanwa_data.can_sensor_pressure_data.pressure1;
     frame->pressure_injector_oxi = tanwa_data.can_sensor_pressure_data.pressure2;
     frame->pressure_combustion_chamber = tanwa_data.can_sensor_pressure_data.pressure3;
-    frame->igniter_cont1 = tanwa_data.com_data.igniter_cont_1;
-    frame->igniter_cont2 = tanwa_data.com_data.igniter_cont_2;
+
+    frame->igniter_cont1.is_present = true;
+    frame->igniter_cont2.is_present = true;
+    frame->igniter_cont1.value = tanwa_data.com_data.igniter_cont_1;
+    frame->igniter_cont2.value = tanwa_data.com_data.igniter_cont_2;
 
     //ESP_LOGI(TAG, "IGNITER CONT 1: %d", tanwa_data.com_data.igniter_cont_1);
     //ESP_LOGI(TAG, "IGNITER CONT 2: %d", tanwa_data.com_data.igniter_cont_2);
-    frame->status_oxy= tanwa_data.can_solenoid_data.servo_state1;
-    frame->status_fuel = tanwa_data.can_solenoid_data.servo_state2;
+    frame->status_oxy.is_present = true;
+    frame->status_fuel.is_present = true;
+    frame->status_oxy.value = tanwa_data.can_solenoid_data.servo_state1;
+    frame->status_fuel.value = tanwa_data.can_solenoid_data.servo_state2;
     frame->status_arm.is_present = true;
     frame->status_arm.value = tanwa_data.com_data.arm_state;
     //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
@@ -280,9 +285,12 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     frame->pressure_before_fill = tanwa_data.can_sensor_pressure_data.pressure6;
     frame->pressure_oxy = tanwa_data.can_sensor_pressure_data.pressure7;
 
-    frame->status_fill = tanwa_data.can_solenoid_data.state_sol1;
-    frame->status_depr = tanwa_data.can_solenoid_data.state_sol2;
-    frame->status_vent = tanwa_data.can_solenoid_data.state_sol3;
+    frame->status_fill.is_present = true;
+    frame->status_depr.is_present = true;
+    frame->status_vent.is_present = true;
+    frame->status_fill.value = tanwa_data.can_solenoid_data.state_sol1;
+    frame->status_depr.value = tanwa_data.can_solenoid_data.state_sol2;
+    frame->status_vent.value = tanwa_data.can_solenoid_data.state_sol3;
 
 }
 

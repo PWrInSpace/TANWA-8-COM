@@ -59,6 +59,6 @@ bool _mcu_adc_read_voltage(uint8_t channel, float* adc_voltage) {
   if (!_mcu_adc_read_raw(channel, &vRaw)) {
     return false;
   }
-  *adc_voltage = mcu_adc_config.adc_cal[channel] * (float)vRaw / 4095.0f * 3.3f;
+  *adc_voltage = mcu_adc_config.adc_cal[channel] * (float)vRaw / 4095.0f * 1.0f;
   return true;
 }
