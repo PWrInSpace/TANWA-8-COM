@@ -91,7 +91,7 @@ esp_err_t parse_solenoid_data(uint8_t *data, uint8_t length) {
 
     can_solenoid_data_t sol_data = tanwa_data_read_can_solenoid_data();
 
-    // ESP_LOGI(TAG, "Parsing solenoid data");
+    //ESP_LOGI(TAG, "Parsing solenoid data");
 
     if (length < 8) {
         ESP_LOGE(TAG, "Frame too short");
@@ -107,6 +107,10 @@ esp_err_t parse_solenoid_data(uint8_t *data, uint8_t length) {
         ESP_LOGE(TAG, "Failed to decode solenoid states");
         return ret;
     }
+
+    // for (int i = 0; i < 6; i++) {
+    //     ESP_LOGI(TAG, "Solenoid %d state: %s", i + 1, solenoid_states[i] ? "ON" : "OFF");
+    // }
 
     // Dekoduj stany serw
     ret = parse_uint8_t_to_bool(data[1], 2, servo_states);

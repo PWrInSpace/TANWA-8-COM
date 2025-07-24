@@ -110,6 +110,7 @@ void app_task(void *arg) {
         uint8_t data_weights[8] = {1, 1, 0, 0, 0, 0, 0, 0}; // Example data, adjust as needed
         can_send_message(CAN_WEIGHTS_GET_ADS_CH_WEIGHT_ID, data_weights, 2);
         can_send_message(CAN_WEIGHTS_GET_STATUS_ID, data, 0);
+        //can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
         
         tanwa_read_i_sense(&i_sense);
 
