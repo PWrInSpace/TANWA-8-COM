@@ -202,9 +202,9 @@ void tanwa_fill_time(uint32_t open_time) {
 void tanwa_fill_n2(uint8_t valve_state) {
     uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
     if (valve_state == CMD_VALVE_OPEN) {
-        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+        can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
     } else if (valve_state == CMD_VALVE_CLOSE) {
-        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+        can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
     } else {
         ESP_LOGE(TAG, "Invalid fill valve state");
     }
@@ -214,7 +214,7 @@ void tanwa_fill_n2_time(uint32_t open_time) {
     uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
     uint16_t open_time_scaled = (uint16_t)open_time;
     memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
-    can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
+    can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 3);
 }
 
 void tanwa_depr(uint8_t valve_state) {

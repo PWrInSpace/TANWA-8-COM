@@ -356,17 +356,6 @@ int open_servo(int argc, char **argv) {
     uint8_t data[8] = {(uint8_t)servo_id, 0, 0, 0, 0, 0, 0, 0};
     can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
     ESP_LOGI(TAG, "Servo %d opened", servo_id);
-    can_solenoid_data_t solenoid_data = tanwa_data_read_can_solenoid_data();
-    if (servo_id == 0) {
-        solenoid_data.servo_state1 = 1;
-    } else if (servo_id == 1) {
-        solenoid_data.servo_state2 = 1;
-    } else if (servo_id == 2) {
-        solenoid_data.servo_state3 = 1;
-    } else if (servo_id == 3) {
-        solenoid_data.servo_state4 = 1;
-    }
-    tanwa_data_update_can_solenoid_data(&solenoid_data);
     return 0;
 }
 
@@ -386,17 +375,6 @@ int close_servo(int argc, char **argv) {
     uint8_t data[8] = {(uint8_t)servo_id, 0, 0, 0, 0, 0, 0, 0};
     can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
     ESP_LOGI(TAG, "Servo %d closed", servo_id);
-    can_solenoid_data_t solenoid_data = tanwa_data_read_can_solenoid_data();
-    if (servo_id == 0) {
-        solenoid_data.servo_state1 = 0;
-    } else if (servo_id == 1) {
-        solenoid_data.servo_state2 = 0;
-    } else if (servo_id == 2) {
-        solenoid_data.servo_state3 = 0;
-    } else if (servo_id == 3) {
-        solenoid_data.servo_state4 = 0;
-    }
-    tanwa_data_update_can_solenoid_data(&solenoid_data);
     return 0;
 }
 
