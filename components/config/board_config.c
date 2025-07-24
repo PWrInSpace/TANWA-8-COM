@@ -322,11 +322,11 @@ esp_err_t board_config_init(void) {
     }
 
     //SD CARD TIMER
-    if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
-        ESP_LOGE(TAG, "SD CARD | Timer start failed");
-    } else {
-        ESP_LOGI(TAG, "SD CARD | Timer started");
-    }
+    // if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
+    //     ESP_LOGE(TAG, "SD CARD | Timer start failed");
+    // } else {
+    //     ESP_LOGI(TAG, "SD CARD | Timer started");
+    // }
 
     if(!sys_timer_start(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS, TIMER_TYPE_ONE_SHOT)) {
         ESP_LOGE(TAG, "DISCONNECT | Timer start failed");

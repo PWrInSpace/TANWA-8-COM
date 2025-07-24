@@ -82,8 +82,6 @@ typedef enum {
     CMD_N2_DEPR_OPEN = 0x53,
     CMD_N2_DEPR_CLOSE = 0x54,
     CMD_N2_DEPR_OPEN_TIME = 0x55,
-    CMD_VENT_OPEN = 0x56,
-    CMD_VENT_CLOSE = 0x57,
 
 } cmd_command_t;
 
