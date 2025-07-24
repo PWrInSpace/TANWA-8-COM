@@ -137,13 +137,6 @@ static void on_after_burnout(void *arg) {
     // valve_close_servo(&TANWA_utility.servo_valve[0]);
     uint8_t data_fuel[8] = {0};
     can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_fuel, 1);
-    ESP_LOGI(TAG, "FUEL CLOSE");
-
-    vTaskDelay(500/ portTICK_PERIOD_MS);
-
-    uint8_t data_n2[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_n2, 1);
-    ESP_LOGI(TAG, "N2 CLOSE");
 
     sd_timer_change_period(TIMER_SD_DATA_PERIOD_MS);
 
