@@ -95,7 +95,7 @@ void on_burn_timer(void *arg){
     // Handle the burn event
     ESP_LOGW(TAG, "BURN EVENT");
 
-    sd_timer_change_period(20);
+    settings_read_all();
 
     Settings settings = settings_get_all();
 
@@ -118,9 +118,9 @@ void on_burn_timer(void *arg){
     if(settings.oxidizer_full_open_time_ms + settings.fuel_open_time_ms == 0){
         // valve_open_servo(&(TANWA_utility.servo_valve[1]));
 
-        //ESP_LOGI(TAG, "OXI OPEN FULL");
-        uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-        can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
+        ESP_LOGI(TAG, "OXI OPEN FULL");
+        uint8_t data_oxi[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+        can_send_message(CAN_SOL_SERVO_OPEN_ID, data_oxi, 1);
     }
     else{
         if(!sys_timer_start(TIMER_OXIDIZER_FULL, settings.oxidizer_full_open_time_ms + settings.fuel_open_time_ms, TIMER_TYPE_ONE_SHOT)){

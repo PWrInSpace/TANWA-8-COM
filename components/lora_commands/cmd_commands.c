@@ -520,6 +520,21 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 tanwa_heating_valve_stop();
                 break;
             }
+            case CMD_VENT_OPEN: {
+                ESP_LOGI(TAG, "LORA | Vent open");
+                tanwa_fill_n2(CMD_VALVE_OPEN);
+                break;
+            }
+            case CMD_VENT_CLOSE: {
+                ESP_LOGI(TAG, "LORA | Vent close");
+                tanwa_fill_n2(CMD_VALVE_CLOSE);
+                break;
+            }
+            case CMD_VENT_OPEN_TIME: {
+                ESP_LOGI(TAG, "LORA | Vent open time");
+                tanwa_fill_n2_time((uint32_t)payload);
+                break;
+            }
             default: {
                 ESP_LOGI(TAG, "LORA command: %d", command);
                 ESP_LOGW(TAG, "LORA | Unknown command");
