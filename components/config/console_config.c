@@ -178,7 +178,7 @@ int tanwa_data_print(int argc, char **argv) {
     can_sensor_pressure_data_t sensor_pressure_data = tanwa_data_read_can_sensor_pressure_data();
     can_solenoid_data_t solenoid_data = tanwa_data_read_can_solenoid_data();
     can_power_data_t power_data = tanwa_data_read_can_power_data();
-    can_utility_status_t utility_data = tanwa_data_read_can_utility_status();\
+    can_utility_status_t utility_data = tanwa_data_read_can_utility_status();
     can_solenoid_status_t solenoid_status = tanwa_data_read_can_solenoid_status();
 
     ESP_LOGI(TAG, "TANWA Data:");
@@ -219,9 +219,8 @@ int tanwa_data_print(int argc, char **argv) {
 }
 
 int open_solenoid(int argc, char **argv) {
-    
     if(argc < 2) {
-        ESP_LOGE(TAG, "Usage: open-solenoid <solenoid_id>");
+        ESP_LOGE(TAG, "Usage: sol-open <solenoid_id> [open_time_ms]");
         return -1;
     }
 
@@ -230,35 +229,20 @@ int open_solenoid(int argc, char **argv) {
         ESP_LOGE(TAG, "Invalid solenoid ID. Must be between 0 and 5.");
         return -1;
     }
-    
+
     uint8_t data[8] = {(uint8_t)solenoid_id, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
-    ESP_LOGI(TAG, "Solenoid %d opened", solenoid_id);
+
+    if(argc == 3) {
+        uint16_t open_time = (uint16_t)atoi(argv[2]);
+        memcpy(&data[1], &open_time, sizeof(uint16_t)); // Copy open_time to data[1] and data[2]
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
+        ESP_LOGI(TAG, "Solenoid %d opened for %d ms", solenoid_id, open_time);
+    } else {
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+        ESP_LOGI(TAG, "Solenoid %d opened", solenoid_id);
+    }
     return 0;
 }
-
-int open_solenoid_time(int argc, char **argv) {
-    
-    if(argc < 3) {
-        ESP_LOGE(TAG, "Usage: open-solenoid-time <solenoid_id> <open_time>");
-        return -1;
-    }
-
-    int solenoid_id = atoi(argv[1]);
-    uint16_t open_time = (uint16_t)atoi(argv[2]);
-    
-    if(solenoid_id < 0 || solenoid_id > 5) {
-        ESP_LOGE(TAG, "Invalid solenoid ID. Must be between 0 and 5.");
-        return -1;
-    }
-    
-    uint8_t data[8] = {(uint8_t)solenoid_id, 0, 0, 0, 0, 0, 0, 0};
-    memcpy(&data[1], &open_time, sizeof(uint16_t)); // Copy open_time to data[1] and data[2]
-    can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
-    ESP_LOGI(TAG, "Solenoid %d opened for %d ms", solenoid_id, open_time);
-    return 0;
-}
-
 int close_solenoid(int argc, char **argv) {
     
     if(argc < 2) {
@@ -279,9 +263,8 @@ int close_solenoid(int argc, char **argv) {
 }
 
 int open_relay(int argc, char **argv) {
-    // This function can be used to open a relay
     if(argc < 2) {
-        ESP_LOGE(TAG, "Usage: open-relay <relay_id>");
+        ESP_LOGE(TAG, "Usage: open-relay <relay_id> [open_time_ms]");
         return -1;
     }
 
@@ -291,29 +274,14 @@ int open_relay(int argc, char **argv) {
         return -1;
     }
 
-    relay_open(&(tanwa_hardware.relay[relay_id]));
-    ESP_LOGI(TAG, "Relay %d opened", relay_id);
-    return 0;
-}
-
-int open_relay_time(int argc, char **argv) {
-    // This function can be used to open a relay for a specified time
-    if(argc < 3) {
-        ESP_LOGE(TAG, "Usage: open-relay-time <relay_id> <open_time>");
-        return -1;
+    if(argc == 3) {
+        uint16_t open_time = (uint16_t)atoi(argv[2]);
+        relay_time_open(&(tanwa_hardware.relay[relay_id]), open_time);
+        ESP_LOGI(TAG, "Relay %d opened for %d ms", relay_id, open_time);
+    } else {
+        relay_open(&(tanwa_hardware.relay[relay_id]));
+        ESP_LOGI(TAG, "Relay %d opened", relay_id);
     }
-
-    int relay_id = atoi(argv[1]);
-    uint16_t open_time = (uint16_t)atoi(argv[2]);
-    
-    if(relay_id < 0 || relay_id > 3) {
-        ESP_LOGE(TAG, "Invalid relay ID. Must be between 0 and 3.");
-        return -1;
-    }
-
-    relay_time_open(&(tanwa_hardware.relay[relay_id]), open_time);
-    ESP_LOGI(TAG, "Relay %d opened for %d ms", relay_id, open_time);
-    // Here you would typically start a timer to close the relay after open_time
     return 0;
 }
 
@@ -342,8 +310,8 @@ int close_relay(int argc, char **argv) {
 
 int open_servo(int argc, char **argv) {
     // This function can be used to open a servo
-    if(argc < 2) {
-        ESP_LOGE(TAG, "Usage: open-servo <servo_id>");
+    if(argc < 3) {
+        ESP_LOGE(TAG, "Usage: open-servo <servo_id> <time>");
         return -1;
     }
 
@@ -353,8 +321,11 @@ int open_servo(int argc, char **argv) {
         return -1;
     }
 
+    uint16_t open_time = (uint16_t)atoi(argv[2]);
+
     uint8_t data[8] = {(uint8_t)servo_id, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
+    memcpy(data+1, &open_time, sizeof(uint16_t));
+    can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 3);
     ESP_LOGI(TAG, "Servo %d opened", servo_id);
     return 0;
 }
@@ -399,22 +370,36 @@ int move_servo(int argc, char **argv) {
     }
 
     uint8_t data[8] = {(uint8_t)servo_id, (uint8_t)(angle), 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_ANGLE_ID, data, 1);
+    can_send_message(CAN_SOL_SERVO_ANGLE_ID, data, 2);
     ESP_LOGI(TAG, "Servo %d moved to angle %d", servo_id, angle);
     return 0;
 }
 
 int set_weight_offset(int argc, char **argv) {
     // This function can be used to set the weight offset
-    if(argc < 2) {
+    if(argc < 4) {
         ESP_LOGE(TAG, "Usage: set-weight-offset <offset>");
         return -1;
     }
 
-    uint16_t offset = (uint16_t)atoi(argv[1]);
+    uint8_t channel = (uint8_t)atoi(argv[1]);
+    if(channel > 3) {
+        ESP_LOGE(TAG, "Invalid channel. Must be between 0 and 3.");
+        return -1;
+    }
+
+    uint8_t ads_num = (uint8_t)atoi(argv[2]);
+    if(ads_num > 1) {
+        ESP_LOGE(TAG, "Invalid ADS number. Must be 0 or 1.");
+        return -1;
+    }
+
+    uint32_t offset = atoi(argv[3]);
 
     uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-    memcpy(&data[0], &offset, sizeof(uint16_t)); // Copy offset to data[0] and data[1]
+    memcpy(&data[2], &offset, sizeof(uint32_t));
+    data[1] = channel; // Set channel
+    data[0] = ads_num; // Set ADS number
     can_send_message(CAN_WEIGHTS_SET_ADS_OFFSET_ID, data, 1);
     ESP_LOGI(TAG, "Weight offset set to %d", offset);
     return 0;
@@ -476,15 +461,7 @@ int set_pressure_data_rate(int argc, char **argv) {
     can_send_message(CAN_SENSOR_SET_PRESSURE_DATA_RATE_ID, data, 1);
     ESP_LOGI(TAG, "Pressure data rate set to %d", data_rate);
     return 0;
-}
-
-int clear_weights_data(int argc, char **argv) {
-    // This function can be used to clear the weights data
-    uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_WEIGHTS_CLEAR_SD_ID, data, 1);
-    ESP_LOGI(TAG, "Weights data cleared");
-    return 0;
-}   
+} 
 
 int tanwa_change_state(int argc, char **argv) {
     // This function can be used to change the state of the system
@@ -537,32 +514,29 @@ int tanwa_countdown(int argc, char **argv) {
  // example command:
  // cmd     help description   hint  function      args
     {"reset", "Reset the device", NULL, reset_device, NULL, NULL, NULL},
-    {"arm-igniters", "Arm the igniters", NULL, arm_igniters, NULL, NULL, NULL},
-    {"disarm-igniters", "Disarm the igniters", NULL, disarm_igniters, NULL, NULL, NULL},
-    {"fire-igniters", "Fire the igniters", NULL, fire_igniters, NULL, NULL, NULL},
-    {"read-com-data", "Read COM data", NULL, read_com_data, NULL, NULL, NULL},
-    {"read-weight-data", "Read weight data", NULL, read_weight_data, NULL, NULL, NULL},
-    {"read-sensor-data", "Read sensor data", NULL, read_sensor_data, NULL, NULL, NULL},
-    {"read-solenoid-data", "Read solenoid data", NULL, read_solenoid_data, NULL, NULL, NULL},
-    {"read-power-data", "Read power data", NULL, read_power_data, NULL, NULL, NULL},
-    {"read-utility-data", "Read utility data", NULL, read_utility_data, NULL, NULL, NULL},
+    {"igniters-arm", "Arm the igniters", NULL, arm_igniters, NULL, NULL, NULL},
+    {"igniters-disarm", "Disarm the igniters", NULL, disarm_igniters, NULL, NULL, NULL},
+    {"igniters-fire", "Fire the igniters", NULL, fire_igniters, NULL, NULL, NULL},
+    {"com-data", "Read COM data", NULL, read_com_data, NULL, NULL, NULL},
+    {"weight-data", "Read weight data", NULL, read_weight_data, NULL, NULL, NULL},
+    {"sensor-data", "Read sensor data", NULL, read_sensor_data, NULL, NULL, NULL},
+    {"solenoid-data", "Read solenoid data", NULL, read_solenoid_data, NULL, NULL, NULL},
+    {"power-data", "Read power data", NULL, read_power_data, NULL, NULL, NULL},
+    {"utility-data", "Read utility data", NULL, read_utility_data, NULL, NULL, NULL},
     {"tanwa-data", "Print all data", NULL , tanwa_data_print, NULL, NULL, NULL},
-    {"open-solenoid", "Open solenoid", NULL, open_solenoid, NULL, NULL, NULL},
-    {"open-solenoid-time", "Open solenoid for specified time", NULL, open_solenoid_time, NULL, NULL, NULL},
-    {"close-solenoid", "Close solenoid", NULL, close_solenoid, NULL, NULL, NULL},
-    {"open-relay", "Open relay", NULL, open_relay, NULL, NULL, NULL},
-    {"open-relay-time", "Open relay for specified time", NULL, open_relay_time, NULL, NULL, NULL},
-    {"close-relay", "Close relay", NULL, close_relay, NULL, NULL, NULL},
-    {"open-servo", "Open servo", NULL, open_servo, NULL, NULL, NULL},
-    {"close-servo", "Close servo", NULL, close_servo, NULL, NULL, NULL},
-    {"move-servo", "Move servo to specified angle", NULL, move_servo, NULL, NULL, NULL},
-    {"set-weight-offset", "Set weight offset", NULL, set_weight_offset, NULL, NULL, NULL},
+    {"sol-open", "Open solenoid", NULL, open_solenoid, NULL, NULL, NULL},
+    {"sol-close", "Close solenoid", NULL, close_solenoid, NULL, NULL, NULL},
+    {"rel-open", "Open relay", NULL, open_relay, NULL, NULL, NULL},
+    {"rel-close", "Close relay", NULL, close_relay, NULL, NULL, NULL},
+    {"servo-open", "Open servo", NULL, open_servo, NULL, NULL, NULL},
+    {"servo-close", "Close servo", NULL, close_servo, NULL, NULL, NULL},
+    {"servo-move", "Move servo to specified angle", NULL, move_servo, NULL, NULL, NULL},
+    {"weight-set-offset", "Set weight offset", NULL, set_weight_offset, NULL, NULL, NULL},
     {"press-info", "Print info about pressure", NULL, print_pressure_info, NULL, NULL, NULL},
     {"can-connected-slaves", "Print CAN connected slaves", NULL, print_can_connected_slaves, NULL, NULL, NULL},
-    {"set-pwr-channel", "Set power channel", NULL, set_power_channel, NULL, NULL, NULL},
+    {"pwr-set-channel", "Set power channel", NULL, set_power_channel, NULL, NULL, NULL},
     {"pwr-channel", "Print power channel", NULL, print_power_channel, NULL, NULL, NULL},
-    {"set-press-data-rate", "Set pressure data rate", NULL, set_pressure_data_rate, NULL, NULL, NULL},
-    {"weights-clear-sd", "Clear weights data", NULL, clear_weights_data, NULL, NULL, NULL},
+    {"press-set-data-rate", "Set pressure data rate", NULL, set_pressure_data_rate, NULL, NULL, NULL},
     {"change-state", "Change state of the system", NULL, tanwa_change_state, NULL, NULL, NULL},
     {"countdown", "Start countdown", NULL, tanwa_countdown, NULL, NULL, NULL},
 };

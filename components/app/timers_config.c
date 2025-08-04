@@ -84,8 +84,11 @@ void on_ignition_timer(void *arg){
 
     sys_timer_start(TIMER_IGNITION_OFF, IGNITION_OFF_TIMER, TIMER_TYPE_ONE_SHOT);
 
-    uint8_t data[8] = {1, 40, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_WEIGHTS_START_MEASURE_ID, data, 2);
+    uint16_t measure_time = 40;
+
+    uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+    memcpy(&data[1], &measure_time, sizeof(uint16_t));
+    can_send_message(CAN_WEIGHTS_START_MEASURE_ID, data, 3);
 
     return;
 
@@ -99,34 +102,12 @@ void on_burn_timer(void *arg){
 
     Settings settings = settings_get_all();
 
-    // valve_move_angle_servo(&(TANWA_utility.servo_valve[1]), settings.oxidizer_valve_initial_angle);
+    // valve_move_angle_servo(&(TANWA_utility.servo_valve[1]), settings.oxidizer_valve_initial_angle)
 
-    uint8_t data[8] = {1, (uint8_t)(settings.oxidizer_valve_initial_angle), 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_ANGLE_ID, data, 2);
-
-    if(settings.fuel_open_time_ms == 0){
-        // valve_move_angle_servo(&(TANWA_utility.servo_valve[0]), settings.fuel_valve_initial_angle);
-        uint8_t data_fuel[8] = {0, (uint8_t)(settings.fuel_valve_initial_angle), 0, 0, 0, 0, 0, 0};
-        can_send_message(CAN_SOL_SERVO_ANGLE_ID, data_fuel, 2);
-
-    }
-    else{
-        if(!sys_timer_start(TIMER_FUEL_INITIAL, settings.fuel_open_time_ms, TIMER_TYPE_ONE_SHOT)){
-            ESP_LOGE(TAG, "Error starting timer");
-        }
-    }
-    if(settings.oxidizer_full_open_time_ms + settings.fuel_open_time_ms == 0){
-        // valve_open_servo(&(TANWA_utility.servo_valve[1]));
-
-        ESP_LOGI(TAG, "OXI OPEN FULL");
-        uint8_t data_oxi[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-        can_send_message(CAN_SOL_SERVO_OPEN_ID, data_oxi, 1);
-    }
-    else{
-        if(!sys_timer_start(TIMER_OXIDIZER_FULL, settings.oxidizer_full_open_time_ms + settings.fuel_open_time_ms, TIMER_TYPE_ONE_SHOT)){
-            ESP_LOGE(TAG, "Error starting timer");
-        }
-    }
+    ESP_LOGI(TAG, "OXI OPEN FULL");
+    uint8_t data_oxi[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+    can_send_message(CAN_SOL_SERVO_OPEN_ID, data_oxi, 1);
+    
     if(settings.fuel_full_open_time_ms + settings.oxidizer_full_open_time_ms + settings.fuel_open_time_ms == 0){
         // valve_open_servo(&(TANWA_utility.servo_valve[0]));
         uint8_t data_fuel[8] = {0, 0, 0, 0, 0, 0, 0, 0};

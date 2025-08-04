@@ -33,12 +33,12 @@ esp_err_t switch_update(bool *switch_states, bool *prev_switch_states) {
     if (switch_states[6] != prev_switch_states[6]) {
         relay_driver_err_t err;
         if (switch_states[6]) {
-            err = relay_open(&(tanwa_hardware.relay[0]));
+            err = relay_open(&(tanwa_hardware.relay[2]));
             if (err != RELAY_DRIVER_OK) {
                 ESP_LOGE(TAG, "Relay open error: %d", (uint8_t) err); 
             }
         } else {
-            err = relay_close(&(tanwa_hardware.relay[0]));
+            err = relay_close(&(tanwa_hardware.relay[2]));
             if (err != RELAY_DRIVER_OK) {
                 ESP_LOGE(TAG, "Relay close error: %d", (uint8_t) err);
             }
@@ -206,26 +206,25 @@ esp_err_t parse_sensor_data(uint8_t *data, uint8_t length) {
 }
 
 esp_err_t parse_sensor_pressure1(uint8_t *data, uint8_t length) {
+
     if (length < 8) {
         ESP_LOGE(TAG, "Frame too short");
         return ESP_ERR_INVALID_ARG;
     }
 
-    can_sensor_pressure_data_t pressure_data = tanwa_data_read_can_sensor_pressure_data();
+    
 
     // Odczytaj int16_t z dwóch bajtów (little-endian) i przelicz na float
     int16_t raw_pressure1, raw_pressure2, raw_pressure3, raw_pressure4;
-    memcpy(&raw_pressure1, &data[0], sizeof(int16_t));
-    memcpy(&raw_pressure2, &data[2], sizeof(int16_t));
-    memcpy(&raw_pressure3, &data[4], sizeof(int16_t));
-    memcpy(&raw_pressure4, &data[6], sizeof(int16_t));
+    raw_pressure1 = (int16_t)(data[0] | (data[1] << 8));
+    raw_pressure2 = (int16_t)(data[2] | (data[3] << 8));
+    raw_pressure3 = (int16_t)(data[4] | (data[5] << 8));
+    raw_pressure4 = (int16_t)(data[6] | (data[7] << 8));
 
-    pressure_data.pressure1 = ((float)raw_pressure1) / 100.0f;
-    pressure_data.pressure2 = ((float)raw_pressure2) / 100.0f;
-    pressure_data.pressure3 = ((float)raw_pressure3) / 100.0f;
-    pressure_data.pressure4 = ((float)raw_pressure4) / 100.0f;
-
-    tanwa_data_update_can_sensor_pressure_data(&pressure_data);
+    tanwa_data.can_sensor_pressure_data.pressure1 = ((float)raw_pressure1) / 100.0f;
+    tanwa_data.can_sensor_pressure_data.pressure2 = ((float)raw_pressure2) / 100.0f;
+    tanwa_data.can_sensor_pressure_data.pressure3 = ((float)raw_pressure3) / 100.0f;
+    tanwa_data.can_sensor_pressure_data.pressure4 = ((float)raw_pressure4) / 100.0f;
 
     return ESP_OK;
 }
@@ -236,20 +235,17 @@ esp_err_t parse_sensor_pressure2(uint8_t *data, uint8_t length) {
         return ESP_ERR_INVALID_ARG;
     }
 
-    can_sensor_pressure_data_t pressure_data = tanwa_data_read_can_sensor_pressure_data();
+    int16_t raw_pressure5 = (int16_t)(data[0] | (data[1] << 8));
+    int16_t raw_pressure6 = (int16_t)(data[2] | (data[3] << 8));
+    int16_t raw_pressure7 = (int16_t)(data[4] | (data[5] << 8));
+    int16_t raw_pressure8 = (int16_t)(data[6] | (data[7] << 8));
 
-    int16_t raw_pressure5, raw_pressure6, raw_pressure7, raw_pressure8;
-    memcpy(&raw_pressure5, &data[0], sizeof(int16_t));
-    memcpy(&raw_pressure6, &data[2], sizeof(int16_t));
-    memcpy(&raw_pressure7, &data[4], sizeof(int16_t));
-    memcpy(&raw_pressure8, &data[6], sizeof(int16_t));
+    tanwa_data.can_sensor_pressure_data.pressure5 = ((float)raw_pressure5) / 100.0f;
+    tanwa_data.can_sensor_pressure_data.pressure6 = ((float)raw_pressure6) / 100.0f;
+    tanwa_data.can_sensor_pressure_data.pressure7 = ((float)raw_pressure7) / 100.0f;
+    tanwa_data.can_sensor_pressure_data.pressure8 = ((float)raw_pressure8) / 100.0f;
 
-    pressure_data.pressure5 = ((float)raw_pressure5) / 100.0f;
-    pressure_data.pressure6 = ((float)raw_pressure6) / 100.0f;
-    pressure_data.pressure7 = ((float)raw_pressure7) / 100.0f;
-    pressure_data.pressure8 = ((float)raw_pressure8) / 100.0f;
-
-    tanwa_data_update_can_sensor_pressure_data(&pressure_data);
+    // tanwa_data_update_can_sensor_pressure_data(&pressure_data);
 
     return ESP_OK;
 }
@@ -262,12 +258,10 @@ esp_err_t parse_sensor_temperature(uint8_t *data, uint8_t length) {
         return ESP_ERR_INVALID_ARG;
     }
 
-    int16_t raw_temp1, raw_temp2, raw_temp3;
+    int16_t raw_temp1 = (int16_t)(data[0] | (data[1] << 8));
+    int16_t raw_temp2 = (int16_t)(data[2] | (data[3] << 8));
+    int16_t raw_temp3 = (int16_t)(data[4] | (data[5] << 8));
     can_sensor_temp_data_t temp_data;
-    // Odczytaj int16_t z dwóch bajtów (little-endian)
-    memcpy(&raw_temp1, &data[0], sizeof(int16_t));
-    memcpy(&raw_temp2, &data[2], sizeof(int16_t));
-    memcpy(&raw_temp3, &data[4], sizeof(int16_t));
 
     temp_data.temperature1 = (float)raw_temp1/ 100.0f; // Przelicz na float
     temp_data.temperature2 = (float)raw_temp2 / 100.0f; // Przelicz na float
@@ -291,6 +285,8 @@ esp_err_t parse_sensor_pressure_info(uint8_t *data, uint8_t length) {
 }
 
 esp_err_t parse_util_status(uint8_t *data, uint8_t length) {
+
+    ESP_LOGI(TAG, "Utility Status Data: %02X %02X %02X %02X", data[0], data[1], data[2], data[3]);
     
     if (length < 3) {
         ESP_LOGE(TAG, "Frame too short");
@@ -301,7 +297,7 @@ esp_err_t parse_util_status(uint8_t *data, uint8_t length) {
     status.temperature1 = data[0];
     status.temperature2 = data[1];
     bool switch_states[8];
-    esp_err_t ret = parse_uint8_t_to_bool(data[3], 8, switch_states);
+    esp_err_t ret = parse_uint8_t_to_bool(data[2], 8, switch_states);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to decode switch states");
         return ret;
@@ -431,17 +427,37 @@ esp_err_t parse_weights_ads2_all_ch_weight2(uint8_t *data, uint8_t length) {
 }
 
 esp_err_t parse_weights_ads_ch_weight(uint8_t *data, uint8_t length) {
+
+    //ESP_LOGI(TAG, "ADS Channel Weight Data: %02X %02X %02X %02X %02X", data[0], data[1], data[2], data[3], data[4]);
+
+    // Sprawdź, czy długość danych jest wystarczająca
     
-    if (length < 4) {
+    if (length < 6) {
         ESP_LOGE(TAG, "Frame too short");
         return ESP_ERR_INVALID_ARG;
     }
 
+    uint8_t ch_number = data[5];
+
     can_weight_data_t weight_data = tanwa_data_read_can_weight_data();
 
-    // Odczytaj float z czterech bajtów (little-endian)
-    memcpy(&weight_data.rocket_weight, &data[0], sizeof(float));
-
+    switch (ch_number) {
+        case 0:
+            memcpy(&weight_data.ads1_weight1, &data[0], sizeof(float));
+            break;
+        case 1:
+            memcpy(&weight_data.ads1_weight2, &data[0], sizeof(float));
+            break;
+        case 2:
+            memcpy(&weight_data.ads1_weight3, &data[0], sizeof(float));
+            break;
+        case 3:
+            memcpy(&weight_data.ads1_weight4, &data[0], sizeof(float));
+            break;
+        default:
+            ESP_LOGE(TAG, "Invalid channel number: %d", ch_number);
+            return ESP_ERR_INVALID_ARG; 
+    }
     tanwa_data_update_can_weight_data(&weight_data);
 
     return ESP_OK;

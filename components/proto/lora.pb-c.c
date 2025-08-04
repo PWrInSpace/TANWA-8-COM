@@ -44,8 +44,8 @@ void lo_ra_frame_init(
     self_p->uptime = 0;
     self_p->engine_work_time = 0;
     self_p->pressure_fuel = 0;
-    self_p->pressure_after_fill = 0;
-    self_p->pressure_before_fill = 0;
+    self_p->pressure_n2 = 0;
+    self_p->pressure_droid = 0;
     self_p->pressure_oxy = 0;
     self_p->pressure_injector_fuel = 0;
     self_p->pressure_injector_oxi = 0;
@@ -65,12 +65,18 @@ void lo_ra_frame_init(
     self_p->temp_external_tank = 0;
     self_p->status_oxy.is_present = false;
     self_p->status_fuel.is_present = false;
+    self_p->status_qd_n2o.is_present = false;
+    self_p->pressure_cutoff = 0;
 }
 
 void lo_ra_frame_encode_inner(
     struct pbtools_encoder_t *encoder_p,
     struct lo_ra_frame_t *self_p)
 {
+    pbtools_encoder_write_float(encoder_p, 27, self_p->pressure_cutoff);
+    if (self_p->status_qd_n2o.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 26, self_p->status_qd_n2o.value);
+    }
     if (self_p->status_fuel.is_present) {
         pbtools_encoder_write_bool_always(encoder_p, 25, self_p->status_fuel.value);
     }
@@ -106,8 +112,8 @@ void lo_ra_frame_encode_inner(
     pbtools_encoder_write_float(encoder_p, 9, self_p->pressure_injector_oxi);
     pbtools_encoder_write_float(encoder_p, 8, self_p->pressure_injector_fuel);
     pbtools_encoder_write_float(encoder_p, 7, self_p->pressure_oxy);
-    pbtools_encoder_write_float(encoder_p, 6, self_p->pressure_before_fill);
-    pbtools_encoder_write_float(encoder_p, 5, self_p->pressure_after_fill);
+    pbtools_encoder_write_float(encoder_p, 6, self_p->pressure_droid);
+    pbtools_encoder_write_float(encoder_p, 5, self_p->pressure_n2);
     pbtools_encoder_write_float(encoder_p, 4, self_p->pressure_fuel);
     pbtools_encoder_write_int32(encoder_p, 3, self_p->engine_work_time);
     pbtools_encoder_write_uint32(encoder_p, 2, self_p->uptime);
@@ -140,11 +146,11 @@ void lo_ra_frame_decode_inner(
             break;
 
         case 5:
-            self_p->pressure_after_fill = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->pressure_n2 = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 
         case 6:
-            self_p->pressure_before_fill = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->pressure_droid = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 
         case 7:
@@ -229,6 +235,15 @@ void lo_ra_frame_decode_inner(
         case 25:
             self_p->status_fuel.is_present = true;
             self_p->status_fuel.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            break;
+
+        case 26:
+            self_p->status_qd_n2o.is_present = true;
+            self_p->status_qd_n2o.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            break;
+
+        case 27:
+            self_p->pressure_cutoff = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 
         default:

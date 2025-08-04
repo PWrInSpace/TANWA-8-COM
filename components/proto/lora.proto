@@ -1,15 +1,15 @@
 syntax = "proto3";
 
 message LoRaFrame {
-    //TANWA COM
     uint32 tanwa_state = 1;
     uint32 uptime = 2;
     int32 engine_work_time = 3;
     
     float pressure_fuel = 4;
-    float pressure_after_fill = 5;
-    float pressure_before_fill = 6;
+    float pressure_N2 = 5;
+    float pressure_droid = 6;
     float pressure_oxy = 7;
+
     float pressure_injector_fuel = 8;
     float pressure_injector_oxi = 9;
     float pressure_combustion_chamber = 10;
@@ -23,21 +23,20 @@ message LoRaFrame {
     
     float tanwa_battery = 17;
     
-    //TANWA HX
     float engine_thrust = 18;
     float rocket_weight = 19;
     float tank_weight = 20;
-    
-    //TANWA FLC
 
     float temp_injector = 21;
     float temp_combustion_chamber = 22;
     float temp_external_tank = 23;
 
-    //TANWA FAC
 
     optional bool status_oxy = 24;
     optional bool status_fuel = 25;
+    optional bool status_qd_n2o = 26;
+    
+    float pressure_cutoff = 27;
 
 }
 

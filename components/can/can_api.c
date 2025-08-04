@@ -12,8 +12,8 @@
 #include "freertos/queue.h"
 
 #define CAN_TASK_STACK_SIZE CONFIG_CAN_TASK_STACK_SIZE
-#define CAN_TASK_PRIORITY CONFIG_CAN_TASK_PRIORITY
-#define CAN_TASK_CORE_ID CONFIG_CAN_TASK_CORE_ID
+#define CAN_TASK_PRIORITY 5
+#define CAN_TASK_CORE_ID 0
 
 #define TWAI_MAX_MESSAGE_LENGTH 8
 
@@ -66,10 +66,12 @@ esp_err_t can_send_message(uint32_t id, uint8_t *data, uint8_t length) {
     message.data_length_code = length;
     memcpy(message.data, data, length);
 
+    //ESP_LOGI(TAG, "Data: %02X %02X %02X %02X %02X %02X %02X %02X", message.data[0], message.data[1], message.data[2], message.data[3], message.data[4], message.data[5], message.data[6], message.data[7]);
+
     // Send the message
     err = twai_transmit(&message, pdMS_TO_TICKS(10));
     if (err != ESP_OK) {
-        //ESP_LOGE(TAG, "Failed to send CAN message: %s", esp_err_to_name(err));
+        ESP_LOGE(TAG, "Failed to send CAN message: %s", esp_err_to_name(err));
         return err;
     }
 
@@ -95,7 +97,7 @@ esp_err_t can_task_init(void) {
         return ESP_ERR_INVALID_STATE;
     }
 
-    if(xTaskCreatePinnedToCore(can_task, "CAN Task", CAN_TASK_STACK_SIZE, NULL, CAN_TASK_PRIORITY, &gb.task_handle, CAN_TASK_CORE_ID) != pdPASS) {
+    if(xTaskCreatePinnedToCore(can_task, "CAN Task", CAN_TASK_STACK_SIZE, NULL, 9, &gb.task_handle, CAN_TASK_CORE_ID) != pdPASS) {
         ESP_LOGE(TAG, "Failed to create CAN task");
         return ESP_FAIL;
     }
@@ -121,7 +123,7 @@ void can_task(void *arg) {
         } else if (err != ESP_ERR_TIMEOUT) {
             ESP_LOGE(TAG, "Failed to receive CAN message: %s", esp_err_to_name(err));
         }
-        vTaskDelay(pdMS_TO_TICKS(10)); // Adjust delay as needed
+        vTaskDelay(pdMS_TO_TICKS(20)); // Adjust delay as needed
     }
 }
 

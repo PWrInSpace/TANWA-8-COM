@@ -51,8 +51,8 @@ struct lo_ra_frame_t {
     uint32_t uptime;
     int32_t engine_work_time;
     float pressure_fuel;
-    float pressure_after_fill;
-    float pressure_before_fill;
+    float pressure_n2;
+    float pressure_droid;
     float pressure_oxy;
     float pressure_injector_fuel;
     float pressure_injector_oxi;
@@ -96,6 +96,11 @@ struct lo_ra_frame_t {
         bool is_present;
         bool value;
     } status_fuel;
+    struct {
+        bool is_present;
+        bool value;
+    } status_qd_n2o;
+    float pressure_cutoff;
 };
 
 /**

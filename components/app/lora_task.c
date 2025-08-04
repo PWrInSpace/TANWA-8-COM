@@ -26,15 +26,15 @@
 #define TAG "LORA_TASK"
 
 #define LORA_TASK_STACK_SIZE 8192
-#define LORA_TASK_PRIORITY 2
-#define LORA_TASK_CORE 0
+#define LORA_TASK_PRIORITY 9
+#define LORA_TASK_CORE 1
 
 static struct {
     lora_struct_t lora;
     lora_task_process_rx_packet process_packet_fnc;
     lora_task_get_tx_packet get_tx_packet_fnc;
     lora_state_t lora_state;
-    uint8_t tx_buffer[256];
+    uint8_t tx_buffer[512];
     size_t tx_buffer_size;
 
     TimerHandle_t receive_window_timer;
@@ -250,9 +250,10 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     //frame->obc_state = data.mcb.state;
     frame->tanwa_state = tanwa_data.state;
     frame->uptime = tanwa_data.uptime;;
-    frame->pressure_injector_fuel = tanwa_data.can_sensor_pressure_data.pressure1;
-    frame->pressure_injector_oxi = tanwa_data.can_sensor_pressure_data.pressure2;
-    frame->pressure_combustion_chamber = tanwa_data.can_sensor_pressure_data.pressure3;
+    frame->pressure_injector_fuel = tanwa_data.can_sensor_pressure_data.pressure7;
+    frame->pressure_injector_oxi = tanwa_data.can_sensor_pressure_data.pressure6;
+    frame->pressure_combustion_chamber = tanwa_data.can_sensor_pressure_data.pressure8;
+    frame->pressure_n2 = tanwa_data.can_sensor_pressure_data.pressure5;
 
     frame->igniter_cont1.is_present = true;
     frame->igniter_cont2.is_present = true;
@@ -263,8 +264,8 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     //ESP_LOGI(TAG, "IGNITER CONT 2: %d", tanwa_data.com_data.igniter_cont_2);
     frame->status_oxy.is_present = true;
     frame->status_fuel.is_present = true;
-    frame->status_oxy.value = tanwa_data.can_solenoid_data.servo_state1;
-    frame->status_fuel.value = tanwa_data.can_solenoid_data.servo_state2;
+    frame->status_oxy.value = tanwa_data.can_solenoid_data.servo_state2;
+    frame->status_fuel.value = tanwa_data.can_solenoid_data.servo_state1;
     frame->status_arm.is_present = true;
     frame->status_arm.value = tanwa_data.com_data.arm_state;
     //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
@@ -275,22 +276,24 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     frame->temp_combustion_chamber = tanwa_data.can_sensor_temp_data.temperature2;
     frame->temp_external_tank = tanwa_data.can_sensor_temp_data.temperature3;
     // hx rck
-    frame->engine_thrust = tanwa_data.can_weight_data.rocket_weight;
-    frame->rocket_weight = 0;
-    frame->tank_weight = tanwa_data.can_weight_data.tank_weight;
+    frame->engine_thrust = tanwa_data.can_weight_data.ads1_weight2;
+    frame->rocket_weight = tanwa_data.can_weight_data.ads1_weight3;
+    frame->tank_weight = tanwa_data.can_weight_data.ads1_weight4;
 
     frame->engine_work_time = tanwa_data.engine_work_time;
-    frame->pressure_fuel = tanwa_data.can_sensor_pressure_data.pressure4;
-    frame->pressure_after_fill = tanwa_data.can_sensor_pressure_data.pressure5;
-    frame->pressure_before_fill = tanwa_data.can_sensor_pressure_data.pressure6;
-    frame->pressure_oxy = tanwa_data.can_sensor_pressure_data.pressure7;
+    frame->pressure_fuel = tanwa_data.can_sensor_pressure_data.pressure2;
+    frame->pressure_droid = tanwa_data.can_sensor_pressure_data.pressure3;
+    frame->pressure_cutoff = tanwa_data.can_sensor_pressure_data.pressure4;
+    frame->pressure_oxy = tanwa_data.can_sensor_pressure_data.pressure1;
 
     frame->status_fill.is_present = true;
     frame->status_depr.is_present = true;
     frame->status_vent.is_present = true;
+    frame->status_qd_n2o.is_present = true;
     frame->status_fill.value = tanwa_data.can_solenoid_data.state_sol1;
     frame->status_depr.value = tanwa_data.can_solenoid_data.state_sol2;
-    frame->status_vent.value = tanwa_data.can_solenoid_data.state_sol3;
+    frame->status_vent.value = !tanwa_data.can_solenoid_data.state_sol3;
+    frame->status_qd_n2o.value = tanwa_data.can_solenoid_data.state_sol5;
 
 }
 

@@ -184,6 +184,14 @@ esp_err_t board_config_init(void) {
         return err;
     }
 
+    if (!initialize_lora(LORA_TASK_FREQUENCY_KHZ, LORA_TASK_TRANSMIT_MS)) {
+        ESP_LOGE(TAG, "LoRa initialization failed");
+    } else {
+        ESP_LOGI(TAG, "### LoRa initialization success ###");
+    }
+
+    vTaskDelay(pdMS_TO_TICKS(1000)); // Wait for LoRa to initialize
+
     err = mcu_twai_init();
 
     if (err != ESP_OK) {
@@ -226,13 +234,13 @@ esp_err_t board_config_init(void) {
     // } else {
     //     ESP_LOGI(TAG, "TMP1075 sensor 1 initialized");
     // }
-    ret = tmp1075_init(&(tanwa_hardware.tmp1075[1]));
-    if (ret != TMP1075_OK) {
-        ESP_LOGE(TAG, "Failed to initialize TMP1075 sensor 2");
-        return ESP_FAIL;
-    } else {
-        ESP_LOGI(TAG, "TMP1075 sensor 2 initialized");
-    }
+    // ret = tmp1075_init(&(tanwa_hardware.tmp1075[1]));
+    // if (ret != TMP1075_OK) {
+    //     ESP_LOGE(TAG, "Failed to initialize TMP1075 sensor 2");
+    //     return ESP_FAIL;
+    // } else {
+    //     ESP_LOGI(TAG, "TMP1075 sensor 2 initialized");
+    // }
     ret = mcp23018_init(&(tanwa_hardware.mcp23018), IOEXP_MODE);
     if (ret != MCP23018_OK) {
         ESP_LOGE(TAG, "Failed to initialize MCP23018");
@@ -305,11 +313,7 @@ esp_err_t board_config_init(void) {
 
      ESP_LOGI(TAG, "Initializing LoRa...");
 
-    if (!initialize_lora(LORA_TASK_FREQUENCY_KHZ, LORA_TASK_TRANSMIT_MS)) {
-        ESP_LOGE(TAG, "LoRa initialization failed");
-    } else {
-        ESP_LOGI(TAG, "### LoRa initialization success ###");
-    }
+    
 
     //HAS TO BE AFTER LORA- DOESN'T WORK OTHERWISE
 

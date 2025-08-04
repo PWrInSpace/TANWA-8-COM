@@ -276,7 +276,7 @@ void tanwa_qd_n2(uint8_t qd_cmd) {
 }
 
 void tanwa_heating_tank_start(void) {
-    relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[0]));
+    relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[2]));
     if (err != RELAY_DRIVER_OK) {
         ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
     } else {
@@ -285,7 +285,7 @@ void tanwa_heating_tank_start(void) {
 }
 
 void tanwa_heating_tank_stop(void) {
-    relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[0]));
+    relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[2]));
     if (err != RELAY_DRIVER_OK) {
         ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
     }
@@ -306,6 +306,31 @@ void tanwa_heating_valve_stop(void) {
     } else {
         ESP_LOGI(TAG, "Heating valve stopped");
     }
+}
+
+void tanwa_vent(uint8_t valve_state) {
+    uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
+    if (valve_state == CMD_VALVE_OPEN) {
+        can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
+    } else if (valve_state == CMD_VALVE_CLOSE) {
+        can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);
+    } else {
+        ESP_LOGE(TAG, "Invalid depr valve state");
+    }
+}
+
+void tanwa_vent_time(uint32_t open_time) {
+    // uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
+    // uint16_t open_time_scaled = (uint16_t)open_time;
+    // memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
+    // can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
+
+    uint8_t data_sol[8] = {2, 0, 0, 0, 0, 0, 0, 0};
+    uint16_t open_time_scaled = (uint16_t)open_time;
+    can_send_message(CAN_SOL_CLOSE_SOL_ID, data_sol, 1);
+    vTaskDelay(open_time / portTICK_PERIOD_MS);
+    can_send_message(CAN_SOL_OPEN_SOL_ID, data_sol, 1);
+    ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
 }
 
 bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
@@ -522,17 +547,57 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
             }
             case CMD_VENT_OPEN: {
                 ESP_LOGI(TAG, "LORA | Vent open");
-                tanwa_fill_n2(CMD_VALVE_OPEN);
+                tanwa_vent(CMD_VALVE_CLOSE);
                 break;
             }
             case CMD_VENT_CLOSE: {
                 ESP_LOGI(TAG, "LORA | Vent close");
-                tanwa_fill_n2(CMD_VALVE_CLOSE);
+                tanwa_vent(CMD_VALVE_OPEN);
                 break;
             }
             case CMD_VENT_OPEN_TIME: {
                 ESP_LOGI(TAG, "LORA | Vent open time");
-                tanwa_fill_n2_time((uint32_t)payload);
+                tanwa_vent_time((uint32_t)payload);
+                break;
+            }
+            case CMD_FUEL_OPEN: {
+                ESP_LOGI(TAG, "LORA | Fuel open");
+                uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
+                break;
+            }
+            case CMD_FUEL_CLOSE: {
+                ESP_LOGI(TAG, "LORA | Fuel close");
+                uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+                can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
+                break;
+            }
+            case CMD_OXI_OPEN: {
+                ESP_LOGI(TAG, "LORA | Oxidizer open");
+                uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
+                break;
+            }
+            case CMD_OXI_CLOSE: {
+                ESP_LOGI(TAG, "LORA | Oxidizer close");
+                uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+                can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
+                break;
+            }
+            case CMD_OXI_OPEN_TIME: {
+                ESP_LOGI(TAG, "LORA | Oxidizer open time");
+                uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+                uint16_t time = (uint16_t)payload;
+                memcpy(&data[1], &time, sizeof(uint16_t));
+                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 3);
+                break;
+            }
+            case CMD_FUEL_OPEN_TIME: {
+                ESP_LOGI(TAG, "LORA | Fuel open time");
+                uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+                uint16_t time = (uint16_t)payload;
+                memcpy(&data[1], &time, sizeof(uint16_t));
+                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 3);
                 break;
             }
             default: {

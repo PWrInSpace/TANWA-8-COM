@@ -133,7 +133,7 @@ static void on_after_burnout(void *arg) {
     can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
 
     ESP_LOGI(TAG, "OXI CLOSE");
-    vTaskDelay(80 / portTICK_PERIOD_MS);
+    vTaskDelay(120 / portTICK_PERIOD_MS);
     // valve_close_servo(&TANWA_utility.servo_valve[0]);
     uint8_t data_fuel[8] = {0};
     can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_fuel, 1);

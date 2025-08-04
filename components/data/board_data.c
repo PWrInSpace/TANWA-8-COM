@@ -16,7 +16,7 @@
 
 #define TAG "TANWA_DATA"
 
-static tanwa_data_t tanwa_data;
+tanwa_data_t tanwa_data;
 SemaphoreHandle_t tanwa_data_mutex;
 
 bool tanwa_data_init(void) {
@@ -246,13 +246,13 @@ void tanwa_data_update_can_sensor_temp_data(can_sensor_temp_data_t *data) {
 
 can_sensor_pressure_data_t tanwa_data_read_can_sensor_pressure_data(void) {
     if (xSemaphoreTake(tanwa_data_mutex, portMAX_DELAY) == pdTRUE) {
-        can_sensor_pressure_data_t data = tanwa_data.can_sensor_pressure_data;
+        can_sensor_pressure_data_t status = tanwa_data.can_sensor_pressure_data;
         xSemaphoreGive(tanwa_data_mutex);
-        return data;
+        return status;
     } else {
         ESP_LOGE(TAG, "Failed to take mutex");
-        can_sensor_pressure_data_t empty_data = {0};
-        return empty_data;
+        can_sensor_pressure_data_t empty_status = {0};
+        return empty_status;
     }
 }
 

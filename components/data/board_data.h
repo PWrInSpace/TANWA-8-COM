@@ -39,13 +39,15 @@ typedef struct {
     
     can_sensor_status_t can_sensor_status;
     can_sensor_temp_data_t can_sensor_temp_data;
-    can_sensor_pressure_data_t can_sensor_pressure_data;
+    can_sensor_pressure_data_t can_sensor_pressure_data; // Pressure data is stored in a separate variable
     
     can_utility_status_t can_utility_status;
 
     can_power_status_t can_power_status;
     can_power_data_t can_power_data;
 } tanwa_data_t;
+
+extern tanwa_data_t tanwa_data;
 
 bool tanwa_data_init(void);
 
