@@ -5,13 +5,15 @@
 #include <stdint.h>
 
 #include "lora.h"
+#include "lora.pb-c.h"
 
 #define LORA_TASK_CRC_ENABLE 0
 #define LORA_TASK_FREQUENCY_KHZ 868000
 #define LORA_TASK_BANDWIDTH 8
-#define LORA_TASK_SPREADING_FACTOR 1
+#define LORA_TASK_SPREADING_FACTOR 7
+#define LORA_TASK_TX_POWER 2
 #define LORA_TASK_RECEIVE_WINDOW 1500
-#define LORA_TASK_TRANSMIT_MS 1800
+#define LORA_TASK_TRANSMIT_MS 800
 
 #define PRIVILAGE_MASK 0x01
 #define BORADCAST_DEV_ID 0x00
@@ -36,6 +38,7 @@ typedef struct {
     uint32_t frequency_khz;
     uint32_t transmiting_period;
     uint8_t workspace[256]; // Workspace for LoRa task
+    struct lo_ra_frame_t *frame; // LoRa frame structure
 } lora_api_config_t;
 
 /**

@@ -12,7 +12,7 @@
 #include "freertos/queue.h"
 
 #define CAN_TASK_STACK_SIZE CONFIG_CAN_TASK_STACK_SIZE
-#define CAN_TASK_PRIORITY 5
+#define CAN_TASK_PRIORITY 8
 #define CAN_TASK_CORE_ID 0
 
 #define TWAI_MAX_MESSAGE_LENGTH 8
@@ -123,7 +123,7 @@ void can_task(void *arg) {
         } else if (err != ESP_ERR_TIMEOUT) {
             ESP_LOGE(TAG, "Failed to receive CAN message: %s", esp_err_to_name(err));
         }
-        vTaskDelay(pdMS_TO_TICKS(20)); // Adjust delay as needed
+        vTaskDelay(pdMS_TO_TICKS(10)); // Adjust delay as needed
     }
 }
 

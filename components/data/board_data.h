@@ -47,8 +47,6 @@ typedef struct {
     can_power_data_t can_power_data;
 } tanwa_data_t;
 
-extern tanwa_data_t tanwa_data;
-
 bool tanwa_data_init(void);
 
 uint8_t tanwa_data_get_state(void);

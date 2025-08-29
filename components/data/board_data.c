@@ -16,7 +16,7 @@
 
 #define TAG "TANWA_DATA"
 
-tanwa_data_t tanwa_data;
+static tanwa_data_t tanwa_data;
 SemaphoreHandle_t tanwa_data_mutex;
 
 bool tanwa_data_init(void) {

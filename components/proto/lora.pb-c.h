@@ -60,15 +60,15 @@ struct lo_ra_frame_t {
     struct {
         bool is_present;
         bool value;
-    } status_fill;
+    } status_fill_n2o;
     struct {
         bool is_present;
         bool value;
-    } status_depr;
+    } status_depr_n2o;
     struct {
         bool is_present;
         bool value;
-    } status_vent;
+    } status_vent_n2o;
     struct {
         bool is_present;
         bool value;
@@ -99,7 +99,31 @@ struct lo_ra_frame_t {
     struct {
         bool is_present;
         bool value;
+    } status_n2;
+    struct {
+        bool is_present;
+        bool value;
     } status_qd_n2o;
+    struct {
+        bool is_present;
+        bool value;
+    } status_fill_n2;
+    struct {
+        bool is_present;
+        bool value;
+    } status_depr_n2;
+    struct {
+        bool is_present;
+        bool value;
+    } status_qd_n2;
+    struct {
+        bool is_present;
+        bool value;
+    } status_vent_eth;
+    struct {
+        bool is_present;
+        bool value;
+    } status_vent_n2;
     float pressure_cutoff;
 };
 

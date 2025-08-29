@@ -50,9 +50,9 @@ void lo_ra_frame_init(
     self_p->pressure_injector_fuel = 0;
     self_p->pressure_injector_oxi = 0;
     self_p->pressure_combustion_chamber = 0;
-    self_p->status_fill.is_present = false;
-    self_p->status_depr.is_present = false;
-    self_p->status_vent.is_present = false;
+    self_p->status_fill_n2o.is_present = false;
+    self_p->status_depr_n2o.is_present = false;
+    self_p->status_vent_n2o.is_present = false;
     self_p->status_arm.is_present = false;
     self_p->igniter_cont1.is_present = false;
     self_p->igniter_cont2.is_present = false;
@@ -65,7 +65,13 @@ void lo_ra_frame_init(
     self_p->temp_external_tank = 0;
     self_p->status_oxy.is_present = false;
     self_p->status_fuel.is_present = false;
+    self_p->status_n2.is_present = false;
     self_p->status_qd_n2o.is_present = false;
+    self_p->status_fill_n2.is_present = false;
+    self_p->status_depr_n2.is_present = false;
+    self_p->status_qd_n2.is_present = false;
+    self_p->status_vent_eth.is_present = false;
+    self_p->status_vent_n2.is_present = false;
     self_p->pressure_cutoff = 0;
 }
 
@@ -73,9 +79,27 @@ void lo_ra_frame_encode_inner(
     struct pbtools_encoder_t *encoder_p,
     struct lo_ra_frame_t *self_p)
 {
-    pbtools_encoder_write_float(encoder_p, 27, self_p->pressure_cutoff);
+    pbtools_encoder_write_float(encoder_p, 33, self_p->pressure_cutoff);
+    if (self_p->status_vent_n2.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 32, self_p->status_vent_n2.value);
+    }
+    if (self_p->status_vent_eth.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 31, self_p->status_vent_eth.value);
+    }
+    if (self_p->status_qd_n2.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 30, self_p->status_qd_n2.value);
+    }
+    if (self_p->status_depr_n2.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 29, self_p->status_depr_n2.value);
+    }
+    if (self_p->status_fill_n2.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 28, self_p->status_fill_n2.value);
+    }
     if (self_p->status_qd_n2o.is_present) {
-        pbtools_encoder_write_bool_always(encoder_p, 26, self_p->status_qd_n2o.value);
+        pbtools_encoder_write_bool_always(encoder_p, 27, self_p->status_qd_n2o.value);
+    }
+    if (self_p->status_n2.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 26, self_p->status_n2.value);
     }
     if (self_p->status_fuel.is_present) {
         pbtools_encoder_write_bool_always(encoder_p, 25, self_p->status_fuel.value);
@@ -99,14 +123,14 @@ void lo_ra_frame_encode_inner(
     if (self_p->status_arm.is_present) {
         pbtools_encoder_write_bool_always(encoder_p, 14, self_p->status_arm.value);
     }
-    if (self_p->status_vent.is_present) {
-        pbtools_encoder_write_bool_always(encoder_p, 13, self_p->status_vent.value);
+    if (self_p->status_vent_n2o.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 13, self_p->status_vent_n2o.value);
     }
-    if (self_p->status_depr.is_present) {
-        pbtools_encoder_write_bool_always(encoder_p, 12, self_p->status_depr.value);
+    if (self_p->status_depr_n2o.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 12, self_p->status_depr_n2o.value);
     }
-    if (self_p->status_fill.is_present) {
-        pbtools_encoder_write_bool_always(encoder_p, 11, self_p->status_fill.value);
+    if (self_p->status_fill_n2o.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 11, self_p->status_fill_n2o.value);
     }
     pbtools_encoder_write_float(encoder_p, 10, self_p->pressure_combustion_chamber);
     pbtools_encoder_write_float(encoder_p, 9, self_p->pressure_injector_oxi);
@@ -170,18 +194,18 @@ void lo_ra_frame_decode_inner(
             break;
 
         case 11:
-            self_p->status_fill.is_present = true;
-            self_p->status_fill.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->status_fill_n2o.is_present = true;
+            self_p->status_fill_n2o.value = pbtools_decoder_read_bool(decoder_p, wire_type);
             break;
 
         case 12:
-            self_p->status_depr.is_present = true;
-            self_p->status_depr.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->status_depr_n2o.is_present = true;
+            self_p->status_depr_n2o.value = pbtools_decoder_read_bool(decoder_p, wire_type);
             break;
 
         case 13:
-            self_p->status_vent.is_present = true;
-            self_p->status_vent.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->status_vent_n2o.is_present = true;
+            self_p->status_vent_n2o.value = pbtools_decoder_read_bool(decoder_p, wire_type);
             break;
 
         case 14:
@@ -238,11 +262,41 @@ void lo_ra_frame_decode_inner(
             break;
 
         case 26:
+            self_p->status_n2.is_present = true;
+            self_p->status_n2.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            break;
+
+        case 27:
             self_p->status_qd_n2o.is_present = true;
             self_p->status_qd_n2o.value = pbtools_decoder_read_bool(decoder_p, wire_type);
             break;
 
-        case 27:
+        case 28:
+            self_p->status_fill_n2.is_present = true;
+            self_p->status_fill_n2.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            break;
+
+        case 29:
+            self_p->status_depr_n2.is_present = true;
+            self_p->status_depr_n2.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            break;
+
+        case 30:
+            self_p->status_qd_n2.is_present = true;
+            self_p->status_qd_n2.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            break;
+
+        case 31:
+            self_p->status_vent_eth.is_present = true;
+            self_p->status_vent_eth.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            break;
+
+        case 32:
+            self_p->status_vent_n2.is_present = true;
+            self_p->status_vent_n2.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            break;
+
+        case 33:
             self_p->pressure_cutoff = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 

@@ -35,11 +35,6 @@ static TaskHandle_t app_task_handle = NULL;
 static volatile TickType_t app_task_freq = APP_TASK_FREQUENCY;
 static SemaphoreHandle_t app_task_freq_mutex = NULL;
 
-
-static uint8_t data_weights[8] = {1, 1, 0, 0, 0, 0, 0, 0}; // Example data, adjust as needed
-static uint8_t data_weights2[8] = {1, 2, 0, 0, 0, 0, 0, 0}; // Example data, adjust as needed
-static uint8_t data_weights3[8] = {1, 3, 0, 0, 0, 0, 0, 0}; // Example data, adjust as needed
-
 esp_err_t app_task_init(void) {
 
     app_task_freq_mutex = xSemaphoreCreateMutex();
@@ -77,8 +72,6 @@ void app_task(void *arg) {
 
     TickType_t last_wake_time = xTaskGetTickCount();
     TickType_t local_freq;
-    uint8_t data_sol[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_OPEN_SOL_ID, data_sol, 1);
     
 
     while(1) {
@@ -109,9 +102,9 @@ void app_task(void *arg) {
         uint8_t data[8] = {0};
         //can_send_message(CAN_SOL_GET_DATA_ID, data, 0);
         can_send_message(CAN_SOL_GET_STATUS_ID, data, 0);
-        //can_send_message(CAN_POWER_GET_DATA_ID, data, 0);
-        //can_send_message(CAN_POWER_GET_STATUS_ID, data, 0);
-        //can_send_message(CAN_SENSOR_GET_DATA_ID, data, 0);
+        can_send_message(CAN_POWER_GET_DATA_ID, data, 0);
+        can_send_message(CAN_POWER_GET_STATUS_ID, data, 0);
+        can_send_message(CAN_SENSOR_GET_DATA_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_STATUS_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_TEMPERATURE_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_PRESSURE_ID, data, 0);
@@ -127,29 +120,29 @@ void app_task(void *arg) {
         // can_send_message(CAN_WEIGHTS_GET_ADS_CH_WEIGHT_ID, data_weights3, 2);
 
         //can_send_message(CAN_WEIGHTS_GET_STATUS_ID, data, 0);
-        //can_send_message(CAN_UTIL_GET_STATUS_ID, data, 0);
+        can_send_message(CAN_UTIL_GET_STATUS_ID, data, 0);
         //can_send_message(CAN_SOL_OPEN_SOL_ID, data, 1);
         
-        //tanwa_read_i_sense(&i_sense);
+        tanwa_read_i_sense(&i_sense);
 
         // Check igniter continuity
         igniter_check_continuity(&(tanwa_hardware.igniter[0]), &ign_cnt_1);
         igniter_check_continuity(&(tanwa_hardware.igniter[1]), &ign_cnt_2);
 
-        // uint8_t abort_button_state;
-        // bool abort_button = false;
-        // abort_button_get_level(&abort_button_state);
-        // if (abort_button_state == 0) {
-        //     abort_button = true;
-        // } else {
-        //     abort_button = false;
-        // }
+        uint8_t abort_button_state;
+        bool abort_button = false;
+        abort_button_get_level(&abort_button_state);
+        if (abort_button_state == 0) {
+            abort_button = true;
+        } else {
+            abort_button = false;
+        }
 
         tanwa_data_update_state((uint8_t) state_machine_get_current_state());
 
         com_data_t com_data = tanwa_data_read_com_data();
-        //com_data.i_sense = i_sense;
-        //com_data.abort_button = abort_button;
+        com_data.i_sense = i_sense;
+        com_data.abort_button = abort_button;
         com_data.igniter_cont_1 = (ign_cnt_1 == IGNITER_CONTINUITY_OK) ? true : false;
         com_data.igniter_cont_2 = (ign_cnt_2 == IGNITER_CONTINUITY_OK) ? true : false;
         relay_driver_state_t relay1_state, relay2_state, relay3_state, relay4_state;
@@ -162,10 +155,10 @@ void app_task(void *arg) {
         com_data.relay_state3 = (relay3_state == RELAY_ON) ? true : false;
         com_data.relay_state4 = (relay4_state == RELAY_ON) ? true : false;
         float temperature_1, temperature_2;
-        // tmp1075_get_temp_celsius(&(tanwa_hardware.tmp1075[0]), &temperature_1);
-        // tmp1075_get_temp_celsius(&(tanwa_hardware.tmp1075[1]), &temperature_2);
-        // com_data.temperature_1 = temperature_1;
-        // com_data.temperature_2 = temperature_2;
+        tmp1075_get_temp_celsius(&(tanwa_hardware.tmp1075[0]), &temperature_1);
+        tmp1075_get_temp_celsius(&(tanwa_hardware.tmp1075[1]), &temperature_2);
+        com_data.temperature_1 = temperature_1;
+        com_data.temperature_2 = temperature_2;
         tanwa_data_update_com_data(&com_data);
 
     }

@@ -213,7 +213,7 @@ esp_err_t parse_sensor_pressure1(uint8_t *data, uint8_t length) {
     }
 
     
-
+    can_sensor_pressure_data_t pressure_data = tanwa_data_read_can_sensor_pressure_data();
     // Odczytaj int16_t z dwóch bajtów (little-endian) i przelicz na float
     int16_t raw_pressure1, raw_pressure2, raw_pressure3, raw_pressure4;
     raw_pressure1 = (int16_t)(data[0] | (data[1] << 8));
@@ -221,10 +221,12 @@ esp_err_t parse_sensor_pressure1(uint8_t *data, uint8_t length) {
     raw_pressure3 = (int16_t)(data[4] | (data[5] << 8));
     raw_pressure4 = (int16_t)(data[6] | (data[7] << 8));
 
-    tanwa_data.can_sensor_pressure_data.pressure1 = ((float)raw_pressure1) / 100.0f;
-    tanwa_data.can_sensor_pressure_data.pressure2 = ((float)raw_pressure2) / 100.0f;
-    tanwa_data.can_sensor_pressure_data.pressure3 = ((float)raw_pressure3) / 100.0f;
-    tanwa_data.can_sensor_pressure_data.pressure4 = ((float)raw_pressure4) / 100.0f;
+    pressure_data.pressure1 = ((float)raw_pressure1) / 100.0f;
+    pressure_data.pressure2 = ((float)raw_pressure2) / 100.0f;
+    pressure_data.pressure3 = ((float)raw_pressure3) / 100.0f;
+    pressure_data.pressure4 = ((float)raw_pressure4) / 100.0f;
+
+    tanwa_data_update_can_sensor_pressure_data(&pressure_data); // jeśli masz taką funkcję
 
     return ESP_OK;
 }
@@ -235,17 +237,20 @@ esp_err_t parse_sensor_pressure2(uint8_t *data, uint8_t length) {
         return ESP_ERR_INVALID_ARG;
     }
 
-    int16_t raw_pressure5 = (int16_t)(data[0] | (data[1] << 8));
-    int16_t raw_pressure6 = (int16_t)(data[2] | (data[3] << 8));
-    int16_t raw_pressure7 = (int16_t)(data[4] | (data[5] << 8));
-    int16_t raw_pressure8 = (int16_t)(data[6] | (data[7] << 8));
+    can_sensor_pressure_data_t pressure_data = tanwa_data_read_can_sensor_pressure_data();
+    // Odczytaj int16_t z dwóch bajtów (little-endian) i przelicz na float
+    int16_t raw_pressure1, raw_pressure2, raw_pressure3, raw_pressure4;
+    raw_pressure1 = (int16_t)(data[0] | (data[1] << 8));
+    raw_pressure2 = (int16_t)(data[2] | (data[3] << 8));
+    raw_pressure3 = (int16_t)(data[4] | (data[5] << 8));
+    raw_pressure4 = (int16_t)(data[6] | (data[7] << 8));
 
-    tanwa_data.can_sensor_pressure_data.pressure5 = ((float)raw_pressure5) / 100.0f;
-    tanwa_data.can_sensor_pressure_data.pressure6 = ((float)raw_pressure6) / 100.0f;
-    tanwa_data.can_sensor_pressure_data.pressure7 = ((float)raw_pressure7) / 100.0f;
-    tanwa_data.can_sensor_pressure_data.pressure8 = ((float)raw_pressure8) / 100.0f;
+    pressure_data.pressure5 = ((float)raw_pressure1) / 100.0f;
+    pressure_data.pressure6 = ((float)raw_pressure2) / 100.0f;
+    pressure_data.pressure7 = ((float)raw_pressure3) / 100.0f;
+    pressure_data.pressure8 = ((float)raw_pressure4) / 100.0f;
 
-    // tanwa_data_update_can_sensor_pressure_data(&pressure_data);
+    tanwa_data_update_can_sensor_pressure_data(&pressure_data); // jeśli masz taką funkcję
 
     return ESP_OK;
 }
@@ -261,6 +266,7 @@ esp_err_t parse_sensor_temperature(uint8_t *data, uint8_t length) {
     int16_t raw_temp1 = (int16_t)(data[0] | (data[1] << 8));
     int16_t raw_temp2 = (int16_t)(data[2] | (data[3] << 8));
     int16_t raw_temp3 = (int16_t)(data[4] | (data[5] << 8));
+    
     can_sensor_temp_data_t temp_data;
 
     temp_data.temperature1 = (float)raw_temp1/ 100.0f; // Przelicz na float

@@ -26,7 +26,7 @@
 #define TAG "LORA_TASK"
 
 #define LORA_TASK_STACK_SIZE 8192
-#define LORA_TASK_PRIORITY 9
+#define LORA_TASK_PRIORITY 4
 #define LORA_TASK_CORE 1
 
 static struct {
@@ -34,7 +34,7 @@ static struct {
     lora_task_process_rx_packet process_packet_fnc;
     lora_task_get_tx_packet get_tx_packet_fnc;
     lora_state_t lora_state;
-    uint8_t tx_buffer[512];
+    uint8_t tx_buffer[512]; // Buffer for LoRa transmission
     size_t tx_buffer_size;
 
     TimerHandle_t receive_window_timer;
@@ -244,8 +244,18 @@ static size_t add_prefix(uint8_t* buffer, size_t size) {
 // }
 #include "board_data.h"
 void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
-    
-    tanwa_data_t tanwa_data = tanwa_data_read();   // fill struct with 0
+
+    ESP_LOGI(TAG, "Creating LoRa data frame");
+    if (frame == NULL) {
+        ESP_LOGE(TAG, "Frame is NULL");
+        return;
+    }
+
+
+    tanwa_data_t tanwa_data = tanwa_data_read();
+
+
+   // fill struct with 0
     // mcb
     //frame->obc_state = data.mcb.state;
     frame->tanwa_state = tanwa_data.state;
@@ -264,8 +274,11 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     //ESP_LOGI(TAG, "IGNITER CONT 2: %d", tanwa_data.com_data.igniter_cont_2);
     frame->status_oxy.is_present = true;
     frame->status_fuel.is_present = true;
+    frame->status_n2.is_present = true;
     frame->status_oxy.value = tanwa_data.can_solenoid_data.servo_state2;
     frame->status_fuel.value = tanwa_data.can_solenoid_data.servo_state1;
+    frame->status_n2.value = tanwa_data.can_solenoid_data.servo_state3;
+
     frame->status_arm.is_present = true;
     frame->status_arm.value = tanwa_data.com_data.arm_state;
     //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
@@ -286,34 +299,44 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     frame->pressure_cutoff = tanwa_data.can_sensor_pressure_data.pressure4;
     frame->pressure_oxy = tanwa_data.can_sensor_pressure_data.pressure1;
 
-    frame->status_fill.is_present = true;
-    frame->status_depr.is_present = true;
-    frame->status_vent.is_present = true;
+    frame->status_fill_n2o.is_present = true;
+    frame->status_depr_n2o.is_present = true;
+    frame->status_vent_n2o.is_present = true;
     frame->status_qd_n2o.is_present = true;
-    frame->status_fill.value = tanwa_data.can_solenoid_data.state_sol1;
-    frame->status_depr.value = tanwa_data.can_solenoid_data.state_sol2;
-    frame->status_vent.value = !tanwa_data.can_solenoid_data.state_sol3;
+    frame->status_fill_n2o.value = tanwa_data.can_solenoid_data.state_sol1;
+    frame->status_depr_n2o.value = tanwa_data.can_solenoid_data.state_sol2;
+    frame->status_vent_n2o.value = !tanwa_hardware.relay[0].state; // inverting because relay is active low
     frame->status_qd_n2o.value = tanwa_data.can_solenoid_data.state_sol5;
+    frame->status_fill_n2.is_present = true;
+    frame->status_depr_n2.is_present = true;
+    frame->status_qd_n2.is_present = true;
+    frame->status_vent_eth.is_present = true;
+    frame->status_vent_n2.is_present = true;
+    frame->status_fill_n2.value = tanwa_data.can_solenoid_data.state_sol3;
+    frame->status_depr_n2.value = tanwa_data.can_solenoid_data.state_sol4;
+    frame->status_qd_n2.value = tanwa_data.can_solenoid_data.state_sol6;
+    frame->status_vent_eth.value = !tanwa_hardware.relay[1].state; // inverting because relay is active low
+    frame->status_vent_n2.value = !tanwa_hardware.relay[2].state; // inverting because relay is active
 
 }
 
 static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {
 
-    struct lo_ra_frame_t *frame = lo_ra_frame_new(&lora_api.workspace, sizeof(lora_api.workspace));
-    create_porotobuf_data_frame(frame);
+    lora_api.frame = lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
+    create_porotobuf_data_frame(lora_api.frame);
 
     // ESP_LOGI(TAG, "FRAME:");
-    // for (int i = 0; i < sizeof(frame); ++i) {
-    //     ESP_LOGI(TAG, "%d: %d", i, ((uint8_t*)&frame)[i]);
+    // for (int i = 0; i < sizeof(struct lo_ra_frame_t); ++i) {
+    //     ESP_LOGI(TAG, "%d: %d", i, ((uint8_t*)&lora_api.frame)[i]);
     // }
 
 
     uint8_t data_size = 0;
     uint8_t prefix_size = 0;
     prefix_size = add_prefix(buffer, size);
-    data_size = lo_ra_frame_encode(frame, buffer + prefix_size, sizeof(struct lo_ra_frame_t));
+    data_size = lo_ra_frame_encode(lora_api.frame, buffer + prefix_size, size - prefix_size);
 
-    //ESP_LOGI(TAG, "LoRa frame packed size: %d", data_size);
+    ESP_LOGI(TAG, "LoRa frame packed size: %d", data_size);
 
     return prefix_size + data_size;
 }
@@ -359,11 +382,17 @@ bool lora_task_init(lora_api_config_t *cfg) {
 
     gb.process_packet_fnc = cfg->process_rx_packet_fnc;
     gb.get_tx_packet_fnc = cfg->get_tx_packet_fnc;
+    gb.tx_buffer_size = 512;
     //memcpy(&lora, &lora, sizeof(lora_struct_t));
+
+    memset(lora_api.workspace, 0, sizeof(lora_api.workspace));
+    lora_api.frame = lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
 
     lora_init(&lora);
     lora_set_frequency(&lora, cfg->frequency_khz * 1e3);
     lora_set_bandwidth(&lora, LORA_TASK_BANDWIDTH);
+    lora_set_tx_power(&lora, LORA_TASK_TX_POWER);
+    lora_set_spreading_factor(&lora, LORA_TASK_SPREADING_FACTOR);   
     lora_map_d0_interrupt(&lora, LORA_IRQ_D0_RXDONE);
     //lora_set_receive_mode(&lora);
 
@@ -426,12 +455,13 @@ void lora_task(void *arg)
                 rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
                 //ESP_LOGI(TAG, "Received packet size: %d", rx_packet_size);
                 if (rx_packet_size > 0 && lora_api.process_rx_packet_fnc != NULL) {
-                    //ESP_LOGI(TAG, "*****************Processing packet");
+                    ESP_LOGI(TAG, "*****************Processing packet");
                     lora_api.process_rx_packet_fnc(rx_buffer, rx_packet_size);
                     vTaskDelay(pdMS_TO_TICKS(100));
                 }
                 lora_change_state_to_transmit();
                 transmint_packet();
+                
                 // qucik fix
                 turn_on_receive_window_timer();
             }

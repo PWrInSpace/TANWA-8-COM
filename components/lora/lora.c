@@ -245,8 +245,8 @@ lora_err_t lora_send_packet(lora_struct_t *lora, uint8_t *buf, int16_t size) {
   ret |= lora_start_transmission(lora);
 
   while (!lora_check_tx_done(lora)) {
-    // int8_t read_reg = lora_read_reg(lora,REG_IRQ_FLAGS);
-    // lora->log("SEND FREEZES");
+    //int8_t read_reg = lora_read_reg(lora,REG_IRQ_FLAGS);
+    //lora->log("SEND FREEZES");
     lora->_delay(2);
   }
 

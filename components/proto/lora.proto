@@ -14,9 +14,9 @@ message LoRaFrame {
     float pressure_injector_oxi = 9;
     float pressure_combustion_chamber = 10;
 
-    optional bool status_fill = 11;
-    optional bool status_depr = 12;
-    optional bool status_vent = 13;
+    optional bool status_fill_n2o = 11;
+    optional bool status_depr_n2o = 12;
+    optional bool status_vent_n2o = 13;
     optional bool status_arm = 14;
     optional bool igniter_cont1 = 15;
     optional bool igniter_cont2 = 16;
@@ -34,9 +34,15 @@ message LoRaFrame {
 
     optional bool status_oxy = 24;
     optional bool status_fuel = 25;
-    optional bool status_qd_n2o = 26;
+    optional bool status_n2 = 26;
+    optional bool status_qd_n2o = 27;
+    optional bool status_fill_n2 = 28;
+    optional bool status_depr_n2 = 29;
+    optional bool status_qd_n2 = 30;
+    optional bool status_vent_eth = 31;
+    optional bool status_vent_n2 = 32;
     
-    float pressure_cutoff = 27;
+    float pressure_cutoff = 33;
 
 }
 
