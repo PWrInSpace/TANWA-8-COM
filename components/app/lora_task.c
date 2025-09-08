@@ -142,12 +142,14 @@ static size_t on_lora_receive(uint8_t *rx_buffer, size_t buffer_len) {
 }
 
 static void transmint_packet(void) {
+    //ESP_LOGI(TAG, "Transmitting packet");
     if (lora_api.get_tx_packet_fnc == NULL) {
-        //ESP_LOGI(TAG, "No get_tx_packet_fnc function set");
+        ESP_LOGI(TAG, "No get_tx_packet_fnc function set");
         return;
     }
 
     gb.tx_buffer_size = lora_api.get_tx_packet_fnc(gb.tx_buffer, sizeof(gb.tx_buffer));
+    //ESP_LOGI(TAG, "Packet size: %d", gb.tx_buffer_size);
     lora_send_packet(&lora, gb.tx_buffer, gb.tx_buffer_size);
 }
 
@@ -245,7 +247,7 @@ static size_t add_prefix(uint8_t* buffer, size_t size) {
 #include "board_data.h"
 void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
 
-    ESP_LOGI(TAG, "Creating LoRa data frame");
+    //ESP_LOGI(TAG, "Creating LoRa data frame");
     if (frame == NULL) {
         ESP_LOGE(TAG, "Frame is NULL");
         return;
@@ -315,14 +317,16 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     frame->status_fill_n2.value = tanwa_data.can_solenoid_data.state_sol3;
     frame->status_depr_n2.value = tanwa_data.can_solenoid_data.state_sol4;
     frame->status_qd_n2.value = tanwa_data.can_solenoid_data.state_sol6;
-    frame->status_vent_eth.value = !tanwa_hardware.relay[1].state; // inverting because relay is active low
-    frame->status_vent_n2.value = !tanwa_hardware.relay[2].state; // inverting because relay is active
+    frame->status_vent_eth.value = tanwa_hardware.relay[1].state; // inverting because relay is active low
+    frame->status_vent_n2.value = tanwa_hardware.relay[2].state; // inverting because relay is active
 
 }
 
 static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {
-
+    
+    //ESP_LOGI(TAG, "Creating LoRa data packet");
     lora_api.frame = lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
+    //ESP_LOGI(TAG, "LoRa frame created");
     create_porotobuf_data_frame(lora_api.frame);
 
     // ESP_LOGI(TAG, "FRAME:");
@@ -336,7 +340,7 @@ static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {
     prefix_size = add_prefix(buffer, size);
     data_size = lo_ra_frame_encode(lora_api.frame, buffer + prefix_size, size - prefix_size);
 
-    ESP_LOGI(TAG, "LoRa frame packed size: %d", data_size);
+    //ESP_LOGI(TAG, "LoRa frame packed size: %d", data_size);
 
     return prefix_size + data_size;
 }
@@ -444,7 +448,9 @@ void lora_task(void *arg)
     size_t rx_packet_size = 0;
 
     while (1) {
+        //ESP_LOGI(TAG, "LOOP");
         if (wait_until_irq() == true) {
+            //ESP_LOGI(TAG, "IRQ received");
             // on transmit
             if (gb.lora_state == LORA_TRANSMIT) {
                 //ESP_LOGI(TAG, "ON transmit");
@@ -455,7 +461,7 @@ void lora_task(void *arg)
                 rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
                 //ESP_LOGI(TAG, "Received packet size: %d", rx_packet_size);
                 if (rx_packet_size > 0 && lora_api.process_rx_packet_fnc != NULL) {
-                    ESP_LOGI(TAG, "*****************Processing packet");
+                    //ESP_LOGI(TAG, "*****************Processing packet");
                     lora_api.process_rx_packet_fnc(rx_buffer, rx_packet_size);
                     vTaskDelay(pdMS_TO_TICKS(100));
                 }

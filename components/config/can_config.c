@@ -43,6 +43,12 @@ esp_err_t can_config_init(void) {
         ESP_LOGE(TAG, "CAN command registration failed");
         return err;
     }
+
+    err = can_start();
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "CAN driver start failed");
+        return err;
+    }
     
     // Initialize CAN driver
     err = can_task_init();
@@ -52,11 +58,6 @@ esp_err_t can_config_init(void) {
     }
 
     // Start CAN driver
-    err = can_start();
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "CAN driver start failed");
-        return err;
-    }
 
     return ESP_OK;
 }

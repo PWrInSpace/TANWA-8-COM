@@ -29,11 +29,15 @@ esp_err_t can_start(void) {
     esp_err_t err;
 
     // Start the TWAI driver
+    //vTaskDelay(pdMS_TO_TICKS(1000)); // Short delay to ensure proper startup
     err = twai_start();
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to start TWAI driver: %s", esp_err_to_name(err));
         return err;
     }
+    ESP_LOGI(TAG, "TWAI driver started");
+
+    can_send_message(CAN_SENSOR_DATA_ID, NULL, 0); // Request sensor data on startup
 
     return ESP_OK;
 }

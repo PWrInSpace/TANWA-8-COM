@@ -241,16 +241,21 @@ lora_err_t lora_send_packet(lora_struct_t *lora, uint8_t *buf, int16_t size) {
 
   //ESP_LOGI(TAG, "Sending packet of size %d", size);
   lora_err_t ret = LORA_OK;
+  //ESP_LOGI(TAG, "Packet size: %d", size);
   ret |= lora_fill_fifo_buf_to_send(lora, buf, size);
+  //ESP_LOGI(TAG, "FIFO filled");
   ret |= lora_start_transmission(lora);
+  //ESP_LOGI(TAG, "Transmission started");
 
   while (!lora_check_tx_done(lora)) {
-    //int8_t read_reg = lora_read_reg(lora,REG_IRQ_FLAGS);
-    //lora->log("SEND FREEZES");
+    int8_t read_reg = lora_read_reg(lora,REG_IRQ_FLAGS);
+    //ESP_LOGI(TAG, "Waiting for TX done, IRQ_FLAGS: 0x%02X", read_reg);
     lora->_delay(2);
   }
 
+  //ESP_LOGI(TAG, "Transmission done");
   ret |= lora_write_irq_flags(lora);
+  //ESP_LOGI(TAG, "Packet sent");
   return ret == LORA_OK ? LORA_OK : LORA_TRANSMIT_ERR;
 }
 

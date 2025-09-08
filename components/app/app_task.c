@@ -23,6 +23,7 @@
 #include "mission_timer.h"
 #include "mission_timer_config.h"
 #include "timers_config.h"
+#include "mcu_twai_config.h"
 
 #define APP_TASK_STACK_SIZE CONFIG_APP_TASK_STACK_SIZE
 #define APP_TASK_PRIORITY 5
@@ -34,6 +35,8 @@
 static TaskHandle_t app_task_handle = NULL;
 static volatile TickType_t app_task_freq = APP_TASK_FREQUENCY;
 static SemaphoreHandle_t app_task_freq_mutex = NULL;
+
+extern mcu_twai_config_t mcu_twai_config;
 
 esp_err_t app_task_init(void) {
 
@@ -72,7 +75,15 @@ void app_task(void *arg) {
 
     TickType_t last_wake_time = xTaskGetTickCount();
     TickType_t local_freq;
-    
+
+    // twai_driver_uninstall();
+    // vTaskDelay(pdMS_TO_TICKS(100));
+    // twai_driver_install(&(mcu_twai_config.g_config), 
+    //                           &(mcu_twai_config.t_config),
+    //                           &(mcu_twai_config.f_config));
+    // vTaskDelay(pdMS_TO_TICKS(100));
+    // can_start();
+
 
     while(1) {
 
@@ -100,15 +111,16 @@ void app_task(void *arg) {
         tanwa_data_update(&tanwa_data);
     
         uint8_t data[8] = {0};
-        //can_send_message(CAN_SOL_GET_DATA_ID, data, 0);
+        can_send_message(CAN_SOL_GET_DATA_ID, data, 0);
         can_send_message(CAN_SOL_GET_STATUS_ID, data, 0);
         can_send_message(CAN_POWER_GET_DATA_ID, data, 0);
         can_send_message(CAN_POWER_GET_STATUS_ID, data, 0);
-        can_send_message(CAN_SENSOR_GET_DATA_ID, data, 0);
+        //can_send_message(CAN_SENSOR_GET_DATA_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_STATUS_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_TEMPERATURE_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_PRESSURE_ID, data, 0);
         can_send_message(CAN_WEIGHTS_GET_ADS_CH_WEIGHT_ID, data, 0);
+
         // can_send_message(CAN_WEIGHTS_GET_ADS_CH_WEIGHT_ID, data_weights, 0);
         // data_weights2[0] = 1;
         // data_weights2[1] = 2;

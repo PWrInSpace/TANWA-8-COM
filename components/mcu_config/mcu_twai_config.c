@@ -6,6 +6,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/semphr.h"
+#include "driver/gpio.h"
 
 #define TAG "MCU_TWAI"
 
@@ -15,8 +16,8 @@ mcu_twai_config_t mcu_twai_config = {
     .mode = TWAI_MODE_NORMAL,
     .g_config = {
         .mode = TWAI_MODE_NORMAL,
-        .tx_io = CONFIG_CAN_TX_GPIO,
-        .rx_io = CONFIG_CAN_RX_GPIO,
+        .tx_io = 36,
+        .rx_io = 35,
         .clkout_io = TWAI_IO_UNUSED,
         .bus_off_io = TWAI_IO_UNUSED,
         .tx_queue_len = 100,
@@ -38,6 +39,7 @@ esp_err_t mcu_twai_init() {
       ESP_LOGE(TAG, "TWAI driver install error %s", esp_err_to_name(err));
       return err;
     }
+    ESP_LOGI(TAG, "TWAI driver installed");
     
     return ESP_OK;
 }
@@ -49,6 +51,7 @@ esp_err_t mcu_twai_deinit() {
       ESP_LOGE(TAG, "TWAI driver uninstall error");
       return err;
     }
+
     
     return ESP_OK;
 }

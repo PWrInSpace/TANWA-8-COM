@@ -139,7 +139,7 @@ static void on_after_burnout(void *arg) {
     can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_fuel, 1);
     ESP_LOGI(TAG, "FUEL CLOSE");
 
-    vTaskDelay(500/ portTICK_PERIOD_MS);
+    vTaskDelay(1000/ portTICK_PERIOD_MS);
 
     uint8_t data_n2[8] = {2, 0, 0, 0, 0, 0, 0, 0};
     can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_n2, 1);

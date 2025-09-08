@@ -25,7 +25,7 @@ static mcu_gpio_config_t mcu_gpio_config = {
         {
             .pin_bit_mask = (1ULL << LORA_CS_GPIO),
             .mode = GPIO_MODE_OUTPUT,
-            .pull_up_en = GPIO_PULLUP_DISABLE,
+            .pull_up_en = GPIO_PULLUP_ENABLE,
             .pull_down_en = GPIO_PULLDOWN_DISABLE,
             .intr_type = GPIO_INTR_DISABLE,
         },
@@ -120,7 +120,13 @@ esp_err_t mcu_gpio_init() {
     }
 
     for (uint8_t i = 0; i < mcu_gpio_config.num_pins; i++) {
-        if (mcu_gpio_config.configs[i].mode == GPIO_MODE_INPUT) {
+        if (mcu_gpio_config.configs[i].mode == GPIO_MODE_INPUT ||
+            mcu_gpio_config.pins[i] == LORA_RS_GPIO) {
+                if(mcu_gpio_config.pins[i] == LORA_RS_GPIO){
+                    if (!_mcu_gpio_set_level(LORA_RS_GPIO_INDEX, 1)) {
+                        ESP_LOGE(TAG, "GPIO pin %d level set failed!", i);
+                    }
+                }
             continue;
         }
         if (!_mcu_gpio_set_level(mcu_gpio_config.pins[i], 0)) {

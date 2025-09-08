@@ -310,9 +310,9 @@ void tanwa_heating_valve_stop(void) {
 
 void tanwa_vent(uint8_t valve_state) {
     if (valve_state == CMD_VALVE_OPEN) {
-        relay_open(&(tanwa_hardware.relay[0]));
-    } else if (valve_state == CMD_VALVE_CLOSE) {
         relay_close(&(tanwa_hardware.relay[0]));
+    } else if (valve_state == CMD_VALVE_CLOSE) {
+        relay_open(&(tanwa_hardware.relay[0]));
     } else {
         ESP_LOGE(TAG, "Invalid depr valve state");
     }
@@ -350,6 +350,9 @@ void tanwa_vent_time(uint32_t open_time) {
     relay_open(&(tanwa_hardware.relay[0]));
     ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
 
+    // relay_time_open(&(tanwa_hardware.relay[0]), open_time);
+    // ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
+
 }
 
 void tanwa_eth_vent_time(uint32_t open_time) {
@@ -359,9 +362,11 @@ void tanwa_eth_vent_time(uint32_t open_time) {
     // can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
 
     uint16_t open_time_scaled = (uint16_t)open_time;
-    relay_close(&(tanwa_hardware.relay[1]));
-    vTaskDelay(open_time / portTICK_PERIOD_MS);
-    relay_open(&(tanwa_hardware.relay[1]));
+    // relay_close(&(tanwa_hardware.relay[1]));
+    // vTaskDelay(open_time / portTICK_PERIOD_MS);
+    // relay_open(&(tanwa_hardware.relay[1]));
+    // ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
+    relay_time_open(&(tanwa_hardware.relay[1]), open_time);
     ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
 }
 
@@ -372,9 +377,12 @@ void tanwa_n2_vent_time(uint32_t open_time) {
     // can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
 
     uint16_t open_time_scaled = (uint16_t)open_time;
-    relay_close(&(tanwa_hardware.relay[2]));
-    vTaskDelay(open_time / portTICK_PERIOD_MS);
-    relay_open(&(tanwa_hardware.relay[2]));
+    // relay_close(&(tanwa_hardware.relay[2]));
+    // vTaskDelay(open_time / portTICK_PERIOD_MS);
+    // relay_open(&(tanwa_hardware.relay[2]));
+    // ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
+
+    relay_time_open(&(tanwa_hardware.relay[2]), open_time);
     ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
 }
 

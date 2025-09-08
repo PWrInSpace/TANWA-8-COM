@@ -184,12 +184,19 @@ esp_err_t board_config_init(void) {
         return err;
     }
 
-    vTaskDelay(pdMS_TO_TICKS(1000)); // Wait for LoRa to initialize
+    //vTaskDelay(pdMS_TO_TICKS(1000)); // Wait for LoRa to initialize
 
     err = mcu_twai_init();
 
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "TWAI initialization failed");
+        return err;
+    }
+
+    err = can_config_init();
+
+    if (err != ESP_OK) {
+        ESP_LOGE(TAG, "CAN initialization failed");
         return err;
     }
 
@@ -205,19 +212,14 @@ esp_err_t board_config_init(void) {
         return err;
     }
 
-    err = can_config_init();
-
-    if (err != ESP_OK) {
-        ESP_LOGE(TAG, "CAN initialization failed");
-        return err;
-    }
-
     if(relay_driver_init(_relay_gpio_set_level) != RELAY_DRIVER_OK) {
         ESP_LOGE(TAG, "Relay driver initialization failed");
         return ESP_FAIL;
     } else {
         ESP_LOGI(TAG, "Relay driver initialized");
     }
+
+    relay_open(&tanwa_hardware.relay[0]);
 
     uint8_t ret = 0;
 
@@ -228,28 +230,28 @@ esp_err_t board_config_init(void) {
     // } else {
     //     ESP_LOGI(TAG, "TMP1075 sensor 1 initialized");
     // }
-    ret = tmp1075_init(&(tanwa_hardware.tmp1075[1]));
-    if (ret != TMP1075_OK) {
-        ESP_LOGE(TAG, "Failed to initialize TMP1075 sensor 2");
-        return ESP_FAIL;
-    } else {
-        ESP_LOGI(TAG, "TMP1075 sensor 2 initialized");
-    }
-    ret = mcp23018_init(&(tanwa_hardware.mcp23018), IOEXP_MODE);
-    if (ret != MCP23018_OK) {
-        ESP_LOGE(TAG, "Failed to initialize MCP23018");
-        return ESP_FAIL;
-    } else {
-        ESP_LOGI(TAG, "MCP23018 initialized");
-    }
+    // ret = tmp1075_init(&(tanwa_hardware.tmp1075[1]));
+    // if (ret != TMP1075_OK) {
+    //     ESP_LOGE(TAG, "Failed to initialize TMP1075 sensor 2");
+    //     return ESP_FAIL;
+    // } else {
+    //     ESP_LOGI(TAG, "TMP1075 sensor 2 initialized");
+    // }
+    // ret = mcp23018_init(&(tanwa_hardware.mcp23018), IOEXP_MODE);
+    // if (ret != MCP23018_OK) {
+    //     ESP_LOGE(TAG, "Failed to initialize MCP23018");
+    //     return ESP_FAIL;
+    // } else {
+    //     ESP_LOGI(TAG, "MCP23018 initialized");
+    // }
 
-    ret = led_state_display_state_update(&led_state_display, LED_STATE_DISPLAY_STATE_IDLE);
-    if (ret != LED_STATE_DISPLAY_OK) {
-        ESP_LOGE(TAG, "Failed to initialize LED state display");
-        return ESP_FAIL;
-    } else {
-        ESP_LOGI(TAG, "LED state display initialized");
-    }
+    // ret = led_state_display_state_update(&led_state_display, LED_STATE_DISPLAY_STATE_IDLE);
+    // if (ret != LED_STATE_DISPLAY_OK) {
+    //     ESP_LOGE(TAG, "Failed to initialize LED state display");
+    //     return ESP_FAIL;
+    // } else {
+    //     ESP_LOGI(TAG, "LED state display initialized");
+    // }
 
     ESP_LOGI(TAG, "Initializing state machine...");
 
@@ -312,6 +314,8 @@ esp_err_t board_config_init(void) {
     } else {
         ESP_LOGI(TAG, "### LoRa initialization success ###");
     }
+
+    gpio_set_level(LORA_RS_GPIO, 1);
     
 
     //HAS TO BE AFTER LORA- DOESN'T WORK OTHERWISE
@@ -338,7 +342,7 @@ esp_err_t board_config_init(void) {
     }
 
     state_machine_change_state(IDLE);
-    led_state_display_state_update(&led_state_display, LED_STATE_DISPLAY_STATE_IDLE);
+    //led_state_display_state_update(&led_state_display, LED_STATE_DISPLAY_STATE_IDLE);
     //*********** ADD HARDWARE CONFIGURATION HERE ***********//
 
     
@@ -349,11 +353,7 @@ esp_err_t board_config_init(void) {
         ESP_LOGE(TAG, "Console initialization failed");
         return err;
     }
-
-    relay_open(&(tanwa_hardware.relay[0]));
-    relay_open(&(tanwa_hardware.relay[1]));
-    relay_open(&(tanwa_hardware.relay[2]));
-
+    
     return ESP_OK;
     
 }
