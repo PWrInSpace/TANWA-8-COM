@@ -310,9 +310,9 @@ void tanwa_heating_valve_stop(void) {
 
 void tanwa_vent(uint8_t valve_state) {
     if (valve_state == CMD_VALVE_OPEN) {
-        relay_close(&(tanwa_hardware.relay[0]));
-    } else if (valve_state == CMD_VALVE_CLOSE) {
         relay_open(&(tanwa_hardware.relay[0]));
+    } else if (valve_state == CMD_VALVE_CLOSE) {
+        relay_close(&(tanwa_hardware.relay[0]));
     } else {
         ESP_LOGE(TAG, "Invalid depr valve state");
     }
@@ -615,12 +615,12 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
             }
             case CMD_ETH_VENT_OPEN: {
                 ESP_LOGI(TAG, "LORA | Vent open");
-                tanwa_eth_vent(CMD_VALVE_CLOSE);
+                tanwa_eth_vent(CMD_VALVE_OPEN);
                 break;
             }
             case CMD_ETH_VENT_CLOSE: {
                 ESP_LOGI(TAG, "LORA | Vent close");
-                tanwa_eth_vent(CMD_VALVE_OPEN);
+                tanwa_eth_vent(CMD_VALVE_CLOSE);
                 break;
             }
             case CMD_ETH_VENT_OPEN_TIME: {
@@ -630,12 +630,12 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
             }
             case CMD_N2_VENT_OPEN: {
                 ESP_LOGI(TAG, "LORA | Vent open");
-                tanwa_n2_vent(CMD_VALVE_CLOSE);
+                tanwa_n2_vent(CMD_VALVE_OPEN);
                 break;
             }
             case CMD_N2_VENT_CLOSE: {
                 ESP_LOGI(TAG, "LORA | Vent close");
-                tanwa_n2_vent(CMD_VALVE_OPEN);
+                tanwa_n2_vent(CMD_VALVE_CLOSE);
                 break;
             }
             case CMD_N2_VENT_OPEN_TIME: {
