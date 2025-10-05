@@ -1,0 +1,2 @@
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libstate_machine.a CMakeFiles/__idf_state_machine.dir/state_machine.c.obj
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ranlib libstate_machine.a

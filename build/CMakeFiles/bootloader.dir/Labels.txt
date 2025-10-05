@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles/bootloader
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles/bootloader.rule
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles/bootloader-complete.rule
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

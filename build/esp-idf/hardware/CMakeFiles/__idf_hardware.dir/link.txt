@@ -1,0 +1,2 @@
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libhardware.a CMakeFiles/__idf_hardware.dir/ads1115.c.obj CMakeFiles/__idf_hardware.dir/igniter_driver.c.obj CMakeFiles/__idf_hardware.dir/led_driver.c.obj CMakeFiles/__idf_hardware.dir/led_state_display.c.obj CMakeFiles/__idf_hardware.dir/mcp23018.c.obj CMakeFiles/__idf_hardware.dir/tmp1075.c.obj
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ranlib libhardware.a
