@@ -16,8 +16,6 @@
 
 #include "timers_config.h"
 #include "can_commands.h"
-#include "mission_timer_config.h"
-#include "settings_mem.h"
 
 #include "board_data.h"
 
@@ -33,14 +31,10 @@ static void on_init(void *arg) {
 
 static void on_idle(void *arg) {
 
+    sys_timer_stop(TIMER_BUZZER);
+
     // valve_close_servo(&TANWA_utility.servo_valve[0]);
     // valve_close_servo(&TANWA_utility.servo_valve[1]);
-
-    uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
-    uint8_t data_fuel[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_fuel, 1);
-    can_send_message(CAN_UTIL_SET_BUZZER_ID, data, 1);
 
     igniter_disarm(&tanwa_hardware.igniter[0]);
     igniter_disarm(&tanwa_hardware.igniter[1]);
@@ -78,21 +72,10 @@ static void on_countdown(void *arg) {
     buzzer_timer_change_period(500);
     if (sys_timer_stop(TIMER_DISCONNECT) == false) {
         ESP_LOGE(TAG, "Unable to stop disconnect timer");
-        goto abort_countdown;
     }
     ESP_LOGI(TAG, "ON COUNTDOWN");
 
-    Settings settings = settings_get_all();
-    if (liquid_ignition_test_timer_start(settings.countdownTime, settings.ignitTime) == false) {
-        ESP_LOGE(TAG, "Mission timer error");
-        goto abort_countdown;
-    }
-
     return;
-
-abort_countdown:
-    state_machine_change_to_previous_state(true);
-    sys_timer_start(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS, TIMER_TYPE_ONE_SHOT);
 }
 
 static void on_fire(void *arg) {
@@ -129,25 +112,11 @@ static void on_after_burnout(void *arg) {
 
     // valve_close_servo(&TANWA_utility.servo_valve[1]);
 
-    uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
-
     ESP_LOGI(TAG, "OXI CLOSE");
-    vTaskDelay(120 / portTICK_PERIOD_MS);
+    vTaskDelay(80 / portTICK_PERIOD_MS);
     // valve_close_servo(&TANWA_utility.servo_valve[0]);
-    uint8_t data_fuel[8] = {0};
-    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_fuel, 1);
-    ESP_LOGI(TAG, "FUEL CLOSE");
-
-    vTaskDelay(1000/ portTICK_PERIOD_MS);
-
-    uint8_t data_n2[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_CLOSE_ID, data_n2, 1);
-    ESP_LOGI(TAG, "N2 CLOSE");
 
     sd_timer_change_period(TIMER_SD_DATA_PERIOD_MS);
-
-    liquid_ignition_test_timer_stop();
 }
 
 static void on_hold(void *arg) {
@@ -179,8 +148,8 @@ static state_config_t states_cfg[] = {
     {ARMED_TO_LAUNCH, on_armed_to_launch, NULL},
     {RDY_TO_LAUNCH, on_ready_to_lauch, NULL},
     {COUNTDOWN, on_countdown, NULL},
-    {FIRE, on_fire, NULL},
-    {AFTER_BURNOUT, on_after_burnout, NULL},
+    {FLIGHT, on_fire, NULL},
+    {ON_GROUND, on_after_burnout, NULL},
     {HOLD, on_hold, NULL},
     {ABORT, on_abort, NULL},
 };
@@ -223,7 +192,7 @@ void get_state_text(int32_t state, char *text) {
         case COUNTDOWN:
             strcpy(text, "COUNTDOWN");
             break;
-        case FIRE:
+        case FLIGHT:
             strcpy(text, "FIRE");
             break;
         // case FIRST_STAGE_RECOVERY:
@@ -232,7 +201,7 @@ void get_state_text(int32_t state, char *text) {
         // case SECOND_STAGE_RECOVERY:
         //     strcpy(text, "SECOND_STAGE_RECOVERY");
         //     break;
-        case AFTER_BURNOUT:
+        case ON_GROUND:
             strcpy(text, "AFTER_BURNOUT");
             break;
         case HOLD:

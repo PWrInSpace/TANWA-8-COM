@@ -58,7 +58,7 @@ void on_after_burnout_timer(void *arg){
     // Handle the after burnout event
     ESP_LOGW(TAG, "AFTER BURNOUT EVENT");
     // Handle the after burnout event
-    state_machine_force_change_state(AFTER_BURNOUT);
+    //state_machine_force_change_state(AFTER_BURNOUT);
 }
 
 void on_ignition_timer(void *arg){
@@ -96,31 +96,7 @@ void on_ignition_timer(void *arg){
 
 void on_burn_timer(void *arg){
     // Handle the burn event
-    ESP_LOGW(TAG, "BURN EVENT");
-
-    settings_read_all();
-
-    Settings settings = settings_get_all();
-
-    // valve_move_angle_servo(&(TANWA_utility.servo_valve[1]), settings.oxidizer_valve_initial_angle)
-
-    ESP_LOGI(TAG, "OXI OPEN FULL");
-    uint8_t data_oxi[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_OPEN_ID, data_oxi, 1);
-    
-    if(settings.fuel_full_open_time_ms + settings.oxidizer_full_open_time_ms + settings.fuel_open_time_ms == 0){
-        // valve_open_servo(&(TANWA_utility.servo_valve[0]));
-        uint8_t data_fuel[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-        can_send_message(CAN_SOL_SERVO_OPEN_ID, data_fuel, 1);
-    }
-    else{
-        if(!sys_timer_start(TIMER_FUEL_FULL, settings.fuel_full_open_time_ms + settings.oxidizer_full_open_time_ms + settings.fuel_open_time_ms, TIMER_TYPE_ONE_SHOT)){
-            ESP_LOGE(TAG, "Error starting timer");
-        }
-    }
-
-    // Handle the burn event
-    state_machine_force_change_state(FIRE);
+    //state_machine_force_change_state(FIRE);
 }
 
 static void on_fuel_initial(void *arg) {
