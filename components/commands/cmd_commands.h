@@ -15,6 +15,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 #define LORA_DEV_ID_ALL 0x00
 #define LORA_DEV_ID_ALL_SUDO 0x01
@@ -32,29 +33,8 @@ typedef enum {
     CMD_HOLD_OUT = 0x03,
     CMD_LORA_TRANSMIT_F = 0x10,
     CMD_LORA_TRANSMIT_T = 0x11,
-    CMD_COUNTDOWN = 0x12,
-    CMD_IGNITERS_TIME = 0x13,
-    CMD_FLASH = 0x14,
     CMD_SEND_SETTINGS = 0x15,
-    CMD_RESET_ERRORS = 0x16,
-    CMD_FLASH_FORMAT = 0x17,
-    CMD_FUEL_INIT_TIME = 0x18,
-    CMD_FUEL_FULL_TIME = 0x19,
-    CMD_OXI_FULL_TIME = 0x20,
-    CMD_OXI_INIT_ANGLE = 0x21,
-    CMD_FUEL_INIT_ANGLE = 0x22,
-
     CMD_RESET = 0x80,
-
-    CMD_DISCONNECT_TIMER = 0xFF,
-
-    CMD_FUEL_CLOSE = 0x23,
-    CMD_FUEL_OPEN = 0x24,
-    CMD_FUEL_OPEN_TIME = 0x25,
-    CMD_OXI_CLOSE = 0x26,
-    CMD_OXI_OPEN = 0x27,
-    CMD_OXI_OPEN_TIME= 0x28,
-
     CMD_SOFT_ARM = 0x29,
     CMD_SOFT_DISARM = 0x30,
     CMD_RESTART_WEIGHT = 0x31,
@@ -82,18 +62,9 @@ typedef enum {
     CMD_N2_DEPR_OPEN = 0x53,
     CMD_N2_DEPR_CLOSE = 0x54,
     CMD_N2_DEPR_OPEN_TIME = 0x55,
-    CMD_N2O_VENT_OPEN = 0x56,
-    CMD_N2O_VENT_CLOSE = 0x57,
-    CMD_N2O_VENT_OPEN_TIME = 0x58,
-    CMD_ETH_VENT_OPEN = 0x59,
-    CMD_ETH_VENT_CLOSE = 0x60,
-    CMD_ETH_VENT_OPEN_TIME = 0x61,
-    CMD_N2_VENT_OPEN = 0x62,
-    CMD_N2_VENT_CLOSE = 0x63,
-    CMD_N2_VENT_OPEN_TIME = 0x64,
-    CMD_N2_MAIN_OPEN = 0x65,
-    CMD_N2_MAIN_CLOSE = 0x66,
-    CMD_N2_MAIN_OPEN_TIME = 0x67,
+    CMD_FIRE = 0x60, //FIREBALL, DOO DOO DOO DOO DO DOO (FIREBALL) ~PITBULL 2k10
+    CMD_VENT_OPEN = 0x70,
+    CMD_VENT_CLOSE = 0x71,
 
 } cmd_command_t;
 
@@ -153,5 +124,11 @@ void tanwa_depr_time(uint32_t open_time);
 ///===-----------------------------------------------------------------------------------------===//
 
 bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload);
+
+///===-----------------------------------------------------------------------------------------===//
+/// ENS message switch
+///===-----------------------------------------------------------------------------------------===//
+
+void ens_command_parsing(uint8_t* buffer, size_t len);
 
 #endif /* PWRINSPACE_TANWA_NOW_COMMANDS_H_ */

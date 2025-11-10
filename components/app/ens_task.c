@@ -16,7 +16,7 @@ static struct {
     QueueHandle_t rx_queue;
     SemaphoreHandle_t sleep_lock;
     SemaphoreHandle_t interval_mutex;
-    uint8_t tx_buffer[MAX_DATA_LENGTH];
+    uint8_t tx_buffer[MAX_TX_BUFFER_SIZE];
     size_t tx_data_size;
 
     on_data_rx _on_data_rx;
@@ -70,7 +70,7 @@ ens_status_t ens_init(ens_init_struct_t *init_struct, uint16_t transmit_periods[
         return ENS_QUEUE_ERR;
     }
 
-    xTaskCreatePinnedToCore(sub_task, "ens_sub_task", 4096, NULL, 5, &gb.sub_task_handle, 0);
+    xTaskCreatePinnedToCore(sub_task, "ens_sub_task", 4096, NULL, 5, &gb.sub_task_handle, 1);
 
     return ENS_OK;
 
@@ -165,11 +165,13 @@ static void send_packet(){
 
     if(gb._data_to_transmit != NULL){
 
-        gb._data_to_transmit(gb.tx_buffer, MAX_DATA_LENGTH, &gb.tx_data_size);
+        gb.tx_data_size = 0;
+
+        gb._data_to_transmit(gb.tx_buffer, MAX_TX_BUFFER_SIZE, &gb.tx_data_size);
     }
 
-    if(gb.tx_data_size <= MAX_DATA_LENGTH && gb.tx_data_size > 0){
-        
+    if(gb.tx_data_size <= MAX_TX_BUFFER_SIZE && gb.tx_data_size > 0){
+        ESP_LOGI(TAG, "Sending data to OBC, size: %d", gb.tx_data_size);
         send_data(get_obc_mac_address(), gb.tx_buffer, gb.tx_data_size);
     }
 }
@@ -178,7 +180,7 @@ static void send_packet(){
 
 static void manage_recieved_data(ens_recv_cb_data_t *recv_data){
 
-    if(is_broadcast(recv_data->dest_mac)){
+    if(is_broadcast(recv_data->dest_mac) && recv_data->data_size == STATE_MSG_SIZE){
 
         set_mission_state(recv_data); 
         // ESP_LOGI(TAG, "Received broadcast message from %02x:%02x:%02x:%02x:%02x:%02x",
@@ -227,6 +229,6 @@ static void sub_task(void *pvParameters){
             ens_go_to_sleep(temp_interval_ms);
         }
 
-        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(50));
     }
 }

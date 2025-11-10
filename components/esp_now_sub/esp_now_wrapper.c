@@ -8,8 +8,11 @@
 #include "esp_wifi.h"
 #include "esp_event.h"
 #include "esp_sleep.h"
+#include "esp_log.h"
 
 #include "ens_config.h"
+
+#define TAG "ESP_NOW_WRAPPER"
 
 static struct {
     QueueHandle_t send_cb_queue;
@@ -79,6 +82,15 @@ ens_status_t _esp_now_init(ens_init_struct_t *init_struct, uint16_t transmit_per
         return ENS_ESP_NOW_ERR;
     }
 
+    esp_now_peer_info_t peer_info = {0};
+    memcpy(peer_info.peer_addr, get_obc_mac_address(), ESP_NOW_ETH_ALEN);
+    peer_info.channel = 0;
+    peer_info.encrypt = false;
+    if(esp_now_add_peer(&peer_info) != ESP_OK){
+        return ENS_ESP_NOW_ERR;
+    }
+
+
     return ENS_OK;
 }
 
@@ -136,7 +148,8 @@ ens_status_t get_recieved_data(ens_recv_cb_data_t *recv_data){
 
 ens_status_t send_data(uint8_t *dest_mac, uint8_t *data, int len){
 
-    if(dest_mac == NULL || data == NULL || len == 0 || len > MAX_DATA_LENGTH){
+    if(dest_mac == NULL || data == NULL || len == 0 || len > MAX_TX_BUFFER_SIZE){
+        ESP_LOGE(TAG, "send_data: Invalid arguments");
         return ENS_NULL_ERR;
     }
 

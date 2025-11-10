@@ -24,9 +24,8 @@
 ///===-----------------------------------------------------------------------------------------===//
 
 typedef struct {
-    uint8_t state;
-    uint64_t uptime;
-    uint64_t engine_work_time; // in seconds, time of engine work since last reset
+
+    uint8_t state; // Current state of the rocket
     // COM
     com_data_t com_data;
     can_connected_slaves_t can_connected_slaves;

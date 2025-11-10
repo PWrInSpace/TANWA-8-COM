@@ -6,6 +6,8 @@
 
 #include "ens_logic.h"
 
+#include "state_machine.h"
+
 #define TAG "ENS_LOGIC"
 
 #define INIT_FUNC_ARRAY_SIZE 8
@@ -177,11 +179,13 @@ inline bool is_broadcast(const uint8_t *mac){
 
 void set_mission_state(ens_recv_cb_data_t *recv_data){
 
-    if(recv_data->data_size == STATE_MSG_SIZE && recv_data->cmd.raw[0] < ENS_ENUM_MAX){
+    if(recv_data->data_size == STATE_MSG_SIZE && recv_data->cmd.raw[0] < ENS_ENUM_MAX && recv_data->cmd.raw[0] != gb.current_mission_state){
 
         ESP_LOGI(TAG, "Setting mission state to %d", recv_data->cmd.raw[0]);
 
         gb.current_mission_state = recv_data->cmd.raw[0];
+
+        state_machine_change_state(gb.current_mission_state);
     }
 }
 
@@ -192,6 +196,6 @@ static inline bool is_addressed_to_me(const uint8_t *mac){
 
 inline bool is_cmd_msg(ens_recv_cb_data_t *recv_data){
 
-    return is_addressed_to_me(recv_data->dest_mac);
+    return is_addressed_to_me(recv_data->dest_mac) && recv_data->data_size == CMD_MSG_SIZE;
 }
 

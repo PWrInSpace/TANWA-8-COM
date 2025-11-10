@@ -32,13 +32,13 @@
 #include "ens_task.h"
 #include "sd_task.h"
 #include "state_machine_config.h"
-#include "mission_timer_config.h"
 #include "lora_task.h"
 #include "board_data.h"
 #include "system_timer.h"
 #include "timers_config.h"
 #include "relay_driver.h"
-#include "settings_mem.h"
+#include "cmd_commands.h"
+#include "ens_struct.h"
 
 #define TAG "BOARD_CONFIG"
 
@@ -133,38 +133,81 @@ void _data_to_transmit(uint8_t *buffer, size_t buffer_size, size_t *tx_data_size
 
     tanwa_data_t tanwa_data = tanwa_data_read();
 
+    data_to_obc_t data_to_obc;
+
+    data_to_obc.vbat = tanwa_data.can_power_data.voltage_12V;
+    data_to_obc.tanWaState = tanwa_data.state;
+    data_to_obc.thrust_val = tanwa_data.can_weight_data.ads1_weight2;
+    data_to_obc.tankWeight_val = tanwa_data.can_weight_data.ads1_weight3;
+    data_to_obc.temperature_postFill = tanwa_data.can_sensor_temp_data.temperature1;
+    data_to_obc.temperature_Wall = tanwa_data.can_sensor_temp_data.temperature2;
+    data_to_obc.postFillN2_pres = tanwa_data.can_sensor_pressure_data.pressure1;
+    data_to_obc.droidN2_press = tanwa_data.can_sensor_pressure_data.pressure2;
+    data_to_obc.droidN2O_press = tanwa_data.can_sensor_pressure_data.pressure3;
+    data_to_obc.combChamber_pres = tanwa_data.can_sensor_pressure_data.pressure4;
+    data_to_obc.cutoffN2O_pres = tanwa_data.can_sensor_pressure_data.pressure5;
+    data_to_obc.postRegulatorN2_pres = tanwa_data.can_sensor_pressure_data.pressure6;
+    data_to_obc.preRegulatorN2_pres = tanwa_data.can_sensor_pressure_data.pressure7;
+    data_to_obc.postFillN2O_pres = tanwa_data.can_sensor_pressure_data.pressure8;
+    data_to_obc.soft_arm = tanwa_data.com_data.arm_state;
+    data_to_obc.canWeighta_con = tanwa_data.can_connected_slaves.weights;
+    data_to_obc.canSensor_con = tanwa_data.can_connected_slaves.sensor;
+    data_to_obc.canSolenoid_con = tanwa_data.can_connected_slaves.solenoid;
+    data_to_obc.canUtility_con = tanwa_data.can_connected_slaves.utility;
+    data_to_obc.canPower_con = tanwa_data.can_connected_slaves.power;
+    data_to_obc.igniterContinouity_1 = tanwa_data.com_data.igniter_cont_1;
+    data_to_obc.igniterContinouity_2 = tanwa_data.com_data.igniter_cont_2;
+    data_to_obc.fillN2OState = tanwa_data.can_solenoid_data.state_sol1;
+    data_to_obc.deprN2OState = tanwa_data.can_solenoid_data.state_sol2;
+    data_to_obc.fillN2State = tanwa_data.can_solenoid_data.state_sol3;
+    data_to_obc.deprN2State = tanwa_data.can_solenoid_data.state_sol4;
+    data_to_obc.droidN2OState = tanwa_data.can_solenoid_data.state_sol5;
+    data_to_obc.droidN2State = tanwa_data.can_solenoid_data.state_sol6;
+    relay_driver_state_t vent_state;
+    relay_get_state(&(tanwa_hardware.relay[0]), &vent_state);
+    data_to_obc.heatingTankState = vent_state == RELAY_OFF; //VENT
+    data_to_obc.heatingValveState = tanwa_data.com_data.relay_state2;
+    data_to_obc.abortButton = tanwa_data.com_data.abort_button;
+
     if (buffer == NULL || tx_data_size == NULL) {
         ESP_LOGE(TAG, "Buffer or tx_data_size is NULL");
         return;
     }
 
-    memcpy(buffer, &tanwa_data, sizeof(tanwa_data_t));
-    *tx_data_size = sizeof(tanwa_data_t);
+    if(buffer_size < sizeof(data_to_obc_t)) {
+        ESP_LOGE(TAG, "Buffer size is too small. Required: %d, Provided: %d", sizeof(data_to_obc_t), buffer_size);
+        return;
+    }
 
-}
+    memcpy(buffer, &data_to_obc, sizeof(data_to_obc_t));
+    *tx_data_size = sizeof(data_to_obc_t);
+} 
 
 ens_init_struct_t ens_init_struct = {
     ._data_to_transmit = _data_to_transmit, // Set to NULL for now, will be set later
-    ._on_data_rx = NULL, // Set to NULL for now, will be set later
+    ._on_data_rx = ens_command_parsing, // Set to NULL for now, will be set later
     .disable_sleep = false,
     .tx_nack_timeout_ms = 1000, // Default timeout for NACK
     .dev_mac_address = {0x80, 0x08, 0x50, 0x80, 0x08, 0x50}// Default MAC
 };
 
 uint16_t ens_periods[ENS_ENUM_MAX] = {
-    [INIT_MS] = 200, // 1 second
-    [IDLE_MS] = 200, // 1 second
-    [ARMED_MS] = 150, // 1 second
-    [FILLING_MS] = 150, // 1 second
-    [ARMED_TO_LAUNCH_MS] = 150, // 1 second
-    [RDY_TO_LAUNCH_MS] = 100, // 1 second
-    [COUNTDOWN_MS] = 75, // 500 ms
-    [FLIGHT_MS] = 75, // 1 second
-    [FIRST_STAGE_MS] = 100, // 1 second
-    [SECOND_STAGE_MS] = 150, // 1 second
+    [INIT_MS] = 1000, // 1 second
+    [IDLE_MS] = 500, // 1 second
+    [ARMED_MS] = 300, // 1 second
+    [FILLING_MS] = 300, // 1 second
+    [PRESSURIZING_MS] = 300, // 1 second
+    [ARMED_TO_LAUNCH_MS] = 200, // 1 second
+    [RDY_TO_LAUNCH_MS] = 200, // 1 second
+    [COUNTDOWN_MS] = 100, // 500 ms
+    [LIFT_OFF_MS] = 50, // 1 second
+    [BURN_MS] = 200, // 1 second
+    [FLIGHT_MS] = 500, // 1 second
+    [FIRST_STAGE_MS] = 500, // 1 second
+    [SECOND_STAGE_MS] = 500, // 1 second
     [ON_GROUND_MS] = 1000, // 1 second
     [HOLD_MS] = 500, // 1 second
-    [ABORT_MS] = 200, // 1 second
+    [ABORT_MS] = 500, // 1 second
     [SLEEP_MS] = 15000, // 15 seconds
 };
 
@@ -219,7 +262,7 @@ esp_err_t board_config_init(void) {
         ESP_LOGI(TAG, "Relay driver initialized");
     }
 
-    relay_open(&tanwa_hardware.relay[0]);
+    relay_open(&(tanwa_hardware.relay[0])); //VENT
 
     uint8_t ret = 0;
 
@@ -262,29 +305,6 @@ esp_err_t board_config_init(void) {
         
     }
 
-    ESP_LOGI(TAG, "Initializing settings...");
-
-    ret |= settings_init();
-
-    if (ret != ESP_OK) {
-        ESP_LOGE(TAG, "Settings initialization failed");
-    } else {
-        ESP_LOGI(TAG, "Settings initialized");
-    }
-
-    settings_init_default();
-
-    settings_read_all();
-    Settings settings = settings_get_all();
-
-    ESP_LOGI(TAG, "Initializing mission timer... JEBAC KURWY Z ZARZADU");
-
-    if (!liquid_ignition_test_timer_init(settings.countdownTime)) {
-        ESP_LOGE(TAG, "Mission timer initialization failed");
-    } else {
-        ESP_LOGI(TAG, "### Mission timer initialization success ###");
-    }
-
     if(ens_init(&ens_init_struct, ens_periods) != ENS_OK) {
         ESP_LOGE(TAG, "ENS initialization failed");
     } else {
@@ -298,7 +318,6 @@ esp_err_t board_config_init(void) {
     } else {
         ESP_LOGI(TAG, "### Shared memory initialization success ###");
     }
-
 
     if (!initialize_timers()) {
         ESP_LOGE(TAG, "Timers initialization failed");
@@ -335,17 +354,7 @@ esp_err_t board_config_init(void) {
         ESP_LOGI(TAG, "SD CARD | Timer started");
     }
 
-    if(!sys_timer_start(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS, TIMER_TYPE_ONE_SHOT)) {
-        ESP_LOGE(TAG, "DISCONNECT | Timer start failed");
-    } else {
-        ESP_LOGI(TAG, "DISCONNECT | Timer started");
-    }
-
-    state_machine_change_state(IDLE);
-    //led_state_display_state_update(&led_state_display, LED_STATE_DISPLAY_STATE_IDLE);
-    //*********** ADD HARDWARE CONFIGURATION HERE ***********//
-
-    
+    state_machine_change_state(IDLE);    
 
     err = console_config_init();
 
@@ -370,4 +379,23 @@ esp_err_t tanwa_read_i_sense(float *i_sense) {
     }
 
     return ESP_OK;
+}
+
+void buzzer_change_period(uint16_t period_ms){
+    uint8_t data[8] = {0};
+    data[0] = 1;
+
+    if(period_ms == 0){
+        return;
+    }
+
+    memcpy(&data[1], &period_ms, sizeof(uint16_t));
+
+    can_send_message(CAN_UTIL_CHANGE_BUZZER_STATE_ID, data, 3);
+}
+
+void buzzer_stop(void){
+    uint8_t data[8] = {0};
+    data[0] = 0;
+    can_send_message(CAN_UTIL_CHANGE_BUZZER_STATE_ID, data, 3);
 }

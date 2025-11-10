@@ -43,5 +43,7 @@ extern uint16_t ens_periods[ENS_ENUM_MAX];
 
 esp_err_t board_config_init(void);
 esp_err_t tanwa_read_i_sense(float *i_sense);
+void buzzer_change_period(uint16_t period_ms);
+void buzzer_stop(void);
 
 #endif /* PWRINSPACE_BOARD_CONFIG_H */

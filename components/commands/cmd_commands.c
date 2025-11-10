@@ -11,6 +11,7 @@
 
 #include "state_machine_config.h"
 #include "board_config.h"
+#include "ens_config.h"
 
 #include "lora_task.h"
 
@@ -19,8 +20,6 @@
 
 #include "timers_config.h"
 #include "system_timer.h"
-#include "settings_mem.h"
-#include "mission_timer_config.h"
 #include "relay_driver.h"
 
 #include "board_data.h"
@@ -42,15 +41,12 @@ void tanwa_state_change(int32_t state) {
 
 void tanwa_abort(void) {
     state_t curr_state = state_machine_get_current_state();
-    state_t prev_state = state_machine_get_previous_state();
+
     if (curr_state == ABORT) {
         ESP_LOGW(TAG, "SM | Already in ABORT state");
         return;
     }
-    if (curr_state > COUNTDOWN && curr_state < HOLD) {
-        ESP_LOGW(TAG, "SM | Abort not possible in FLIGHT");
-        return;
-    }
+
     state_machine_status_t sm_status = state_machine_force_change_state(ABORT);
     if (sm_status != STATE_MACHINE_OK) {
         ESP_LOGE(TAG, "SM | State force ABORT error | %d", (uint8_t)sm_status);
@@ -58,8 +54,9 @@ void tanwa_abort(void) {
 }
 
 void tanwa_hold_in(void) {
+
     state_t curr_state = state_machine_get_current_state();
-    state_t prev_state = state_machine_get_previous_state();
+
     if (curr_state == HOLD) {
         ESP_LOGW(TAG, "SM | Already in HOLD state");
         return;
@@ -79,8 +76,10 @@ void tanwa_hold_in(void) {
 }
 
 void tanwa_hold_out(void) {
+
     state_t curr_state = state_machine_get_current_state();
     state_t prev_state = state_machine_get_previous_state();
+
     if (curr_state != HOLD) {
         ESP_LOGW(TAG, "SM | Not in HOLD state");
         return;
@@ -160,21 +159,31 @@ void tanwa_soft_disarm(void) {
 }
 
 void tanwa_fire(void) {
-    igniter_status_t ign_status = IGNITER_OK;
-    ign_status = igniter_fire(&(tanwa_hardware.igniter[0]));
-    if (ign_status != IGNITER_OK) {
-        ESP_LOGE(TAG, "IGN | Igniter fire error | %d", ign_status);
-    }
-    ign_status = igniter_fire(&(tanwa_hardware.igniter[1]));
-    if (ign_status != IGNITER_OK) {
-        ESP_LOGE(TAG, "IGN | Igniter fire error | %d", ign_status);
+
+    if(tanwa_hardware.igniter[0].state != IGNITER_STATE_ARMED || tanwa_hardware.igniter[1].state != IGNITER_STATE_ARMED){
+        ESP_LOGE(TAG, "Igniters not armed");
+        return;
     }
 
-    if(ign_status == IGNITER_OK){
-        com_data_t data = tanwa_data_read_com_data();
-        data.arm_state = false;
-        tanwa_data_update_com_data(&data);
+    if(igniter_fire(&tanwa_hardware.igniter[0]) == IGNITER_OK){
+        ESP_LOGI(TAG, "Igniter 1 fired");
+    } else {
+        ESP_LOGE(TAG, "Failed to fire igniter 1");
     }
+
+    if(igniter_fire(&tanwa_hardware.igniter[1]) == IGNITER_OK){
+        ESP_LOGI(TAG, "Igniter 2 fired");
+    } else {
+        ESP_LOGE(TAG, "Failed to fire igniter 2");
+    }
+
+    sys_timer_start(TIMER_IGNITION_OFF, IGNITION_OFF_TIMER, TIMER_TYPE_ONE_SHOT);
+
+    uint16_t measure_time = 120;
+
+    uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+    memcpy(&data[1], &measure_time, sizeof(uint16_t));
+    can_send_message(CAN_WEIGHTS_START_MEASURE_ID, data, 3);
 }
 
 void tanwa_soft_restart_esp(void) {
@@ -308,92 +317,11 @@ void tanwa_heating_valve_stop(void) {
     }
 }
 
-void tanwa_vent(uint8_t valve_state) {
-    if (valve_state == CMD_VALVE_OPEN) {
-        relay_open(&(tanwa_hardware.relay[0]));
-    } else if (valve_state == CMD_VALVE_CLOSE) {
-        relay_close(&(tanwa_hardware.relay[0]));
-    } else {
-        ESP_LOGE(TAG, "Invalid depr valve state");
-    }
-}
-
-void tanwa_eth_vent(uint8_t valve_state) {
-    if (valve_state == CMD_VALVE_OPEN) {
-        relay_open(&(tanwa_hardware.relay[1]));
-    } else if (valve_state == CMD_VALVE_CLOSE) {
-        relay_close(&(tanwa_hardware.relay[1]));
-    } else {
-        ESP_LOGE(TAG, "Invalid depr valve state");
-    }
-}
-
-void tanwa_n2_vent(uint8_t valve_state) {
-    if (valve_state == CMD_VALVE_OPEN) {
-        relay_open(&(tanwa_hardware.relay[2]));
-    } else if (valve_state == CMD_VALVE_CLOSE) {
-        relay_close(&(tanwa_hardware.relay[2]));
-    } else {
-        ESP_LOGE(TAG, "Invalid depr valve state");
-    }
-}
-
-void tanwa_vent_time(uint32_t open_time) {
-    // uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-    // uint16_t open_time_scaled = (uint16_t)open_time;
-    // memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
-    // can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
-
-    uint16_t open_time_scaled = (uint16_t)open_time;
-    relay_close(&(tanwa_hardware.relay[0]));
-    vTaskDelay(open_time / portTICK_PERIOD_MS);
-    relay_open(&(tanwa_hardware.relay[0]));
-    ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
-
-    // relay_time_open(&(tanwa_hardware.relay[0]), open_time);
-    // ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
-
-}
-
-void tanwa_eth_vent_time(uint32_t open_time) {
-    // uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-    // uint16_t open_time_scaled = (uint16_t)open_time;
-    // memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
-    // can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
-
-    uint16_t open_time_scaled = (uint16_t)open_time;
-    // relay_close(&(tanwa_hardware.relay[1]));
-    // vTaskDelay(open_time / portTICK_PERIOD_MS);
-    // relay_open(&(tanwa_hardware.relay[1]));
-    // ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
-    relay_time_open(&(tanwa_hardware.relay[1]), open_time);
-    ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
-}
-
-void tanwa_n2_vent_time(uint32_t open_time) {
-    // uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-    // uint16_t open_time_scaled = (uint16_t)open_time;
-    // memcpy(&data[1], &open_time_scaled, sizeof(uint16_t));
-    // can_send_message(CAN_SOL_OPEN_SOL_ID, data, 3);
-
-    uint16_t open_time_scaled = (uint16_t)open_time;
-    // relay_close(&(tanwa_hardware.relay[2]));
-    // vTaskDelay(open_time / portTICK_PERIOD_MS);
-    // relay_open(&(tanwa_hardware.relay[2]));
-    // ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
-
-    relay_time_open(&(tanwa_hardware.relay[2]), open_time);
-    ESP_LOGI(TAG, "VENT OPENED FOR %d ms", open_time);
-}
-
 bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
 
     ESP_LOGI(TAG, "LORA | Command parsing | ID: %d, CMD: %d, PAYLOAD: %d", lora_id, command, payload);
     if (lora_id == LORA_DEV_ID_ALL || lora_id == LORA_DEV_ID_ALL_SUDO || 
         lora_id == LORA_DEV_ID_TANWA || lora_id == LORA_DEV_ID_TANWA_SUDO) { 
-
-        settings_read_all();
-        Settings settings = settings_get_all();
 
         // Check if the command is for this device
         ESP_LOGI(TAG, "LORA | Command for TANWA");
@@ -432,35 +360,13 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 //lora_change_period(payload);
                 break;
             }
-            case CMD_COUNTDOWN: {
-                ESP_LOGI(TAG, "LORA | Countdown");
-                settings.countdownTime = payload;
-                settings_save(SETTINGS_COUNTDOWN_TIME, settings.countdownTime);
-                liquid_ignition_test_timer_set_disable_val(settings.countdownTime);
-                break;
-            }
             case CMD_SEND_SETTINGS: {
                 ESP_LOGI(TAG, "LORA | Send settings");
-                break;
-            }
-            case CMD_RESET_ERRORS: {
-                ESP_LOGI(TAG, "LORA | Reset errors");
-                break;
-            }
-            case CMD_FLASH_FORMAT: {
-                ESP_LOGI(TAG, "LORA | Flash format");
                 break;
             }
             case CMD_RESET: {
                 ESP_LOGI(TAG, "LORA | Reset");
                 esp_restart();
-                break;
-            }
-            case CMD_DISCONNECT_TIMER: {
-                ESP_LOGI(TAG, "LORA | Disconnect timer");
-                if(!sys_timer_restart(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS)) {
-                    ESP_LOGE(TAG, "LORA | Unable to restart timer");
-                }
                 break;
             }
             case CMD_SOFT_ARM: {
@@ -598,109 +504,9 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 tanwa_heating_valve_stop();
                 break;
             }
-            case CMD_N2O_VENT_OPEN: {
-                ESP_LOGI(TAG, "LORA | Vent open");
-                tanwa_vent(CMD_VALVE_CLOSE);
-                break;
-            }
-            case CMD_N2O_VENT_CLOSE: {
-                ESP_LOGI(TAG, "LORA | Vent close");
-                tanwa_vent(CMD_VALVE_OPEN);
-                break;
-            }
-            case CMD_N2O_VENT_OPEN_TIME: {
-                ESP_LOGI(TAG, "LORA | Vent open time");
-                tanwa_vent_time((uint32_t)payload);
-                break;
-            }
-            case CMD_ETH_VENT_OPEN: {
-                ESP_LOGI(TAG, "LORA | Vent open");
-                tanwa_eth_vent(CMD_VALVE_OPEN);
-                break;
-            }
-            case CMD_ETH_VENT_CLOSE: {
-                ESP_LOGI(TAG, "LORA | Vent close");
-                tanwa_eth_vent(CMD_VALVE_CLOSE);
-                break;
-            }
-            case CMD_ETH_VENT_OPEN_TIME: {
-                ESP_LOGI(TAG, "LORA | Vent open time");
-                tanwa_eth_vent_time((uint32_t)payload);
-                break;
-            }
-            case CMD_N2_VENT_OPEN: {
-                ESP_LOGI(TAG, "LORA | Vent open");
-                tanwa_n2_vent(CMD_VALVE_OPEN);
-                break;
-            }
-            case CMD_N2_VENT_CLOSE: {
-                ESP_LOGI(TAG, "LORA | Vent close");
-                tanwa_n2_vent(CMD_VALVE_CLOSE);
-                break;
-            }
-            case CMD_N2_VENT_OPEN_TIME: {
-                ESP_LOGI(TAG, "LORA | Vent open time");
-                tanwa_n2_vent_time((uint32_t)payload);
-                break;
-            }
-            case CMD_FUEL_OPEN: {
-                ESP_LOGI(TAG, "LORA | Fuel open");
-                uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
-                break;
-            }
-            case CMD_FUEL_CLOSE: {
-                ESP_LOGI(TAG, "LORA | Fuel close");
-                uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-                can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
-                break;
-            }
-            case CMD_OXI_OPEN: {
-                ESP_LOGI(TAG, "LORA | Oxidizer open");
-                uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
-                break;
-            }
-            case CMD_OXI_CLOSE: {
-                ESP_LOGI(TAG, "LORA | Oxidizer close");
-                uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-                can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
-                break;
-            }
-            case CMD_OXI_OPEN_TIME: {
-                ESP_LOGI(TAG, "LORA | Oxidizer open time");
-                uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-                uint16_t time = (uint16_t)payload;
-                memcpy(&data[1], &time, sizeof(uint16_t));
-                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 3);
-                break;
-            }
-            case CMD_FUEL_OPEN_TIME: {
-                ESP_LOGI(TAG, "LORA | Fuel open time");
-                uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-                uint16_t time = (uint16_t)payload;
-                memcpy(&data[1], &time, sizeof(uint16_t));
-                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 3);
-                break;
-            }
-            case CMD_N2_MAIN_OPEN: {
-                ESP_LOGI(TAG, "LORA | N2 Main open");
-                uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
-                break;
-            }
-            case CMD_N2_MAIN_CLOSE: {
-                ESP_LOGI(TAG, "LORA | N2 Main close");
-                uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-                can_send_message(CAN_SOL_SERVO_CLOSE_ID, data, 1);
-                break;
-            }
-            case CMD_N2_MAIN_OPEN_TIME: {
-                ESP_LOGI(TAG, "LORA | N2 Main open time");
-                uint8_t data[8] = {2, 0, 0, 0, 0, 0, 0, 0};
-                uint16_t time = (uint16_t)payload;
-                memcpy(&data[1], &time, sizeof(uint16_t));
-                can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 3);
+            case CMD_FIRE: {
+                ESP_LOGI(TAG, "LORA | Fire igniter");
+                tanwa_fire();
                 break;
             }
             default: {
@@ -714,5 +520,243 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
     } else {
         ESP_LOGW(TAG, "LORA | Command for other device");
         return false;
+    }
+}
+
+///===-----------------------------------------------------------------------------------------===//
+
+void ens_command_parsing(uint8_t* buffer, size_t len) {
+
+    if(len != sizeof(recv_cb_cmd_t)) {
+        ESP_LOGE(TAG, "ENS | Invalid command length: %d", len);
+        return;
+    }
+
+    recv_cb_cmd_t *cmd = (recv_cb_cmd_t*)buffer;
+
+    ESP_LOGI(TAG, "ENS | Command parsing | CMD: %d, PAYLOAD: %d", cmd->cmd.command, cmd->cmd.payload);
+
+    int32_t command = cmd->cmd.command;
+    int32_t payload = cmd->cmd.payload;
+
+    switch (command) {
+        case CMD_STATE_CHANGE: {
+            ESP_LOGI(TAG, "ESP_NOW | State change | %d", payload);
+            state_t state = (state_t) payload;
+            char state_text[20];
+            get_state_text(state, state_text);
+            ESP_LOGI(TAG, "ESP_NOW | State change | %s", state_text);
+            tanwa_state_change(payload);
+            break;
+        }
+        case CMD_ABORT: {
+            ESP_LOGI(TAG, "ESP_NOW | Abort");
+            tanwa_abort();
+            break;
+        }
+        case CMD_HOLD_IN: {
+            ESP_LOGI(TAG, "ESP_NOW | Hold in");
+            tanwa_hold_in();
+            break;
+        }
+        case CMD_HOLD_OUT: {
+            ESP_LOGI(TAG, "ESP_NOW | Hold out");
+            tanwa_hold_out();
+            break;
+        }
+        case CMD_LORA_TRANSMIT_F: {
+            ESP_LOGI(TAG, "ESP_NOW | Transmit F");
+            lora_change_frequency(payload);
+            break;
+        }
+        case CMD_LORA_TRANSMIT_T: {
+            ESP_LOGI(TAG, "ESP_NOW | Transmit P");
+            //lora_change_period(payload);
+            break;
+        }
+        case CMD_SEND_SETTINGS: {
+            ESP_LOGI(TAG, "ESP_NOW | Send settings");
+            break;
+        }
+        case CMD_RESET: {
+            ESP_LOGI(TAG, "ESP_NOW | Reset");
+            esp_restart();
+            break;
+        }
+        case CMD_SOFT_ARM: {
+            ESP_LOGI(TAG, "ESP_NOW | Soft arm");
+            tanwa_soft_arm();
+            break;
+        }
+        case CMD_SOFT_DISARM: {
+            ESP_LOGI(TAG, "ESP_NOW | Soft disarm");
+            tanwa_soft_disarm();
+            break;
+        }
+        case CMD_RESTART_WEIGHT: {
+            ESP_LOGI(TAG, "ESP_NOW | Restart RCK");
+            tanwa_soft_restart_rck();
+            break;
+        }
+        case CMD_CALIBRATE_WEIGHT: {
+            ESP_LOGI(TAG, "ESP_NOW | Calibrate RCK");
+            //tanwa_calibrate_weight((float)payload);
+            break;
+        }
+        case CMD_TARE_WEIGHT: {
+            ESP_LOGI(TAG, "ESP_NOW | Tare RCK");
+            tanwa_tare_weight();
+            break;
+        }
+        case CMD_SET_CAL_FACTOR_WEIGHT: {
+            ESP_LOGI(TAG, "ESP_NOW | Set cal factor RCK");
+            //tanwa_set_cal_factor_weight((float)payload);
+            break;
+        }
+        case CMD_SET_OFFSET_WEIGHT: {
+            ESP_LOGI(TAG, "ESP_NOW | Set offset RCK");
+            tanwa_set_offset_weight((float)payload);
+            break;
+        }
+        case CMD_N2O_FILL_OPEN: {
+            ESP_LOGI(TAG, "ESP_NOW | Fill open");
+            tanwa_fill(CMD_VALVE_OPEN);
+            break;
+        }
+        case CMD_N2O_FILL_CLOSE: {
+            ESP_LOGI(TAG, "ESP_NOW | Fill close");
+            tanwa_fill(CMD_VALVE_CLOSE);
+            break;
+        }
+        case CMD_N2O_FILL_OPEN_TIME: {
+            ESP_LOGI(TAG, "ESP_NOW | Fill open time");
+            tanwa_fill_time((uint32_t)payload);
+            break;
+        }
+        case CMD_N2_FILL_OPEN: {
+            ESP_LOGI(TAG, "ESP_NOW | Fill open");
+            tanwa_fill_n2(CMD_VALVE_OPEN);
+            break;
+        }
+        case CMD_N2_FILL_CLOSE: {
+            ESP_LOGI(TAG, "ESP_NOW | Fill close");
+            tanwa_fill_n2(CMD_VALVE_CLOSE);
+            break;
+        }
+        case CMD_N2_FILL_OPEN_TIME: {
+            ESP_LOGI(TAG, "ESP_NOW | Fill open time");
+            tanwa_fill_n2_time((uint32_t)payload);
+            break;
+        }
+        case CMD_N2O_DEPR_OPEN: {
+            ESP_LOGI(TAG, "ESP_NOW | Depr open");
+            tanwa_depr(CMD_VALVE_OPEN);
+            break;
+        }
+        case CMD_N2O_DEPR_CLOSE: {
+            ESP_LOGI(TAG, "ESP_NOW | Depr close");
+            tanwa_depr(CMD_VALVE_CLOSE);
+            break;
+        }
+        case CMD_N2O_DEPR_OPEN_TIME: {
+            ESP_LOGI(TAG, "ESP_NOW | Depr open time");
+            tanwa_depr_time((uint32_t)payload);
+            break;
+        }
+        case CMD_N2_DEPR_OPEN: {
+            ESP_LOGI(TAG, "ESP_NOW | Depr open");
+            tanwa_depr_n2(CMD_VALVE_OPEN);
+            break;
+        }
+        case CMD_N2_DEPR_CLOSE: {
+            ESP_LOGI(TAG, "ESP_NOW | Depr close");
+            tanwa_depr_n2(CMD_VALVE_CLOSE);
+            break;
+        }
+        case CMD_N2_DEPR_OPEN_TIME: {
+            ESP_LOGI(TAG, "ESP_NOW | Depr open time");
+            tanwa_depr_n2_time((uint32_t)payload);
+            break;
+        }
+        case CMD_QD_N2O_UNPLUG: {
+            ESP_LOGI(TAG, "ESP_NOW | QD N2O unplug");
+            tanwa_qd_n2o(CMD_QD_UNPLUG);
+            break;
+        }
+        case CMD_QD_N2O_STOP: {
+            ESP_LOGI(TAG, "ESP_NOW | QD N2O stop");
+            tanwa_qd_n2o(CMD_QD_STOP);
+            break;
+        }
+        case CMD_QD_N2_UNPLUG: {
+            ESP_LOGI(TAG, "ESP_NOW | QD N2 unplug");
+            tanwa_qd_n2(CMD_QD_UNPLUG);
+            break;
+        }
+        case CMD_QD_N2_STOP: {
+            ESP_LOGI(TAG, "ESP_NOW | QD N2 stop");
+            tanwa_qd_n2(CMD_QD_STOP);
+            break;
+        }
+        case CMD_HEATING_TANK_START: {
+            ESP_LOGI(TAG, "ESP_NOW | Heating tank start");
+            tanwa_heating_tank_start();
+            break;
+        }
+        case CMD_HEATING_TANK_STOP: {
+            ESP_LOGI(TAG, "ESP_NOW | Heating tank stop");
+            tanwa_heating_tank_stop();
+            break;
+        }
+        case CMD_HEATING_VALVE_START: {
+            ESP_LOGI(TAG, "ESP_NOW | Heating valve start");
+            tanwa_heating_valve_start();
+            break;
+        }
+        case CMD_HEATING_VALVE_STOP: {
+            ESP_LOGI(TAG, "ESP_NOW | Heating valve stop");
+            tanwa_heating_valve_stop();
+            break;
+        }
+        case CMD_FIRE: {
+            ESP_LOGI(TAG, "ESP_NOW | Fire igniter");
+            tanwa_fire();
+            break;
+        }
+        case CMD_VENT_OPEN: {
+
+            ESP_LOGI(TAG, "ESP_NOW | Vent close");
+            relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[0]));
+            if (err != RELAY_DRIVER_OK) {
+                ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
+            }
+            break;
+        }
+        case CMD_VENT_CLOSE: {
+
+            if(cmd->cmd.payload == 0){
+                ESP_LOGI(TAG, "ESP_NOW | Vent open");
+                relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[0]));
+                if (err != RELAY_DRIVER_OK) {
+                    ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
+                }
+            } else {
+                relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[0]));
+                vTaskDelay(pdMS_TO_TICKS((uint32_t)cmd->cmd.payload));
+                err = relay_close(&(tanwa_hardware.relay[0]));
+                if (err != RELAY_DRIVER_OK) {
+                    ESP_LOGE(TAG, "Relay time open error | %d", (uint8_t)err);
+                } else {
+                    ESP_LOGI(TAG, "ESP_NOW | Vent open time %d ms", (uint32_t)cmd->cmd.payload);
+                }
+            }
+            break;
+
+        }
+        default: {
+            ESP_LOGI(TAG, "ESP_NOW command: %d", command);
+            ESP_LOGW(TAG, "ESP_NOW | Unknown command");
+            break;
+        }
     }
 }

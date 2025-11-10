@@ -15,8 +15,9 @@
 #define MIN_PERIOD_TIMEOUT 10
 
 #define STATE_MSG_SIZE 1
+#define CMD_MSG_SIZE 8
 
-#define MAX_TX_BUFFER_SIZE 250
+#define MAX_TX_BUFFER_SIZE 256
 
 #define TIMER_INIT_MS 0
 
@@ -47,9 +48,12 @@ typedef enum{
     IDLE_MS,
     ARMED_MS,
     FILLING_MS,
+    PRESSURIZING_MS,
     ARMED_TO_LAUNCH_MS,
     RDY_TO_LAUNCH_MS,
     COUNTDOWN_MS,
+    LIFT_OFF_MS,
+    BURN_MS,
     FLIGHT_MS,
     FIRST_STAGE_MS,
     SECOND_STAGE_MS,

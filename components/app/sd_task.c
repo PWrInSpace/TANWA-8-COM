@@ -341,38 +341,38 @@ static size_t convert_data_to_frame(char *buf, size_t buf_size, void* data, size
     // Create a char buffer from the data with newline ending
     size_t frame_size = 0;
     frame_size = snprintf(buf, buf_size, 
-        "%llu;%u;%llu;%lld;"\
-        "%hhu;%hhu;%f;%hhu;%hhu;"\
-        "%hhu;%hhu;%hhu;%hhu;"\
-        "%f;%f;"\
-        "%hhu;%hhu;%hhu;%hhu;%hhu;"\
-        "%hu;%hu;"\
-        "%hu;%hu;"\
-        "%hhu;%hhu;%hhu;"\
-        "%f;%f;%f;%f;"\
-        "%f;%f;%f;%f;"\
-        "%f;%f;%f;"\
-        "%hhu;%hhu;"\
-        "%hhu;%hhu;%hhu;"\
-        "%hhu;%hhu;%hhu;"\
-        "%hhu;%hhu;%hhu;"\
-        "%hhu;%hhu;%hhu;%hhu;"\
-        "%hhu;%hhu;"\
-        "%hhu;%hhu;"\
-        "%hhu;%hhu;"\
-        "%hhu;%hhu;%hhu;"\
-        "%hhu;%hhu;%hhu;"\
-        "%hhu;%hhu;"\
-        "%hhu;%hhu;"\
-        "%hhu;%hhu;"\
-        "%hhu;%hhu;"\
-        "%f;%f;"\
-        "%f;%f;"\
-        "%f;%f;"\
-        "%f;%f;"\
-        "%f;%f;"\
+        "%llu;%u;"
+        "%hhu;%hhu;%f;%hhu;%hhu;"
+        "%hhu;%hhu;%hhu;%hhu;"
+        "%f;%f;"
+        "%hhu;%hhu;%hhu;%hhu;%hhu;"
+        "%hu;%hu;"
+        "%hu;%hu;"
+        "%hhu;%hhu;%hhu;"
+        "%f;%f;%f;%f;"
+        "%f;%f;%f;%f;"
+        "%f;%f;%f;"
+        "%hhu;%hhu;"
+        "%hhu;%hhu;%hhu;"
+        "%hhu;%hhu;%hhu;"
+        "%hhu;%hhu;%hhu;"
+        "%hhu;%hhu;%hhu;%hhu;"
+        "%hhu;%hhu;"
+        "%hhu;%hhu;"
+        "%hhu;%hhu;"
+        "%hhu;%hhu;%hhu;"
+        "%hhu;%hhu;%hhu;"
+        "%hhu;%hhu;"
+        "%hhu;%hhu;"
+        "%hhu;%hhu;"
+        "%hhu;%hhu;"
+        "%f;%f;"
+        "%f;%f;"
+        "%f;%f;"
+        "%f;%f;"
+        "%f;%f;"
         "%hhu;%hhu;%hhu\n", 
-        timestamp, tanwa_data->state, tanwa_data->uptime, tanwa_data->engine_work_time, 
+        timestamp, tanwa_data->state,
         tanwa_data->com_data.abort_button, tanwa_data->com_data.arm_state, tanwa_data->com_data.i_sense, tanwa_data->com_data.igniter_cont_1, tanwa_data->com_data.igniter_cont_2, 
         tanwa_data->com_data.relay_state1, tanwa_data->com_data.relay_state2, tanwa_data->com_data.relay_state3, tanwa_data->com_data.relay_state4,
         tanwa_data->com_data.temperature_1, tanwa_data->com_data.temperature_2,

@@ -53,13 +53,3 @@ message LoRaCommand {
     uint32 command = 3;
     int32 payload = 4;
 }
-
-message LoRaSettings{
-    // Settings frame
-    int32 lora_freq_khz = 1;
-    int32 lora_transmit_ms = 2;
-    int32 countdown_time = 3;
-    int32 ingition_time = 4;
-    uint32 flash_enable = 5;
-    uint32 buzzer_enable = 6;
-}
