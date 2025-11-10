@@ -39,7 +39,7 @@ esp-idf/can/CMakeFiles/__idf_can.dir/can_api.c.obj: /home/alaive/Pulpit/PWrInSpa
   /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/syslimits.h \
   config/sdkconfig.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h \
-  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
+  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h \
   /home/alaive/esp/esp-idf/components/driver/twai/include/driver/twai.h \
   /home/alaive/esp/esp-idf/components/esp_common/include/esp_assert.h \
   /home/alaive/esp/esp-idf/components/esp_common/include/esp_attr.h \
@@ -217,8 +217,6 @@ esp-idf/can/CMakeFiles/__idf_can.dir/can_api.c.obj: /home/alaive/Pulpit/PWrInSpa
 
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/strings.h:
 
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/machine/_types.h:
-
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/_locale.h:
 
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/stdio.h:
@@ -281,6 +279,14 @@ esp-idf/can/CMakeFiles/__idf_can.dir/can_api.c.obj: /home/alaive/Pulpit/PWrInSpa
 
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/stdio.h:
 
+/home/alaive/esp/esp-idf/components/xtensa/include/xtensa_context.h:
+
+/home/alaive/esp/esp-idf/components/freertos/config/include/freertos/FreeRTOSConfig.h:
+
+/home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:
+
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/string.h:
+
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/syslimits.h:
 
 /home/alaive/esp/esp-idf/components/xtensa/include/xtensa/hal.h:
@@ -295,15 +301,9 @@ config/sdkconfig.h:
 
 /home/alaive/esp/esp-idf/components/esp_rom/include/esp_rom_gpio.h:
 
-/home/alaive/esp/esp-idf/components/xtensa/include/xtensa_context.h:
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/machine/_types.h:
 
-/home/alaive/esp/esp-idf/components/freertos/config/include/freertos/FreeRTOSConfig.h:
-
-/home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:
-
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/string.h:
-
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h:
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h:
 
 /home/alaive/esp/esp-idf/components/esp_common/include/esp_attr.h:
 

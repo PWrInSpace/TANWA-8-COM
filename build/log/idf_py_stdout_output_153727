@@ -1,0 +1,1167 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct  4 2025 23:55:03[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=25220h (152096) map[0m
+[0;32mI (131) esp_image: segment 1: paddr=00035248 vaddr=3fc9f000 size=059a8h ( 22952) load[0m
+[0;32mI (137) esp_image: segment 2: paddr=0003abf8 vaddr=40374000 size=05420h ( 21536) load[0m
+[0;32mI (142) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a74e8h (685288) map[0m
+[0;32mI (271) esp_image: segment 4: paddr=000e7510 vaddr=40379420 size=15b8ch ( 88972) load[0m
+[0;32mI (291) esp_image: segment 5: paddr=000fd0a4 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (292) esp_image: segment 6: paddr=000fd0b0 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (308) boot: Disabling RNG early entropy source...[0m
+[0;32mI (320) cpu_start: Multicore app[0m
+[0;32mI (330) cpu_start: Pro cpu start user code[0m
+[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (330) app_init: Application information:[0m
+[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (338) app_init: App version:      599b31f-dirty[0m
+[0;32mI (343) app_init: Compile time:     Oct  5 2025 11:09:35[0m
+[0;32mI (349) app_init: ELF file SHA256:  f1000a2e0...[0m
+[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (359) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (364) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (369) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (374) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (381) heap_init: At 3FCA8C18 len 00040AF8 (258 KiB): RAM[0m
+[0;32mI (387) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (393) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (399) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (407) spi_flash: detected chip: generic[0m
+[0;32mI (410) spi_flash: flash io: dio[0m
+[0;33mW (414) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (428) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (438) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (445) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (453) main_task: Started on CPU0[0m
+[0;32mI (463) main_task: Calling app_main()[0m
+[0;32mI (463) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (463) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (473) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (483) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (493) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (503) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (513) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (523) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (533) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (543) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (553) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (563) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (583) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (593) CAN_API: TWAI driver started[0m
+[0;32mI (593) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (603) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (603) SMC: Initializing state machine[0m
+[0;32mI (613) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (623) pp: pp rom version: e7ae62f[0m
+[0;32mI (633) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (633) SMC: ON INIT[0m
+[0;32mI (633) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (643) wifi:wifi driver task: 3fcb7ec4, prio:23, stack:6656, core=0[0m
+[0;32mI (643) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (643) wifi:wifi certification version: v7.0[0m
+[0;32mI (653) wifi:config NVS flash: enabled[0m
+[0;32mI (653) wifi:config nano formating: disabled[0m
+[0;32mI (653) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (663) wifi:Init management short buffer num: 32[0m
+[0;32mI (673) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (673) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (683) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (683) wifi:Init static rx buffer num: 10[0m
+[0;32mI (683) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (693) wifi_init: rx ba win: 6[0m
+[0;32mI (693) wifi_init: accept mbox: 6[0m
+[0;32mI (693) wifi_init: tcpip mbox: 32[0m
+[0;32mI (703) wifi_init: udp mbox: 6[0m
+[0;32mI (703) wifi_init: tcp mbox: 6[0m
+[0;32mI (713) wifi_init: tcp tx win: 5760[0m
+[0;32mI (713) wifi_init: tcp rx win: 5760[0m
+[0;32mI (713) wifi_init: tcp mss: 1440[0m
+[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (723) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (733) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (773) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (773) wifi:enable tsf[0m
+[0;32mI (773) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (773) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (783) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (783) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (793) esp_timer: Task is already initialized[0m
+[0;32mI (793) TIMER: Timers number 4[0m
+[0;32mI (803) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (803) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (813) LORA_TASK: initialize_lora: lora global=0x3fc9f978, lora_api.lora=0x3fc9f978[0m
+[0;32mI (833) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (833) LORA_TASK: lora_task_init: gb=0x3fca50ec, gb.lora=0x3fc9f978, global lora=0x3fc9f978, lora._spi_transmit=0x42013410[0m
+[0;32mI (833) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (843) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (843) LORA_TASK: LoRa Task started[0m
+[0;32mI (853) BOARD_CONFIG: Initializing SD Card...[0m
+[0;32mI (853) SD_TASK: Initializing sd task[0m
+[0;32mI (863) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (873) sdspi_transaction: cmd=52, R1 response: command not supported[0m
+[0;32mI (923) sdspi_transaction: cmd=5, R1 response: command not supported[0m
+[0;32mI (943) SDCARD: SD card mounted[0m
+[0;32mI (2333) SD_TASK: Using data path /sdcard/data228.txt[0m
+[0;32mI (2333) SD_TASK: Using log path /sdcard/log0.txt[0m
+[0;32mI (2333) BOARD_CONFIG: ### SD Card initialization success ###[0m
+[0;32mI (2343) BOARD_CONFIG: SD CARD | Timer started[0m
+[0;31mE (2343) BOARD_CONFIG: DISCONNECT | Timer start failed[0m
+[0;32mI (2353) STATE_MACHINE: Changing state from 0 to 1[0m
+[0;32mI (2343) SD_TASK: RUNNING SD TASK[0m
+[5n[0;32mI (2373) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (2493) APP_TASK: App task created successfully[0m
+[6n [999C [6n [0;32mI (2633) LORA_TASK: IRQ received[0m
+[96D[0;32mtwi> [0m[0;31mE (4903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (6983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (7983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (8983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (9983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (10983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (11983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (12983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (13983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (14983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (15983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (16983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (17983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (18983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (19983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (20983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (21983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (22983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (23983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (24983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (25983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26703) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26713) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26723) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26733) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26743) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26753) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26763) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26773) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26783) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26903) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26913) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26923) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26933) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26943) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26953) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26963) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26973) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (26983) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27103) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27113) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27123) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27133) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27143) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27153) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27163) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27173) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27183) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27303) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27313) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27323) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27333) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27343) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27353) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27363) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27373) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27383) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27503) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27513) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27523) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27533) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27543) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27553) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27563) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27573) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (27583) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m

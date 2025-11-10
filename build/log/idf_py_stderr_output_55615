@@ -1,0 +1,36 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c: In function 'create_porotobuf_data_frame':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:257:18: warning: unused variable 'tanwa_data' [-Wunused-variable]
+  257 |     tanwa_data_t tanwa_data = tanwa_data_read();
+      |                  ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c: In function 'lora_create_data_packet':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:328:13: error: 'lora_api_config_t' has no member named 'frame'
+  328 |     lora_api.frame = lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
+      |             ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:330:41: error: 'lora_api_config_t' has no member named 'frame'
+  330 |     create_porotobuf_data_frame(lora_api.frame);
+      |                                         ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:341:44: error: 'lora_api_config_t' has no member named 'frame'
+  341 |     data_size = lo_ra_frame_encode(lora_api.frame, buffer + prefix_size, size - prefix_size);
+      |                                            ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c: In function 'lora_task_init':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:393:13: error: 'lora_api_config_t' has no member named 'frame'
+  393 |     lora_api.frame = lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
+      |             ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c: At top level:
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:156:13: warning: 'on_lora_transmit' defined but not used [-Wunused-function]
+  156 | static void on_lora_transmit() {
+      |             ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:144:13: warning: 'transmint_packet' defined but not used [-Wunused-function]
+  144 | static void transmint_packet(void) {
+      |             ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:98:13: warning: 'lora_change_state_to_transmit' defined but not used [-Wunused-function]
+   98 | static void lora_change_state_to_transmit() {
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:65:13: warning: 'wait_until_irq' defined but not used [-Wunused-function]
+   65 | static bool wait_until_irq(void) {
+      |             ^~~~~~~~~~~~~~
+make[3]: *** [esp-idf/app/CMakeFiles/__idf_app.dir/build.make:118: esp-idf/app/CMakeFiles/__idf_app.dir/lora_task.c.obj] Błąd 1
+make[3]: *** Oczekiwanie na niezakończone zadania....
+make[2]: *** [CMakeFiles/Makefile2:6515: esp-idf/app/CMakeFiles/__idf_app.dir/all] Błąd 2
+make[1]: *** [CMakeFiles/Makefile2:2721: CMakeFiles/flash.dir/rule] Błąd 2
+make: *** [Makefile:286: flash] Błąd 2

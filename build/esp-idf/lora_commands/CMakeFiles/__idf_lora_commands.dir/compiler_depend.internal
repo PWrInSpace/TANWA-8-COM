@@ -40,7 +40,6 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj
  /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/syslimits.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/config/sdkconfig.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.h
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h
@@ -58,8 +57,9 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/mcu_config/mcu_gpio_config.h
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/lora.pb-c.h
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/pbtools.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/relay/relay_driver.h
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/settings/settings_mem.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/state_machine/state_machine.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/timers/system_timer.h
  /home/alaive/esp/esp-idf/components/esp_common/include/esp_assert.h
@@ -79,7 +79,6 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj
  /home/alaive/esp/esp-idf/components/esp_hw_support/include/esp_intr_types.h
  /home/alaive/esp/esp-idf/components/esp_hw_support/include/esp_memory_utils.h
  /home/alaive/esp/esp-idf/components/esp_hw_support/include/spinlock.h
- /home/alaive/esp/esp-idf/components/esp_partition/include/esp_partition.h
  /home/alaive/esp/esp-idf/components/esp_rom/include/esp32s3/rom/gpio.h
  /home/alaive/esp/esp-idf/components/esp_rom/include/esp_rom_gpio.h
  /home/alaive/esp/esp-idf/components/esp_rom/include/esp_rom_sys.h
@@ -117,8 +116,6 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj
  /home/alaive/esp/esp-idf/components/newlib/platform_include/esp_newlib.h
  /home/alaive/esp/esp-idf/components/newlib/platform_include/sys/lock.h
  /home/alaive/esp/esp-idf/components/newlib/platform_include/sys/reent.h
- /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs.h
- /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs_flash.h
  /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_num.h
  /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_pins.h
  /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_reg.h

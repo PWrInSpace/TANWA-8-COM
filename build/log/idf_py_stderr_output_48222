@@ -1,0 +1,28 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.c: In function 'get_obc_mac_address':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.c:7:12: warning: return discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+    7 |     return OBC_MAC_ADDRESS;
+      |            ^~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.c: In function 'get_broadcast_mac_address':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.c:11:12: warning: return discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   11 |     return BROADCAST_MAC_ADDRESS;
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c: In function 'init_transmit_periods':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c:47:32: warning: comparison is always false due to limited range of data type [-Wtype-limits]
+   47 |         if(transmit_periods[i] > MAX_PERIOD_TIMEOUT || transmit_periods[i] < MIN_PERIOD_TIMEOUT){
+      |                                ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c: In function 'init_mission_state':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c:79:118: warning: comparison is always false due to limited range of data type [-Wtype-limits]
+   79 |     if(transmit_periods[gb.current_mission_state] < MIN_PERIOD_TIMEOUT || transmit_periods[gb.current_mission_state] > MAX_PERIOD_TIMEOUT){
+      |                                                                                                                      ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c: In function 'create_porotobuf_data_frame':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:221:18: warning: unused variable 'tanwa_data' [-Wunused-variable]
+  221 |     tanwa_data_t tanwa_data = tanwa_data_read();
+      |                  ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c: At top level:
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:66:13: warning: 'wait_until_irq' defined but not used [-Wunused-function]
+   66 | static bool wait_until_irq(void) {
+      |             ^~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c: In function 'board_config_init':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:263:13: warning: unused variable 'ret' [-Wunused-variable]
+  263 |     uint8_t ret = 0;
+      |             ^~~

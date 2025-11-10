@@ -12,7 +12,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c" "esp-idf/app/CMakeFiles/__idf_app.dir/app_task.c.obj" "gcc" "esp-idf/app/CMakeFiles/__idf_app.dir/app_task.c.obj.d"
   "/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/ens_task.c" "esp-idf/app/CMakeFiles/__idf_app.dir/ens_task.c.obj" "gcc" "esp-idf/app/CMakeFiles/__idf_app.dir/ens_task.c.obj.d"
   "/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c" "esp-idf/app/CMakeFiles/__idf_app.dir/lora_task.c.obj" "gcc" "esp-idf/app/CMakeFiles/__idf_app.dir/lora_task.c.obj.d"
-  "/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.c" "esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj" "gcc" "esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj.d"
   "/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/sd_task.c" "esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj" "gcc" "esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj.d"
   "/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/setup_task.c" "esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj" "gcc" "esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj.d"
   "/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.c" "esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj" "gcc" "esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj.d"

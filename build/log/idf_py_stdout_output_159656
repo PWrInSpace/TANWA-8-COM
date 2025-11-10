@@ -1,0 +1,394 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct  4 2025 23:55:03[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=251e0h (152032) map[0m
+[0;32mI (131) esp_image: segment 1: paddr=00035208 vaddr=3fc9f000 size=059a8h ( 22952) load[0m
+[0;32mI (137) esp_image: segment 2: paddr=0003abb8 vaddr=40374000 size=05460h ( 21600) load[0m
+[0;32mI (142) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a74c4h (685252) map[0m
+[0;32mI (271) esp_image: segment 4: paddr=000e74ec vaddr=40379460 size=15b4ch ( 88908) load[0m
+[0;32mI (291) esp_image: segment 5: paddr=000fd040 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (292) esp_image: segment 6: paddr=000fd04c vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (308) boot: Disabling RNG early entropy source...[0m
+[0;32mI (320) cpu_start: Multicore app[0m
+[0;32mI (330) cpu_start: Pro cpu start user code[0m
+[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (330) app_init: Application information:[0m
+[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (338) app_init: App version:      599b31f-dirty[0m
+[0;32mI (343) app_init: Compile time:     Oct  5 2025 11:09:35[0m
+[0;32mI (349) app_init: ELF file SHA256:  a6966fb26...[0m
+[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (359) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (364) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (369) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (374) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (381) heap_init: At 3FCA8C18 len 00040AF8 (258 KiB): RAM[0m
+[0;32mI (387) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (393) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (399) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (407) spi_flash: detected chip: generic[0m
+[0;32mI (410) spi_flash: flash io: dio[0m
+[0;33mW (414) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (428) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (438) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (445) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (453) main_task: Started on CPU0[0m
+[0;32mI (463) main_task: Calling app_main()[0m
+[0;32mI (463) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (463) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (473) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (483) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (493) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (503) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (513) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (523) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (533) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (543) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (553) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (563) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (583) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (593) CAN_API: TWAI driver started[0m
+[0;32mI (593) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (603) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (603) SMC: Initializing state machine[0m
+[0;32mI (613) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (623) pp: pp rom version: e7ae62f[0m
+[0;32mI (633) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (633) SMC: ON INIT[0m
+[0;32mI (633) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (643) wifi:wifi driver task: 3fcb7ec4, prio:23, stack:6656, core=0[0m
+[0;32mI (643) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (643) wifi:wifi certification version: v7.0[0m
+[0;32mI (653) wifi:config NVS flash: enabled[0m
+[0;32mI (653) wifi:config nano formating: disabled[0m
+[0;32mI (653) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (663) wifi:Init management short buffer num: 32[0m
+[0;32mI (673) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (673) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (683) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (683) wifi:Init static rx buffer num: 10[0m
+[0;32mI (683) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (693) wifi_init: rx ba win: 6[0m
+[0;32mI (693) wifi_init: accept mbox: 6[0m
+[0;32mI (693) wifi_init: tcpip mbox: 32[0m
+[0;32mI (703) wifi_init: udp mbox: 6[0m
+[0;32mI (703) wifi_init: tcp mbox: 6[0m
+[0;32mI (713) wifi_init: tcp tx win: 5760[0m
+[0;32mI (713) wifi_init: tcp rx win: 5760[0m
+[0;32mI (713) wifi_init: tcp mss: 1440[0m
+[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (723) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (733) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (773) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (773) wifi:enable tsf[0m
+[0;32mI (783) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (783) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (783) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (783) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (793) esp_timer: Task is already initialized[0m
+[0;32mI (803) TIMER: Timers number 4[0m
+[0;32mI (803) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (813) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (813) LORA_TASK: initialize_lora: lora global=0x3fc9f978, lora_api.lora=0x3fc9f978[0m
+[0;32mI (833) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (833) LORA_TASK: lora_task_init: gb=0x3fca50ec, gb.lora=0x3fc9f978, global lora=0x3fc9f978, lora._spi_transmit=0x420133ec[0m
+[0;32mI (843) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (843) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (843) LORA_TASK: LoRa Task started[0m
+[0;32mI (853) BOARD_CONFIG: Initializing SD Card...[0m
+[0;32mI (863) SD_TASK: Initializing sd task[0m
+[0;32mI (863) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (873) sdspi_transaction: cmd=52, R1 response: command CRC error[0m
+[0;32mI (923) sdspi_transaction: cmd=5, R1 response: command not supported[0m
+[0;32mI (943) SDCARD: SD card mounted[0m
+[0;32mI (2383) SD_TASK: Using data path /sdcard/data229.txt[0m
+[0;32mI (2383) SD_TASK: Using log path /sdcard/log0.txt[0m
+[0;32mI (2383) BOARD_CONFIG: ### SD Card initialization success ###[0m
+[0;32mI (2393) BOARD_CONFIG: SD CARD | Timer started[0m
+[0;31mE (2393) BOARD_CONFIG: DISCONNECT | Timer start failed[0m
+[0;32mI (2403) STATE_MACHINE: Changing state from 0 to 1[0m
+[0;32mI (2393) SD_TASK: RUNNING SD TASK[0m
+[5n[0;32mI (2423) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (2503) APP_TASK: App task created successfully[0m
+[6n [0;32mI (2633) LORA_TASK: IRQ received[0m
+[999C [6n [96D[0;32mtwi> [0mt supported[0m
+[0;32mI (933) SDCARD: SD card mounted[0m
+[0;32mI (1213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (1723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (2233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (2393) SD_TASK: Using data path /sdcard/data230.txt[0m
+[0;32mI (2393) SD_TASK: Using log path /sdcard/log0.txt[0m
+[0;32mI (2393) BOARD_CONFIG: ### SD Card initialization success ###[0m
+[0;32mI (2393) BOARD_CONFIG: SD CARD | Timer started[0m
+[0;31mE (2403) BOARD_CONFIG: DISCONNECT | Timer start failed[0m
+[0;32mI (2403) STATE_MACHINE: Changing state from 0 to 1[0m
+[0;32mI (2403) SD_TASK: RUNNING SD TASK[0m
+[5n[0;32mI (2433) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (2533) APP_TASK: App task created successfully[0m
+[6n [0;32mI (2633) LORA_TASK: IRQ received[0m
+[999C [6n [0;32mI (2713) ENS_LOGIC: Setting mission state to 1[0m
+[96D[0;32mtwi> [0m[0;32mI (3223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (3733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (4213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (4723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (5233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (5733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (6213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (6723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (7233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (7733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (8213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (8723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (9233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (9713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (10223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (10733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (11213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (11723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (12233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (12713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (13223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (13733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (14243) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (14713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (15733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (16213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (16723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (17233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (17733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (18213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (18723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (19233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (19713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (20733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (21233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (22223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (22733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (23213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (23723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (24233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (24733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (25213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (25723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (26233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (26713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (27223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (27733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (28213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (28723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (29233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (29733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (30213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (30723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (31233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (31713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (32223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (32733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (33233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (33713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (34223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (34733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (35213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (35723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (36233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (36713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (37223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (37733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (38233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (38713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (39223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (39733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (40213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (40723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (41233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (42223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (42733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (43213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (43723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (44233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (44733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (45213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (45723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (46233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (46733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (47223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (47723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (48233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (48733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (49213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (49723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (50233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (50713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (51223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (51733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (52213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (52723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (53233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (53713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (54223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (54733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (55233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (55713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (56223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (56733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (57213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (57723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (58233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (58713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (59223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (59733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (60233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (60713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (61223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (61733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (62213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (62723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (63233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (63733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (64213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (64723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (65233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (65713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (66223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (66733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (67213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (67723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (68233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (68713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (69733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (70213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (70723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (71233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (71713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (72223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (72733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (73213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (73723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (74233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (74733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (75213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (75723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (76233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (76713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (77223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (77733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (78213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (78723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (79233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (79713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (80223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (80733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (81233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (81713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (82223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (82733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (83233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (83713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (84223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (84733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (85213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (85723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (86233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (86713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (87223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (87733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (88213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (88723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (89233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (89733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (90213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (90723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (91233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (91713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (92223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (92733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (93233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (93713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (94223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (94733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (95213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (95723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (96233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (96743) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (97213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (97723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (98233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (98723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (99223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (99733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (100213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (100723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (101233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (101733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (102213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (102723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (103233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (103713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (104223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (104733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (105213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (105723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (106233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (106743) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (107213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (107723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (108233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (108723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (109223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (109733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (110243) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (110713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (111223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (111733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (112213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (112723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (113233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (113723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (114223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (114733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (115243) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (115713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (116223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (116733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (117233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (117713) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (118223) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (118733) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (119213) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (119723) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (120233) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (120713) ENS_LOGIC: Setting mission state to 1[0m

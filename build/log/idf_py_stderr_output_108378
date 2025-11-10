@@ -1,0 +1,11 @@
+CMake Error at /home/alaive/esp/esp-idf/tools/cmake/build.cmake:298 (message):
+  Failed to resolve component 'settings'.
+Call Stack (most recent call first):
+  /home/alaive/esp/esp-idf/tools/cmake/build.cmake:334 (__build_resolve_and_add_req)
+  /home/alaive/esp/esp-idf/tools/cmake/build.cmake:335 (__build_expand_requirements)
+  /home/alaive/esp/esp-idf/tools/cmake/build.cmake:637 (__build_expand_requirements)
+  /home/alaive/esp/esp-idf/tools/cmake/project.cmake:718 (idf_build_process)
+  CMakeLists.txt:6 (project)
+
+
+make: *** [Makefile:2314: cmake_check_build_system] Błąd 1

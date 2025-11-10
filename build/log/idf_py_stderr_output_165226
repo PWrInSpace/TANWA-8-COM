@@ -1,0 +1,78 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.c: In function 'get_obc_mac_address':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.c:7:12: warning: return discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+    7 |     return OBC_MAC_ADDRESS;
+      |            ^~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.c: In function 'get_broadcast_mac_address':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.c:11:12: warning: return discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   11 |     return BROADCAST_MAC_ADDRESS;
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c: In function 'init_transmit_periods':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c:47:32: warning: comparison is always false due to limited range of data type [-Wtype-limits]
+   47 |         if(transmit_periods[i] > MAX_PERIOD_TIMEOUT || transmit_periods[i] < MIN_PERIOD_TIMEOUT){
+      |                                ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c: In function 'init_mission_state':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c:79:118: warning: comparison is always false due to limited range of data type [-Wtype-limits]
+   79 |     if(transmit_periods[gb.current_mission_state] < MIN_PERIOD_TIMEOUT || transmit_periods[gb.current_mission_state] > MAX_PERIOD_TIMEOUT){
+      |                                                                                                                      ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c: In function 'app_task':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c:97:22: warning: unused variable 'tanwa_data' [-Wunused-variable]
+   97 |         tanwa_data_t tanwa_data = tanwa_data_read();
+      |                      ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c:75:16: warning: variable 'local_freq' set but not used [-Wunused-but-set-variable]
+   75 |     TickType_t local_freq;
+      |                ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.c:101:13: warning: 'on_ground' defined but not used [-Wunused-function]
+  101 | static void on_ground(void *arg) {
+      |             ^~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/sd_task.c: In function 'convert_data_to_frame':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/sd_task.c:340:19: warning: unused variable 'tanwa_data' [-Wunused-variable]
+  340 |     tanwa_data_t* tanwa_data = (tanwa_data_t*)(((uint8_t*)(data)) + sizeof(uint64_t));
+      |                   ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/sd_task.c:339:14: warning: unused variable 'timestamp' [-Wunused-variable]
+  339 |     uint64_t timestamp = *(uint64_t*)data;
+      |              ^~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c: In function 'create_porotobuf_data_frame':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:266:18: warning: unused variable 'tanwa_data' [-Wunused-variable]
+  266 |     tanwa_data_t tanwa_data = tanwa_data_read();
+      |                  ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c: At top level:
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:165:13: warning: 'on_lora_transmit' defined but not used [-Wunused-function]
+  165 | static void on_lora_transmit() {
+      |             ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:153:13: warning: 'transmint_packet' defined but not used [-Wunused-function]
+  153 | static void transmint_packet(void) {
+      |             ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:100:13: warning: 'lora_change_state_to_transmit' defined but not used [-Wunused-function]
+  100 | static void lora_change_state_to_transmit() {
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c:65:13: warning: 'wait_until_irq' defined but not used [-Wunused-function]
+   65 | static bool wait_until_irq(void) {
+      |             ^~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c: In function 'board_config_init':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:224:13: warning: unused variable 'ret' [-Wunused-variable]
+  224 |     uint8_t ret = 0;
+      |             ^~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'tanwa_abort':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:44:13: warning: unused variable 'prev_state' [-Wunused-variable]
+   44 |     state_t prev_state = state_machine_get_previous_state();
+      |             ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'tanwa_hold_in':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:61:13: warning: unused variable 'prev_state' [-Wunused-variable]
+   61 |     state_t prev_state = state_machine_get_previous_state();
+      |             ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'tanwa_vent_time':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:346:14: warning: unused variable 'open_time_scaled' [-Wunused-variable]
+  346 |     uint16_t open_time_scaled = (uint16_t)open_time;
+      |              ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'tanwa_eth_vent_time':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:363:14: warning: unused variable 'open_time_scaled' [-Wunused-variable]
+  363 |     uint16_t open_time_scaled = (uint16_t)open_time;
+      |              ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'tanwa_n2_vent_time':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:378:14: warning: unused variable 'open_time_scaled' [-Wunused-variable]
+  378 |     uint16_t open_time_scaled = (uint16_t)open_time;
+      |              ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.c: In function 'lora_send_packet':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.c:294:12: warning: unused variable 'read_reg' [-Wunused-variable]
+  294 |     int8_t read_reg = lora_read_reg(lora,REG_IRQ_FLAGS);
+      |            ^~~~~~~~

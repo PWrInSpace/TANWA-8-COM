@@ -108,12 +108,12 @@ esp-idf/app/CMakeFiles/__idf_app.dir/lora_task.c.obj: \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/stream_buffer.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/event_groups.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/timers.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/lora.pb-c.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/pbtools.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portmacro.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/projdefs.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/timers.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/lora.pb-c.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/pbtools.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/hardware/led_driver.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/hardware/igniter_driver.h \

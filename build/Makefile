@@ -1982,6 +1982,19 @@ __idf_timers/fast:
 .PHONY : __idf_timers/fast
 
 #=============================================================================
+# Target rules for targets named __idf_state_machine
+
+# Build rule for target.
+__idf_state_machine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_state_machine
+.PHONY : __idf_state_machine
+
+# fast build rule for target.
+__idf_state_machine/fast:
+	$(MAKE) $(MAKESILENT) -f esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build.make esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build
+.PHONY : __idf_state_machine/fast
+
+#=============================================================================
 # Target rules for targets named __idf_esp_now_sub
 
 # Build rule for target.
@@ -2008,30 +2021,30 @@ __idf_relay/fast:
 .PHONY : __idf_relay/fast
 
 #=============================================================================
-# Target rules for targets named __idf_settings
+# Target rules for targets named __idf_lora
 
 # Build rule for target.
-__idf_settings: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_settings
-.PHONY : __idf_settings
+__idf_lora: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_lora
+.PHONY : __idf_lora
 
 # fast build rule for target.
-__idf_settings/fast:
-	$(MAKE) $(MAKESILENT) -f esp-idf/settings/CMakeFiles/__idf_settings.dir/build.make esp-idf/settings/CMakeFiles/__idf_settings.dir/build
-.PHONY : __idf_settings/fast
+__idf_lora/fast:
+	$(MAKE) $(MAKESILENT) -f esp-idf/lora/CMakeFiles/__idf_lora.dir/build.make esp-idf/lora/CMakeFiles/__idf_lora.dir/build
+.PHONY : __idf_lora/fast
 
 #=============================================================================
-# Target rules for targets named __idf_state_machine
+# Target rules for targets named __idf_commands
 
 # Build rule for target.
-__idf_state_machine: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_state_machine
-.PHONY : __idf_state_machine
+__idf_commands: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_commands
+.PHONY : __idf_commands
 
 # fast build rule for target.
-__idf_state_machine/fast:
-	$(MAKE) $(MAKESILENT) -f esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build.make esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build
-.PHONY : __idf_state_machine/fast
+__idf_commands/fast:
+	$(MAKE) $(MAKESILENT) -f esp-idf/commands/CMakeFiles/__idf_commands.dir/build.make esp-idf/commands/CMakeFiles/__idf_commands.dir/build
+.PHONY : __idf_commands/fast
 
 #=============================================================================
 # Target rules for targets named __idf_config
@@ -2045,19 +2058,6 @@ __idf_config: cmake_check_build_system
 __idf_config/fast:
 	$(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/build
 .PHONY : __idf_config/fast
-
-#=============================================================================
-# Target rules for targets named __idf_lora
-
-# Build rule for target.
-__idf_lora: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_lora
-.PHONY : __idf_lora
-
-# fast build rule for target.
-__idf_lora/fast:
-	$(MAKE) $(MAKESILENT) -f esp-idf/lora/CMakeFiles/__idf_lora.dir/build.make esp-idf/lora/CMakeFiles/__idf_lora.dir/build
-.PHONY : __idf_lora/fast
 
 #=============================================================================
 # Target rules for targets named __idf_sd_card
@@ -2084,19 +2084,6 @@ __idf_proto: cmake_check_build_system
 __idf_proto/fast:
 	$(MAKE) $(MAKESILENT) -f esp-idf/proto/CMakeFiles/__idf_proto.dir/build.make esp-idf/proto/CMakeFiles/__idf_proto.dir/build
 .PHONY : __idf_proto/fast
-
-#=============================================================================
-# Target rules for targets named __idf_lora_commands
-
-# Build rule for target.
-__idf_lora_commands: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 __idf_lora_commands
-.PHONY : __idf_lora_commands
-
-# fast build rule for target.
-__idf_lora_commands/fast:
-	$(MAKE) $(MAKESILENT) -f esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/build.make esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/build
-.PHONY : __idf_lora_commands/fast
 
 #=============================================================================
 # Target rules for targets named __idf_app
@@ -2199,6 +2186,7 @@ help:
 	@echo "... __idf_can"
 	@echo "... __idf_cli"
 	@echo "... __idf_cmock"
+	@echo "... __idf_commands"
 	@echo "... __idf_config"
 	@echo "... __idf_console"
 	@echo "... __idf_cxx"
@@ -2260,7 +2248,6 @@ help:
 	@echo "... __idf_json"
 	@echo "... __idf_log"
 	@echo "... __idf_lora"
-	@echo "... __idf_lora_commands"
 	@echo "... __idf_lwip"
 	@echo "... __idf_main"
 	@echo "... __idf_mbedtls"
@@ -2277,7 +2264,6 @@ help:
 	@echo "... __idf_relay"
 	@echo "... __idf_sd_card"
 	@echo "... __idf_sdmmc"
-	@echo "... __idf_settings"
 	@echo "... __idf_soc"
 	@echo "... __idf_spi_flash"
 	@echo "... __idf_spiffs"

@@ -211,15 +211,14 @@ esp-idf/all: esp-idf/can/all
 esp-idf/all: esp-idf/cli/all
 esp-idf/all: esp-idf/data/all
 esp-idf/all: esp-idf/timers/all
+esp-idf/all: esp-idf/state_machine/all
 esp-idf/all: esp-idf/esp_now_sub/all
 esp-idf/all: esp-idf/relay/all
-esp-idf/all: esp-idf/settings/all
-esp-idf/all: esp-idf/state_machine/all
-esp-idf/all: esp-idf/config/all
 esp-idf/all: esp-idf/lora/all
+esp-idf/all: esp-idf/commands/all
+esp-idf/all: esp-idf/config/all
 esp-idf/all: esp-idf/sd_card/all
 esp-idf/all: esp-idf/proto/all
-esp-idf/all: esp-idf/lora_commands/all
 esp-idf/all: esp-idf/app/all
 .PHONY : esp-idf/all
 
@@ -332,15 +331,14 @@ esp-idf/preinstall: esp-idf/can/preinstall
 esp-idf/preinstall: esp-idf/cli/preinstall
 esp-idf/preinstall: esp-idf/data/preinstall
 esp-idf/preinstall: esp-idf/timers/preinstall
+esp-idf/preinstall: esp-idf/state_machine/preinstall
 esp-idf/preinstall: esp-idf/esp_now_sub/preinstall
 esp-idf/preinstall: esp-idf/relay/preinstall
-esp-idf/preinstall: esp-idf/settings/preinstall
-esp-idf/preinstall: esp-idf/state_machine/preinstall
-esp-idf/preinstall: esp-idf/config/preinstall
 esp-idf/preinstall: esp-idf/lora/preinstall
+esp-idf/preinstall: esp-idf/commands/preinstall
+esp-idf/preinstall: esp-idf/config/preinstall
 esp-idf/preinstall: esp-idf/sd_card/preinstall
 esp-idf/preinstall: esp-idf/proto/preinstall
-esp-idf/preinstall: esp-idf/lora_commands/preinstall
 esp-idf/preinstall: esp-idf/app/preinstall
 .PHONY : esp-idf/preinstall
 
@@ -453,15 +451,14 @@ esp-idf/clean: esp-idf/can/clean
 esp-idf/clean: esp-idf/cli/clean
 esp-idf/clean: esp-idf/data/clean
 esp-idf/clean: esp-idf/timers/clean
+esp-idf/clean: esp-idf/state_machine/clean
 esp-idf/clean: esp-idf/esp_now_sub/clean
 esp-idf/clean: esp-idf/relay/clean
-esp-idf/clean: esp-idf/settings/clean
-esp-idf/clean: esp-idf/state_machine/clean
-esp-idf/clean: esp-idf/config/clean
 esp-idf/clean: esp-idf/lora/clean
+esp-idf/clean: esp-idf/commands/clean
+esp-idf/clean: esp-idf/config/clean
 esp-idf/clean: esp-idf/sd_card/clean
 esp-idf/clean: esp-idf/proto/clean
-esp-idf/clean: esp-idf/lora_commands/clean
 esp-idf/clean: esp-idf/app/clean
 .PHONY : esp-idf/clean
 
@@ -601,6 +598,21 @@ esp-idf/cmock/preinstall:
 # Recursive "clean" directory target.
 esp-idf/cmock/clean: esp-idf/cmock/CMakeFiles/__idf_cmock.dir/clean
 .PHONY : esp-idf/cmock/clean
+
+#=============================================================================
+# Directory level rules for directory esp-idf/commands
+
+# Recursive "all" directory target.
+esp-idf/commands/all: esp-idf/commands/CMakeFiles/__idf_commands.dir/all
+.PHONY : esp-idf/commands/all
+
+# Recursive "preinstall" directory target.
+esp-idf/commands/preinstall:
+.PHONY : esp-idf/commands/preinstall
+
+# Recursive "clean" directory target.
+esp-idf/commands/clean: esp-idf/commands/CMakeFiles/__idf_commands.dir/clean
+.PHONY : esp-idf/commands/clean
 
 #=============================================================================
 # Directory level rules for directory esp-idf/config
@@ -1794,21 +1806,6 @@ esp-idf/lora/clean: esp-idf/lora/CMakeFiles/__idf_lora.dir/clean
 .PHONY : esp-idf/lora/clean
 
 #=============================================================================
-# Directory level rules for directory esp-idf/lora_commands
-
-# Recursive "all" directory target.
-esp-idf/lora_commands/all: esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/all
-.PHONY : esp-idf/lora_commands/all
-
-# Recursive "preinstall" directory target.
-esp-idf/lora_commands/preinstall:
-.PHONY : esp-idf/lora_commands/preinstall
-
-# Recursive "clean" directory target.
-esp-idf/lora_commands/clean: esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/clean
-.PHONY : esp-idf/lora_commands/clean
-
-#=============================================================================
 # Directory level rules for directory esp-idf/lwip
 
 # Recursive "all" directory target.
@@ -2226,21 +2223,6 @@ esp-idf/sdmmc/preinstall:
 # Recursive "clean" directory target.
 esp-idf/sdmmc/clean: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/clean
 .PHONY : esp-idf/sdmmc/clean
-
-#=============================================================================
-# Directory level rules for directory esp-idf/settings
-
-# Recursive "all" directory target.
-esp-idf/settings/all: esp-idf/settings/CMakeFiles/__idf_settings.dir/all
-.PHONY : esp-idf/settings/all
-
-# Recursive "preinstall" directory target.
-esp-idf/settings/preinstall:
-.PHONY : esp-idf/settings/preinstall
-
-# Recursive "clean" directory target.
-esp-idf/settings/clean: esp-idf/settings/CMakeFiles/__idf_settings.dir/clean
-.PHONY : esp-idf/settings/clean
 
 #=============================================================================
 # Directory level rules for directory esp-idf/soc
@@ -2819,10 +2801,9 @@ CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/can/CMakeFiles/__idf_can.dir/all
 CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/cli/CMakeFiles/__idf_cli.dir/all
 CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/data/CMakeFiles/__idf_data.dir/all
 CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/timers/CMakeFiles/__idf_timers.dir/all
+CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all
 CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/relay/CMakeFiles/__idf_relay.dir/all
-CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/settings/CMakeFiles/__idf_settings.dir/all
-CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir/all
 CMakeFiles/TANWA-8-COM.elf.dir/all: esp-idf/proto/CMakeFiles/__idf_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TANWA-8-COM.elf.dir/build.make CMakeFiles/TANWA-8-COM.elf.dir/depend
@@ -3067,7 +3048,7 @@ esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all: esp-idf/esp_driver_gpio/CMakeFil
 
 # Build rule for subdir invocation for target.
 esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/rule
@@ -3093,7 +3074,7 @@ esp-idf/esp_driver_gpio/CMakeFiles/__idf_esp_driver_gpio.dir/all: esp-idf/esp_pm
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_gpio/CMakeFiles/__idf_esp_driver_gpio.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 74
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 78
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_gpio/CMakeFiles/__idf_esp_driver_gpio.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_gpio/CMakeFiles/__idf_esp_driver_gpio.dir/rule
@@ -3119,7 +3100,7 @@ esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/all: esp-idf/mbedtls/CMakeFiles/__idf
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 74
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 78
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_pm/CMakeFiles/__idf_esp_pm.dir/rule
@@ -3145,7 +3126,7 @@ esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/all: esp-idf/mbedtls/mbedtls/3rdpar
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 74
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 78
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/CMakeFiles/__idf_mbedtls.dir/rule
@@ -3223,7 +3204,7 @@ esp-idf/mbedtls/mbedtls/3rdparty/everest/CMakeFiles/everest.dir/all: esp-idf/mbe
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/3rdparty/everest/CMakeFiles/everest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 74
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 78
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/3rdparty/everest/CMakeFiles/everest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/3rdparty/everest/CMakeFiles/everest.dir/rule
@@ -3249,7 +3230,7 @@ esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/all: esp-idf/mbedtl
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 74
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 78
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/3rdparty/p256-m/CMakeFiles/p256m.dir/rule
@@ -3275,7 +3256,7 @@ esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/all: esp-idf/mbedtls/m
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 74
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 78
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/rule
@@ -3301,7 +3282,7 @@ esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/all: esp-idf/mbedtls/mbe
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 64
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 68
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedx509.dir/rule
@@ -3327,7 +3308,7 @@ esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/all: esp-idf/esp_app_form
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 63
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 67
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedtls.dir/rule
@@ -3353,7 +3334,7 @@ esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/all: esp-idf/xtensa/CMakeFile
 
 # Build rule for subdir invocation for target.
 esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mbedtls/mbedtls/library/CMakeFiles/lib.dir/rule
@@ -3661,12 +3642,12 @@ esp-idf/partition_table/CMakeFiles/partition_table-flash.dir/clean:
 esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/all: esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/build.make esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/build.make esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=11 "Built target __idf_esp_app_format"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_app_format"
 .PHONY : esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 61
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 65
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/rule
@@ -3692,7 +3673,7 @@ esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/all: es
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 60
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 65
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_bootloader_format/CMakeFiles/__idf_esp_bootloader_format.dir/rule
@@ -3718,7 +3699,7 @@ esp-idf/app_update/CMakeFiles/__idf_app_update.dir/all: esp-idf/esp_partition/CM
 
 # Build rule for subdir invocation for target.
 esp-idf/app_update/CMakeFiles/__idf_app_update.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 60
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 65
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/app_update/CMakeFiles/__idf_app_update.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/app_update/CMakeFiles/__idf_app_update.dir/rule
@@ -3744,7 +3725,7 @@ esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/all: esp-idf/efuse/CMak
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 60
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 65
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_partition/CMakeFiles/__idf_esp_partition.dir/rule
@@ -3770,7 +3751,7 @@ esp-idf/efuse/CMakeFiles/__idf_efuse.dir/all: esp-idf/bootloader_support/CMakeFi
 
 # Build rule for subdir invocation for target.
 esp-idf/efuse/CMakeFiles/__idf_efuse.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 60
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 65
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/efuse/CMakeFiles/__idf_efuse.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/efuse/CMakeFiles/__idf_efuse.dir/rule
@@ -3978,7 +3959,7 @@ esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/all: esp-idf/
 
 # Build rule for subdir invocation for target.
 esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 59
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 64
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/bootloader_support/CMakeFiles/__idf_bootloader_support.dir/rule
@@ -4004,7 +3985,7 @@ esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/all: esp-idf/spi_flash/CMakeFiles/__i
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 57
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 62
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_mm/CMakeFiles/__idf_esp_mm.dir/rule
@@ -4030,7 +4011,7 @@ esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/all: esp-idf/esp_system/CMakeFi
 
 # Build rule for subdir invocation for target.
 esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 56
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 61
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/rule
@@ -4051,12 +4032,12 @@ esp-idf/spi_flash/CMakeFiles/__idf_spi_flash.dir/clean:
 esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/all: esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build.make esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=32,33,34,35 "Built target __idf_esp_system"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=33,34,35 "Built target __idf_esp_system"
 .PHONY : esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 54
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 59
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_system/CMakeFiles/__idf_esp_system.dir/rule
@@ -4156,10 +4137,9 @@ esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/can/CM
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/cli/CMakeFiles/__idf_cli.dir/all
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/data/CMakeFiles/__idf_data.dir/all
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/timers/CMakeFiles/__idf_timers.dir/all
+esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/relay/CMakeFiles/__idf_relay.dir/all
-esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/settings/CMakeFiles/__idf_settings.dir/all
-esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir/all
 esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/all: esp-idf/proto/CMakeFiles/__idf_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/build.make esp-idf/esp_system/CMakeFiles/__ldgen_output_sections.ld.dir/depend
@@ -4195,7 +4175,7 @@ esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/all: esp-idf/esp_rom/CMakeFil
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 50
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 56
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/rule
@@ -4216,12 +4196,12 @@ esp-idf/esp_common/CMakeFiles/__idf_esp_common.dir/clean:
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/all: esp-idf/hal/CMakeFiles/__idf_hal.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/build.make esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/build.make esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=31 "Built target __idf_esp_rom"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=32 "Built target __idf_esp_rom"
 .PHONY : esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 50
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 56
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/rule
@@ -4242,12 +4222,12 @@ esp-idf/esp_rom/CMakeFiles/__idf_esp_rom.dir/clean:
 esp-idf/hal/CMakeFiles/__idf_hal.dir/all: esp-idf/log/CMakeFiles/__idf_log.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/hal/CMakeFiles/__idf_hal.dir/build.make esp-idf/hal/CMakeFiles/__idf_hal.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/hal/CMakeFiles/__idf_hal.dir/build.make esp-idf/hal/CMakeFiles/__idf_hal.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=41,42,43,44,45 "Built target __idf_hal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=42,43,44,45,46 "Built target __idf_hal"
 .PHONY : esp-idf/hal/CMakeFiles/__idf_hal.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/hal/CMakeFiles/__idf_hal.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 55
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/hal/CMakeFiles/__idf_hal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/hal/CMakeFiles/__idf_hal.dir/rule
@@ -4273,7 +4253,7 @@ esp-idf/log/CMakeFiles/__idf_log.dir/all: esp-idf/heap/CMakeFiles/__idf_heap.dir
 
 # Build rule for subdir invocation for target.
 esp-idf/log/CMakeFiles/__idf_log.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 44
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 50
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/log/CMakeFiles/__idf_log.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/log/CMakeFiles/__idf_log.dir/rule
@@ -4299,7 +4279,7 @@ esp-idf/heap/CMakeFiles/__idf_heap.dir/all: esp-idf/soc/CMakeFiles/__idf_soc.dir
 
 # Build rule for subdir invocation for target.
 esp-idf/heap/CMakeFiles/__idf_heap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/heap/CMakeFiles/__idf_heap.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/heap/CMakeFiles/__idf_heap.dir/rule
@@ -4320,12 +4300,12 @@ esp-idf/heap/CMakeFiles/__idf_heap.dir/clean:
 esp-idf/soc/CMakeFiles/__idf_soc.dir/all: esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/soc/CMakeFiles/__idf_soc.dir/build.make esp-idf/soc/CMakeFiles/__idf_soc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=67,68 "Built target __idf_soc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=66,67,68 "Built target __idf_soc"
 .PHONY : esp-idf/soc/CMakeFiles/__idf_soc.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/soc/CMakeFiles/__idf_soc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/soc/CMakeFiles/__idf_soc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/soc/CMakeFiles/__idf_soc.dir/rule
@@ -4346,12 +4326,12 @@ esp-idf/soc/CMakeFiles/__idf_soc.dir/clean:
 esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/all: esp-idf/freertos/CMakeFiles/__idf_freertos.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build.make esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=21,22,23,24,25 "Built target __idf_esp_hw_support"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=22,23,24,25,26 "Built target __idf_esp_hw_support"
 .PHONY : esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 40
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 45
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/rule
@@ -4372,12 +4352,12 @@ esp-idf/esp_hw_support/CMakeFiles/__idf_esp_hw_support.dir/clean:
 esp-idf/freertos/CMakeFiles/__idf_freertos.dir/all: esp-idf/newlib/CMakeFiles/__idf_newlib.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/freertos/CMakeFiles/__idf_freertos.dir/build.make esp-idf/freertos/CMakeFiles/__idf_freertos.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/freertos/CMakeFiles/__idf_freertos.dir/build.make esp-idf/freertos/CMakeFiles/__idf_freertos.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=40 "Built target __idf_freertos"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=40,41 "Built target __idf_freertos"
 .PHONY : esp-idf/freertos/CMakeFiles/__idf_freertos.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/freertos/CMakeFiles/__idf_freertos.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 35
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 40
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/freertos/CMakeFiles/__idf_freertos.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/freertos/CMakeFiles/__idf_freertos.dir/rule
@@ -4403,7 +4383,7 @@ esp-idf/newlib/CMakeFiles/__idf_newlib.dir/all: esp-idf/pthread/CMakeFiles/__idf
 
 # Build rule for subdir invocation for target.
 esp-idf/newlib/CMakeFiles/__idf_newlib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 38
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/newlib/CMakeFiles/__idf_newlib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/newlib/CMakeFiles/__idf_newlib.dir/rule
@@ -4429,7 +4409,7 @@ esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all: esp-idf/cxx/CMakeFiles/__idf_c
 
 # Build rule for subdir invocation for target.
 esp-idf/pthread/CMakeFiles/__idf_pthread.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 36
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/pthread/CMakeFiles/__idf_pthread.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/pthread/CMakeFiles/__idf_pthread.dir/rule
@@ -4450,12 +4430,12 @@ esp-idf/pthread/CMakeFiles/__idf_pthread.dir/clean:
 esp-idf/cxx/CMakeFiles/__idf_cxx.dir/all: esp-idf/esp_timer/CMakeFiles/__idf_esp_timer.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/cxx/CMakeFiles/__idf_cxx.dir/build.make esp-idf/cxx/CMakeFiles/__idf_cxx.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/cxx/CMakeFiles/__idf_cxx.dir/build.make esp-idf/cxx/CMakeFiles/__idf_cxx.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_cxx"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=7 "Built target __idf_cxx"
 .PHONY : esp-idf/cxx/CMakeFiles/__idf_cxx.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/cxx/CMakeFiles/__idf_cxx.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 36
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/cxx/CMakeFiles/__idf_cxx.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/cxx/CMakeFiles/__idf_cxx.dir/rule
@@ -4481,7 +4461,7 @@ esp-idf/esp_timer/CMakeFiles/__idf_esp_timer.dir/all: esp-idf/esp_driver_gptimer
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_timer/CMakeFiles/__idf_esp_timer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 32
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 35
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_timer/CMakeFiles/__idf_esp_timer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_timer/CMakeFiles/__idf_esp_timer.dir/rule
@@ -4502,12 +4482,12 @@ esp-idf/esp_timer/CMakeFiles/__idf_esp_timer.dir/clean:
 esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/all: esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/build.make esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/build.make esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_driver_gptimer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=13 "Built target __idf_esp_driver_gptimer"
 .PHONY : esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 34
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/rule
@@ -4528,12 +4508,12 @@ esp-idf/esp_driver_gptimer/CMakeFiles/__idf_esp_driver_gptimer.dir/clean:
 esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/all: esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/build.make esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/build.make esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_ringbuf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=31 "Built target __idf_esp_ringbuf"
 .PHONY : esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 33
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_ringbuf/CMakeFiles/__idf_esp_ringbuf.dir/rule
@@ -4559,7 +4539,7 @@ esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/all: esp-idf/esp_ev
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 32
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_uart/CMakeFiles/__idf_esp_driver_uart.dir/rule
@@ -4585,7 +4565,7 @@ esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/all: esp-idf/xtensa/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/app_trace/CMakeFiles/__idf_app_trace.dir/rule
@@ -4611,7 +4591,7 @@ esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/all: esp-idf/nvs_flash/CMakeFil
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 32
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_event/CMakeFiles/__idf_esp_event.dir/rule
@@ -4637,7 +4617,7 @@ esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/all: esp-idf/esp_driver_pcnt/CM
 
 # Build rule for subdir invocation for target.
 esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 31
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 32
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/nvs_flash/CMakeFiles/__idf_nvs_flash.dir/rule
@@ -4663,7 +4643,7 @@ esp-idf/esp_driver_pcnt/CMakeFiles/__idf_esp_driver_pcnt.dir/all: esp-idf/esp_dr
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_pcnt/CMakeFiles/__idf_esp_driver_pcnt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 30
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_pcnt/CMakeFiles/__idf_esp_driver_pcnt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_pcnt/CMakeFiles/__idf_esp_driver_pcnt.dir/rule
@@ -4684,12 +4664,12 @@ esp-idf/esp_driver_pcnt/CMakeFiles/__idf_esp_driver_pcnt.dir/clean:
 esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/all: esp-idf/esp_driver_mcpwm/CMakeFiles/__idf_esp_driver_mcpwm.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/build.make esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/build.make esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_driver_spi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=17 "Built target __idf_esp_driver_spi"
 .PHONY : esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 30
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/rule
@@ -4710,7 +4690,7 @@ esp-idf/esp_driver_spi/CMakeFiles/__idf_esp_driver_spi.dir/clean:
 esp-idf/esp_driver_mcpwm/CMakeFiles/__idf_esp_driver_mcpwm.dir/all: esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_mcpwm/CMakeFiles/__idf_esp_driver_mcpwm.dir/build.make esp-idf/esp_driver_mcpwm/CMakeFiles/__idf_esp_driver_mcpwm.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_mcpwm/CMakeFiles/__idf_esp_driver_mcpwm.dir/build.make esp-idf/esp_driver_mcpwm/CMakeFiles/__idf_esp_driver_mcpwm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=14 "Built target __idf_esp_driver_mcpwm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=15 "Built target __idf_esp_driver_mcpwm"
 .PHONY : esp-idf/esp_driver_mcpwm/CMakeFiles/__idf_esp_driver_mcpwm.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4736,7 +4716,7 @@ esp-idf/esp_driver_mcpwm/CMakeFiles/__idf_esp_driver_mcpwm.dir/clean:
 esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/all: esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/build.make esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/build.make esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_driver_i2s"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=14 "Built target __idf_esp_driver_i2s"
 .PHONY : esp-idf/esp_driver_i2s/CMakeFiles/__idf_esp_driver_i2s.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4767,7 +4747,7 @@ esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/all: esp-idf/esp_driver_sdmmc/CMakeFile
 
 # Build rule for subdir invocation for target.
 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 29
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 28
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/rule
@@ -4788,12 +4768,12 @@ esp-idf/sdmmc/CMakeFiles/__idf_sdmmc.dir/clean:
 esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/all: esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/build.make esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/build.make esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_driver_sdmmc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=16 "Built target __idf_esp_driver_sdmmc"
 .PHONY : esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 29
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 28
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/rule
@@ -4814,12 +4794,12 @@ esp-idf/esp_driver_sdmmc/CMakeFiles/__idf_esp_driver_sdmmc.dir/clean:
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/all: esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/build.make esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/build.make esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=16 "Built target __idf_esp_driver_sdspi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_driver_sdspi"
 .PHONY : esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 29
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/rule
@@ -4840,12 +4820,12 @@ esp-idf/esp_driver_sdspi/CMakeFiles/__idf_esp_driver_sdspi.dir/clean:
 esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/all: esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build.make esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=15 "Built target __idf_esp_driver_rmt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_driver_rmt"
 .PHONY : esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 28
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/rule
@@ -4866,7 +4846,7 @@ esp-idf/esp_driver_rmt/CMakeFiles/__idf_esp_driver_rmt.dir/clean:
 esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/all: esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/build.make esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/build.make esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=17 "Built target __idf_esp_driver_tsens"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_driver_tsens"
 .PHONY : esp-idf/esp_driver_tsens/CMakeFiles/__idf_esp_driver_tsens.dir/all
 
 # Build rule for subdir invocation for target.
@@ -4897,7 +4877,7 @@ esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/all: esp-idf/esp_driv
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 26
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/rule
@@ -4918,12 +4898,12 @@ esp-idf/esp_driver_sdm/CMakeFiles/__idf_esp_driver_sdm.dir/clean:
 esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/all: esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/build.make esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/build.make esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=13 "Built target __idf_esp_driver_i2c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_driver_i2c"
 .PHONY : esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 26
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_i2c/CMakeFiles/__idf_esp_driver_i2c.dir/rule
@@ -4949,7 +4929,7 @@ esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/all: esp-idf/esp_dr
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 25
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_ledc/CMakeFiles/__idf_esp_driver_ledc.dir/rule
@@ -4975,7 +4955,7 @@ esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.d
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 25
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.dir/rule
@@ -4996,12 +4976,12 @@ esp-idf/esp_driver_usb_serial_jtag/CMakeFiles/__idf_esp_driver_usb_serial_jtag.d
 esp-idf/driver/CMakeFiles/__idf_driver.dir/all: esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/driver/CMakeFiles/__idf_driver.dir/build.make esp-idf/driver/CMakeFiles/__idf_driver.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=7,8 "Built target __idf_driver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=8 "Built target __idf_driver"
 .PHONY : esp-idf/driver/CMakeFiles/__idf_driver.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/driver/CMakeFiles/__idf_driver.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 25
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 27
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/driver/CMakeFiles/__idf_driver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/driver/CMakeFiles/__idf_driver.dir/rule
@@ -5027,7 +5007,7 @@ esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/all: esp-idf/esp_vfs_console/CMakeF
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 26
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_phy/CMakeFiles/__idf_esp_phy.dir/rule
@@ -5053,7 +5033,7 @@ esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/all: esp-idf/vfs/CM
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_vfs_console/CMakeFiles/__idf_esp_vfs_console.dir/rule
@@ -5079,7 +5059,7 @@ esp-idf/vfs/CMakeFiles/__idf_vfs.dir/all: esp-idf/lwip/CMakeFiles/__idf_lwip.dir
 
 # Build rule for subdir invocation for target.
 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/vfs/CMakeFiles/__idf_vfs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/vfs/CMakeFiles/__idf_vfs.dir/rule
@@ -5100,12 +5080,12 @@ esp-idf/vfs/CMakeFiles/__idf_vfs.dir/clean:
 esp-idf/lwip/CMakeFiles/__idf_lwip.dir/all: esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/lwip/CMakeFiles/__idf_lwip.dir/build.make esp-idf/lwip/CMakeFiles/__idf_lwip.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/lwip/CMakeFiles/__idf_lwip.dir/build.make esp-idf/lwip/CMakeFiles/__idf_lwip.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=49,50,51,52,53,54,55,56 "Built target __idf_lwip"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=49,50,51,52,53,54,55,56,57 "Built target __idf_lwip"
 .PHONY : esp-idf/lwip/CMakeFiles/__idf_lwip.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/lwip/CMakeFiles/__idf_lwip.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/lwip/CMakeFiles/__idf_lwip.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/lwip/CMakeFiles/__idf_lwip.dir/rule
@@ -5126,12 +5106,12 @@ esp-idf/lwip/CMakeFiles/__idf_lwip.dir/clean:
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/all: esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/build.make esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/build.make esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_netif"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=29 "Built target __idf_esp_netif"
 .PHONY : esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_netif/CMakeFiles/__idf_esp_netif.dir/rule
@@ -5157,7 +5137,7 @@ esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/all: esp-idf/esp_coex
 
 # Build rule for subdir invocation for target.
 esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/wpa_supplicant/CMakeFiles/__idf_wpa_supplicant.dir/rule
@@ -5183,7 +5163,7 @@ esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/all: esp-idf/esp_wifi/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_coex/CMakeFiles/__idf_esp_coex.dir/rule
@@ -5209,7 +5189,7 @@ esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/all: esp-idf/esp_gdbstub/CMakeFil
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_wifi/CMakeFiles/__idf_esp_wifi.dir/rule
@@ -5235,7 +5215,7 @@ esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all: esp-idf/http_parser/CM
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_gdbstub/CMakeFiles/__idf_esp_gdbstub.dir/rule
@@ -5261,7 +5241,7 @@ esp-idf/unity/CMakeFiles/__idf_unity.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xt
 
 # Build rule for subdir invocation for target.
 esp-idf/unity/CMakeFiles/__idf_unity.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/unity/CMakeFiles/__idf_unity.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/unity/CMakeFiles/__idf_unity.dir/rule
@@ -5288,7 +5268,7 @@ esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all: esp-idf/unity/CMakeFiles/__idf_uni
 
 # Build rule for subdir invocation for target.
 esp-idf/cmock/CMakeFiles/__idf_cmock.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/cmock/CMakeFiles/__idf_cmock.dir/rule
@@ -5314,7 +5294,7 @@ esp-idf/console/CMakeFiles/__idf_console.dir/all: esp-idf/xtensa/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/console/CMakeFiles/__idf_console.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/console/CMakeFiles/__idf_console.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/console/CMakeFiles/__idf_console.dir/rule
@@ -5340,7 +5320,7 @@ esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all: esp-idf/esp-tls/CMakeF
 
 # Build rule for subdir invocation for target.
 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/http_parser/CMakeFiles/__idf_http_parser.dir/rule
@@ -5366,7 +5346,7 @@ esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all: esp-idf/esp_adc/CMakeFiles/__i
 
 # Build rule for subdir invocation for target.
 esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/rule
@@ -5387,12 +5367,12 @@ esp-idf/esp-tls/CMakeFiles/__idf_esp-tls.dir/clean:
 esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/all: esp-idf/esp_eth/CMakeFiles/__idf_esp_eth.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/build.make esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/build.make esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=10 "Built target __idf_esp_adc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=10,11 "Built target __idf_esp_adc"
 .PHONY : esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_adc/CMakeFiles/__idf_esp_adc.dir/rule
@@ -5418,7 +5398,7 @@ esp-idf/esp_driver_cam/CMakeFiles/__idf_esp_driver_cam.dir/all: esp-idf/xtensa/C
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_driver_cam/CMakeFiles/__idf_esp_driver_cam.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_driver_cam/CMakeFiles/__idf_esp_driver_cam.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_driver_cam/CMakeFiles/__idf_esp_driver_cam.dir/rule
@@ -5470,7 +5450,7 @@ esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/all: esp-idf/xtensa/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/rule
@@ -5491,7 +5471,7 @@ esp-idf/esp_hid/CMakeFiles/__idf_esp_hid.dir/clean:
 esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all: esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/build.make esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/build.make esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=72 "Built target __idf_tcp_transport"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_tcp_transport"
 .PHONY : esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5517,12 +5497,12 @@ esp-idf/tcp_transport/CMakeFiles/__idf_tcp_transport.dir/clean:
 esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all: esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/build.make esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/build.make esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_http_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=20 "Built target __idf_esp_http_client"
 .PHONY : esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/rule
@@ -5543,7 +5523,7 @@ esp-idf/esp_http_client/CMakeFiles/__idf_esp_http_client.dir/clean:
 esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/all: esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/build.make esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/build.make esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=20 "Built target __idf_esp_http_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_http_server"
 .PHONY : esp-idf/esp_http_server/CMakeFiles/__idf_esp_http_server.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5571,12 +5551,12 @@ esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/esp_system
 esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all: esp-idf/esp_system/CMakeFiles/sections.ld.in.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/build.make esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/build.make esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_https_ota"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=21 "Built target __idf_esp_https_ota"
 .PHONY : esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_https_ota/CMakeFiles/__idf_esp_https_ota.dir/rule
@@ -5602,7 +5582,7 @@ esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/all: esp-idf/xten
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/rule
@@ -5623,12 +5603,12 @@ esp-idf/esp_https_server/CMakeFiles/__idf_esp_https_server.dir/clean:
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/build.make esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/build.make esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=26,27 "Built target __idf_esp_lcd"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=27 "Built target __idf_esp_lcd"
 .PHONY : esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_lcd/CMakeFiles/__idf_esp_lcd.dir/rule
@@ -5654,7 +5634,7 @@ esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/all: esp-idf/xtensa/CMakeFile
 
 # Build rule for subdir invocation for target.
 esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/protobuf-c/CMakeFiles/__idf_protobuf-c.dir/rule
@@ -5682,7 +5662,7 @@ esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/all: esp-idf/protobuf-c/CMakeFi
 
 # Build rule for subdir invocation for target.
 esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 83
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/protocomm/CMakeFiles/__idf_protocomm.dir/rule
@@ -5712,7 +5692,7 @@ esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/all: esp-idf/protocom
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 83
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/rule
@@ -5738,7 +5718,7 @@ esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/all: esp-idf/xtensa/CMakeFi
 
 # Build rule for subdir invocation for target.
 esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/rule
@@ -5764,7 +5744,7 @@ esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/all: esp-idf/xtensa/C
 
 # Build rule for subdir invocation for target.
 esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/wear_levelling/CMakeFiles/__idf_wear_levelling.dir/rule
@@ -5791,7 +5771,7 @@ esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/all: esp-idf/wear_levelling/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/fatfs/CMakeFiles/__idf_fatfs.dir/rule
@@ -5817,7 +5797,7 @@ esp-idf/json/CMakeFiles/__idf_json.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xten
 
 # Build rule for subdir invocation for target.
 esp-idf/json/CMakeFiles/__idf_json.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/json/CMakeFiles/__idf_json.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/json/CMakeFiles/__idf_json.dir/rule
@@ -5843,7 +5823,7 @@ esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xten
 
 # Build rule for subdir invocation for target.
 esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mqtt/CMakeFiles/__idf_mqtt.dir/rule
@@ -5869,7 +5849,7 @@ esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/all: esp-idf/xten
 
 # Build rule for subdir invocation for target.
 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/nvs_sec_provider/CMakeFiles/__idf_nvs_sec_provider.dir/rule
@@ -5895,7 +5875,7 @@ esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/all: esp-idf/xtensa/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/perfmon/CMakeFiles/__idf_perfmon.dir/rule
@@ -5921,7 +5901,7 @@ esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/all: esp-idf/xtensa/CMakeFiles/__idf_
 
 # Build rule for subdir invocation for target.
 esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/spiffs/CMakeFiles/__idf_spiffs.dir/rule
@@ -5947,7 +5927,7 @@ esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/all: esp-idf/xtensa/CMa
 
 # Build rule for subdir invocation for target.
 esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 75
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/touch_element/CMakeFiles/__idf_touch_element.dir/rule
@@ -5973,7 +5953,7 @@ esp-idf/usb/CMakeFiles/__idf_usb.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa
 
 # Build rule for subdir invocation for target.
 esp-idf/usb/CMakeFiles/__idf_usb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/usb/CMakeFiles/__idf_usb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/usb/CMakeFiles/__idf_usb.dir/rule
@@ -6003,7 +5983,7 @@ esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/all: esp-idf/js
 
 # Build rule for subdir invocation for target.
 esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 84
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/rule
@@ -6050,15 +6030,14 @@ esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/can/CMakeFiles/__idf_can.dir
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/cli/CMakeFiles/__idf_cli.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/data/CMakeFiles/__idf_data.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/timers/CMakeFiles/__idf_timers.dir/all
+esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/relay/CMakeFiles/__idf_relay.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/settings/CMakeFiles/__idf_settings.dir/all
-esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir/all
 esp-idf/main/CMakeFiles/__idf_main.dir/all: esp-idf/proto/CMakeFiles/__idf_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/main/CMakeFiles/__idf_main.dir/build.make esp-idf/main/CMakeFiles/__idf_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=57 "Built target __idf_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_main"
 .PHONY : esp-idf/main/CMakeFiles/__idf_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -6089,7 +6068,7 @@ esp-idf/mcu_config/CMakeFiles/__idf_mcu_config.dir/all: esp-idf/xtensa/CMakeFile
 
 # Build rule for subdir invocation for target.
 esp-idf/mcu_config/CMakeFiles/__idf_mcu_config.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/mcu_config/CMakeFiles/__idf_mcu_config.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/mcu_config/CMakeFiles/__idf_mcu_config.dir/rule
@@ -6112,12 +6091,12 @@ esp-idf/hardware/CMakeFiles/__idf_hardware.dir/all: esp-idf/unity/CMakeFiles/__i
 esp-idf/hardware/CMakeFiles/__idf_hardware.dir/all: esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/hardware/CMakeFiles/__idf_hardware.dir/build.make esp-idf/hardware/CMakeFiles/__idf_hardware.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/hardware/CMakeFiles/__idf_hardware.dir/build.make esp-idf/hardware/CMakeFiles/__idf_hardware.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=46 "Built target __idf_hardware"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_hardware"
 .PHONY : esp-idf/hardware/CMakeFiles/__idf_hardware.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/hardware/CMakeFiles/__idf_hardware.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 78
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/hardware/CMakeFiles/__idf_hardware.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/hardware/CMakeFiles/__idf_hardware.dir/rule
@@ -6135,7 +6114,7 @@ esp-idf/hardware/CMakeFiles/__idf_hardware.dir/clean:
 # Target rules for target esp-idf/can/CMakeFiles/__idf_can.dir
 
 # All Build rule for target.
-esp-idf/can/CMakeFiles/__idf_can.dir/all: esp-idf/config/CMakeFiles/__idf_config.dir/all
+esp-idf/can/CMakeFiles/__idf_can.dir/all: esp-idf/lora/CMakeFiles/__idf_lora.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/can/CMakeFiles/__idf_can.dir/build.make esp-idf/can/CMakeFiles/__idf_can.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/can/CMakeFiles/__idf_can.dir/build.make esp-idf/can/CMakeFiles/__idf_can.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_can"
@@ -6143,7 +6122,7 @@ esp-idf/can/CMakeFiles/__idf_can.dir/all: esp-idf/config/CMakeFiles/__idf_config
 
 # Build rule for subdir invocation for target.
 esp-idf/can/CMakeFiles/__idf_can.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 88
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 90
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/can/CMakeFiles/__idf_can.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/can/CMakeFiles/__idf_can.dir/rule
@@ -6170,7 +6149,7 @@ esp-idf/cli/CMakeFiles/__idf_cli.dir/all: esp-idf/console/CMakeFiles/__idf_conso
 
 # Build rule for subdir invocation for target.
 esp-idf/cli/CMakeFiles/__idf_cli.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/cli/CMakeFiles/__idf_cli.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/cli/CMakeFiles/__idf_cli.dir/rule
@@ -6198,7 +6177,7 @@ esp-idf/data/CMakeFiles/__idf_data.dir/all: esp-idf/cmock/CMakeFiles/__idf_cmock
 
 # Build rule for subdir invocation for target.
 esp-idf/data/CMakeFiles/__idf_data.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/data/CMakeFiles/__idf_data.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/data/CMakeFiles/__idf_data.dir/rule
@@ -6221,12 +6200,12 @@ esp-idf/timers/CMakeFiles/__idf_timers.dir/all: esp-idf/unity/CMakeFiles/__idf_u
 esp-idf/timers/CMakeFiles/__idf_timers.dir/all: esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/timers/CMakeFiles/__idf_timers.dir/build.make esp-idf/timers/CMakeFiles/__idf_timers.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/timers/CMakeFiles/__idf_timers.dir/build.make esp-idf/timers/CMakeFiles/__idf_timers.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_timers"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=72 "Built target __idf_timers"
 .PHONY : esp-idf/timers/CMakeFiles/__idf_timers.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/timers/CMakeFiles/__idf_timers.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 82
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/timers/CMakeFiles/__idf_timers.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/timers/CMakeFiles/__idf_timers.dir/rule
@@ -6241,18 +6220,49 @@ esp-idf/timers/CMakeFiles/__idf_timers.dir/clean:
 .PHONY : esp-idf/timers/CMakeFiles/__idf_timers.dir/clean
 
 #=============================================================================
+# Target rules for target esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir
+
+# All Build rule for target.
+esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
+esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all: esp-idf/unity/CMakeFiles/__idf_unity.dir/all
+esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all: esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all
+	$(MAKE) $(MAKESILENT) -f esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build.make esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/depend
+	$(MAKE) $(MAKESILENT) -f esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build.make esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_state_machine"
+.PHONY : esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
+
+# Build rule for subdir invocation for target.
+esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
+.PHONY : esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/rule
+
+# Convenience name for target.
+__idf_state_machine: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/rule
+.PHONY : __idf_state_machine
+
+# clean rule for target.
+esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/clean:
+	$(MAKE) $(MAKESILENT) -f esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build.make esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/clean
+.PHONY : esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/clean
+
+#=============================================================================
 # Target rules for target esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir
 
 # All Build rule for target.
 esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
+esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all: esp-idf/unity/CMakeFiles/__idf_unity.dir/all
+esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all: esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all
+esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/build.make esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/build.make esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=29 "Built target __idf_esp_now_sub"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_esp_now_sub"
 .PHONY : esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all
 
 # Build rule for subdir invocation for target.
 esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 76
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/rule
@@ -6280,7 +6290,7 @@ esp-idf/relay/CMakeFiles/__idf_relay.dir/all: esp-idf/cmock/CMakeFiles/__idf_cmo
 
 # Build rule for subdir invocation for target.
 esp-idf/relay/CMakeFiles/__idf_relay.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/relay/CMakeFiles/__idf_relay.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/relay/CMakeFiles/__idf_relay.dir/rule
@@ -6295,92 +6305,10 @@ esp-idf/relay/CMakeFiles/__idf_relay.dir/clean:
 .PHONY : esp-idf/relay/CMakeFiles/__idf_relay.dir/clean
 
 #=============================================================================
-# Target rules for target esp-idf/settings/CMakeFiles/__idf_settings.dir
-
-# All Build rule for target.
-esp-idf/settings/CMakeFiles/__idf_settings.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
-esp-idf/settings/CMakeFiles/__idf_settings.dir/all: esp-idf/unity/CMakeFiles/__idf_unity.dir/all
-esp-idf/settings/CMakeFiles/__idf_settings.dir/all: esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all
-	$(MAKE) $(MAKESILENT) -f esp-idf/settings/CMakeFiles/__idf_settings.dir/build.make esp-idf/settings/CMakeFiles/__idf_settings.dir/depend
-	$(MAKE) $(MAKESILENT) -f esp-idf/settings/CMakeFiles/__idf_settings.dir/build.make esp-idf/settings/CMakeFiles/__idf_settings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=66 "Built target __idf_settings"
-.PHONY : esp-idf/settings/CMakeFiles/__idf_settings.dir/all
-
-# Build rule for subdir invocation for target.
-esp-idf/settings/CMakeFiles/__idf_settings.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 78
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/settings/CMakeFiles/__idf_settings.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
-.PHONY : esp-idf/settings/CMakeFiles/__idf_settings.dir/rule
-
-# Convenience name for target.
-__idf_settings: esp-idf/settings/CMakeFiles/__idf_settings.dir/rule
-.PHONY : __idf_settings
-
-# clean rule for target.
-esp-idf/settings/CMakeFiles/__idf_settings.dir/clean:
-	$(MAKE) $(MAKESILENT) -f esp-idf/settings/CMakeFiles/__idf_settings.dir/build.make esp-idf/settings/CMakeFiles/__idf_settings.dir/clean
-.PHONY : esp-idf/settings/CMakeFiles/__idf_settings.dir/clean
-
-#=============================================================================
-# Target rules for target esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir
-
-# All Build rule for target.
-esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all: esp-idf/xtensa/CMakeFiles/__idf_xtensa.dir/all
-esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all: esp-idf/unity/CMakeFiles/__idf_unity.dir/all
-esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all: esp-idf/cmock/CMakeFiles/__idf_cmock.dir/all
-	$(MAKE) $(MAKESILENT) -f esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build.make esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/depend
-	$(MAKE) $(MAKESILENT) -f esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build.make esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_state_machine"
-.PHONY : esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
-
-# Build rule for subdir invocation for target.
-esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
-.PHONY : esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/rule
-
-# Convenience name for target.
-__idf_state_machine: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/rule
-.PHONY : __idf_state_machine
-
-# clean rule for target.
-esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/clean:
-	$(MAKE) $(MAKESILENT) -f esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/build.make esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/clean
-.PHONY : esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/clean
-
-#=============================================================================
-# Target rules for target esp-idf/config/CMakeFiles/__idf_config.dir
-
-# All Build rule for target.
-esp-idf/config/CMakeFiles/__idf_config.dir/all: esp-idf/lora/CMakeFiles/__idf_lora.dir/all
-	$(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/depend
-	$(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_config"
-.PHONY : esp-idf/config/CMakeFiles/__idf_config.dir/all
-
-# Build rule for subdir invocation for target.
-esp-idf/config/CMakeFiles/__idf_config.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 88
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/config/CMakeFiles/__idf_config.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
-.PHONY : esp-idf/config/CMakeFiles/__idf_config.dir/rule
-
-# Convenience name for target.
-__idf_config: esp-idf/config/CMakeFiles/__idf_config.dir/rule
-.PHONY : __idf_config
-
-# clean rule for target.
-esp-idf/config/CMakeFiles/__idf_config.dir/clean:
-	$(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/clean
-.PHONY : esp-idf/config/CMakeFiles/__idf_config.dir/clean
-
-#=============================================================================
 # Target rules for target esp-idf/lora/CMakeFiles/__idf_lora.dir
 
 # All Build rule for target.
-esp-idf/lora/CMakeFiles/__idf_lora.dir/all: esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/all
+esp-idf/lora/CMakeFiles/__idf_lora.dir/all: esp-idf/commands/CMakeFiles/__idf_commands.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/lora/CMakeFiles/__idf_lora.dir/build.make esp-idf/lora/CMakeFiles/__idf_lora.dir/depend
 	$(MAKE) $(MAKESILENT) -f esp-idf/lora/CMakeFiles/__idf_lora.dir/build.make esp-idf/lora/CMakeFiles/__idf_lora.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_lora"
@@ -6388,7 +6316,7 @@ esp-idf/lora/CMakeFiles/__idf_lora.dir/all: esp-idf/lora_commands/CMakeFiles/__i
 
 # Build rule for subdir invocation for target.
 esp-idf/lora/CMakeFiles/__idf_lora.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 88
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 90
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/lora/CMakeFiles/__idf_lora.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/lora/CMakeFiles/__idf_lora.dir/rule
@@ -6401,6 +6329,58 @@ __idf_lora: esp-idf/lora/CMakeFiles/__idf_lora.dir/rule
 esp-idf/lora/CMakeFiles/__idf_lora.dir/clean:
 	$(MAKE) $(MAKESILENT) -f esp-idf/lora/CMakeFiles/__idf_lora.dir/build.make esp-idf/lora/CMakeFiles/__idf_lora.dir/clean
 .PHONY : esp-idf/lora/CMakeFiles/__idf_lora.dir/clean
+
+#=============================================================================
+# Target rules for target esp-idf/commands/CMakeFiles/__idf_commands.dir
+
+# All Build rule for target.
+esp-idf/commands/CMakeFiles/__idf_commands.dir/all: esp-idf/config/CMakeFiles/__idf_config.dir/all
+	$(MAKE) $(MAKESILENT) -f esp-idf/commands/CMakeFiles/__idf_commands.dir/build.make esp-idf/commands/CMakeFiles/__idf_commands.dir/depend
+	$(MAKE) $(MAKESILENT) -f esp-idf/commands/CMakeFiles/__idf_commands.dir/build.make esp-idf/commands/CMakeFiles/__idf_commands.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_commands"
+.PHONY : esp-idf/commands/CMakeFiles/__idf_commands.dir/all
+
+# Build rule for subdir invocation for target.
+esp-idf/commands/CMakeFiles/__idf_commands.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 90
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/commands/CMakeFiles/__idf_commands.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
+.PHONY : esp-idf/commands/CMakeFiles/__idf_commands.dir/rule
+
+# Convenience name for target.
+__idf_commands: esp-idf/commands/CMakeFiles/__idf_commands.dir/rule
+.PHONY : __idf_commands
+
+# clean rule for target.
+esp-idf/commands/CMakeFiles/__idf_commands.dir/clean:
+	$(MAKE) $(MAKESILENT) -f esp-idf/commands/CMakeFiles/__idf_commands.dir/build.make esp-idf/commands/CMakeFiles/__idf_commands.dir/clean
+.PHONY : esp-idf/commands/CMakeFiles/__idf_commands.dir/clean
+
+#=============================================================================
+# Target rules for target esp-idf/config/CMakeFiles/__idf_config.dir
+
+# All Build rule for target.
+esp-idf/config/CMakeFiles/__idf_config.dir/all: esp-idf/app/CMakeFiles/__idf_app.dir/all
+	$(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/depend
+	$(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_config"
+.PHONY : esp-idf/config/CMakeFiles/__idf_config.dir/all
+
+# Build rule for subdir invocation for target.
+esp-idf/config/CMakeFiles/__idf_config.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 90
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/config/CMakeFiles/__idf_config.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
+.PHONY : esp-idf/config/CMakeFiles/__idf_config.dir/rule
+
+# Convenience name for target.
+__idf_config: esp-idf/config/CMakeFiles/__idf_config.dir/rule
+.PHONY : __idf_config
+
+# clean rule for target.
+esp-idf/config/CMakeFiles/__idf_config.dir/clean:
+	$(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/clean
+.PHONY : esp-idf/config/CMakeFiles/__idf_config.dir/clean
 
 #=============================================================================
 # Target rules for target esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir
@@ -6419,7 +6399,7 @@ esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir/all: esp-idf/spiffs/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 85
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir/rule
@@ -6448,7 +6428,7 @@ esp-idf/proto/CMakeFiles/__idf_proto.dir/all: esp-idf/protobuf-c/CMakeFiles/__id
 
 # Build rule for subdir invocation for target.
 esp-idf/proto/CMakeFiles/__idf_proto.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 77
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/proto/CMakeFiles/__idf_proto.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/proto/CMakeFiles/__idf_proto.dir/rule
@@ -6461,32 +6441,6 @@ __idf_proto: esp-idf/proto/CMakeFiles/__idf_proto.dir/rule
 esp-idf/proto/CMakeFiles/__idf_proto.dir/clean:
 	$(MAKE) $(MAKESILENT) -f esp-idf/proto/CMakeFiles/__idf_proto.dir/build.make esp-idf/proto/CMakeFiles/__idf_proto.dir/clean
 .PHONY : esp-idf/proto/CMakeFiles/__idf_proto.dir/clean
-
-#=============================================================================
-# Target rules for target esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir
-
-# All Build rule for target.
-esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/all: esp-idf/app/CMakeFiles/__idf_app.dir/all
-	$(MAKE) $(MAKESILENT) -f esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/build.make esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/depend
-	$(MAKE) $(MAKESILENT) -f esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/build.make esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num= "Built target __idf_lora_commands"
-.PHONY : esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/all
-
-# Build rule for subdir invocation for target.
-esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 88
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
-.PHONY : esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/rule
-
-# Convenience name for target.
-__idf_lora_commands: esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/rule
-.PHONY : __idf_lora_commands
-
-# clean rule for target.
-esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/clean:
-	$(MAKE) $(MAKESILENT) -f esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/build.make esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/clean
-.PHONY : esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/clean
 
 #=============================================================================
 # Target rules for target esp-idf/app/CMakeFiles/__idf_app.dir
@@ -6505,10 +6459,9 @@ esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/hardware/CMakeFiles/__idf_hard
 esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/cli/CMakeFiles/__idf_cli.dir/all
 esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/data/CMakeFiles/__idf_data.dir/all
 esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/timers/CMakeFiles/__idf_timers.dir/all
+esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/all
 esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/relay/CMakeFiles/__idf_relay.dir/all
-esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/settings/CMakeFiles/__idf_settings.dir/all
-esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/state_machine/CMakeFiles/__idf_state_machine.dir/all
 esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/sd_card/CMakeFiles/__idf_sd_card.dir/all
 esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/proto/CMakeFiles/__idf_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f esp-idf/app/CMakeFiles/__idf_app.dir/build.make esp-idf/app/CMakeFiles/__idf_app.dir/depend
@@ -6518,7 +6471,7 @@ esp-idf/app/CMakeFiles/__idf_app.dir/all: esp-idf/proto/CMakeFiles/__idf_proto.d
 
 # Build rule for subdir invocation for target.
 esp-idf/app/CMakeFiles/__idf_app.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 88
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 90
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 esp-idf/app/CMakeFiles/__idf_app.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles 0
 .PHONY : esp-idf/app/CMakeFiles/__idf_app.dir/rule

@@ -1,0 +1,30 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c: In function 'board_config_init':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:265:12: error: implicit declaration of function 'settings_init'; did you mean 'ens_init'? [-Werror=implicit-function-declaration]
+  265 |     ret |= settings_init();
+      |            ^~~~~~~~~~~~~
+      |            ens_init
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:273:5: error: implicit declaration of function 'settings_init_default' [-Werror=implicit-function-declaration]
+  273 |     settings_init_default();
+      |     ^~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:275:5: error: implicit declaration of function 'settings_read_all' [-Werror=implicit-function-declaration]
+  275 |     settings_read_all();
+      |     ^~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:276:5: error: unknown type name 'Settings'
+  276 |     Settings settings = settings_get_all();
+      |     ^~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:276:25: error: implicit declaration of function 'settings_get_all' [-Werror=implicit-function-declaration]
+  276 |     Settings settings = settings_get_all();
+      |                         ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:280:10: error: implicit declaration of function 'liquid_ignition_test_timer_init' [-Werror=implicit-function-declaration]
+  280 |     if (!liquid_ignition_test_timer_init(settings.countdownTime)) {
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:280:50: error: request for member 'countdownTime' in something not a structure or union
+  280 |     if (!liquid_ignition_test_timer_init(settings.countdownTime)) {
+      |                                                  ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:276:14: warning: variable 'settings' set but not used [-Wunused-but-set-variable]
+  276 |     Settings settings = settings_get_all();
+      |              ^~~~~~~~
+cc1: all warnings being treated as errors
+make[2]: *** [esp-idf/config/CMakeFiles/__idf_config.dir/build.make:76: esp-idf/config/CMakeFiles/__idf_config.dir/board_config.c.obj] Błąd 1
+make[1]: *** [CMakeFiles/Makefile2:6310: esp-idf/config/CMakeFiles/__idf_config.dir/all] Błąd 2
+make: *** [Makefile:136: all] Błąd 2

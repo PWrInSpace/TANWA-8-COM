@@ -1,0 +1,21 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c: In function 'app_task':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c:97:22: warning: unused variable 'tanwa_data' [-Wunused-variable]
+   97 |         tanwa_data_t tanwa_data = tanwa_data_read();
+      |                      ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c:75:16: warning: variable 'local_freq' set but not used [-Wunused-but-set-variable]
+   75 |     TickType_t local_freq;
+      |                ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c: In function 'initialize_timers':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c:124:60: error: 'on_fuel_initial' undeclared (first use in this function)
+  124 |     {.timer_id = TIMER_FUEL_INITIAL, .timer_callback_fnc = on_fuel_initial, .timer_arg = NULL},
+      |                                                            ^~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c:124:60: note: each undeclared identifier is reported only once for each function it appears in
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c:125:61: error: 'on_oxidizer_full' undeclared (first use in this function)
+  125 |     {.timer_id = TIMER_OXIDIZER_FULL, .timer_callback_fnc = on_oxidizer_full, .timer_arg = NULL},
+      |                                                             ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c:126:57: error: 'on_fuel_full' undeclared (first use in this function)
+  126 |     {.timer_id = TIMER_FUEL_FULL, .timer_callback_fnc = on_fuel_full, .timer_arg = NULL},
+      |                                                         ^~~~~~~~~~~~
+make[2]: *** [esp-idf/app/CMakeFiles/__idf_app.dir/build.make:174: esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj] Błąd 1
+make[1]: *** [CMakeFiles/Makefile2:6465: esp-idf/app/CMakeFiles/__idf_app.dir/all] Błąd 2
+make: *** [Makefile:136: all] Błąd 2

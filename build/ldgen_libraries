@@ -88,13 +88,12 @@
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/cli/libcli.a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/data/libdata.a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/timers/libtimers.a
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/state_machine/libstate_machine.a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/esp_now_sub/libesp_now_sub.a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/relay/librelay.a
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/settings/libsettings.a
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/state_machine/libstate_machine.a
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config/libconfig.a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/lora/liblora.a
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/commands/libcommands.a
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config/libconfig.a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/sd_card/libsd_card.a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/proto/libproto.a
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/lora_commands/liblora_commands.a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app/libapp.a

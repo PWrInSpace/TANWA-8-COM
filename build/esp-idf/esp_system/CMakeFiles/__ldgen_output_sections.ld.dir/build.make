@@ -210,15 +210,14 @@ esp-idf/esp_system/ld/sections.ld: esp-idf/can/libcan.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/cli/libcli.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/data/libdata.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/timers/libtimers.a
+esp-idf/esp_system/ld/sections.ld: esp-idf/state_machine/libstate_machine.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/esp_now_sub/libesp_now_sub.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/relay/librelay.a
-esp-idf/esp_system/ld/sections.ld: esp-idf/settings/libsettings.a
-esp-idf/esp_system/ld/sections.ld: esp-idf/state_machine/libstate_machine.a
-esp-idf/esp_system/ld/sections.ld: esp-idf/config/libconfig.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/lora/liblora.a
+esp-idf/esp_system/ld/sections.ld: esp-idf/commands/libcommands.a
+esp-idf/esp_system/ld/sections.ld: esp-idf/config/libconfig.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/sd_card/libsd_card.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/proto/libproto.a
-esp-idf/esp_system/ld/sections.ld: esp-idf/lora_commands/liblora_commands.a
 esp-idf/esp_system/ld/sections.ld: esp-idf/app/libapp.a
 esp-idf/esp_system/ld/sections.ld: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/sdkconfig
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ld/sections.ld"

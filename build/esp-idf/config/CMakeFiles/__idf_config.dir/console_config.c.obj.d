@@ -139,9 +139,8 @@ esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj: \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/board_data.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/com_structs.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/slave_structs.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/state_machine/state_machine.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.h \

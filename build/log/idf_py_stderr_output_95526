@@ -1,0 +1,4 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.c: In function 'lora_send_packet':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.c:294:12: warning: unused variable 'read_reg' [-Wunused-variable]
+  294 |     int8_t read_reg = lora_read_reg(lora,REG_IRQ_FLAGS);
+      |            ^~~~~~~~

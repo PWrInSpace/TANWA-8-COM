@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/__idf_config.dir/board_config.c.obj"
   "CMakeFiles/__idf_config.dir/board_config.c.obj.d"
-  "CMakeFiles/__idf_config.dir/can_commands.c.obj"
-  "CMakeFiles/__idf_config.dir/can_commands.c.obj.d"
   "CMakeFiles/__idf_config.dir/can_config.c.obj"
   "CMakeFiles/__idf_config.dir/can_config.c.obj.d"
   "CMakeFiles/__idf_config.dir/console_config.c.obj"

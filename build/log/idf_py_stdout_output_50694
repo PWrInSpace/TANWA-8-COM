@@ -1,0 +1,740 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct  4 2025 23:55:03[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=25448h (152648) map[0m
+[0;32mI (132) esp_image: segment 1: paddr=00035470 vaddr=3fc9f000 size=059a8h ( 22952) load[0m
+[0;32mI (137) esp_image: segment 2: paddr=0003ae20 vaddr=40374000 size=051f8h ( 20984) load[0m
+[0;32mI (142) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a7d90h (687504) map[0m
+[0;32mI (271) esp_image: segment 4: paddr=000e7db8 vaddr=403791f8 size=15db4h ( 89524) load[0m
+[0;32mI (292) esp_image: segment 5: paddr=000fdb74 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (292) esp_image: segment 6: paddr=000fdb80 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (308) boot: Disabling RNG early entropy source...[0m
+[0;32mI (321) cpu_start: Multicore app[0m
+[0;32mI (330) cpu_start: Pro cpu start user code[0m
+[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (331) app_init: Application information:[0m
+[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (339) app_init: App version:      599b31f-dirty[0m
+[0;32mI (344) app_init: Compile time:     Oct  5 2025 11:09:35[0m
+[0;32mI (350) app_init: ELF file SHA256:  7770c44c2...[0m
+[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (360) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (365) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (370) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (375) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (382) heap_init: At 3FCA8D10 len 00040A00 (258 KiB): RAM[0m
+[0;32mI (388) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (394) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (400) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (408) spi_flash: detected chip: generic[0m
+[0;32mI (411) spi_flash: flash io: dio[0m
+[0;33mW (415) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (429) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (439) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (446) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (453) main_task: Started on CPU0[0m
+[0;32mI (463) main_task: Calling app_main()[0m
+[0;32mI (463) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (463) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (473) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (483) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (493) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (503) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (513) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (523) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (533) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (543) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (553) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (563) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (583) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (593) CAN_API: TWAI driver started[0m
+[0;32mI (593) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (603) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (603) SMC: Initializing state machine[0m
+[0;32mI (613) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (623) pp: pp rom version: e7ae62f[0m
+[0;32mI (633) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (633) SMC: ON INIT[0m
+[0;32mI (633) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (643) wifi:wifi driver task: 3fcb7f38, prio:23, stack:6656, core=0[0m
+[0;32mI (643) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (643) wifi:wifi certification version: v7.0[0m
+[0;32mI (653) wifi:config NVS flash: enabled[0m
+[0;32mI (653) wifi:config nano formating: disabled[0m
+[0;32mI (653) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (663) wifi:Init management short buffer num: 32[0m
+[0;32mI (673) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (673) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (683) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (683) wifi:Init static rx buffer num: 10[0m
+[0;32mI (683) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (693) wifi_init: rx ba win: 6[0m
+[0;32mI (693) wifi_init: accept mbox: 6[0m
+[0;32mI (693) wifi_init: tcpip mbox: 32[0m
+[0;32mI (703) wifi_init: udp mbox: 6[0m
+[0;32mI (703) wifi_init: tcp mbox: 6[0m
+[0;32mI (713) wifi_init: tcp tx win: 5760[0m
+[0;32mI (713) wifi_init: tcp rx win: 5760[0m
+[0;32mI (713) wifi_init: tcp mss: 1440[0m
+[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (723) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (733) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (773) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (773) wifi:enable tsf[0m
+[0;32mI (783) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (783) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (783) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (783) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (793) esp_timer: Task is already initialized[0m
+[0;32mI (803) TIMER: Timers number 4[0m
+[0;32mI (803) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (813) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (813) LORA_TASK: initialize_lora: lora global=0x3fc9f978, lora_api.lora=0x3fc9f978[0m
+[0;32mI (833) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (833) LORA_TASK: lora_task_init: gb=0x3fca51e4, gb.lora=0x3fc9f978, global lora=0x3fc9f978, lora._spi_transmit=0x420135f8[0m
+[0;32mI (843) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (843) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (843) LORA_TASK: LoRa Task started[0m
+[0;32mI (853) BOARD_CONFIG: Initializing SD Card...[0m
+[0;32mI (863) SD_TASK: Initializing sd task[0m
+[0;32mI (863) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (873) sdspi_transaction: cmd=52, R1 response: command CRC error[0m
+[0;32mI (883) ENS_LOGIC: Setting mission state to 1[0m
+[0;32mI (883) STATE_MACHINE: Changing state from 0 to 1[0m
+[0;32mI (893) SMC: ON IDLE[0m
+[0;32mI (923) sdspi_transaction: cmd=5, R1 response: command not supported[0m
+[0;32mI (943) SDCARD: SD card mounted[0m
+[0;32mI (1293) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (1803) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2313) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2633) LORA_TASK: IRQ received[0m
+[0;32mI (2823) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2833) SD_TASK: Using data path /sdcard/data268.txt[0m
+[0;32mI (2833) SD_TASK: Using log path /sdcard/log0.txt[0m
+[0;32mI (2833) BOARD_CONFIG: ### SD Card initialization success ###[0m
+[0;32mI (2843) BOARD_CONFIG: SD CARD | Timer started[0m
+[0;31mE (2843) BOARD_CONFIG: DISCONNECT | Timer start failed[0m
+[0;32mI (2843) SD_TASK: RUNNING SD TASK[0m
+[5n
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (2953) APP_TASK: App task created successfully[0m
+[6n [999C [6n [139D[0;32mtwi> [0m[0;32mI (3333) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4353) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4863) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5373) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5883) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6393) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6903) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (564240) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (564261) ENC: Tanwa receive, size 60[0m
+[0;31mE (564270) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (564272) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (564633) LORA_T: END OF WINDOW[0m
+[0;32mI (564634) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (564750) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (564759) ENC: Tanwa receive, size 60[0m
+[0;32mI (564826) LORA_T: ON transmit[0m
+[0;31mE (564827) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (564874) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (564875) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (565262) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (565263) ENC: Tanwa receive, size 60[0m
+[0;31mE (565478) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (565479) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (565772) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (565792) ENC: Tanwa receive, size 60[0m
+[0;32mI (565827) LORA_T: END OF WINDOW[0m
+[0;32mI (565828) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (566018) LORA_T: ON transmit[0m
+[0;31mE (566019) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (566081) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (566083) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (566280) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (566290) ENC: Tanwa receive, size 60[0m
+[0;31mE (566686) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (566688) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (566794) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (566796) ENC: Tanwa receive, size 60[0m
+[0;32mI (567019) LORA_T: END OF WINDOW[0m
+[0;32mI (567020) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (567211) LORA_T: ON transmit[0m
+[0;31mE (567212) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (567290) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (567293) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (567301) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (567302) ENC: Tanwa receive, size 60[0m
+[0;32mI (567812) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (567814) ENC: Tanwa receive, size 60[0m
+[0;31mE (567894) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (567896) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (568212) LORA_T: END OF WINDOW[0m
+[0;32mI (568216) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (568323) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (568343) ENC: Tanwa receive, size 60[0m
+[0;32mI (568406) LORA_T: ON transmit[0m
+[0;31mE (568407) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (568499) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (568501) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (568830) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (568843) ENC: Tanwa receive, size 60[0m
+[0;31mE (569103) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (569104) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (569343) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (569344) ENC: Tanwa receive, size 60[0m
+[0;32mI (569407) LORA_T: END OF WINDOW[0m
+[0;32mI (569408) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (569663) LORA_T: ON transmit[0m
+[0;31mE (569664) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (569706) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (569708) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (569850) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (569852) ENC: Tanwa receive, size 60[0m
+[0;31mE (570310) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (570311) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (570360) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (570381) ENC: Tanwa receive, size 60[0m
+[0;32mI (570664) LORA_T: END OF WINDOW[0m
+[0;32mI (570665) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (570855) LORA_T: ON transmit[0m
+[0;31mE (570856) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (570870) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (570879) ENC: Tanwa receive, size 60[0m
+[0;31mE (570913) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (570914) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (571380) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (571382) ENC: Tanwa receive, size 60[0m
+[0;31mE (571515) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (571517) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (571856) LORA_T: END OF WINDOW[0m
+[0;32mI (571860) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (571890) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (571911) ENC: Tanwa receive, size 60[0m
+[0;32mI (572050) LORA_T: ON transmit[0m
+[0;31mE (572051) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (572119) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (572120) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (572400) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (572409) ENC: Tanwa receive, size 60[0m
+[0;31mE (572722) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (572724) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (572911) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (572913) ENC: Tanwa receive, size 60[0m
+[0;32mI (573051) LORA_T: END OF WINDOW[0m
+[0;32mI (573052) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;31mE (573326) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;32mI (573327) LORA_T: ON transmit[0m
+[0;31mE (573327) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;31mE (573329) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (573420) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (573422) ENC: Tanwa receive, size 60[0m
+[0;31mE (573930) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;32mI (573930) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;31mE (573931) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (573936) ENC: Tanwa receive, size 60[0m
+[0;32mI (574329) LORA_T: END OF WINDOW[0m
+[0;32mI (574348) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (574441) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (574443) ENC: Tanwa receive, size 60[0m
+[0;32mI (574541) LORA_T: ON transmit[0m
+[0;31mE (574542) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (574546) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (574547) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (574950) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (574952) ENC: Tanwa receive, size 60[0m
+[0;31mE (575148) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (575150) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (575460) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (575481) ENC: Tanwa receive, size 60[0m
+[0;32mI (575542) LORA_T: END OF WINDOW[0m
+[0;32mI (575543) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (575734) LORA_T: ON transmit[0m
+[0;31mE (575735) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (575752) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (575753) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (575970) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (575979) ENC: Tanwa receive, size 60[0m
+[0;31mE (576354) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (576356) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (576480) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (576482) ENC: Tanwa receive, size 60[0m
+[0;32mI (576735) LORA_T: END OF WINDOW[0m
+[0;32mI (576740) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (576930) LORA_T: ON transmit[0m
+[0;31mE (576931) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (576957) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (576959) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (576992) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (577012) ENC: Tanwa receive, size 60[0m
+[0;32mI (577500) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (577510) ENC: Tanwa receive, size 60[0m
+[0;31mE (577561) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (577562) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (577931) LORA_T: END OF WINDOW[0m
+[0;32mI (577932) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (578011) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (578013) ENC: Tanwa receive, size 60[0m
+[0;32mI (578123) LORA_T: ON transmit[0m
+[0;31mE (578124) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (578163) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (578165) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (578520) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (578522) ENC: Tanwa receive, size 60[0m
+[0;31mE (578768) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (578769) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (579030) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (579032) ENC: Tanwa receive, size 60[0m
+[0;32mI (579124) LORA_T: END OF WINDOW[0m
+[0;32mI (579132) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (579322) LORA_T: ON transmit[0m
+[0;31mE (579323) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (579370) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (579372) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (579542) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (579562) ENC: Tanwa receive, size 60[0m
+[0;31mE (579973) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (579975) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (580050) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (580061) ENC: Tanwa receive, size 60[0m
+[0;32mI (580323) LORA_T: END OF WINDOW[0m
+[0;32mI (580324) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (580514) LORA_T: ON transmit[0m
+[0;31mE (580515) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (580560) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (580562) ENC: Tanwa receive, size 60[0m
+[0;31mE (580577) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (580578) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (581070) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (581072) ENC: Tanwa receive, size 60[0m
+[0;31mE (581179) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (581181) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (581515) LORA_T: END OF WINDOW[0m
+[0;32mI (581516) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (581580) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (581601) ENC: Tanwa receive, size 60[0m
+[0;32mI (581708) LORA_T: ON transmit[0m
+[0;31mE (581709) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (581782) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (581784) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (582092) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (582099) ENC: Tanwa receive, size 60[0m
+[0;31mE (582386) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (582387) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (582600) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (582602) ENC: Tanwa receive, size 60[0m
+[0;32mI (582709) LORA_T: END OF WINDOW[0m
+[0;32mI (582716) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (582907) LORA_T: ON transmit[0m
+[0;31mE (582908) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (582989) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (582991) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (583110) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (583112) ENC: Tanwa receive, size 60[0m
+[0;31mE (583593) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (583594) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (583620) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (583641) ENC: Tanwa receive, size 60[0m
+[0;32mI (583908) LORA_T: END OF WINDOW[0m
+[0;32mI (583909) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (584100) LORA_T: ON transmit[0m
+[0;31mE (584101) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (584130) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (584143) ENC: Tanwa receive, size 60[0m
+[0;31mE (584196) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (584197) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (584642) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (584643) ENC: Tanwa receive, size 60[0m
+[0;31mE (584798) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (584800) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (585101) LORA_T: END OF WINDOW[0m
+[0;32mI (585102) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (585150) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (585152) ENC: Tanwa receive, size 60[0m
+[0;32mI (585295) LORA_T: ON transmit[0m
+[0;31mE (585296) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (585402) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (585403) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (585660) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (585662) ENC: Tanwa receive, size 60[0m
+[0;31mE (586005) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (586006) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (586170) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (586191) ENC: Tanwa receive, size 60[0m
+[0;32mI (586296) LORA_T: END OF WINDOW[0m
+[0;32mI (586297) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (586570) LORA_T: ON transmit[0m
+[0;31mE (586571) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (586609) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (586610) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (586681) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (586689) ENC: Tanwa receive, size 60[0m
+[0;32mI (587190) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (587192) ENC: Tanwa receive, size 60[0m
+[0;31mE (587212) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (587213) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (587571) LORA_T: END OF WINDOW[0m
+[0;32mI (587603) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (587706) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (587721) ENC: Tanwa receive, size 60[0m
+[0;32mI (587795) LORA_T: ON transmit[0m
+[0;31mE (587796) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (587814) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (587816) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (588211) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (588219) ENC: Tanwa receive, size 60[0m
+[0;31mE (588418) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (588419) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (588720) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (588722) ENC: Tanwa receive, size 60[0m
+[0;32mI (588796) LORA_T: END OF WINDOW[0m
+[0;32mI (588797) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (588989) LORA_T: ON transmit[0m
+[0;31mE (588990) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (589020) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (589022) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (589230) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (589251) ENC: Tanwa receive, size 60[0m
+[0;31mE (589624) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (589625) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (589740) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (589749) ENC: Tanwa receive, size 60[0m
+[0;32mI (589990) LORA_T: END OF WINDOW[0m
+[0;32mI (589993) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (590183) LORA_T: ON transmit[0m
+[0;31mE (590184) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (590227) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (590228) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (590250) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (590252) ENC: Tanwa receive, size 60[0m
+[0;32mI (590762) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (590781) ENC: Tanwa receive, size 60[0m
+[0;31mE (590829) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (590831) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (591184) LORA_T: END OF WINDOW[0m
+[0;32mI (591185) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (591270) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (591279) ENC: Tanwa receive, size 60[0m
+[0;32mI (591376) LORA_T: ON transmit[0m
+[0;31mE (591377) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (591434) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (591435) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (591780) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (591782) ENC: Tanwa receive, size 60[0m
+[0;31mE (592037) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (592039) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (592290) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (592311) ENC: Tanwa receive, size 60[0m
+[0;32mI (592377) LORA_T: END OF WINDOW[0m
+[0;32mI (592378) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (592568) LORA_T: ON transmit[0m
+[0;31mE (592569) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (592641) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (592642) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (592800) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (592809) ENC: Tanwa receive, size 60[0m
+[0;31mE (593245) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (593246) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (593311) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (593313) ENC: Tanwa receive, size 60[0m
+[0;32mI (593569) LORA_T: END OF WINDOW[0m
+[0;32mI (593577) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (593767) LORA_T: ON transmit[0m
+[0;31mE (593768) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (593820) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (593822) ENC: Tanwa receive, size 60[0m
+[0;31mE (593847) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (593849) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (594330) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (594351) ENC: Tanwa receive, size 60[0m
+[0;31mE (594452) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (594454) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (594768) LORA_T: END OF WINDOW[0m
+[0;32mI (594769) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (594840) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (594849) ENC: Tanwa receive, size 60[0m
+[0;32mI (594960) LORA_T: ON transmit[0m
+[0;31mE (594961) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (595057) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (595059) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (595350) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (595352) ENC: Tanwa receive, size 60[0m
+[0;31mE (595661) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (595664) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (595862) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (595881) ENC: Tanwa receive, size 60[0m
+[0;32mI (595961) LORA_T: END OF WINDOW[0m
+[0;32mI (595962) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (596152) LORA_T: ON transmit[0m
+[0;31mE (596153) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (596266) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (596267) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (596370) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (596379) ENC: Tanwa receive, size 60[0m
+[0;31mE (596872) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (596873) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (596880) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (596882) ENC: Tanwa receive, size 60[0m
+[0;32mI (597153) LORA_T: END OF WINDOW[0m
+[0;32mI (597154) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (597345) LORA_T: ON transmit[0m
+[0;31mE (597346) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (597390) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (597411) ENC: Tanwa receive, size 60[0m
+[0;31mE (597474) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (597476) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (597900) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (597909) ENC: Tanwa receive, size 60[0m
+[0;31mE (598078) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (598079) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (598346) LORA_T: END OF WINDOW[0m
+[0;32mI (598347) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (598412) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (598414) ENC: Tanwa receive, size 60[0m
+[0;32mI (598561) LORA_T: ON transmit[0m
+[0;31mE (598562) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (598682) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (598683) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (598920) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (598922) ENC: Tanwa receive, size 60[0m
+[0;31mE (599285) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (599287) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (599430) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (599436) ENC: Tanwa receive, size 60[0m
+[0;32mI (599562) LORA_T: END OF WINDOW[0m
+[0;32mI (599563) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (599761) LORA_T: ON transmit[0m
+[0;31mE (599762) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (599889) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (599890) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (599940) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (599942) ENC: Tanwa receive, size 60[0m
+[0;32mI (600451) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (600471) ENC: Tanwa receive, size 60[0m
+[0;31mE (600492) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (600493) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (600762) LORA_T: END OF WINDOW[0m
+[0;32mI (600763) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (600953) LORA_T: ON transmit[0m
+[0;31mE (600954) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (600960) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (600969) ENC: Tanwa receive, size 60[0m
+[0;31mE (601094) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (601096) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (601470) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (601472) ENC: Tanwa receive, size 60[0m
+[0;31mE (601699) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (601700) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (601954) LORA_T: END OF WINDOW[0m
+[0;32mI (601955) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (601980) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (602001) ENC: Tanwa receive, size 60[0m
+[0;32mI (602230) LORA_T: ON transmit[0m
+[0;31mE (602231) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (602302) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (602304) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (602490) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (602499) ENC: Tanwa receive, size 60[0m
+[0;31mE (602906) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (602907) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (603000) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (603002) ENC: Tanwa receive, size 60[0m
+[0;32mI (603231) LORA_T: END OF WINDOW[0m
+[0;32mI (603246) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (603438) LORA_T: ON transmit[0m
+[0;31mE (603439) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (603509) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (603510) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (603513) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (603532) ENC: Tanwa receive, size 60[0m
+[0;32mI (604020) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (604030) ENC: Tanwa receive, size 60[0m
+[0;31mE (604111) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (604113) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (604439) LORA_T: END OF WINDOW[0m
+[0;32mI (604440) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (604530) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (604532) ENC: Tanwa receive, size 60[0m
+[0;32mI (604632) LORA_T: ON transmit[0m
+[0;31mE (604633) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (604716) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (604717) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (605040) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (605061) ENC: Tanwa receive, size 60[0m
+[0;31mE (605318) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (605320) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (605550) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (605561) ENC: Tanwa receive, size 60[0m
+[0;32mI (605633) LORA_T: END OF WINDOW[0m
+[0;32mI (605641) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (605831) LORA_T: ON transmit[0m
+[0;31mE (605832) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (605922) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (605923) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (606060) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (606062) ENC: Tanwa receive, size 60[0m
+[0;31mE (606525) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (606526) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (606570) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (606591) ENC: Tanwa receive, size 60[0m
+[0;32mI (606832) LORA_T: END OF WINDOW[0m
+[0;32mI (606833) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (607024) LORA_T: ON transmit[0m
+[0;31mE (607025) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (607081) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (607092) ENC: Tanwa receive, size 60[0m
+[0;31mE (607127) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (607129) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (607590) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (607593) ENC: Tanwa receive, size 60[0m
+[0;31mE (607731) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (607732) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (608025) LORA_T: END OF WINDOW[0m
+[0;32mI (608034) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (608100) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (608102) ENC: Tanwa receive, size 60[0m
+[0;32mI (608226) LORA_T: ON transmit[0m
+[0;31mE (608227) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (608334) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (608335) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (608611) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (608631) ENC: Tanwa receive, size 60[0m
+[0;31mE (608937) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (608939) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (609120) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (609129) ENC: Tanwa receive, size 60[0m
+[0;32mI (609227) LORA_T: END OF WINDOW[0m
+[0;32mI (609228) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (609418) LORA_T: ON transmit[0m
+[0;31mE (609419) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (609541) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (609542) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (609631) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (609633) ENC: Tanwa receive, size 60[0m
+[0;32mI (610140) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (610142) ENC: Tanwa receive, size 60[0m
+[0;31mE (610145) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (610146) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (610419) LORA_T: END OF WINDOW[0m
+[0;32mI (610420) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (610611) LORA_T: ON transmit[0m
+[0;31mE (610612) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (610759) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (610760) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (611160) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (611162) ENC: Tanwa receive, size 60[0m
+[0;31mE (611362) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (611364) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (611612) LORA_T: END OF WINDOW[0m
+[0;32mI (611614) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (611670) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (611691) ENC: Tanwa receive, size 60[0m
+[0;32mI (611804) LORA_T: ON transmit[0m
+[0;31mE (611805) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (611966) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (611967) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (612185) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (612189) ENC: Tanwa receive, size 60[0m
+[0;31mE (612568) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (612570) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (612690) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (612692) ENC: Tanwa receive, size 60[0m
+[0;32mI (612805) LORA_T: END OF WINDOW[0m
+[0;32mI (612806) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (613053) LORA_T: ON transmit[0m
+[0;31mE (613054) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (613172) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (613173) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (613200) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (613202) ENC: Tanwa receive, size 60[0m
+[0;32mI (613711) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (613731) ENC: Tanwa receive, size 60[0m
+[0;31mE (613775) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (613776) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (614054) LORA_T: END OF WINDOW[0m
+[0;32mI (614055) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (614222) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (614229) ENC: Tanwa receive, size 60[0m
+[0;32mI (614247) LORA_T: ON transmit[0m
+[0;31mE (614248) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (614377) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (614379) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (614731) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (614733) ENC: Tanwa receive, size 60[0m
+[0;31mE (614981) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (614982) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (615240) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (615242) ENC: Tanwa receive, size 60[0m
+[0;32mI (615248) LORA_T: END OF WINDOW[0m
+[0;32mI (615258) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (615532) LORA_T: ON transmit[0m
+[0;31mE (615533) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (615584) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (615585) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (615750) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (615752) ENC: Tanwa receive, size 60[0m
+[0;31mE (616187) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (616189) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (616260) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (616281) ENC: Tanwa receive, size 60[0m
+[0;32mI (616533) LORA_T: END OF WINDOW[0m
+[0;32mI (616542) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (616734) LORA_T: ON transmit[0m
+[0;31mE (616735) LORA_T: TIMER IS ACTIVE[0m
+[0;32mI (616770) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (616779) ENC: Tanwa receive, size 60[0m
+[0;31mE (616791) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (616792) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (617280) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (617282) ENC: Tanwa receive, size 60[0m
+[0;31mE (617394) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (617395) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (617735) LORA_T: END OF WINDOW[0m
+[0;32mI (617752) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (617790) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (617811) ENC: Tanwa receive, size 60[0m
+[0;32mI (617944) LORA_T: ON transmit[0m
+[0;31mE (617945) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (617996) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (617998) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (618300) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (618309) ENC: Tanwa receive, size 60[0m
+[0;31mE (618601) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (618602) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (618813) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (618815) ENC: Tanwa receive, size 60[0m
+[0;32mI (618945) LORA_T: END OF WINDOW[0m
+[0;32mI (618946) LORA_C: Sending LoRa frame -> size: 190[0m
+[0;32mI (619139) LORA_T: ON transmit[0m
+[0;31mE (619140) LORA_T: TIMER IS ACTIVE[0m
+[0;31mE (619203) RECOVERY: RECOVERY ESP RECEIVER ERROR[0m
+[0;31mE (619205) RECOVERY: RECOVERY RECEIVE ERROR[0m
+[0;32mI (619327) ENA: Packet received, MAC: 80:08:50:80:08:50[0m
+[0;32mI (619344) ENC: Tanwa receive, size 60[0m

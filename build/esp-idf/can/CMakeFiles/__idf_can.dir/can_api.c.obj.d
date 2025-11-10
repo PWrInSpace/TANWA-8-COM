@@ -102,7 +102,7 @@ esp-idf/can/CMakeFiles/__idf_can.dir/can_api.c.obj: \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/stream_buffer.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/event_groups.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/timers.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h \
  /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/string.h \
  /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/strings.h \
  /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/string.h \

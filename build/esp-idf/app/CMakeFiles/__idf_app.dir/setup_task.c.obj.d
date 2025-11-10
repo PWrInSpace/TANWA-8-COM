@@ -178,5 +178,7 @@ esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj: \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/lora.pb-c.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/pbtools.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h

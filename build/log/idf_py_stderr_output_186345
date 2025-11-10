@@ -1,0 +1,13 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'tanwa_abort':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:44:13: warning: unused variable 'prev_state' [-Wunused-variable]
+   44 |     state_t prev_state = state_machine_get_previous_state();
+      |             ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'tanwa_hold_out':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:86:9: error: 'prev_state' undeclared (first use in this function)
+   86 |     if (prev_state == COUNTDOWN) {
+      |         ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:86:9: note: each undeclared identifier is reported only once for each function it appears in
+make[3]: *** [esp-idf/commands/CMakeFiles/__idf_commands.dir/build.make:90: esp-idf/commands/CMakeFiles/__idf_commands.dir/cmd_commands.c.obj] Błąd 1
+make[2]: *** [CMakeFiles/Makefile2:6339: esp-idf/commands/CMakeFiles/__idf_commands.dir/all] Błąd 2
+make[1]: *** [CMakeFiles/Makefile2:2703: CMakeFiles/flash.dir/rule] Błąd 2
+make: *** [Makefile:286: flash] Błąd 2

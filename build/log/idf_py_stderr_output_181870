@@ -1,0 +1,13 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c: In function 'board_config_init':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:353:25: error: 'TIMER_DISCONNECT' undeclared (first use in this function)
+  353 |     if(!sys_timer_start(TIMER_DISCONNECT, TIMER_DISCONNECT_PERIOD_MS, TIMER_TYPE_ONE_SHOT)) {
+      |                         ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:353:25: note: each undeclared identifier is reported only once for each function it appears in
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:263:13: warning: unused variable 'ret' [-Wunused-variable]
+  263 |     uint8_t ret = 0;
+      |             ^~~
+make[3]: *** [esp-idf/config/CMakeFiles/__idf_config.dir/build.make:76: esp-idf/config/CMakeFiles/__idf_config.dir/board_config.c.obj] Błąd 1
+make[3]: *** Oczekiwanie na niezakończone zadania....
+make[2]: *** [CMakeFiles/Makefile2:6365: esp-idf/config/CMakeFiles/__idf_config.dir/all] Błąd 2
+make[1]: *** [CMakeFiles/Makefile2:2703: CMakeFiles/flash.dir/rule] Błąd 2
+make: *** [Makefile:286: flash] Błąd 2

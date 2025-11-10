@@ -1,0 +1,16 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c: In function 'board_config_init':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:265:13: warning: unused variable 'ret' [-Wunused-variable]
+  265 |     uint8_t ret = 0;
+      |             ^~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'ens_command_parsing':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:728:15: error: this statement may fall through [-Werror=implicit-fallthrough=]
+  728 |             if(cmd->cmd.payload == 0){
+      |               ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:743:9: note: here
+  743 |         case CMD_VENT_CLOSE: {
+      |         ^~~~
+cc1: all warnings being treated as errors
+make[3]: *** [esp-idf/commands/CMakeFiles/__idf_commands.dir/build.make:90: esp-idf/commands/CMakeFiles/__idf_commands.dir/cmd_commands.c.obj] Błąd 1
+make[2]: *** [CMakeFiles/Makefile2:6339: esp-idf/commands/CMakeFiles/__idf_commands.dir/all] Błąd 2
+make[1]: *** [CMakeFiles/Makefile2:2703: CMakeFiles/flash.dir/rule] Błąd 2
+make: *** [Makefile:286: flash] Błąd 2

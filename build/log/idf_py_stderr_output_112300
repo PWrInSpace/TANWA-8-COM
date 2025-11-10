@@ -1,0 +1,27 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c: In function 'on_fuel_initial':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c:104:5: error: unknown type name 'Settings'
+  104 |     Settings settings = settings_get_all();
+      |     ^~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c:104:25: error: implicit declaration of function 'settings_get_all' [-Werror=implicit-function-declaration]
+  104 |     Settings settings = settings_get_all();
+      |                         ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c:108:45: error: request for member 'fuel_valve_initial_angle' in something not a structure or union
+  108 |     uint8_t data[8] = {0, (uint8_t)(settings.fuel_valve_initial_angle), 0, 0, 0, 0, 0, 0};
+      |                                             ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c:104:14: warning: variable 'settings' set but not used [-Wunused-but-set-variable]
+  104 |     Settings settings = settings_get_all();
+      |              ^~~~~~~~
+cc1: all warnings being treated as errors
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c: In function 'app_task':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c:106:39: error: implicit declaration of function 'liquid_ignition_test_timer_get_time' [-Werror=implicit-function-declaration]
+  106 |         tanwa_data.engine_work_time = liquid_ignition_test_timer_get_time();
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c:75:16: warning: variable 'local_freq' set but not used [-Wunused-but-set-variable]
+   75 |     TickType_t local_freq;
+      |                ^~~~~~~~~~
+make[2]: *** [esp-idf/app/CMakeFiles/__idf_app.dir/build.make:174: esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj] Błąd 1
+make[2]: *** Oczekiwanie na niezakończone zadania....
+cc1: all warnings being treated as errors
+make[2]: *** [esp-idf/app/CMakeFiles/__idf_app.dir/build.make:90: esp-idf/app/CMakeFiles/__idf_app.dir/app_task.c.obj] Błąd 1
+make[1]: *** [CMakeFiles/Makefile2:6465: esp-idf/app/CMakeFiles/__idf_app.dir/all] Błąd 2
+make: *** [Makefile:136: all] Błąd 2

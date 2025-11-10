@@ -1,0 +1,15 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.c: In function 'close_valves':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.c:34:5: error: implicit declaration of function 'relay_set_state'; did you mean 'relay_get_state'? [-Werror=implicit-function-declaration]
+   34 |     relay_set_state(&tanwa_hardware.relay[0], RELAY_STATE_OFF);
+      |     ^~~~~~~~~~~~~~~
+      |     relay_get_state
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.c:34:47: error: 'RELAY_STATE_OFF' undeclared (first use in this function); did you mean 'LED_STATE_OFF'?
+   34 |     relay_set_state(&tanwa_hardware.relay[0], RELAY_STATE_OFF);
+      |                                               ^~~~~~~~~~~~~~~
+      |                                               LED_STATE_OFF
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.c:34:47: note: each undeclared identifier is reported only once for each function it appears in
+cc1: all warnings being treated as errors
+make[3]: *** [esp-idf/app/CMakeFiles/__idf_app.dir/build.make:160: esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj] Błąd 1
+make[2]: *** [CMakeFiles/Makefile2:6468: esp-idf/app/CMakeFiles/__idf_app.dir/all] Błąd 2
+make[1]: *** [CMakeFiles/Makefile2:2703: CMakeFiles/flash.dir/rule] Błąd 2
+make: *** [Makefile:286: flash] Błąd 2

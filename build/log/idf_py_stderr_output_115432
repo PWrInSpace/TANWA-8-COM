@@ -1,0 +1,56 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c: In function 'tanwa_abort':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:43:13: warning: unused variable 'prev_state' [-Wunused-variable]
+   43 |     state_t prev_state = state_machine_get_previous_state();
+      |             ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c: In function 'tanwa_hold_in':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:60:13: warning: unused variable 'prev_state' [-Wunused-variable]
+   60 |     state_t prev_state = state_machine_get_previous_state();
+      |             ^~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c: In function 'tanwa_vent_time':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:345:14: warning: unused variable 'open_time_scaled' [-Wunused-variable]
+  345 |     uint16_t open_time_scaled = (uint16_t)open_time;
+      |              ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c: In function 'tanwa_eth_vent_time':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:362:14: warning: unused variable 'open_time_scaled' [-Wunused-variable]
+  362 |     uint16_t open_time_scaled = (uint16_t)open_time;
+      |              ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c: In function 'tanwa_n2_vent_time':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:377:14: warning: unused variable 'open_time_scaled' [-Wunused-variable]
+  377 |     uint16_t open_time_scaled = (uint16_t)open_time;
+      |              ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c: In function 'lora_command_parsing':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:393:9: error: implicit declaration of function 'settings_read_all' [-Werror=implicit-function-declaration]
+  393 |         settings_read_all();
+      |         ^~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:394:9: error: unknown type name 'Settings'
+  394 |         Settings settings = settings_get_all();
+      |         ^~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:394:29: error: implicit declaration of function 'settings_get_all' [-Werror=implicit-function-declaration]
+  394 |         Settings settings = settings_get_all();
+      |                             ^~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:435:25: error: request for member 'countdownTime' in something not a structure or union
+  435 |                 settings.countdownTime = payload;
+      |                         ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:436:17: error: implicit declaration of function 'settings_save' [-Werror=implicit-function-declaration]
+  436 |                 settings_save(SETTINGS_COUNTDOWN_TIME, settings.countdownTime);
+      |                 ^~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:436:31: error: 'SETTINGS_COUNTDOWN_TIME' undeclared (first use in this function)
+  436 |                 settings_save(SETTINGS_COUNTDOWN_TIME, settings.countdownTime);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:436:31: note: each undeclared identifier is reported only once for each function it appears in
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:436:64: error: request for member 'countdownTime' in something not a structure or union
+  436 |                 settings_save(SETTINGS_COUNTDOWN_TIME, settings.countdownTime);
+      |                                                                ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:437:17: error: implicit declaration of function 'liquid_ignition_test_timer_set_disable_val' [-Werror=implicit-function-declaration]
+  437 |                 liquid_ignition_test_timer_set_disable_val(settings.countdownTime);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:437:68: error: request for member 'countdownTime' in something not a structure or union
+  437 |                 liquid_ignition_test_timer_set_disable_val(settings.countdownTime);
+      |                                                                    ^
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.c:394:18: warning: variable 'settings' set but not used [-Wunused-but-set-variable]
+  394 |         Settings settings = settings_get_all();
+      |                  ^~~~~~~~
+cc1: all warnings being treated as errors
+make[2]: *** [esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/build.make:76: esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj] Błąd 1
+make[1]: *** [CMakeFiles/Makefile2:6422: esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/all] Błąd 2
+make: *** [Makefile:136: all] Błąd 2

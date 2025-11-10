@@ -138,17 +138,13 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj: \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/relay/relay_driver.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/lora.pb-c.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/pbtools.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/timers/system_timer.h \
  /home/alaive/esp/esp-idf/components/esp_timer/include/esp_timer.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/settings/settings_mem.h \
- /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs_flash.h \
- /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs.h \
- /home/alaive/esp/esp-idf/components/esp_partition/include/esp_partition.h \
- /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/board_data.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/com_structs.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/slave_structs.h

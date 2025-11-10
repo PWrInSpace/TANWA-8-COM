@@ -39,7 +39,6 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj: /ho
   /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/syslimits.h \
   config/sdkconfig.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.h \
-  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h \
@@ -57,8 +56,9 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj: /ho
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/mcu_config/mcu_gpio_config.h \
+  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/lora.pb-c.h \
+  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/pbtools.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/relay/relay_driver.h \
-  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/settings/settings_mem.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/state_machine/state_machine.h \
   /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/timers/system_timer.h \
   /home/alaive/esp/esp-idf/components/esp_common/include/esp_assert.h \
@@ -78,7 +78,6 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj: /ho
   /home/alaive/esp/esp-idf/components/esp_hw_support/include/esp_intr_types.h \
   /home/alaive/esp/esp-idf/components/esp_hw_support/include/esp_memory_utils.h \
   /home/alaive/esp/esp-idf/components/esp_hw_support/include/spinlock.h \
-  /home/alaive/esp/esp-idf/components/esp_partition/include/esp_partition.h \
   /home/alaive/esp/esp-idf/components/esp_rom/include/esp32s3/rom/gpio.h \
   /home/alaive/esp/esp-idf/components/esp_rom/include/esp_rom_gpio.h \
   /home/alaive/esp/esp-idf/components/esp_rom/include/esp_rom_sys.h \
@@ -116,8 +115,6 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/cmd_commands.c.obj: /ho
   /home/alaive/esp/esp-idf/components/newlib/platform_include/esp_newlib.h \
   /home/alaive/esp/esp-idf/components/newlib/platform_include/sys/lock.h \
   /home/alaive/esp/esp-idf/components/newlib/platform_include/sys/reent.h \
-  /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs.h \
-  /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs_flash.h \
   /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_num.h \
   /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_pins.h \
   /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_reg.h \
@@ -268,11 +265,13 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/commands.c.obj: /home/a
 
 /home/alaive/esp/esp-idf/components/xtensa/esp32s3/include/xtensa/config/system.h:
 
-/home/alaive/esp/esp-idf/components/xtensa/esp32s3/include/xtensa/config/extreg.h:
-
-/home/alaive/esp/esp-idf/components/xtensa/esp32s3/include/xtensa/config/core-matmap.h:
-
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora_commands/cmd_commands.h:
+
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/lora.pb-c.h:
+
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/features.h:
+
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/hardware/mcp23018.h:
 
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/hardware/led_state_display.h:
 
@@ -283,12 +282,6 @@ esp-idf/lora_commands/CMakeFiles/__idf_lora_commands.dir/commands.c.obj: /home/a
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.h:
 
 /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.h:
-
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/settings/settings_mem.h:
-
-/home/alaive/esp/esp-idf/components/xtensa/esp32s3/include/xtensa/config/core.h:
-
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h:
 
 /home/alaive/esp/esp-idf/components/esp_wifi/include/esp_wifi_types.h:
 
@@ -316,11 +309,9 @@ config/sdkconfig.h:
 
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/stdio.h:
 
+/home/alaive/esp/esp-idf/components/esp_hw_support/include/esp_interface.h:
+
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/reent.h:
-
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/hardware/mcp23018.h:
-
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/features.h:
 
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/config.h:
 
@@ -408,10 +399,6 @@ config/sdkconfig.h:
 
 /home/alaive/esp/esp-idf/components/heap/include/multi_heap.h:
 
-/home/alaive/esp/esp-idf/components/esp_hw_support/include/esp_interface.h:
-
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.h:
-
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/_ansi.h:
 
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/machine/_default_types.h:
@@ -444,9 +431,11 @@ config/sdkconfig.h:
 
 /home/alaive/esp/esp-idf/components/esp_driver_gpio/include/driver/gpio_etm.h:
 
-/home/alaive/esp/esp-idf/components/nvs_flash/include/nvs.h:
-
 /home/alaive/esp/esp-idf/components/esp_wifi/include/esp_now.h:
+
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h:
+
+/home/alaive/esp/esp-idf/components/xtensa/esp32s3/include/xtensa/config/core.h:
 
 /home/alaive/esp/esp-idf/components/xtensa/include/xt_utils.h:
 
@@ -506,13 +495,17 @@ config/sdkconfig.h:
 
 /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/reset_reasons.h:
 
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/string.h:
+
+/home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/queue.h:
+
 /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos/portbenchmark.h:
 
 /home/alaive/esp/esp-idf/components/esp_common/include/esp_assert.h:
 
 /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_pins.h:
 
-/home/alaive/esp/esp-idf/components/esp_partition/include/esp_partition.h:
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/proto/pbtools.h:
 
 /home/alaive/esp/esp-idf/components/freertos/esp_additions/include/freertos/idf_additions.h:
 
@@ -524,15 +517,9 @@ config/sdkconfig.h:
 
 /home/alaive/esp/esp-idf/components/newlib/platform_include/assert.h:
 
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/string.h:
-
-/home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/queue.h:
-
-/home/alaive/esp/esp-idf/components/nvs_flash/include/nvs_flash.h:
+/home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_struct.h:
 
 /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/mpu_caps.h:
-
-/home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_struct.h:
 
 /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/soc.h:
 
@@ -541,3 +528,7 @@ config/sdkconfig.h:
 /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/soc_caps.h:
 
 /home/alaive/esp/esp-idf/components/xtensa/esp32s3/include/xtensa/config/core-isa.h:
+
+/home/alaive/esp/esp-idf/components/xtensa/esp32s3/include/xtensa/config/core-matmap.h:
+
+/home/alaive/esp/esp-idf/components/xtensa/esp32s3/include/xtensa/config/extreg.h:

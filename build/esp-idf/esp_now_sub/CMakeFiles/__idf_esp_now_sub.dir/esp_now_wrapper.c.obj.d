@@ -128,4 +128,6 @@ esp-idf/esp_now_sub/CMakeFiles/__idf_esp_now_sub.dir/esp_now_wrapper.c.obj: \
  /home/alaive/esp/esp-idf/components/hal/include/hal/touch_sensor_types.h \
  /home/alaive/esp/esp-idf/components/hal/include/hal/gpio_types.h \
  /home/alaive/esp/esp-idf/components/soc/esp32s3/include/soc/gpio_num.h \
+ /home/alaive/esp/esp-idf/components/log/include/esp_log.h \
+ /home/alaive/esp/esp-idf/components/log/include/esp_log_internal.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_config.h

@@ -15,7 +15,7 @@ typedef enum {
     INIT = 0,
     IDLE,
     RECOVERY_ARM,
-    FUELING,
+    FILLING,
     PRESSURIZING,
     ARMED_TO_LAUNCH,
     RDY_TO_LAUNCH,

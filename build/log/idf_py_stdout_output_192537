@@ -1,0 +1,522 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0xa (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct  4 2025 23:55:03[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=251e8h (152040) map[0m
+[0;32mI (131) esp_image: segment 1: paddr=00035210 vaddr=3fc9ef00 size=059b8h ( 22968) load[0m
+[0;32mI (137) esp_image: segment 2: paddr=0003abd0 vaddr=40374000 size=05448h ( 21576) load[0m
+[0;32mI (142) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a7970h (686448) map[0m
+[0;32mI (271) esp_image: segment 4: paddr=000e7998 vaddr=40379448 size=15a88h ( 88712) load[0m
+[0;32mI (291) esp_image: segment 5: paddr=000fd428 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (292) esp_image: segment 6: paddr=000fd434 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (308) boot: Disabling RNG early entropy source...[0m
+[0;32mI (321) cpu_start: Multicore app[0m
+[0;32mI (330) cpu_start: Pro cpu start user code[0m
+[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (330) app_init: Application information:[0m
+[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (338) app_init: App version:      599b31f-dirty[0m
+[0;32mI (343) app_init: Compile time:     Oct  5 2025 11:09:35[0m
+[0;32mI (349) app_init: ELF file SHA256:  57e9dada4...[0m
+[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (359) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (364) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (369) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (374) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (381) heap_init: At 3FCA8C20 len 00040AF0 (258 KiB): RAM[0m
+[0;32mI (387) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (393) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (400) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (407) spi_flash: detected chip: generic[0m
+[0;32mI (410) spi_flash: flash io: dio[0m
+[0;33mW (414) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (428) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (438) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (445) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (453) main_task: Started on CPU0[0m
+[0;32mI (463) main_task: Calling app_main()[0m
+[0;32mI (463) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (463) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (473) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (483) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (493) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (503) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (513) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (523) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (533) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (543) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (553) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (563) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (583) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (593) CAN_API: TWAI driver started[0m
+[0;32mI (593) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (603) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (603) SMC: Initializing state machine[0m
+[0;32mI (613) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (623) pp: pp rom version: e7ae62f[0m
+[0;32mI (633) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (633) SMC: ON INIT[0m
+[0;32mI (633) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (643) wifi:wifi driver task: 3fcb7ecc, prio:23, stack:6656, core=0[0m
+[0;32mI (643) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (643) wifi:wifi certification version: v7.0[0m
+[0;32mI (653) wifi:config NVS flash: enabled[0m
+[0;32mI (653) wifi:config nano formating: disabled[0m
+[0;32mI (653) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (663) wifi:Init management short buffer num: 32[0m
+[0;32mI (673) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (673) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (683) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (683) wifi:Init static rx buffer num: 10[0m
+[0;32mI (683) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (693) wifi_init: rx ba win: 6[0m
+[0;32mI (693) wifi_init: accept mbox: 6[0m
+[0;32mI (693) wifi_init: tcpip mbox: 32[0m
+[0;32mI (703) wifi_init: udp mbox: 6[0m
+[0;32mI (703) wifi_init: tcp mbox: 6[0m
+[0;32mI (713) wifi_init: tcp tx win: 5760[0m
+[0;32mI (713) wifi_init: tcp rx win: 5760[0m
+[0;32mI (713) wifi_init: tcp mss: 1440[0m
+[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (723) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (733) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (773) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (773) wifi:enable tsf[0m
+[0;32mI (783) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (783) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (783) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (783) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (793) esp_timer: Task is already initialized[0m
+[0;32mI (803) TIMER: Timers number 3[0m
+[0;32mI (803) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (813) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (813) LORA_TASK: initialize_lora: lora global=0x3fc9f88c, lora_api.lora=0x3fc9f88c[0m
+[0;32mI (833) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (833) LORA_TASK: lora_task_init: gb=0x3fca50f4, gb.lora=0x3fc9f88c, global lora=0x3fc9f88c, lora._spi_transmit=0x420135e8[0m
+[0;32mI (843) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (843) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (843) LORA_TASK: LoRa Task started[0m
+[0;32mI (853) BOARD_CONFIG: Initializing SD Card...[0m
+[0;32mI (863) SD_TASK: Initializing sd task[0m
+[0;32mI (863) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (873) sdspi_transaction: cmd=52, R1 response: function number error[0m
+[0;31mE (883) sdmmc_io: sdmmc_io_reset: unexpected return: 0x102[0m
+[0;31mE (883) vfs_fat_sdmmc: sdmmc_card_init failed (0x102).[0m
+[0;32mI (893) gpio: GPIO[15]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;31mE (903) SD_INIT: esp_vfs_fat_sdspi_mount failed: ESP_ERR_INVALID_ARG (0x102)[0m
+[0;31mE (913) SDCARD: Failed to initialize the card (ESP_ERR_INVALID_ARG). Make sure SD card lines have pull-up resistors in place.[0m
+[0;32mI (923) SD_TEST: Testing SD pin connections and pullup strength[0m
+[0;32mI (923) gpio: GPIO[9]| InputEn: 1| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (933) gpio: GPIO[11]| InputEn: 1| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (943) gpio: GPIO[10]| InputEn: 1| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (953) gpio: GPIO[15]| InputEn: 1| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+
+**** PIN recovery time ****
+
+PIN  9 CLK   10048 cycles
+PIN 11 MOSI  43 cycles
+PIN 10 MISO  43 cycles
+PIN 15 CS    43 cycles
+
+**** PIN recovery time with weak pullup ****
+
+PIN  9 CLK   181 cycles
+PIN 11 MOSI  42 cycles
+PIN 10 MISO  42 cycles
+PIN 15 CS    42 cycles
+[0;33mW (993) SD_TASK: Unable to initialize SD card[0m
+[0;31mE (993) SD_TASK: Unable to initialzie sd card[0m
+[0;31mE (1003) BOARD_CONFIG: SD Card initialization failed[0m
+[0;32mI (1003) BOARD_CONFIG: SD CARD | Timer started[0m
+[0;32mI (1013) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (1023) SMC: ON IDLE[0m
+[0;31mE (1103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1103) TIMERS: Error while sending data to sd card[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (1123) APP_TASK: App task created successfully[0m
+[6n [0;31mE (1203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1203) TIMERS: Error while sending data to sd card[0m
+[999C [6n [0;31mE (1303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1303) TIMERS: Error while sending data to sd card[0m
+[139D[0;32mtwi> [0m[0;31mE (1403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (1503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (1603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (1703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1703) TIMERS: Error while sending data to sd card[0m
+[0;32mI (1793) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (1803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1803) TIMERS: Error while sending data to sd card[0m
+[0;31mE (1903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (1903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (2003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (2103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (2203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (2303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (2403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (2503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (2603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2603) TIMERS: Error while sending data to sd card[0m
+[0;32mI (2633) LORA_TASK: IRQ received[0m
+[0;31mE (2703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2703) TIMERS: Error while sending data to sd card[0m
+[0;32mI (2803) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (2803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2803) TIMERS: Error while sending data to sd card[0m
+[0;31mE (2903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (2903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (3803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (3813) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (3903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (3903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (4803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (4833) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (4903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (4903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (5803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (5843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (5903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (5903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (6803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (6853) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (6903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (6903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (7803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (7863) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (7903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (7903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (8803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (8873) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (8903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (8903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (9803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (9883) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (9903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (9903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (10803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (10893) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (10903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (10903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (11803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11803) TIMERS: Error while sending data to sd card[0m
+[0;32mI (11903) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (11903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (11903) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12803) TIMERS: Error while sending data to sd card[0m
+[0;31mE (12903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (12903) TIMERS: Error while sending data to sd card[0m
+[0;32mI (12913) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (13003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13803) TIMERS: Error while sending data to sd card[0m
+[0;31mE (13903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (13903) TIMERS: Error while sending data to sd card[0m
+[0;32mI (13933) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (14003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14803) TIMERS: Error while sending data to sd card[0m
+[0;31mE (14903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (14903) TIMERS: Error while sending data to sd card[0m
+[0;32mI (14943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (15003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15803) TIMERS: Error while sending data to sd card[0m
+[0;31mE (15903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (15903) TIMERS: Error while sending data to sd card[0m
+[0;32mI (15953) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (16003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16803) TIMERS: Error while sending data to sd card[0m
+[0;31mE (16903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (16903) TIMERS: Error while sending data to sd card[0m
+[0;32mI (16963) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (17003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17103) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17103) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17203) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17203) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17303) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17303) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17403) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17403) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17503) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17503) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17603) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17603) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17703) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17703) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17803) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17803) TIMERS: Error while sending data to sd card[0m
+[0;31mE (17903) SD_TASK: Data queue is not initialized[0m
+[0;31mE (17903) TIMERS: Error while sending data to sd card[0m
+[0;32mI (17973) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (18003) SD_TASK: Data queue is not initialized[0m
+[0;31mE (18003) TIMERS: Error while sending data to sd card[0m
+[0;31mE (18103) SD_TASK: Data queue is not initialized[0m
+[0;31m

@@ -1,0 +1,232 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct  4 2025 23:55:03[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=22450h (140368) map[0m
+[0;32mI (129) esp_image: segment 1: paddr=00032478 vaddr=3fc9eb00 size=058fch ( 22780) load[0m
+[0;32mI (135) esp_image: segment 2: paddr=00037d7c vaddr=40374000 size=0829ch ( 33436) load[0m
+[0;32mI (143) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=9d6ach (644780) map[0m
+[0;32mI (261) esp_image: segment 4: paddr=000dd6d4 vaddr=4037c29c size=127d4h ( 75732) load[0m
+[0;32mI (279) esp_image: segment 5: paddr=000efeb0 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (279) esp_image: segment 6: paddr=000efebc vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (295) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (295) boot: Disabling RNG early entropy source...[0m
+[0;32mI (308) cpu_start: Multicore app[0m
+[0;32mI (317) cpu_start: Pro cpu start user code[0m
+[0;32mI (317) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (317) app_init: Application information:[0m
+[0;32mI (320) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (325) app_init: App version:      599b31f-dirty[0m
+[0;32mI (331) app_init: Compile time:     Oct  5 2025 11:09:35[0m
+[0;32mI (337) app_init: ELF file SHA256:  271138fec...[0m
+[0;32mI (342) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (347) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (352) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (357) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (361) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (369) heap_init: At 3FCA8630 len 000410E0 (260 KiB): RAM[0m
+[0;32mI (375) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (381) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (387) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (394) spi_flash: detected chip: generic[0m
+[0;32mI (398) spi_flash: flash io: dio[0m
+[0;33mW (402) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (415) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (426) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (433) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (440) main_task: Started on CPU0[0m
+[0;32mI (450) main_task: Calling app_main()[0m
+[0;32mI (450) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (450) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (460) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (470) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (480) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (490) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (500) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (510) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (520) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (530) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (540) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (550) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (560) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (560) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (570) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (580) CAN_API: TWAI driver started[0m
+[0;32mI (580) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (590) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (590) SMC: Initializing state machine[0m
+[0;32mI (600) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (600) BOARD_CONFIG: Initializing settings...[0m
+[0;32mI (620) BOARD_CONFIG: Settings initialized[0m
+[0;32mI (630) BOARD_CONFIG: Initializing mission timer... JEBAC KURWY Z ZARZADU[0m
+[0;32mI (630) BOARD_CONFIG: ### Mission timer initialization success ###[0m
+[0;32mI (630) pp: pp rom version: e7ae62f[0m
+[0;32mI (630) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (640) SMC: ON INIT[0m
+[0;32mI (640) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (650) wifi:wifi driver task: 3fcb7910, prio:23, stack:6656, core=0[0m
+[0;32mI (660) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (660) wifi:wifi certification version: v7.0[0m
+[0;32mI (660) wifi:config NVS flash: enabled[0m
+[0;32mI (670) wifi:config nano formating: disabled[0m
+[0;32mI (670) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (670) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (680) wifi:Init management short buffer num: 32[0m
+[0;32mI (680) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (690) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (690) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (690) wifi:Init static rx buffer num: 10[0m
+[0;32mI (700) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (700) wifi_init: rx ba win: 6[0m
+[0;32mI (710) wifi_init: accept mbox: 6[0m
+[0;32mI (710) wifi_init: tcpip mbox: 32[0m
+[0;32mI (710) wifi_init: udp mbox: 6[0m
+[0;32mI (720) wifi_init: tcp mbox: 6[0m
+[0;32mI (720) wifi_init: tcp tx win: 5760[0m
+[0;32mI (730) wifi_init: tcp rx win: 5760[0m
+[0;32mI (730) wifi_init: tcp mss: 1440[0m
+[0;32mI (730) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (740) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (740) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (790) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (790) wifi:enable tsf[0m
+[0;32mI (790) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (790) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (790) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (800) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (810) esp_timer: Task is already initialized[0m
+[0;32mI (810) TIMER: Timers number 10[0m
+[0;32mI (820) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (820) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (830) LORA_TASK: initialize_lora: lora global=0x3fc9f470, lora_api.lora=0x3fc9f470[0m
+[0;32mI (840) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (840) LORA_TASK: lora_task_init: gb=0x3fca4b44, gb.lora=0x3fc9f470, global lora=0x3fc9f470, lora._spi_transmit=0x42012898[0m
+[0;32mI (850) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (860) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (860) LORA_TASK: LoRa Task started[0m
+[0;32mI (860) BOARD_CONFIG: DISCONNECT | Timer started[0m
+[0;32mI (870) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (890) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (990) APP_TASK: App task created successfully[0m
+[6n [999C [6n [96D[0;32mtwi> [0m[0;32mI (2640) LORA_TASK: IRQ received[0m
+[0;31mE (2640) LORA_TASK: lora_task: gb.lora is NULL, skipping lora_received[0m
+[0;31mE (3400) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3410) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3420) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3430) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3440) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3450) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3460) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3470) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3600) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3610) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3620) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3630) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3640) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3650) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3660) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3670) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3680) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3800) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3810) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3820) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3830) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3840) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3850) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3860) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3870) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (3880) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4000) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4010) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4020) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4030) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4040) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4050) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4060) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4070) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4080) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4200) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4210) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4220) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4230) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4240) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4250) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4260) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4270) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4280) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4400) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4410) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4420) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4430) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4440) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4450) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4460) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4470) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4480) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4600) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4610) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4620) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4630) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4640) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4650) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4660) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4670) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4680) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4800) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4810) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4820) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4830) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4840) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4850) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4860) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4870) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (4880) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5000) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5010) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5020) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5030) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5040) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5050) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5060) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5070) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5080) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5200) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5210) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5220) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5230) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5240) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5250) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5260) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5270) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5280) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5400) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5410) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5420) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5430) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5440) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m
+[0;31mE (5450) CAN_API: Failed to send CAN message: ESP_ERR_TIMEOUT[0m

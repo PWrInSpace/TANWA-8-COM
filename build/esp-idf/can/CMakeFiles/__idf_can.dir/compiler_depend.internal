@@ -40,7 +40,7 @@ esp-idf/can/CMakeFiles/__idf_can.dir/can_api.c.obj
  /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/syslimits.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/config/sdkconfig.h
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h
  /home/alaive/esp/esp-idf/components/driver/twai/include/driver/twai.h
  /home/alaive/esp/esp-idf/components/esp_common/include/esp_assert.h
  /home/alaive/esp/esp-idf/components/esp_common/include/esp_attr.h

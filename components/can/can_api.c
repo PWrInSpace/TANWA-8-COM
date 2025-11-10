@@ -37,7 +37,7 @@ esp_err_t can_start(void) {
     }
     ESP_LOGI(TAG, "TWAI driver started");
 
-    can_send_message(CAN_SENSOR_DATA_ID, NULL, 0); // Request sensor data on startup
+    //can_send_message(CAN_SENSOR_DATA_ID, NULL, 0); // Request sensor data on startup
 
     return ESP_OK;
 }
@@ -73,7 +73,7 @@ esp_err_t can_send_message(uint32_t id, uint8_t *data, uint8_t length) {
     //ESP_LOGI(TAG, "Data: %02X %02X %02X %02X %02X %02X %02X %02X", message.data[0], message.data[1], message.data[2], message.data[3], message.data[4], message.data[5], message.data[6], message.data[7]);
 
     // Send the message
-    err = twai_transmit(&message, pdMS_TO_TICKS(10));
+    err = twai_transmit(&message, pdMS_TO_TICKS(50));
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to send CAN message: %s", esp_err_to_name(err));
         return err;
