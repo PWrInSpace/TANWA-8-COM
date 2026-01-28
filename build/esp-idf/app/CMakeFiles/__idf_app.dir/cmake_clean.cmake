@@ -7,8 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/__idf_app.dir/ens_task.c.obj.d"
   "CMakeFiles/__idf_app.dir/lora_task.c.obj"
   "CMakeFiles/__idf_app.dir/lora_task.c.obj.d"
-  "CMakeFiles/__idf_app.dir/mission_timer_config.c.obj"
-  "CMakeFiles/__idf_app.dir/mission_timer_config.c.obj.d"
   "CMakeFiles/__idf_app.dir/sd_task.c.obj"
   "CMakeFiles/__idf_app.dir/sd_task.c.obj.d"
   "CMakeFiles/__idf_app.dir/setup_task.c.obj"

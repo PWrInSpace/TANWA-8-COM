@@ -125,24 +125,10 @@ esp-idf/app/CMakeFiles/__idf_app.dir/lora_task.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_app.dir/lora_task.c.s"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c -o CMakeFiles/__idf_app.dir/lora_task.c.s
 
-esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/flags.make
-esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.c
-esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj"
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj -MF CMakeFiles/__idf_app.dir/mission_timer_config.c.obj.d -o CMakeFiles/__idf_app.dir/mission_timer_config.c.obj -c /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.c
-
-esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_app.dir/mission_timer_config.c.i"
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.c > CMakeFiles/__idf_app.dir/mission_timer_config.c.i
-
-esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_app.dir/mission_timer_config.c.s"
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.c -o CMakeFiles/__idf_app.dir/mission_timer_config.c.s
-
 esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/flags.make
 esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/sd_task.c
 esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj -MF CMakeFiles/__idf_app.dir/sd_task.c.obj.d -o CMakeFiles/__idf_app.dir/sd_task.c.obj -c /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/sd_task.c
 
 esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.i: cmake_force
@@ -156,7 +142,7 @@ esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.s: cmake_force
 esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/flags.make
 esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/setup_task.c
 esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj -MF CMakeFiles/__idf_app.dir/setup_task.c.obj.d -o CMakeFiles/__idf_app.dir/setup_task.c.obj -c /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/setup_task.c
 
 esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.i: cmake_force
@@ -170,7 +156,7 @@ esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.s: cmake_force
 esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/flags.make
 esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.c
 esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj -MF CMakeFiles/__idf_app.dir/state_machine_config.c.obj.d -o CMakeFiles/__idf_app.dir/state_machine_config.c.obj -c /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.c
 
 esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.i: cmake_force
@@ -184,7 +170,7 @@ esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.s: cmake_force
 esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/flags.make
 esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c
 esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj: esp-idf/app/CMakeFiles/__idf_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj -MF CMakeFiles/__idf_app.dir/timers_config.c.obj.d -o CMakeFiles/__idf_app.dir/timers_config.c.obj -c /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.c
 
 esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.i: cmake_force
@@ -201,7 +187,6 @@ __idf_app_OBJECTS = \
 "CMakeFiles/__idf_app.dir/app_task.c.obj" \
 "CMakeFiles/__idf_app.dir/ens_task.c.obj" \
 "CMakeFiles/__idf_app.dir/lora_task.c.obj" \
-"CMakeFiles/__idf_app.dir/mission_timer_config.c.obj" \
 "CMakeFiles/__idf_app.dir/sd_task.c.obj" \
 "CMakeFiles/__idf_app.dir/setup_task.c.obj" \
 "CMakeFiles/__idf_app.dir/state_machine_config.c.obj" \
@@ -214,14 +199,13 @@ esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/abort_button.c.obj
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/app_task.c.obj
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/ens_task.c.obj
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/lora_task.c.obj
-esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/setup_task.c.obj
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/build.make
 esp-idf/app/libapp.a: esp-idf/app/CMakeFiles/__idf_app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C static library libapp.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C static library libapp.a"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && $(CMAKE_COMMAND) -P CMakeFiles/__idf_app.dir/cmake_clean_target.cmake
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/app && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_app.dir/link.txt --verbose=$(VERBOSE)
 

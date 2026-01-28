@@ -199,30 +199,6 @@ board_config.c.s:
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build && $(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/board_config.c.s
 .PHONY : board_config.c.s
 
-can_commands.obj: can_commands.c.obj
-.PHONY : can_commands.obj
-
-# target to build an object file
-can_commands.c.obj:
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build && $(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.obj
-.PHONY : can_commands.c.obj
-
-can_commands.i: can_commands.c.i
-.PHONY : can_commands.i
-
-# target to preprocess a source file
-can_commands.c.i:
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build && $(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.i
-.PHONY : can_commands.c.i
-
-can_commands.s: can_commands.c.s
-.PHONY : can_commands.s
-
-# target to generate assembly for a file
-can_commands.c.s:
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build && $(MAKE) $(MAKESILENT) -f esp-idf/config/CMakeFiles/__idf_config.dir/build.make esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.s
-.PHONY : can_commands.c.s
-
 can_config.obj: can_config.c.obj
 .PHONY : can_config.obj
 
@@ -287,9 +263,6 @@ help:
 	@echo "... board_config.obj"
 	@echo "... board_config.i"
 	@echo "... board_config.s"
-	@echo "... can_commands.obj"
-	@echo "... can_commands.i"
-	@echo "... can_commands.s"
 	@echo "... can_config.obj"
 	@echo "... can_config.i"
 	@echo "... can_config.s"

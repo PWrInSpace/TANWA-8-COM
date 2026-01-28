@@ -83,24 +83,10 @@ esp-idf/config/CMakeFiles/__idf_config.dir/board_config.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_config.dir/board_config.c.s"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c -o CMakeFiles/__idf_config.dir/board_config.c.s
 
-esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.obj: esp-idf/config/CMakeFiles/__idf_config.dir/flags.make
-esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.obj: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.c
-esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.obj: esp-idf/config/CMakeFiles/__idf_config.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.obj"
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.obj -MF CMakeFiles/__idf_config.dir/can_commands.c.obj.d -o CMakeFiles/__idf_config.dir/can_commands.c.obj -c /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.c
-
-esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/__idf_config.dir/can_commands.c.i"
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.c > CMakeFiles/__idf_config.dir/can_commands.c.i
-
-esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/__idf_config.dir/can_commands.c.s"
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.c -o CMakeFiles/__idf_config.dir/can_commands.c.s
-
 esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.obj: esp-idf/config/CMakeFiles/__idf_config.dir/flags.make
 esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.obj: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_config.c
 esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.obj: esp-idf/config/CMakeFiles/__idf_config.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.obj"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.obj -MF CMakeFiles/__idf_config.dir/can_config.c.obj.d -o CMakeFiles/__idf_config.dir/can_config.c.obj -c /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_config.c
 
 esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.i: cmake_force
@@ -114,7 +100,7 @@ esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.s: cmake_force
 esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj: esp-idf/config/CMakeFiles/__idf_config.dir/flags.make
 esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj: /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/console_config.c
 esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj: esp-idf/config/CMakeFiles/__idf_config.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config && /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj -MF CMakeFiles/__idf_config.dir/console_config.c.obj.d -o CMakeFiles/__idf_config.dir/console_config.c.obj -c /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/console_config.c
 
 esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.i: cmake_force
@@ -128,7 +114,6 @@ esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.s: cmake_force
 # Object files for target __idf_config
 __idf_config_OBJECTS = \
 "CMakeFiles/__idf_config.dir/board_config.c.obj" \
-"CMakeFiles/__idf_config.dir/can_commands.c.obj" \
 "CMakeFiles/__idf_config.dir/can_config.c.obj" \
 "CMakeFiles/__idf_config.dir/console_config.c.obj"
 
@@ -136,12 +121,11 @@ __idf_config_OBJECTS = \
 __idf_config_EXTERNAL_OBJECTS =
 
 esp-idf/config/libconfig.a: esp-idf/config/CMakeFiles/__idf_config.dir/board_config.c.obj
-esp-idf/config/libconfig.a: esp-idf/config/CMakeFiles/__idf_config.dir/can_commands.c.obj
 esp-idf/config/libconfig.a: esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.obj
 esp-idf/config/libconfig.a: esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj
 esp-idf/config/libconfig.a: esp-idf/config/CMakeFiles/__idf_config.dir/build.make
 esp-idf/config/libconfig.a: esp-idf/config/CMakeFiles/__idf_config.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C static library libconfig.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C static library libconfig.a"
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config && $(CMAKE_COMMAND) -P CMakeFiles/__idf_config.dir/cmake_clean_target.cmake
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/__idf_config.dir/link.txt --verbose=$(VERBOSE)
 

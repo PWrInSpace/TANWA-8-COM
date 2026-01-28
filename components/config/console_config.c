@@ -508,6 +508,28 @@ int tanwa_countdown(int argc, char **argv) {
     return 0;
 }
 
+int change_buzzer_state(int argc, char **argv) {
+    // This function can be used to change the state of the buzzer
+    if (argc != 2) {
+        return -1;
+    }
+
+    int state = atoi(argv[1]);
+    uint16_t duration = (uint16_t)atoi(argv[2]);
+    if (state < 0 || state > 1) {
+        ESP_LOGE(TAG, "Invalid buzzer state. Must be 0 or 1.");
+        return -1;
+    }
+
+    if (state == 1) {
+        buzzer_change_period(duration);
+    } else {
+        buzzer_stop();
+    }
+
+    return 0;
+}
+
  // Place for the console configuration
 
  static esp_console_cmd_t cmd [] = {
@@ -539,6 +561,7 @@ int tanwa_countdown(int argc, char **argv) {
     {"press-set-data-rate", "Set pressure data rate", NULL, set_pressure_data_rate, NULL, NULL, NULL},
     {"change-state", "Change state of the system", NULL, tanwa_change_state, NULL, NULL, NULL},
     {"countdown", "Start countdown", NULL, tanwa_countdown, NULL, NULL, NULL},
+    {"buzzer", "Change buzzer state", NULL, change_buzzer_state, NULL, NULL, NULL},
 };
 
 esp_err_t console_config_init() {

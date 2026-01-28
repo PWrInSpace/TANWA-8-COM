@@ -8,7 +8,6 @@
 
 #include "mcu_gpio_config.h"
 #include "state_machine_config.h"
-#include "settings_mem.h"
 
 #include "sd_task.h"
 
@@ -47,20 +46,6 @@ void on_abort_button_timer(void *arg){
     gpio_intr_enable(ABORT_GPIO);
 }
 
-void on_disconnect_timer(void* args){
-    // Handle the disconnect event
-    ESP_LOGW(TAG, "DISCONNECT EVENT");
-    // Handle the disconnect event
-    state_machine_force_change_state(ABORT);
-}
-
-void on_after_burnout_timer(void *arg){
-    // Handle the after burnout event
-    ESP_LOGW(TAG, "AFTER BURNOUT EVENT");
-    // Handle the after burnout event
-    //state_machine_force_change_state(AFTER_BURNOUT);
-}
-
 void on_ignition_timer(void *arg){
     // Handle the ignition event
     ESP_LOGW(TAG, "IGNITION EVENT");
@@ -91,39 +76,6 @@ void on_ignition_timer(void *arg){
     can_send_message(CAN_WEIGHTS_START_MEASURE_ID, data, 3);
 
     return;
-
-}
-
-void on_burn_timer(void *arg){
-    // Handle the burn event
-    //state_machine_force_change_state(FIRE);
-}
-
-static void on_fuel_initial(void *arg) {
-    ESP_LOGI(TAG, "Fuel initial valve open");
-
-    Settings settings = settings_get_all();
-
-    //valve_move_angle_servo(&(TANWA_utility.servo_valve[0]), settings.fuel_valve_initial_angle);
-
-    uint8_t data[8] = {0, (uint8_t)(settings.fuel_valve_initial_angle), 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_ANGLE_ID, data, 2);
-}
-
-static void on_oxidizer_full(void *arg) {
-    ESP_LOGI(TAG, "Oxidizer full valve open");
-
-    // valve_open_servo(&(TANWA_utility.servo_valve[1]));
-    uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
-    can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
-}
-
-static void on_fuel_full(void *arg) {
-    ESP_LOGI(TAG, "Fuel full valve open");
-
-    //valve_open_servo(&(TANWA_utility.servo_valve[0]));
-    uint8_t data[8] = {0}; 
-    can_send_message(CAN_SOL_SERVO_OPEN_ID, data, 1);
 }
 
 static void on_ignition_off(void *arg){
@@ -145,28 +97,9 @@ bool initialize_timers(void) {
     {.timer_id = TIMER_SD_DATA, .timer_callback_fnc = on_sd_timer, .timer_arg = NULL},
     //{.timer_id = TIMER_BUZZER, .timer_callback_fnc = on_buzzer_timer, .timer_arg = NULL},
     {.timer_id = TIMER_ABORT_BUTTON, .timer_callback_fnc = on_abort_button_timer, .timer_arg = NULL},
-    {.timer_id = TIMER_DISCONNECT, .timer_callback_fnc = on_disconnect_timer, .timer_arg = NULL},
-    {.timer_id = TIMER_IGNITION, .timer_callback_fnc = on_ignition_timer, .timer_arg = NULL},
-    {.timer_id = TIMER_BURN, .timer_callback_fnc = on_burn_timer, .timer_arg = NULL},
-    {.timer_id = TIMER_AFTER_BURNOUT, .timer_callback_fnc = on_after_burnout_timer, .timer_arg = NULL},
-    {.timer_id = TIMER_FUEL_INITIAL, .timer_callback_fnc = on_fuel_initial, .timer_arg = NULL},
-    {.timer_id = TIMER_OXIDIZER_FULL, .timer_callback_fnc = on_oxidizer_full, .timer_arg = NULL},
-    {.timer_id = TIMER_FUEL_FULL, .timer_callback_fnc = on_fuel_full, .timer_arg = NULL},
     {.timer_id = TIMER_IGNITION_OFF, .timer_callback_fnc = on_ignition_off, .timer_arg = NULL}
     };
     return sys_timer_init(timers, sizeof(timers) / sizeof(timers[0]));
-}
-
-bool buzzer_timer_start(uint32_t period_ms) {
-    return sys_timer_start(TIMER_BUZZER, period_ms, TIMER_TYPE_PERIODIC);
-}
-
-bool buzzer_timer_change_period(uint32_t period_ms) {
-    if (!sys_timer_stop(TIMER_BUZZER)) {
-        ESP_LOGE(TAG, "Failed to stop buzzer timer");
-        return false;
-    }
-    return sys_timer_start(TIMER_BUZZER, period_ms, TIMER_TYPE_PERIODIC);
 }
 
 bool abort_button_timer_start_once(uint32_t period_ms) {

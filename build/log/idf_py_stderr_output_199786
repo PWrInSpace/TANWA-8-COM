@@ -1,0 +1,12 @@
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c: In function 'ens_command_parsing':
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:769:5: error: expected ',' or ';' before 'uint8_t'
+  769 |     uint8_t data[8] = {(uint8_t)servo_id, 0, 0, 0, 0, 0, 0, 0};
+      |     ^~~~~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:770:12: error: 'data' undeclared (first use in this function)
+  770 |     memcpy(data+1, &open_time, sizeof(uint16_t));
+      |            ^~~~
+/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/cmd_commands.c:770:12: note: each undeclared identifier is reported only once for each function it appears in
+make[3]: *** [esp-idf/commands/CMakeFiles/__idf_commands.dir/build.make:90: esp-idf/commands/CMakeFiles/__idf_commands.dir/cmd_commands.c.obj] Błąd 1
+make[2]: *** [CMakeFiles/Makefile2:6339: esp-idf/commands/CMakeFiles/__idf_commands.dir/all] Błąd 2
+make[1]: *** [CMakeFiles/Makefile2:2703: CMakeFiles/flash.dir/rule] Błąd 2
+make: *** [Makefile:286: flash] Błąd 2

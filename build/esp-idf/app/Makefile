@@ -271,30 +271,6 @@ lora_task.c.s:
 	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build && $(MAKE) $(MAKESILENT) -f esp-idf/app/CMakeFiles/__idf_app.dir/build.make esp-idf/app/CMakeFiles/__idf_app.dir/lora_task.c.s
 .PHONY : lora_task.c.s
 
-mission_timer_config.obj: mission_timer_config.c.obj
-.PHONY : mission_timer_config.obj
-
-# target to build an object file
-mission_timer_config.c.obj:
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build && $(MAKE) $(MAKESILENT) -f esp-idf/app/CMakeFiles/__idf_app.dir/build.make esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.obj
-.PHONY : mission_timer_config.c.obj
-
-mission_timer_config.i: mission_timer_config.c.i
-.PHONY : mission_timer_config.i
-
-# target to preprocess a source file
-mission_timer_config.c.i:
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build && $(MAKE) $(MAKESILENT) -f esp-idf/app/CMakeFiles/__idf_app.dir/build.make esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.i
-.PHONY : mission_timer_config.c.i
-
-mission_timer_config.s: mission_timer_config.c.s
-.PHONY : mission_timer_config.s
-
-# target to generate assembly for a file
-mission_timer_config.c.s:
-	cd /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build && $(MAKE) $(MAKESILENT) -f esp-idf/app/CMakeFiles/__idf_app.dir/build.make esp-idf/app/CMakeFiles/__idf_app.dir/mission_timer_config.c.s
-.PHONY : mission_timer_config.c.s
-
 sd_task.obj: sd_task.c.obj
 .PHONY : sd_task.obj
 
@@ -416,9 +392,6 @@ help:
 	@echo "... lora_task.obj"
 	@echo "... lora_task.i"
 	@echo "... lora_task.s"
-	@echo "... mission_timer_config.obj"
-	@echo "... mission_timer_config.i"
-	@echo "... mission_timer_config.s"
 	@echo "... sd_task.obj"
 	@echo "... sd_task.i"
 	@echo "... sd_task.s"

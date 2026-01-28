@@ -1,2 +1,2 @@
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libconfig.a CMakeFiles/__idf_config.dir/board_config.c.obj CMakeFiles/__idf_config.dir/can_commands.c.obj CMakeFiles/__idf_config.dir/can_config.c.obj CMakeFiles/__idf_config.dir/console_config.c.obj
+/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libconfig.a CMakeFiles/__idf_config.dir/board_config.c.obj CMakeFiles/__idf_config.dir/can_config.c.obj CMakeFiles/__idf_config.dir/console_config.c.obj
 /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ranlib libconfig.a

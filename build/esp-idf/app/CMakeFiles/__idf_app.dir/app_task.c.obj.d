@@ -119,7 +119,7 @@ esp-idf/app/CMakeFiles/__idf_app.dir/app_task.c.obj: \
  /home/alaive/esp/esp-idf/components/log/include/esp_log.h \
  /home/alaive/esp/esp-idf/components/log/include/esp_log_internal.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/board_data.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/com_structs.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/slave_structs.h \
@@ -154,7 +154,5 @@ esp-idf/app/CMakeFiles/__idf_app.dir/app_task.c.obj: \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/abort_button.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/timers/system_timer.h \
  /home/alaive/esp/esp-idf/components/esp_timer/include/esp_timer.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/timers/mission_timer.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/mission_timer_config.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/timers_config.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/mcu_config/mcu_twai_config.h

@@ -1,0 +1,496 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Nov 23 2025 21:25:28[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=25458h (152664) map[0m
+[0;32mI (132) esp_image: segment 1: paddr=00035480 vaddr=3fc9ef00 size=059b8h ( 22968) load[0m
+[0;32mI (137) esp_image: segment 2: paddr=0003ae40 vaddr=40374000 size=051d8h ( 20952) load[0m
+[0;32mI (142) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a8048h (688200) map[0m
+[0;32mI (271) esp_image: segment 4: paddr=000e8070 vaddr=403791d8 size=15cf8h ( 89336) load[0m
+[0;32mI (292) esp_image: segment 5: paddr=000fdd70 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (292) esp_image: segment 6: paddr=000fdd7c vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (308) boot: Disabling RNG early entropy source...[0m
+[0;32mI (321) cpu_start: Multicore app[0m
+[0;32mI (330) cpu_start: Pro cpu start user code[0m
+[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (330) app_init: Application information:[0m
+[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (338) app_init: App version:      599b31f-dirty[0m
+[0;32mI (344) app_init: Compile time:     Nov 23 2025 21:56:59[0m
+[0;32mI (350) app_init: ELF file SHA256:  4fb155e51...[0m
+[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (360) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (365) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (370) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (375) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (382) heap_init: At 3FCA8C20 len 00040AF0 (258 KiB): RAM[0m
+[0;32mI (388) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (394) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (400) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (407) spi_flash: detected chip: generic[0m
+[0;32mI (411) spi_flash: flash io: dio[0m
+[0;33mW (415) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (429) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (439) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (446) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (453) main_task: Started on CPU0[0m
+[0;32mI (463) main_task: Calling app_main()[0m
+[0;32mI (463) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (463) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (473) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (483) gpio: GPIO[16]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (493) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (503) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (513) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (523) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (533) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (543) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (553) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (563) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (573) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (583) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (593) CAN_API: TWAI driver started[0m
+[0;32mI (593) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (603) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (603) SMC: Initializing state machine[0m
+[0;32mI (613) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (623) pp: pp rom version: e7ae62f[0m
+[0;32mI (633) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (633) SMC: ON INIT[0m
+[0;32mI (633) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (643) wifi:wifi driver task: 3fcba6e8, prio:23, stack:6656, core=0[0m
+[0;32mI (643) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (643) wifi:wifi certification version: v7.0[0m
+[0;32mI (653) wifi:config NVS flash: enabled[0m
+[0;32mI (653) wifi:config nano formating: disabled[0m
+[0;32mI (653) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (663) wifi:Init management short buffer num: 32[0m
+[0;32mI (673) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (673) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (683) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (683) wifi:Init static rx buffer num: 10[0m
+[0;32mI (683) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (693) wifi_init: rx ba win: 6[0m
+[0;32mI (693) wifi_init: accept mbox: 6[0m
+[0;32mI (693) wifi_init: tcpip mbox: 32[0m
+[0;32mI (703) wifi_init: udp mbox: 6[0m
+[0;32mI (703) wifi_init: tcp mbox: 6[0m
+[0;32mI (713) wifi_init: tcp tx win: 5760[0m
+[0;32mI (713) wifi_init: tcp rx win: 5760[0m
+[0;32mI (713) wifi_init: tcp mss: 1440[0m
+[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (723) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (733) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (773) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (773) wifi:enable tsf[0m
+[0;32mI (773) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (783) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (783) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (783) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (793) esp_timer: Task is already initialized[0m
+[0;32mI (803) TIMER: Timers number 3[0m
+[0;32mI (803) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (813) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (813) LORA_TASK: initialize_lora: lora global=0x3fc9f88c, lora_api.lora=0x3fc9f88c[0m
+[0;32mI (843) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (843) LORA_TASK: lora_task_init: gb=0x3fca50f4, gb.lora=0x3fc9f88c, global lora=0x3fc9f88c, lora._spi_transmit=0x42013cbc[0m
+[0;32mI (853) LORA_TASK: LORA_READ: 0008, 0000[0m
+[0;32mI (853) LORA_TASK: LoRa Task started[0m
+[0;32mI (853) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (863) BOARD_CONFIG: Initializing SD Card...[0m
+[0;32mI (873) SD_TASK: Initializing sd task[0m
+[0;32mI (873) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (883) sdspi_transaction: cmd=52, R1 response: command not supported[0m
+[0;32mI (933) sdspi_transaction: cmd=5, R1 response: command not supported[0m
+[0;32mI (953) SDCARD: SD card mounted[0m
+[0;32mI (1233) ENS_LOGIC: Setting mission state to 8[0m
+[0;32mI (1283) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (1383) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (1483) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (1583) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (1683) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (1783) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (1883) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (1983) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2083) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2183) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2283) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2383) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2483) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2583) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2643) LORA_TASK: IRQ received[0m
+[0;32mI (2683) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2773) SD_TASK: Using data path /sdcard/data197.txt[0m
+[0;32mI (2773) SD_TASK: Using log path /sdcard/log0.txt[0m
+[0;32mI (2773) BOARD_CONFIG: ### SD Card initialization success ###[0m
+[0;32mI (2783) BOARD_CONFIG: SD CARD | Timer started[0m
+[0;32mI (2783) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2783) STATE_MACHINE: Changing state from 0 to 1[0m
+[0;32mI (2773) SD_TASK: RUNNING SD TASK[0m
+[5n[0;32mI (2813) SMC: ON IDLE[0m
+[0;32mI (2843) ENS_TASK: Sending data to OBC, size: 60[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (2913) APP_TASK: App task created successfully[0m
+[6n [0;32mI (2943) ENS_TASK: Sending data to OBC, size: 60[0m
+[999C [6n [0;32mI (3043) ENS_TASK: Sending data to OBC, size: 60[0m
+[123D[0;32mtwi> [0m[0;32mI (3143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (4943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (25943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35443) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35543) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35643) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35743) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35843) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35943) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (36043) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (36143) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (36243) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (36343) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (36443) ENS_TASK: Sending data to OBC, size: 60[0m

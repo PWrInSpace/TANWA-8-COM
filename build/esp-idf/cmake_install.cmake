@@ -579,6 +579,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/state_machine/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/esp_now_sub/cmake_install.cmake")
 endif()
 
@@ -589,22 +594,17 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/settings/cmake_install.cmake")
+  include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/lora/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/state_machine/cmake_install.cmake")
+  include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/commands/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/config/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/lora/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -615,11 +615,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/proto/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/lora_commands/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

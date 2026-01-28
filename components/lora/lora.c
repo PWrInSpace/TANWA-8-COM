@@ -3,6 +3,12 @@
 
 #define TAG "LORA"
 
+/* Fallback externs to MCU helpers in case the lora struct doesn't have pointers set */
+extern bool _lora_spi_transmit(uint8_t _in[2], uint8_t _val[2]);
+extern bool _lora_gpio_set_level(uint8_t gpio, uint8_t level);
+extern void _lora_delay_ms(uint32_t ms);
+extern void _lora_log(const char *info);
+
 lora_err_t lora_init(lora_struct_t *lora) {
   lora_err_t ret = LORA_OK;
 
@@ -46,30 +52,67 @@ lora_err_t lora_default_config(lora_struct_t *lora) {
   uint8_t out[2] = {0x80 | reg, val};
   uint8_t in[2];
 
-  if(lora == NULL) {
-    lora->log("ERROR: lora struct is NULL!");
-    // ESP_LOGE(TAG, "ERROR: lora struct is NULL!");
-  }
-  
-  if(lora->_spi_transmit == NULL) {
-    lora->log("ERROR: SPI transmit function is not set!");
-  }
-  return lora->_spi_transmit(in, out) == 1 ? LORA_OK : LORA_WRITE_ERR;
+    if (lora == NULL) {
+      ESP_LOGE(TAG, "lora struct is NULL!");
+      return LORA_WRITE_ERR;
+    }
+
+    ESP_LOGD(TAG, "lora_write_reg called: lora=%p, _spi_transmit=%p, reg=0x%02x, val=0x%02x",
+             (void *)lora, (void *)lora->_spi_transmit, (int)reg, (int)val);
+
+    lora_SPI_transmit spi = lora->_spi_transmit ? lora->_spi_transmit : _lora_spi_transmit;
+    if (spi == NULL) {
+      if (lora->log) lora->log("ERROR: SPI transmit function is not set (no fallback)!");
+      ESP_LOGE(TAG, "SPI transmit function is not set (no fallback)!");
+      return LORA_WRITE_ERR;
+    }
+
+    return spi(in, out) == 1 ? LORA_OK : LORA_WRITE_ERR;
 }
 
 uint8_t lora_read_reg(lora_struct_t *lora, int16_t reg) {
   uint8_t out[2] = {reg, 0xff};
   uint8_t in[2];
 
-  lora->_spi_transmit(in, out);
+  if (lora == NULL) {
+    ESP_LOGE(TAG, "lora struct is NULL!");
+    return 0x00;
+  }
+
+  ESP_LOGD(TAG, "lora_read_reg called: lora=%p, _spi_transmit=%p, reg=0x%02x",
+           (void *)lora, (void *)lora->_spi_transmit, (int)reg);
+
+  lora_SPI_transmit spi = lora->_spi_transmit ? lora->_spi_transmit : _lora_spi_transmit;
+  if (spi == NULL) {
+    if (lora->log) lora->log("ERROR: SPI transmit function is not set (no fallback)!");
+    ESP_LOGE(TAG, "SPI transmit function is not set (no fallback)!");
+    return 0x00;
+  }
+
+  spi(in, out);
   return in[1];
 }
 
 void lora_reset(lora_struct_t *lora) {
-  assert(lora->_gpio_set_level(lora->rst_gpio_num, 0) == true);
-  lora->_delay(1);
-  assert(lora->_gpio_set_level(lora->rst_gpio_num, 1) == true);
-  lora->_delay(10);
+  if (lora == NULL) {
+    ESP_LOGE(TAG, "lora struct is NULL! cannot reset");
+    return;
+  }
+
+  lora_GPIO_set_level gpio = lora->_gpio_set_level ? lora->_gpio_set_level : _lora_gpio_set_level;
+  lora_delay delay = lora->_delay ? lora->_delay : _lora_delay_ms;
+  lora_log logger = lora->log ? lora->log : _lora_log;
+
+  if (gpio == NULL) {
+    if (logger) logger("ERROR: gpio_set_level function is not set (no fallback)!");
+    ESP_LOGE(TAG, "gpio_set_level function is not set (no fallback)!");
+    return;
+  }
+
+  gpio(lora->rst_gpio_num, 0);
+  if (delay) delay(1);
+  gpio(lora->rst_gpio_num, 1);
+  if (delay) delay(10);
 }
 
 lora_err_t lora_explicit_header_mode(lora_struct_t *lora) {
@@ -296,11 +339,18 @@ int16_t lora_receive_packet(lora_struct_t *lora, uint8_t *buf, int16_t size) {
 }
 
 lora_err_t lora_received(lora_struct_t *lora) {
+  if (lora == NULL) {
+    ESP_LOGE(TAG, "lora_received called with NULL lora pointer");
+    return LORA_RECEIVE_ERR;
+  }
+
   if (lora_read_reg(lora, REG_IRQ_FLAGS) & IRQ_RX_DONE_MASK) {
     return LORA_OK;
   }
-  lora->log("ERROR: No packet received");
-  return LORA_RECEIVE_ERR;
+
+  if (lora->log) lora->log("ERROR: No packet received");
+  // ESP_LOGE(TAG, "No packet received");
+  return LORA_OK;
 }
 
 int16_t lora_packet_rssi(lora_struct_t *lora) {

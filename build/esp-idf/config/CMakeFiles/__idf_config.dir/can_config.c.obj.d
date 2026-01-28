@@ -103,8 +103,7 @@ esp-idf/config/CMakeFiles/__idf_config.dir/can_config.c.obj: \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/stream_buffer.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/event_groups.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/timers.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h \
  /home/alaive/esp/esp-idf/components/log/include/esp_log.h \
  /home/alaive/esp/esp-idf/components/log/include/esp_log_internal.h \
  /home/alaive/esp/esp-idf/components/driver/twai/include/driver/twai.h \

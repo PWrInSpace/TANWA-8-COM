@@ -77,7 +77,7 @@ esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj: \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/board_data.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/com_structs.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/data/slave_structs.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/can_commands.h \
+ /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/commands/can_commands.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/can/can_api.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h \
  /home/alaive/esp/esp-idf/components/freertos/config/include/freertos/FreeRTOSConfig.h \
@@ -141,13 +141,6 @@ esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj: \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/timers.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/state_machine_config.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/state_machine/state_machine.h \
- /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/settings/settings_mem.h \
- /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs_flash.h \
- /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs.h \
- /home/alaive/esp/esp-idf/components/esp_partition/include/esp_partition.h \
- /home/alaive/esp/esp-idf/components/nvs_flash/include/nvs.h \
- /home/alaive/esp/esp-idf/components/log/include/esp_log.h \
- /home/alaive/esp/esp-idf/components/log/include/esp_log_internal.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/sd_task.h \
  /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/sd_card/sdcard.h \
  /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/stat.h \
@@ -185,5 +178,8 @@ esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj: \
  /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/sys/param.h \
  /home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/xtensa-esp-elf/include/machine/param.h \
  /home/alaive/esp/esp-idf/components/wear_levelling/include/wear_levelling.h \
+ /home/alaive/esp/esp-idf/components/log/include/esp_log.h \
+ /home/alaive/esp/esp-idf/components/log/include/esp_log_internal.h \
+ /home/alaive/esp/esp-idf/components/esp_partition/include/esp_partition.h \
  /home/alaive/esp/esp-idf/components/sdmmc/include/sdmmc_cmd.h \
  /home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/projdefs.h

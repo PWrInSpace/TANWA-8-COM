@@ -1,0 +1,91 @@
+[0;32mI (271) esp_image: segment 4: paddr=000e804c vaddr=403791d8 size=15cf8h ( 89336) load[0m
+[0;32mI (292) esp_image: segment 5: paddr=000fdd4c vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (292) esp_image: segment 6: paddr=000fdd58 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (308) boot: Disabling RNG early entropy source...[0m
+[0;32mI (321) cpu_start: Multicore app[0m
+[0;32mI (330) cpu_start: Pro cpu start user code[0m
+[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (330) app_init: Application information:[0m
+[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (338) app_init: App version:      599b31f-dirty[0m
+[0;32mI (344) app_init: Compile time:     Nov 23 2025 21:56:59[0m
+[0;32mI (350) app_init: ELF file SHA256:  cf7621963...[0m
+[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (360) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (365) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (370) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (375) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (382) heap_init: At 3FCA8C20 len 00040AF0 (258 KiB): RAM[0m
+[0;32mI (388) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (394) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (400) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (407) spi_flash: detected chip: generic[0m
+[0;32mI (411) spi_flash: flash io: dio[0m
+[0;33mW (415) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (429) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (439) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (446) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (453) main_task: Started on CPU0[0m
+[0;32mI (463) main_task: Calling app_main()[0m
+[0;32mI (463) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (463) gpio: GPIO[46]|J���������z���������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��j��ŁJ����W�K���z���Ʌ����⁂ձ������������������J����ڴj5Rڴښ�j%�B���J:����:��j��ŁJ��������z����������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��j��ŁJ���������z���������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��j��ŁJ��������z����������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��jU�ŁJ���������z���������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��j��ŁJ��������z����������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��j%��ŁJ��������z����������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��jE��ŁJ��������z����������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��jE��ŁJ��������z����������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B���J:����:��j5��ŁJ��������z����������z���Ʌ����⁂ձ�����⁂�����������J����ڴj5Rڴښ�j%�B�Jj5U�Eu*J�u*
+��-W�.�ZkW,��֣+L[C��+L�&�[R��593) CAN_API: TWAI driver started[0m
+[0;32mI (593) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (603) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (603) SMC: Initializing state machine[0m
+[0;32mI (613) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (623) pp: pp rom version: e7ae62f[0m
+[0;32mI (633) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (633) SMC: ON INIT[0m
+[0;32mI (633) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (643) wifi:wifi driver task: 3fcba76c, prio:23, stack:6656, core=0[0m
+[0;32mI (643) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (643) wifi:wifi certification version: v7.0[0m
+[0;32mI (653) wifi:config NVS flash: enabled[0m
+[0;32mI (653) wifi:config nano formating: disabled[0m
+[0;32mI (653) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (663) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (663) wifi:Init management short buffer num: 32[0m
+[0;32mI (673) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (673) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (683) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (683) wifi:Init static rx buffer num: 10[0m
+[0;32mI (683) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (693) wifi_init: rx ba win: 6[0m
+[0;32mI (693) wifi_init: accept mbox: 6[0m
+[0;32mI (693) wifi_init: tcpip mbox: 32[0m
+[0;32mI (703) wifi_init: udp mbox: 6[0m
+[0;32mI (703) wifi_init: tcp mbox: 6[0m
+[0;32mI (713) wifi_init: tcp tx win: 5760[0m
+[0;32mI (713) wifi_init: tcp rx win: 5760[0m
+[0;32mI (713) wifi_init: tcp mss: 1440[0m
+[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (723) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (733) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (773) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (773) wifi:enable tsf[0m
+[0;32mI (773) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (773) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (783) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (783) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (793) esp_timer: Task is already initialized[0m
+[0;32mI (793) TIMER: Timers number 3[0m
+[0;32mI (803) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (803) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (813) LORA_TASK: initialize_l��b�Ʌ�:����[0;32mI (292) esp_image: segment 5: paddr=000fdd4c vaddr=50000000 size=00004h (     4) load[0m*[0;32mI (292) esp_image: segment 6: paddr=000fdd58 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (308) boot: Disabling RNG early entropy source...[0m
+[0;32mI (321) cpu_start: Multicore app[0m
+[0;32mI (330) cpu_start: Pro cpu start user code[0m
+[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (330) app_init: Application information:[0m
+[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (338) app_init: App version:      599b31f-dirty[0m
+[0;32mI (344) app_init: Compile time:     Nov 23 2025 21:56:59[0m
+[0;32mI (350) app_init: ELF file SHA256:  cf7621963...[0m
+[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
+[0;32mI (360) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (365) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (370) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (375) heap_init: Initializing. RAM available for dynamic alloca
