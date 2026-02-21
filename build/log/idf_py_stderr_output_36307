@@ -1,6 +1,0 @@
-[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyUSB1 115200[0m
-[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
-[0;33m--- Warning: Checksum mismatch between flashed and built applications. Checksum of built application is 91892ba61402bc51a48615649e087ca63f1dbf3ab71559518c2d20c1c086c1f5[0m
-[0;33m--- Warning: Checksum mismatch between flashed and built applications. Checksum of built application is 91892ba61402bc51a48615649e087ca63f1dbf3ab71559518c2d20c1c086c1f5[0m
-[0m--- 0x42013c04: [0;33mmcu_spi_init[0m[0m at [0;32m/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/mcu_config/mcu_spi_config.c[0m[0m:[1;31m30[0m
-[0m

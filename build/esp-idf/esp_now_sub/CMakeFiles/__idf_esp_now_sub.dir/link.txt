@@ -1,2 +1,0 @@
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libesp_now_sub.a CMakeFiles/__idf_esp_now_sub.dir/esp_now_wrapper.c.obj CMakeFiles/__idf_esp_now_sub.dir/ens_logic.c.obj CMakeFiles/__idf_esp_now_sub.dir/ens_config.c.obj
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ranlib libesp_now_sub.a

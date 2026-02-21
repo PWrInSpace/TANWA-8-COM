@@ -262,7 +262,7 @@ esp_err_t board_config_init(void) {
         ESP_LOGI(TAG, "Relay driver initialized");
     }
 
-    relay_open(&(tanwa_hardware.relay[3])); //VENT
+    //relay_open(&(tanwa_hardware.relay[3])); //VENT
 
     uint8_t ret = 0;
 
