@@ -1,0 +1,3312 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4-dirty 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr 16 2026 13:41:26[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (39) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (44) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=225e0h (140768) map[0m
+[0;32mI (130) esp_image: segment 1: paddr=00032608 vaddr=3fc9ea00 size=058fch ( 22780) load[0m
+[0;32mI (135) esp_image: segment 2: paddr=00037f0c vaddr=40374000 size=0810ch ( 33036) load[0m
+[0;32mI (143) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=9d4e4h (644324) map[0m
+[0;32mI (262) esp_image: segment 4: paddr=000dd50c vaddr=4037c10c size=12820h ( 75808) load[0m
+[0;32mI (279) esp_image: segment 5: paddr=000efd34 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (280) esp_image: segment 6: paddr=000efd40 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (295) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (296) boot: Disabling RNG early entropy source...[0m
+[0;32mI (308) cpu_start: Multicore app[0m
+[0;32mI (318) cpu_start: Pro cpu start user code[0m
+[0;32mI (318) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (318) app_init: Application information:[0m
+[0;32mI (321) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (326) app_init: App version:      60f7a61-dirty[0m
+[0;32mI (331) app_init: Compile time:     Apr 16 2026 13:40:50[0m
+[0;32mI (337) app_init: ELF file SHA256:  619de8c6a...[0m
+[0;32mI (342) app_init: ESP-IDF:          v5.3.4-dirty[0m
+[0;32mI (348) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (353) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (357) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (362) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (370) heap_init: At 3FCA85E8 len 00041128 (260 KiB): RAM[0m
+[0;32mI (376) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (382) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (388) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (395) spi_flash: detected chip: generic[0m
+[0;32mI (399) spi_flash: flash io: dio[0m
+[0;33mW (403) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (416) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (427) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (434) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (441) main_task: Started on CPU0[0m
+[0;32mI (451) main_task: Calling app_main()[0m
+[0;32mI (451) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (451) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (461) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (471) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (481) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (491) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (501) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (511) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (521) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (531) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (541) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (551) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (571) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (581) CAN_API: TWAI driver started[0m
+[0;32mI (581) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (591) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (591) SMC: Initializing state machine[0m
+[0;32mI (601) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (611) pp: pp rom version: e7ae62f[0m
+[0;32mI (611) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (611) SMC: ON INIT[0m
+[0;32mI (621) wifi:wifi driver task: 3fcb9f88, prio:23, stack:6656, core=0[0m
+[0;32mI (631) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (631) wifi:wifi certification version: v7.0[0m
+[0;32mI (631) wifi:config NVS flash: enabled[0m
+[0;32mI (631) wifi:config nano formating: disabled[0m
+[0;32mI (641) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (641) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (651) wifi:Init management short buffer num: 32[0m
+[0;32mI (651) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (661) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (661) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (661) wifi:Init static rx buffer num: 10[0m
+[0;32mI (671) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (671) wifi_init: rx ba win: 6[0m
+[0;32mI (681) wifi_init: accept mbox: 6[0m
+[0;32mI (681) wifi_init: tcpip mbox: 32[0m
+[0;32mI (681) wifi_init: udp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp tx win: 5760[0m
+[0;32mI (691) wifi_init: tcp rx win: 5760[0m
+[0;32mI (701) wifi_init: tcp mss: 1440[0m
+[0;32mI (701) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (711) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (711) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (761) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (761) wifi:enable tsf[0m
+[0;32mI (761) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (761) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (761) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (771) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (771) esp_timer: Task is already initialized[0m
+[0;32mI (781) TIMER: Timers number 3[0m
+[0;32mI (781) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (791) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (791) LORA_TASK: initialize_lora: lora global=0x3fc9f38c, lora_api.lora=0x3fc9f38c[0m
+[0;32mI (801) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (811) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (811) LORA_TASK: lora_task_init: gb=0x3fca4b3c, gb.lora=0x3fc9f38c, global lora=0x3fc9f38c, lora._spi_transmit=0x42012a54[0m
+[0;32mI (821) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (831) LORA_TASK: LoRa Task started[0m
+[0;32mI (831) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (841) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (861) SMC: ON IDLE[0m
+[0;33mW (881) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (941) APP_TASK: App task created successfully[0m
+[6n [999C [6n [145D[0;32mtwi> [0m[0;32mI (2611) LORA_TASK: IRQ received[0m
+[0;33mW (2981) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 79[0m
+[0;33mW (5481) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 169[0m
+[0;33mW (7981) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 260[0m
+[0;33mW (10481) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 350[0m
+[0;33mW (12981) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 441[0m
+[0;33mW (15481) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 501[0m
+[0;33mW (18031) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 105[0m
+[0;33mW (20531) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 195[0m
+[0;33mW (23031) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 286[0m
+0x3fc�RXO��fc9f38c[0m
+[0;32mI (861) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (861) LORA_TASK: lora_task_init: gb=0x3fca4b3c, gb.lora=0x3fc9f38c, global lora=0x3fc9f38c, lora._spi_transmit=0x42012a54[0m
+[0;32mI (861) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (871) LORA_TASK: LoRa Task started[0m
+[0;32mI (871) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (881) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (901) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (981) APP_TASK: App task created successfully[0m
+[6n [999C [6n [145D[0;32mtwi> [0m[0;32mI (2661) LORA_TASK: IRQ received[0m
+[0;33mW (10281) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;33mW (10281) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 9[0m
+[0;33mW (12791) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 99[0m
+[0;31mE (14691) CAN_DIAG: Bus-Off! TEC:128, REC:0. Czekam na stabilizację...[0m
+[0;32mI (15091) CAN_DIAG: ========================================[0m
+[0;32mI (15091) CAN_DIAG: Alert: BUS RECOVERED! Driver zrestartowany.[0m
+[0;32mI (15091) CAN_DIAG: Nowa sesja -> Stan: RUNNING, TEC: 0, REC: 0[0m
+[0;32mI (15101) CAN_DIAG: ========================================[0m
+ (4-�}	=I�TANWA board starting[0m
+[0;32mI (451) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (461) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (471) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (481) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (491) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (501) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (511) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (521) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (531) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (541) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (551) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (571) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (581) CAN_API: TWAI driver started[0m
+[0;32mI (581) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (591) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (591) SMC: Initializing state machine[0m
+[0;32mI (601) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (611) pp: pp rom version: e7ae62f[0m
+[0;32mI (611) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (611) SMC: ON INIT[0m
+[0;32mI (621) wifi:wifi driver task: 3fcb9f88, prio:23, stack:6656, core=0[0m
+[0;32mI (631) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (631) wifi:wifi certification version: v7.0[0m
+[0;32mI (631) wifi:config NVS flash: enabled[0m
+[0;32mI (631) wifi:config nano formating: disabled[0m
+[0;32mI (641) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (641) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (651) wifi:Init management short buffer num: 32[0m
+[0;32mI (651) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (661) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (661) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (661) wifi:Init static rx buffer num: 10[0m
+[0;32mI (671) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (671) wifi_init: rx ba win: 6[0m
+[0;32mI (681) wifi_init: accept mbox: 6[0m
+[0;32mI (681) wifi_init: tcpip mbox: 32[0m
+[0;32mI (681) wifi_init: udp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp tx win: 5760[0m
+[0;32mI (691) wifi_init: tcp rx win: 5760[0m
+[0;32mI (701) wifi_init: tcp mss: 1440[0m
+[0;32mI (701) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (711) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (711) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (761) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (761) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (771) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (771) wifi:enable tsf[0m
+[0;32mI (781) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (781) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (781) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (781) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (791) esp_timer: Task is already initialized[0m
+[0;32mI (801) TIMER: Timers number 3[0m
+[0;32mI (801) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (811) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (811) LORA_TASK: initialize_lora: lora global=0x3fc9f38c, lora_api.lora=0x3fc9f38c[0m
+[0;32mI (831) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (831) LORA_TASK: lora_task_init: gb=0x3fca4b3c, gb.lora=0x3fc9f38c, global lora=0x3fc9f38c, lora._spi_transmit=0x42012a54[0m
+[0;32mI (841) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (841) LORA_TASK: LoRa Task started[0m
+[0;32mI (841) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (851) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (871) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (951) APP_TASK: App task created successfully[0m
+[6n [999C [6n [145D[0;32mtwi> [0m[0;32mI (2631) LORA_TASK: IRQ received[0m
+[0;33mW (14751) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;33mW (14751) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 9[0m
+[0;33mW (17261) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 99[0m
+[0;33mW (19761) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 136, Oczekujące TX: 190[0m
+[0;33mW (24501) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;33mW (24501) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 9[0m
+[0;33mW (27011) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 99[0m
+[0;33mW (29511) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 190[0m
+[0;33mW (32011) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 280[0m
+[0;33mW (34511) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 371[0m
+[0;33mW (37011) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 461[0m
+[0;33mW (39501) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;33mW (39601) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 9[0m
+[0;33mW (42101) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 99[0m
+[0;33mW (44601) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 190[0m
+[0;33mW (49251) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;33mW (49251) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 9[0m
+[0;33mW (51761) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 99[0m
+[0;33mW (54261) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 190[0m
+[0;33mW (61501) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;33mW (61501) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 9[0m
+[0;33mW (63501) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;33mW (64001) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 27[0m
+[0;33mW (220501) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;33mW (220501) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 9[0m
+[0;33mW (223011) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 99[0m
+[0;32mI (1358) SETUP_TASK: DEBUG[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (1358) APP_TASK: App task created successfully[0m
+[0;32mI (1368) gpio: GPIO[35]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+
+Your terminal application does not support escape sequences.
+
+Line editing and history features are disabled.
+
+On Windows, try using Putty instead.
+[0;32mI (1378) gpio: GPIO[36]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+twi> [0;32mI (1408) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1408) gpio: GPIO[38]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1418) gpio: GPIO[9]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1438) gpio: GPIO[10]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1438) gpio: GPIO[11]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1448) gpio: GPIO[12]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1458) SETUP_TASK: 24V VOLTAGE CONTROLLERS INITIALIZED[0m
+[0;32mI (1508) gpio: GPIO[47]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1508) SETUP_TASK: V12V OLTAGE CONTROLLERS INITIALIZED[0m
+[0;32mI (1568) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1568) SETUP_TASK: 24V SOL VOLTAGE CONTROLLERS INITIALIZED[0m
+[0;32mI (1628) SETUP_TASK: POWER MANAGEMENT TASK INITIALIZED[0m
+[0;32mI (1628) gpio: GPIO[15]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1638) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1638) gpio: GPIO[17]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1648) gpio: GPIO[18]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1658) POWER_TASK: Power Management Task started - Monitoring 5V Isense (GPIO4)[0m
+[2J[H[0;36m [ System Uptime:     1381 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.67 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     79.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[0;32mI (1678) SETUP_TASK: SETUP DONE[0m
+[2J[H[0;36m [ System Uptime:     1950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.79 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     2510 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     3070 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     3630 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     4190 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.82 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     4750 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     5310 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.81 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     5870 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.82 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     6430 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.82 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     6990 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.82 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     7550 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     8110 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.82 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     8670 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     9230 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:     9790 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.82 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    10350 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     48.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    10910 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.82 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    11470 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.82 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    12030 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    12590 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    13150 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     48.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    13710 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    14270 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    14830 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    15390 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    15950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    16510 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    17070 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    17630 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    18190 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    18750 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    19310 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    19870 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    20430 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.83 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    20990 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.84 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    21550 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    22110 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    22670 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.89 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    23230 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    23790 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    24350 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     48.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    24910 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    25470 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.84 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    26030 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    26590 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    27150 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.85 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    27710 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.90 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    28270 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.90 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    28830 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.86 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    29390 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.90 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    29950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.90 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    30510 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.90 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    31070 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.90 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    31630 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.86 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    32190 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.93 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    32750 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    33310 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    33870 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    34430 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    34990 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.93 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    35550 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.95 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    36110 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    36670 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    37230 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.95 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    37790 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    38350 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    38910 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.94 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    39470 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.95 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    40030 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.95 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    40590 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.95 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    41150 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.95 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    41710 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    42270 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    42830 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    43390 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     48.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    43950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    44510 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    45070 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    45630 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    46190 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    46750 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.97 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    47310 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.96 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    47870 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    48430 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    48990 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    49550 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    50110 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    50670 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    51230 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    51790 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    52350 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    52910 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    53470 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    54030 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    54590 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     48.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    55150 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    55710 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    56270 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    56830 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    57390 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    57950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    58510 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    59070 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    59630 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    60190 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    60750 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    61310 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.98 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    61870 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    62430 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    62990 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    63550 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    64110 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    64670 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    65230 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    65790 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    66350 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    66910 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    67470 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    68030 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    68590 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    69150 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.55 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    69710 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    70270 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    70830 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    71390 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    71950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    72510 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    73070 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    73630 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    74190 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    74750 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    75310 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    75870 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    76430 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    76990 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    77550 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    78110 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    78670 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    79230 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    79790 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    80350 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    80910 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    81470 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    82030 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    82590 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    83150 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    83710 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    84270 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    84830 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    85390 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    85950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    86510 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    87070 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    87630 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    1.99 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    88190 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    88750 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    89310 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    89870 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    90430 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    90990 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    91550 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    92110 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    92670 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    93230 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    93790 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    94350 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    94910 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    95470 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    96030 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    96590 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    97150 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    97710 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.55 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    98270 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    98830 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    99390 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:    99950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   100510 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   101070 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   101630 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   102190 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   102750 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   103310 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   103870 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   104430 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   104990 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   105550 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   106110 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   106670 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   107230 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   107790 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   108350 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.00 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   108910 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   109470 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   110030 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   110590 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   111150 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   111710 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   112270 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.53 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     51.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   112830 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   113390 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------
+| Parametr           | Wartość    | Status     |
+----------------------------------------------------
+| 24V-SYS            | [0;33m    2.01 V[0m | OK         |
+| 24V-SOL            | [0;33m    1.54 V[0m | OK         |
+| 24V-SOL Current    |      0.0 mA | [0mNO LOAD     [0m |
+| Board Current      |     50.0 mA | [0;32mOK          [0m |
+----------------------------------------------------
+| 24V-SYS Error      | DETECTED     | [0;31mMALFUNCTION[0m |
+| 24V-SOL Error      | BRAK         | [0;32mOK        [0m |
+----------------------------------------------------
+ Wyjscia:  CH1: [[0;32m ON [0m]    CH2: [[0;32m ON [0m]
+----------------------------------------------------
+[2J[H[0;36m [ System Uptime:   113950 ms ][0m
+[1m[0;36m       === TANWA-8-POWER SYSTEM MONITOR ===
+[0m----------------------------------------------------

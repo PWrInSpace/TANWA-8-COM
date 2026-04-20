@@ -135,8 +135,7 @@ void _data_to_transmit(uint8_t *buffer, size_t buffer_size, size_t *tx_data_size
 
     data_to_obc_t data_to_obc;
 
-    data_to_obc.vbat = tanwa_data.can_power_data.voltage_12V;
-    data_to_obc.tanWaState = tanwa_data.state;
+    data_to_obc.vbat = tanwa_data.can_power_data.VOLTAGE_24V_SYS;
     data_to_obc.thrust_val = tanwa_data.can_weight_data.ads1_weight2;
     data_to_obc.tankWeight_val = tanwa_data.can_weight_data.ads1_weight3;
     data_to_obc.temperature_postFill = tanwa_data.can_sensor_temp_data.temperature1;
@@ -168,6 +167,12 @@ void _data_to_transmit(uint8_t *buffer, size_t buffer_size, size_t *tx_data_size
     data_to_obc.heatingTankState = vent_state == RELAY_OFF; //VENT
     data_to_obc.heatingValveState = tanwa_data.com_data.relay_state2;
     data_to_obc.abortButton = tanwa_data.com_data.abort_button;
+    data_to_obc.TANWA_24V_SYS_VOLTAGE = tanwa_data.can_power_data.VOLTAGE_24V_SYS;
+    data_to_obc.TANWA_24V_SYS_CURRENT = tanwa_data.can_power_data.current_24V_SYS;
+    data_to_obc.TANWA_24V_SOL_VOLTAGE = tanwa_data.can_power_data.VOLTAGE_24V_SOL;
+    data_to_obc.TANWA_24V_SOL_CURRENT = tanwa_data.can_power_data.current_24V_SOL;
+
+    
 
     if (buffer == NULL || tx_data_size == NULL) {
         ESP_LOGE(TAG, "Buffer or tx_data_size is NULL");
@@ -339,20 +344,20 @@ esp_err_t board_config_init(void) {
 
     //HAS TO BE AFTER LORA- DOESN'T WORK OTHERWISE
 
-    ESP_LOGI(TAG, "Initializing SD Card...");
+    // ESP_LOGI(TAG, "Initializing SD Card...");
 
-    if (!init_sd_card()) {
-        ESP_LOGE(TAG, "SD Card initialization failed");
-    } else {
-        ESP_LOGI(TAG, "### SD Card initialization success ###");
-    }
+    // if (!init_sd_card()) {
+    //     ESP_LOGE(TAG, "SD Card initialization failed");
+    // } else {
+    //     ESP_LOGI(TAG, "### SD Card initialization success ###");
+    // }
 
     //SD CARD TIMER
-    if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
-        ESP_LOGE(TAG, "SD CARD | Timer start failed");
-    } else {
-        ESP_LOGI(TAG, "SD CARD | Timer started");
-    }
+    // if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
+    //     ESP_LOGE(TAG, "SD CARD | Timer start failed");
+    // } else {
+    //     ESP_LOGI(TAG, "SD CARD | Timer started");
+    // }
 
     state_machine_change_state(IDLE);    
 

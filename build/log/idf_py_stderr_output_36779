@@ -1,4 +1,0 @@
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c: In function 'app_task':
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/app_task.c:75:16: warning: variable 'local_freq' set but not used [-Wunused-but-set-variable]
-   75 |     TickType_t local_freq;
-      |                ^~~~~~~~~~

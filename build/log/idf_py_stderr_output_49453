@@ -1,4 +1,0 @@
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c: In function 'board_config_init':
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/config/board_config.c:263:13: warning: unused variable 'ret' [-Wunused-variable]
-  263 |     uint8_t ret = 0;
-      |             ^~~

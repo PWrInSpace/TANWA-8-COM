@@ -26,6 +26,18 @@
 
 #define TAG "CONSOLE_CONFIG"
 
+// Definicje kolorów ANSI dla poprawy czytelności
+#define CLR_RST  "\x1b[0m"
+#define CLR_BLD  "\x1b[1m"
+#define CLR_RED  "\x1b[31m"
+#define CLR_GRN  "\x1b[32m"
+#define CLR_YLW  "\x1b[33m"
+#define CLR_BLU  "\x1b[34m"
+#define CLR_MAG  "\x1b[35m"
+#define CLR_CYN  "\x1b[36m"
+
+
+
 extern tanwa_hardware_dev_t tanwa_hardware;
 
 // example function to reset the device
@@ -151,13 +163,25 @@ int read_solenoid_data(int argc, char **argv) {
 }
 
 int read_power_data(int argc, char **argv) {
-    // This function can be used to read power data
     can_power_data_t data = tanwa_data_read_can_power_data();
-    ESP_LOGI(TAG, "Power Data: 12V Voltage: %d, 24V Voltage: %d, 12V Current: %d, 24V Current: %d",
-             data.voltage_12V, data.voltage_24V, data.current_12V, data.current_24V);
+    
+    // Konwersja jednostek (zakładając mV i mA z magistrali CAN)
+    float v_sys = (float)data.VOLTAGE_24V_SYS / 1000.0f;
+    float i_sys = (float)data.current_24V_SYS / 1000.0f;
+    float v_sol = (float)data.VOLTAGE_24V_SOL / 1000.0f;
+    float i_sol = (float)data.current_24V_SOL / 1000.0f;
+
+    // Nagłówek tabeli zasilania (jeśli funkcja jest wywoływana samodzielnie)
+    // Jeśli wywołujesz to wewnątrz tanwa_data_print, ramki się ładnie zgrają.
+    printf("----------------------------------------------------------------------------\n");
+    printf("| %-20s | %s%8.2f V%s | %-20s | %8.2f mA |\n", 
+           "24V System Voltage", CLR_YLW, v_sys, CLR_RST, "System Current", i_sys);
+    printf("| %-20s | %s%8.2f V%s | %-20s | %8.2f mA |\n", 
+           "24V Solenoid Voltage", CLR_YLW, v_sol, CLR_RST, "Solenoid Current", i_sol);
+    printf("----------------------------------------------------------------------------\n");
+
     return 0;
 }
-
 int read_utility_data(int argc, char **argv) {
     // This function can be used to read utility data
     can_utility_status_t utility_data = tanwa_data_read_can_utility_status();
@@ -171,49 +195,66 @@ int read_utility_data(int argc, char **argv) {
 }
 
 int tanwa_data_print(int argc, char **argv) {
-    // This function can be used to print all TANWA data
-    com_data_t com_data = tanwa_data_read_com_data();
-    can_weight_data_t weight_data = tanwa_data_read_can_weight_data();
-    can_sensor_temp_data_t sensor_temp_data = tanwa_data_read_can_sensor_temp_data();
-    can_sensor_pressure_data_t sensor_pressure_data = tanwa_data_read_can_sensor_pressure_data();
-    can_solenoid_data_t solenoid_data = tanwa_data_read_can_solenoid_data();
-    can_power_data_t power_data = tanwa_data_read_can_power_data();
-    can_utility_status_t utility_data = tanwa_data_read_can_utility_status();
-    can_solenoid_status_t solenoid_status = tanwa_data_read_can_solenoid_status();
+    // Nagłówek raportu
+    printf("\n%s%s======================== [ TANWA SYSTEM DATA REPORT ] ========================%s\n", 
+           CLR_BLD, CLR_CYN, CLR_RST);
 
-    ESP_LOGI(TAG, "TANWA Data:");
-    ESP_LOGI(TAG, "COM Data: I_Sense: %.2f, Abort Button: %d, Arm State: %d", com_data.i_sense, com_data.abort_button, com_data.arm_state);
-    ESP_LOGI(TAG, "Relay States: [%d, %d, %d, %d], Temperature 1: %.2f, Temperature 2: %.2f, Igniter Cont 1: %d, Igniter Cont 2: %d",
-             com_data.relay_state1, com_data.relay_state2, com_data.relay_state3, com_data.relay_state4,
-             com_data.temperature_1, com_data.temperature_2,
-             com_data.igniter_cont_1, com_data.igniter_cont_2);
-    ESP_LOGI(TAG, "Weight Data: Rocket Weight: %.2f, Tank Weight: %.2f", weight_data.rocket_weight, weight_data.tank_weight);
-    ESP_LOGI(TAG, "Sensor Temp Data: Temperature 1: %.2f, Temperature 2: %.2f, Temperature 3: %.2f", sensor_temp_data.temperature1, sensor_temp_data.temperature2, sensor_temp_data.temperature3);
-    ESP_LOGI(TAG, "Pressure Data: Pressure 1: %.2f, Pressure 2: %.2f, Pressure 3: %.2f, Pressure 4: %.2f",
-             sensor_pressure_data.pressure1, sensor_pressure_data.pressure2, sensor_pressure_data.pressure3, sensor_pressure_data.pressure4);
-    ESP_LOGI(TAG, "Pressure Data: Pressure 5: %.2f, Pressure 6: %.2f, Pressure 7: %.2f, Pressure 8: %.2f",
-             sensor_pressure_data.pressure5, sensor_pressure_data.pressure6, sensor_pressure_data.pressure7, sensor_pressure_data.pressure8);
-    ESP_LOGI(TAG, "Solenoid Data: Temperature 1: %d, Temperature 2: %d, i_sense: %d",
-             solenoid_status.temperature1, solenoid_status.temperature2, solenoid_status.i_sense);
-    ESP_LOGI(TAG, "Solenoid Data: Servo Angle 1: %d, Servo Angle 2: %d", solenoid_data.servo_angle1, solenoid_data.servo_angle2);
-    ESP_LOGI(TAG, "Solenoid Data: Servo Angle 3: %d, Servo Angle 4: %d", solenoid_data.servo_angle3, solenoid_data.servo_angle4);
-    ESP_LOGI(TAG, "Solenoid Data: Motor State 1: %d, Motor State 2: %d",
-             solenoid_data.motor_state1, solenoid_data.motor_state2);
-    ESP_LOGI(TAG, "Solenoid States: [%d, %d, %d, %d, %d, %d], Servo States: [%d, %d, %d, %d]",
-             solenoid_data.state_sol1, solenoid_data.state_sol2, solenoid_data.state_sol3,
-             solenoid_data.state_sol4, solenoid_data.state_sol5, solenoid_data.state_sol6,
-             solenoid_data.servo_state1, solenoid_data.servo_state2,
-             solenoid_data.servo_state3, solenoid_data.servo_state4);
-    ESP_LOGI(TAG, "Power Data: 12V Voltage: %d, 24V Voltage: %d, 12V Current: %d, 24V Current: %d",
-             power_data.voltage_12V, power_data.voltage_24V,
-             power_data.current_12V, power_data.current_24V);
-    ESP_LOGI(TAG, "Utility Data: I_Sense: %d, Temperature 1: %d, Temperature 2: %d",
-             utility_data.i_sense, utility_data.temperature1, utility_data.temperature2);
-    ESP_LOGI(TAG, "Utility Switch States: [%d, %d, %d, %d, %d, %d, %d, %d]",
-             utility_data.switch_state1, utility_data.switch_state2,
-             utility_data.switch_state3, utility_data.switch_state4,
-             utility_data.switch_state5, utility_data.switch_state6,
-             utility_data.switch_state7, utility_data.switch_state8);
+    // --- 1. COM & IGNITION DATA ---
+    com_data_t com = tanwa_data_read_com_data();
+    printf("%s%s%-25s%s\n", CLR_BLD, CLR_YLW, "1. COM & IGNITION DATA", CLR_RST);
+    printf("----------------------------------------------------------------------------\n");
+    printf("| %-20s | %-15.2f | %-20s | %-12s |\n", "I_Sense", com.i_sense, "Abort Button", com.abort_button ? "PRESSED" : "OK");
+    printf("| %-20s | %s%-15s%s | %-20s | %-12.2f |\n", "Arm State", 
+           com.arm_state ? CLR_RED : CLR_GRN, com.arm_state ? "ARMED" : "DISARMED", CLR_RST,
+           "Temp Internal", com.temperature_1);
+    printf("----------------------------------------------------------------------------\n\n");
+
+    // --- 2. WEIGHT DATA ---
+    can_weight_data_t weight = tanwa_data_read_can_weight_data();
+    printf("%s%s%-25s%s\n", CLR_BLD, CLR_YLW, "2. LOAD CELL / WEIGHT DATA", CLR_RST);
+    printf("----------------------------------------------------------------------------\n");
+    printf("| %-20s | %10.2f kg | %-20s | %10.2f kg |\n", "Rocket Weight", weight.rocket_weight, "Tank Weight", weight.tank_weight);
+    printf("| %-20s | %10.2f kg | %-20s | %10.2f kg |\n", "Load Cell 1", weight.ads1_weight1, "Load Cell 2", weight.ads1_weight2);
+    printf("----------------------------------------------------------------------------\n\n");
+
+    // --- 3. SENSORS & PRESSURE ---
+    can_sensor_pressure_data_t press = tanwa_data_read_can_sensor_pressure_data();
+    can_sensor_temp_data_t s_temp = tanwa_data_read_can_sensor_temp_data();
+    printf("%s%s%-25s%s\n", CLR_BLD, CLR_YLW, "3. SENSORS & PRESSURE", CLR_RST);
+    printf("----------------------------------------------------------------------------\n");
+    printf("| %-15s | %8.2f bar | %-15s | %8.2f bar |\n", "Press 1", press.pressure1, "Press 5", press.pressure5);
+    printf("| %-15s | %8.2f bar | %-15s | %8.2f bar |\n", "Press 2", press.pressure2, "Press 6", press.pressure6);
+    printf("| %-15s | %8.2f bar | %-15s | %8.2f bar |\n", "Press 3", press.pressure3, "Press 7", press.pressure7);
+    printf("| %-15s | %8.2f bar | %-15s | %8.2f bar |\n", "Press 4", press.pressure4, "Press 8", press.pressure8);
+    printf("| %-15s | %8.2f C   | %-15s | %8.2f C   |\n", "Sensor Temp 1", (float)s_temp.temperature1, "Sensor Temp 2", (float)s_temp.temperature2);
+    printf("| %-15s | %8.2f C   | %-15s | %-12s |\n", "Sensor Temp 3", (float)s_temp.temperature3, "Status", "OK");
+    printf("----------------------------------------------------------------------------\n\n");
+
+    // --- 4. SOLENOIDS & SERVOS ---
+    can_solenoid_data_t sol = tanwa_data_read_can_solenoid_data();
+    printf("%s%s%-25s%s\n", CLR_BLD, CLR_YLW, "4. SOLENOIDS & SERVOS", CLR_RST);
+    printf("----------------------------------------------------------------------------\n");
+    printf("| Solenoids: [%d] [%d] [%d] [%d] [%d] [%d] | Servos: [%d] [%d] [%d] [%d] |\n",
+           sol.state_sol1, sol.state_sol2, sol.state_sol3, sol.state_sol4, sol.state_sol5, sol.state_sol6,
+           sol.servo_state1, sol.servo_state2, sol.servo_state3, sol.servo_state4);
+    printf("| Servo Angles: %3d deg | %3d deg | %3d deg | %3d deg                  |\n",
+           sol.servo_angle1, sol.servo_angle2, sol.servo_angle3, sol.servo_angle4);
+    printf("----------------------------------------------------------------------------\n\n");
+
+    // --- 5. POWER SYSTEM ---
+    printf("%s%s%-25s%s\n", CLR_BLD, CLR_YLW, "5. POWER SYSTEM STATUS", CLR_RST);
+    read_power_data(argc, argv);
+    printf("\n");
+
+    // --- 6. UTILITY & STATE ---
+    printf("%s%s%-25s%s\n", CLR_BLD, CLR_YLW, "6. SYSTEM STATUS", CLR_RST);
+    state_t current_state = state_machine_get_current_state();
+    printf("| %-20s | %s%s%-20d%s |\n", "Current State", CLR_BLD, CLR_GRN, (int)current_state, CLR_RST);
+    
+    print_can_connected_slaves(argc, argv);
+
+    printf("\n%s%s================================ [ END OF REPORT ] ================================%s\n\n", 
+           CLR_BLD, CLR_CYN, CLR_RST);
 
     return 0;
 }

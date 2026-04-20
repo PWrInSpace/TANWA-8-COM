@@ -154,19 +154,48 @@ esp_err_t parse_power_status(uint8_t *data, uint8_t length) {
     return ESP_OK;
 }
 
+
+// esp_err_t power_status_command_handler(uint8_t *data, uint8_t length) {
+//     xSemaphoreTake(BoardDataSemaphore, portMAX_DELAY);
+//     uint16_t v24V     = (uint16_t)(BoardData.Voltage24V_in * 1000.0f + 0.5f);
+//     uint16_t v24VSOL  = (uint16_t)(BoardData.Voltage24VSOL_in * 1000.0f + 0.5f);
+//     uint16_t i5V      = (uint16_t)(BoardData.Current5V_in * 1000.0f + 0.5f);
+//     uint16_t i24VSOL  = (uint16_t)(BoardData.Current24VSOL_in * 1000.0f + 0.5f);
+// xSemaphoreGive(BoardDataSemaphore);
+//     memcpy(data, &v24V, 2);
+//     memcpy(data + 2, &v24VSOL, 2);
+//     memcpy(data + 4, &i5V, 2);
+//     memcpy(data + 6, &i24VSOL, 2);
+//     can_send_message(CAN_POWER_DATA_ID, data, 8);
+//     ESP_LOGI(TAG, "CAN SENT POWER STATUS: 24V=%.2fV, 24V-SOL=%.2fV, 5V Current=%.2fmA, 24V-SOL Current=%.2fmA", 
+//              BoardData.Voltage24V_in, BoardData.Voltage24VSOL_in, BoardData.Current5V_in * 1000.0f, BoardData.Current24VSOL_in * 1000.0f);
+//     return ESP_OK;
+// }
+
 esp_err_t parse_power_data(uint8_t *data, uint8_t length) {
+    
     if (length < 8) {
-        ESP_LOGE(TAG, "Frame too short");
+        ESP_LOGE(TAG, "Frame too short: expected 8, got %d", length);
         return ESP_ERR_INVALID_ARG;
     }
 
+    // ESP_LOGI(TAG, "Raw data: %02X %02X %02X %02X %02X %02X %02X %02X",
+    //          data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
 
-    can_power_data_t power_data = tanwa_data_read_can_power_data();
+    can_power_data_t power_data;
+    memset(&power_data, 0, sizeof(can_power_data_t));
 
-    memcpy(&power_data.voltage_24V, &data[0], sizeof(uint16_t));
-    memcpy(&power_data.current_24V, &data[2], sizeof(uint16_t));
-    memcpy(&power_data.voltage_12V, &data[4], sizeof(uint16_t));
-    memcpy(&power_data.current_12V, &data[6], sizeof(uint16_t));
+    memcpy(&power_data.VOLTAGE_24V_SYS, &data[0], sizeof(uint16_t));
+    memcpy(&power_data.VOLTAGE_24V_SOL, &data[2], sizeof(uint16_t));
+    memcpy(&power_data.current_24V_SYS, &data[4], sizeof(uint16_t));
+    memcpy(&power_data.current_24V_SOL, &data[6], sizeof(uint16_t));
+
+
+//     ESP_LOGI(TAG, "Received power data: 24V=%.2fV, 12V=%.2fV, 12V Current=%.2fmA, 24V Current=%.2fmA", 
+//              (float)power_data.voltage_24V / 1000.0f, 
+//              (float)power_data.voltage_12V / 1000.0f, 
+//              (float)power_data.current_12V / 1000.0f, 
+//              (float)power_data.current_24V / 1000.0f);
 
     tanwa_data_update_can_power_data(&power_data);
 

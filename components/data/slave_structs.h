@@ -114,10 +114,11 @@ typedef struct {
 } can_power_status_t;
 
 typedef struct {
-    uint16_t voltage_12V;
-    uint16_t voltage_24V;
-    uint16_t current_12V;
-    uint16_t current_24V;
+    uint16_t VOLTAGE_24V_SOL;
+    uint16_t current_24V_SOL;
+    
+    uint16_t VOLTAGE_24V_SYS;
+    uint16_t current_24V_SYS;
 } can_power_data_t;
 
 #endif // PWRINSPACE_SLAVE_STRUCTS_H_

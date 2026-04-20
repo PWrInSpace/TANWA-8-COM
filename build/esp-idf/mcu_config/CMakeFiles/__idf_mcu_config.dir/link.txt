@@ -1,2 +1,0 @@
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libmcu_config.a CMakeFiles/__idf_mcu_config.dir/mcu_adc_config.c.obj CMakeFiles/__idf_mcu_config.dir/mcu_gpio_config.c.obj CMakeFiles/__idf_mcu_config.dir/mcu_i2c_config.c.obj CMakeFiles/__idf_mcu_config.dir/mcu_misc_config.c.obj CMakeFiles/__idf_mcu_config.dir/mcu_spi_config.c.obj CMakeFiles/__idf_mcu_config.dir/mcu_twai_config.c.obj
-/home/alaive/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240530/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ranlib libmcu_config.a

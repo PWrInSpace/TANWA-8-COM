@@ -1,0 +1,238 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4-dirty 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr 16 2026 13:41:26[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (39) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (44) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=22530h (140592) map[0m
+[0;32mI (130) esp_image: segment 1: paddr=00032558 vaddr=3fc9ea00 size=058fch ( 22780) load[0m
+[0;32mI (135) esp_image: segment 2: paddr=00037e5c vaddr=40374000 size=081bch ( 33212) load[0m
+[0;32mI (143) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=9d45ch (644188) map[0m
+[0;32mI (262) esp_image: segment 4: paddr=000dd484 vaddr=4037c1bc size=12770h ( 75632) load[0m
+[0;32mI (279) esp_image: segment 5: paddr=000efbfc vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (280) esp_image: segment 6: paddr=000efc08 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (295) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (296) boot: Disabling RNG early entropy source...[0m
+[0;32mI (308) cpu_start: Multicore app[0m
+[0;32mI (317) cpu_start: Pro cpu start user code[0m
+[0;32mI (318) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (318) app_init: Application information:[0m
+[0;32mI (320) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (326) app_init: App version:      60f7a61-dirty[0m
+[0;32mI (331) app_init: Compile time:     Apr 16 2026 13:40:50[0m
+[0;32mI (337) app_init: ELF file SHA256:  34ccd1472...[0m
+[0;32mI (342) app_init: ESP-IDF:          v5.3.4-dirty[0m
+[0;32mI (348) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (352) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (357) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (362) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (369) heap_init: At 3FCA85E8 len 00041128 (260 KiB): RAM[0m
+[0;32mI (375) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (382) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (388) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (395) spi_flash: detected chip: generic[0m
+[0;32mI (399) spi_flash: flash io: dio[0m
+[0;33mW (403) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (416) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (427) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (433) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (441) main_task: Started on CPU0[0m
+[0;32mI (451) main_task: Calling app_main()[0m
+[0;32mI (451) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (451) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (461) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (471) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (481) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (491) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (501) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (511) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (521) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (531) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (541) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (551) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (571) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (581) CAN_API: TWAI driver started[0m
+[0;32mI (581) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (591) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (591) SMC: Initializing state machine[0m
+[0;32mI (601) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (611) pp: pp rom version: e7ae62f[0m
+[0;32mI (611) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (611) SMC: ON INIT[0m
+[0;32mI (621) wifi:wifi driver task: 3fcb9f88, prio:23, stack:6656, core=0[0m
+[0;32mI (631) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (631) wifi:wifi certification version: v7.0[0m
+[0;32mI (631) wifi:config NVS flash: enabled[0m
+[0;32mI (631) wifi:config nano formating: disabled[0m
+[0;32mI (641) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (641) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (651) wifi:Init management short buffer num: 32[0m
+[0;32mI (651) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (661) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (661) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (661) wifi:Init static rx buffer num: 10[0m
+[0;32mI (671) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (671) wifi_init: rx ba win: 6[0m
+[0;32mI (681) wifi_init: accept mbox: 6[0m
+[0;32mI (681) wifi_init: tcpip mbox: 32[0m
+[0;32mI (681) wifi_init: udp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp tx win: 5760[0m
+[0;32mI (691) wifi_init: tcp rx win: 5760[0m
+[0;32mI (701) wifi_init: tcp mss: 1440[0m
+[0;32mI (701) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (711) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (711) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (751) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (761) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (801) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (801) wifi:enable tsf[0m
+[0;32mI (801) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (801) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (811) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (811) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (821) esp_timer: Task is already initialized[0m
+[0;32mI (821) TIMER: Timers number 3[0m
+[0;32mI (831) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (831) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (841) LORA_TASK: initialize_lora: lora global=0x3fc9f38c, lora_api.lora=0x3fc9f38c[0m
+[0;32mI (861) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (861) LORA_TASK: lora_task_init: gb=0x3fca4b3c, gb.lora=0x3fc9f38c, global lora=0x3fc9f38c, lora._spi_transmit=0x420129cc[0m
+[0;32mI (861) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (871) LORA_TASK: LoRa Task started[0m
+[0;32mI (871) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (881) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (901) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (991) APP_TASK: App task created successfully[0m
+[6n [999C [6n [93D[0;32mtwi> [0m[0;32mI (1851) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (2661) LORA_TASK: IRQ received[0m
+[0;32mI (2901) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (3951) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (5001) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (6051) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (7101) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (8151) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (9201) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (10251) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (11301) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (12351) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (13401) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (14451) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (15501) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (16551) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (17601) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (18651) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (19701) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (20751) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (21801) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (22851) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (23901) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (24951) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (26001) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (27051) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (28101) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (29151) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (30201) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (31251) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (32301) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (33351) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (34401) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (35451) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (36501) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;33mW (37291) CAN_DIAG: Stan: Error Passive (Odłączono kabel?). TEC: 128[0m
+[0;33mW (37291) CAN_DIAG: Brak komunikacji (Błędy TX). TEC: 128, Oczekujące: 9[0m
+[0;32mI (37551) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (38601) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (39651) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (40701) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (41751) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;33mW (42301) CAN_DIAG: Brak komunikacji (Błędy TX). TEC: 128, Oczekujące: 190[0m
+[0;32mI (42801) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (43851) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (44901) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (45951) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (47001) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;33mW (47301) CAN_DIAG: Brak komunikacji (Błędy TX). TEC: 128, Oczekujące: 182[0m
+[0;32mI (48051) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (49101) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (50151) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (51201) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (52251) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;33mW (52301) CAN_DIAG: Brak komunikacji (Błędy TX). TEC: 128, Oczekujące: 182[0m
+[0;32mI (53301) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (54351) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (55401) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (56451) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;33mW (57301) CAN_DIAG: Brak komunikacji (Błędy TX). TEC: 128, Oczekujące: 182[0m
+[0;32mI (57501) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (58551) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (59601) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (60651) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (61501) CAN_DIAG: Bus-Off! TEC:128, REC:0. Kolejka zostanie wyczyszczona.[0m
+[0;32mI (61601) CAN_DIAG: Szyna odzyskana! Restartuję driver...[0m
+[0;32mI (61701) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (62751) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (63801) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (64851) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (65901) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (66951) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (68001) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (69051) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (70101) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;33mW (70541) CAN_DIAG: Stan: Error Passive (Odłączono kabel?). TEC: 128[0m
+[0;32mI (71151) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (72201) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (73251) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (74301) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (75351) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (76401) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (77451) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (78501) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (79551) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (80601) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (81651) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (82701) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (83751) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (84801) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (84941) CAN_DIAG: Bus-Off! TEC:128, REC:0. Kolejka zostanie wyczyszczona.[0m
+[0;32mI (85041) CAN_DIAG: Szyna odzyskana! Restartuję driver...[0m
+[0;32mI (85851) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (86901) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (87951) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (89001) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (90051) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;33mW (90541) CAN_DIAG: Stan: Error Passive (Odłączono kabel?). TEC: 128[0m
+[0;32mI (91101) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (92151) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (93201) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (94251) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;31mE (94841) CAN_DIAG: Bus-Off! TEC:128, REC:0. Kolejka zostanie wyczyszczona.[0m
+[0;32mI (94941) CAN_DIAG: Szyna odzyskana! Restartuję driver...[0m
+[0;32mI (95301) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (96351) ENS_TASK: Sending data to OBC, size: 60[0m
+[0;32mI (97401) ENS_TASK: Sending data to OBC, size: 60[0m

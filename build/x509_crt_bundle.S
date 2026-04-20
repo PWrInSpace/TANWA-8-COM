@@ -1,4 +1,4 @@
-/* * Data converted from /home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)

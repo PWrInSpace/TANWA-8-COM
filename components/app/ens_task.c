@@ -171,7 +171,7 @@ static void send_packet(){
     }
 
     if(gb.tx_data_size <= MAX_TX_BUFFER_SIZE && gb.tx_data_size > 0){
-        ESP_LOGI(TAG, "Sending data to OBC, size: %d", gb.tx_data_size);
+       // ESP_LOGI(TAG, "Sending data to OBC, size: %d", gb.tx_data_size);
         send_data(get_obc_mac_address(), gb.tx_buffer, gb.tx_data_size);
     }
 }

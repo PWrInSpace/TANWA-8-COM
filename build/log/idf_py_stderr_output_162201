@@ -1,8 +1,0 @@
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c: In function 'init_transmit_periods':
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c:45:32: warning: comparison is always false due to limited range of data type [-Wtype-limits]
-   45 |         if(transmit_periods[i] > MAX_PERIOD_TIMEOUT || transmit_periods[i] < MIN_PERIOD_TIMEOUT){
-      |                                ^
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c: In function 'init_mission_state':
-/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/esp_now_sub/ens_logic.c:77:118: warning: comparison is always false due to limited range of data type [-Wtype-limits]
-   77 |     if(transmit_periods[gb.current_mission_state] < MIN_PERIOD_TIMEOUT || transmit_periods[gb.current_mission_state] > MAX_PERIOD_TIMEOUT){
-      |                                                                                                                      ^

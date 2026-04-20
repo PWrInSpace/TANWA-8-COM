@@ -1,1072 +1,0 @@
-ESP-ROM:esp32s3-20210327
-Build:Mar 27 2021
-rst:0x1 (POWERON),boot:0x2a (SPI_FAST_FLASH_BOOT)
-SPIWP:0xee
-mode:DIO, clock div:1
-load:0x3fce2810,len:0x1828
-load:0x403c8700,len:0x4
-load:0x403c8704,len:0xce8
-load:0x403cb700,len:0x2eb8
-entry 0x403c8918
-[0;32mI (27) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
-[0;32mI (27) boot: compile time Oct  4 2025 23:55:03[0m
-[0;32mI (27) boot: Multicore bootloader[0m
-[0;32mI (30) boot: chip revision: v0.2[0m
-[0;32mI (34) boot: efuse block revision: v1.3[0m
-[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
-[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
-[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
-[0;32mI (53) boot: Enabling RNG early entropy source...[0m
-[0;32mI (58) boot: Partition Table:[0m
-[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
-[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
-[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
-[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
-[0;32mI (91) boot: End of partition table[0m
-[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=25358h (152408) map[0m
-[0;32mI (132) esp_image: segment 1: paddr=00035380 vaddr=3fc9ef00 size=059b8h ( 22968) load[0m
-[0;32mI (137) esp_image: segment 2: paddr=0003ad40 vaddr=40374000 size=052d8h ( 21208) load[0m
-[0;32mI (142) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a7e34h (687668) map[0m
-[0;32mI (271) esp_image: segment 4: paddr=000e7e5c vaddr=403792d8 size=15bf8h ( 89080) load[0m
-[0;32mI (292) esp_image: segment 5: paddr=000fda5c vaddr=50000000 size=00004h (     4) load[0m
-[0;32mI (292) esp_image: segment 6: paddr=000fda68 vaddr=600fe000 size=0006ch (   108) load[0m
-[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
-[0;32mI (308) boot: Disabling RNG early entropy source...[0m
-[0;32mI (321) cpu_start: Multicore app[0m
-[0;32mI (330) cpu_start: Pro cpu start user code[0m
-[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
-[0;32mI (330) app_init: Application information:[0m
-[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
-[0;32mI (338) app_init: App version:      599b31f-dirty[0m
-[0;32mI (344) app_init: Compile time:     Oct  5 2025 11:09:35[0m
-[0;32mI (350) app_init: ELF file SHA256:  f51e2cd21...[0m
-[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
-[0;32mI (360) efuse_init: Min chip rev:     v0.0[0m
-[0;32mI (365) efuse_init: Max chip rev:     v0.99 [0m
-[0;32mI (370) efuse_init: Chip rev:         v0.2[0m
-[0;32mI (374) heap_init: Initializing. RAM available for dynamic allocation:[0m
-[0;32mI (382) heap_init: At 3FCA8C20 len 00040AF0 (258 KiB): RAM[0m
-[0;32mI (388) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
-[0;32mI (394) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
-[0;32mI (400) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
-[0;32mI (407) spi_flash: detected chip: generic[0m
-[0;32mI (411) spi_flash: flash io: dio[0m
-[0;33mW (415) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
-[0;33mW (429) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
-[0;32mI (439) sleep: Configure to isolate all GPIO pins in sleep state[0m
-[0;32mI (446) sleep: Enable automatic switching of GPIO sleep configuration[0m
-[0;32mI (453) main_task: Started on CPU0[0m
-[0;32mI (463) main_task: Calling app_main()[0m
-[0;32mI (463) APP: TANWA_BOARD TANWA board starting[0m
-[0;32mI (463) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (473) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
-[0;32mI (483) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (493) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
-[0;32mI (503) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
-[0;32mI (513) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (523) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (533) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (543) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (553) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (563) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (573) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (573) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (583) MCU_TWAI: TWAI driver installed[0m
-[0;32mI (593) CAN_API: TWAI driver started[0m
-[0;32mI (593) BOARD_CONFIG: Relay driver initialized[0m
-[0;32mI (603) BOARD_CONFIG: Initializing state machine...[0m
-[0;32mI (603) SMC: Initializing state machine[0m
-[0;32mI (613) BOARD_CONFIG: ### State machine initialization success ###[0m
-[0;32mI (623) pp: pp rom version: e7ae62f[0m
-[0;32mI (633) net80211: net80211 rom version: e7ae62f[0m
-[0;32mI (633) SMC: ON INIT[0m
-[0;32mI (633) SETUP_TASK: Setup task created successfully[0m
-[0;32mI (643) wifi:wifi driver task: 3fcb7ecc, prio:23, stack:6656, core=0[0m
-[0;32mI (643) wifi:wifi firmware version: d2d8792[0m
-[0;32mI (643) wifi:wifi certification version: v7.0[0m
-[0;32mI (653) wifi:config NVS flash: enabled[0m
-[0;32mI (653) wifi:config nano formating: disabled[0m
-[0;32mI (653) wifi:Init data frame dynamic rx buffer num: 32[0m
-[0;32mI (663) wifi:Init static rx mgmt buffer num: 5[0m
-[0;32mI (663) wifi:Init management short buffer num: 32[0m
-[0;32mI (673) wifi:Init dynamic tx buffer num: 32[0m
-[0;32mI (673) wifi:Init static tx FG buffer num: 2[0m
-[0;32mI (683) wifi:Init static rx buffer size: 1600[0m
-[0;32mI (683) wifi:Init static rx buffer num: 10[0m
-[0;32mI (683) wifi:Init dynamic rx buffer num: 32[0m
-[0;32mI (693) wifi_init: rx ba win: 6[0m
-[0;32mI (693) wifi_init: accept mbox: 6[0m
-[0;32mI (693) wifi_init: tcpip mbox: 32[0m
-[0;32mI (703) wifi_init: udp mbox: 6[0m
-[0;32mI (703) wifi_init: tcp mbox: 6[0m
-[0;32mI (713) wifi_init: tcp tx win: 5760[0m
-[0;32mI (713) wifi_init: tcp rx win: 5760[0m
-[0;32mI (713) wifi_init: tcp mss: 1440[0m
-[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
-[0;32mI (723) wifi_init: WiFi RX IRAM OP enabled[0m
-[0;32mI (733) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
-[0;32mI (773) wifi:mode : sta (80:08:50:80:08:50)[0m
-[0;32mI (773) wifi:enable tsf[0m
-[0;32mI (783) ESPNOW: espnow [version: 1.0] init[0m
-[0;32mI (783) BOARD_CONFIG: ### ENS initialization success ###[0m
-[0;32mI (783) BOARD_CONFIG: Initializing shared memory...[0m
-[0;32mI (783) BOARD_CONFIG: ### Shared memory initialization success ###[0m
-[0;31mE (793) esp_timer: Task is already initialized[0m
-[0;32mI (803) TIMER: Timers number 3[0m
-[0;32mI (803) BOARD_CONFIG: ### Timers initialization success ###[0m
-[0;32mI (813) BOARD_CONFIG: Initializing LoRa...[0m
-[0;32mI (813) LORA_TASK: initialize_lora: lora global=0x3fc9f88c, lora_api.lora=0x3fc9f88c[0m
-[0;32mI (833) LORA_TASK: Reading LoRa registers[0m
-[0;32mI (833) LORA_TASK: lora_task_init: gb=0x3fca50f4, gb.lora=0x3fc9f88c, global lora=0x3fc9f88c, lora._spi_transmit=0x42013aa8[0m
-[0;32mI (843) LORA_TASK: LORA_READ: 0000, 0023[0m
-[0;32mI (843) LORA_TASK: LoRa Task started[0m
-[0;32mI (843) BOARD_CONFIG: ### LoRa initialization success ###[0m
-[0;32mI (853) BOARD_CONFIG: Initializing SD Card...[0m
-[0;32mI (863) SD_TASK: Initializing sd task[0m
-[0;32mI (863) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (873) sdspi_transaction: cmd=52, R1 response: command not supported[0m
-[0;32mI (923) sdspi_transaction: cmd=5, R1 response: command not supported[0m
-[0;32mI (943) SDCARD: SD card mounted[0m
-[0;32mI (1793) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (2633) LORA_TASK: IRQ received[0m
-[0;32mI (2803) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (3233) SD_TASK: Using data path /sdcard/data293.txt[0m
-[0;32mI (3233) SD_TASK: Using log path /sdcard/log0.txt[0m
-[0;32mI (3233) BOARD_CONFIG: ### SD Card initialization success ###[0m
-[0;32mI (3243) BOARD_CONFIG: SD CARD | Timer started[0m
-[0;32mI (3243) STATE_MACHINE: Changing state from 0 to 1[0m
-[0;32mI (3243) SD_TASK: RUNNING SD TASK[0m
-[5n[0;32mI (3273) SMC: ON IDLE[0m
-
-Type 'help' to get the list of commands.
-Use UP/DOWN arrows to navigate through command history.
-Press TAB when typing command name to auto-complete.
-[0;32mI (3373) APP_TASK: App task created successfully[0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (3813) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (4823) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (5833) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (6843) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (7853) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (8863) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (9873) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (10883) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (11893) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (12903) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (13913) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (14923) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (15933) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (16943) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (17953) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (18963) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mo[6C[0;32mI (19973) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0m[5C[0K[0;32mtwi> [0ms[6C[0;32mI (20983) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mso[7C[0K[0;32mtwi> [0msol[8C[0;32mI (21993) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0msol-[9C[0K[0;32mtwi> [0msol-o[10C[0K[0;32mtwi> [0msol-on[11C[0K[0;32mtwi> [0msol-on [12C[0;32mI (23003) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0msol-on 1[13C[0K[0;32mtwi> [0msol-on [12C[0;32mI (24013) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0msol-on 0[13C[0K[0;32mtwi> [0msol-on 0[13C
-Unrecognized command
-[6n [0;32mI (25023) ENS_TASK: Sending data to OBC, size: 60[0m
-[999C [6n [154D[0;32mtwi> [0m[0;32mI (26033) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (27043) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (28053) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (29063) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (30073) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (31083) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (32093) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (33103) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (34113) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (35123) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0m[5C
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0m[5C
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0m[5C
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (36133) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mh[6C[0K[0;32mtwi> [0mhe[7C[0K[0;32mtwi> [0mhel[8C[0K[0;32mtwi> [0mhelp[0;36;49m [<string>][0m[9C[0;32mI (37143) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mhelp[9C
-help  [<string>]
-  Print the summary of all registered commands if no arguments are given,
-  otherwise print summary of given command.
-      <string>  Name of command
-
-reset 
-  Reset the device
-
-igniters-arm 
-  Arm the igniters
-
-igniters-disarm 
-  Disarm the igniters
-
-igniters-fire 
-  Fire the igniters
-
-com-data 
-  Read COM data
-
-weight-data 
-  Read weight data
-
-sensor-data 
-  Read sensor data
-
-solenoid-data 
-  Read solenoid data
-
-power-data 
-  Read power data
-
-utility-data 
-  Read utility data
-
-tanwa-data 
-  Print all data
-
-sol-open 
-  Open solenoid
-
-sol-close 
-  Close solenoid
-
-rel-open 
-  Open relay
-
-rel-close 
-  Close relay
-
-servo-open 
-  Open servo
-
-servo-close 
-  Close servo
-
-servo-move 
-  Move servo to specified angle
-
-weight-set-offset 
-  Set weight offset
-
-press-info 
-  Print info about pressure
-
-can-connected-slaves 
-  Print CAN connected slaves
-
-pwr-set-channel 
-  Set power channel
-
-pwr-channel 
-  Print power channel
-
-press-set-data-rate 
-  Set pressure data rate
-
-change-state 
-  Change state of the system
-
-countdown 
-  Start countdown
-
-buzzer 
-  Change buzzer state
-
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (38153) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (39163) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (40173) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0ms[6C[0K[0;32mtwi> [0mso[7C[0K[0;32mtwi> [0msol[8C[0K[0;32mtwi> [0msol-[9C[0K[0;32mtwi> [0msol-o[10C[0K[0;32mtwi> [0msol-op[11C[0;32mI (41183) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0msol-ope[12C[0K[0;32mtwi> [0msol-open[13C[0K[0;32mtwi> [0msol-open [14C[0K[0;32mtwi> [0msol-open 0[15C[0;32mI (42193) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0msol-open 0[15C
-[0;32mI (42613) CONSOLE_CONFIG: Solenoid 0 opened[0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (43203) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (44213) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (45223) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (46233) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (47243) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (48253) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (49263) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (50273) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (51283) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (52303) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (53313) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (54323) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (55333) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (56343) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (57353) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (58363) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (59373) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (60383) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (61393) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (62403) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (63413) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (64423) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (65433) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (66443) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (67453) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (68463) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (69473) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (70483) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (71493) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (72503) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (73513) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (74523) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (75533) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (76543) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (77553) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (78563) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (79573) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (80583) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (81593) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (82603) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (83613) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (84623) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (85633) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (86643) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (87653) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (88663) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (89673) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (90683) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (91693) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (92703) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (93713) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (94723) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (95733) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (96743) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (97753) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (98763) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (99773) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (100783) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (101793) ENS_TASK: Sending data to OBC, size: 60[0m
-ESP-ROM:esp32s3-20210327
-Build:Mar 27 2021
-rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
-SPIWP:0xee
-mode:DIO, clock div:1
-load:0x3fce2810,len:0x1828
-load:0x403c8700,len:0x4
-load:0x403c8704,len:0xce8
-load:0x403cb700,len:0x2eb8
-entry 0x403c8918
-[0;32mI (27) boot: ESP-IDF v5.3.4 2nd stage bootloader[0m
-[0;32mI (27) boot: compile time Oct  4 2025 23:55:03[0m
-[0;32mI (27) boot: Multicore bootloader[0m
-[0;32mI (30) boot: chip revision: v0.2[0m
-[0;32mI (34) boot: efuse block revision: v1.3[0m
-[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
-[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
-[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
-[0;32mI (52) boot: Enabling RNG early entropy source...[0m
-[0;32mI (58) boot: Partition Table:[0m
-[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
-[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
-[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
-[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
-[0;32mI (91) boot: End of partition table[0m
-[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=25358h (152408) map[0m
-[0;32mI (132) esp_image: segment 1: paddr=00035380 vaddr=3fc9ef00 size=059b8h ( 22968) load[0m
-[0;32mI (137) esp_image: segment 2: paddr=0003ad40 vaddr=40374000 size=052d8h ( 21208) load[0m
-[0;32mI (142) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a7e34h (687668) map[0m
-[0;32mI (271) esp_image: segment 4: paddr=000e7e5c vaddr=403792d8 size=15bf8h ( 89080) load[0m
-[0;32mI (292) esp_image: segment 5: paddr=000fda5c vaddr=50000000 size=00004h (     4) load[0m
-[0;32mI (292) esp_image: segment 6: paddr=000fda68 vaddr=600fe000 size=0006ch (   108) load[0m
-[0;32mI (308) boot: Loaded app from partition at offset 0x10000[0m
-[0;32mI (308) boot: Disabling RNG early entropy source...[0m
-[0;32mI (321) cpu_start: Multicore app[0m
-[0;32mI (330) cpu_start: Pro cpu start user code[0m
-[0;32mI (330) cpu_start: cpu freq: 160000000 Hz[0m
-[0;32mI (330) app_init: Application information:[0m
-[0;32mI (333) app_init: Project name:     TANWA-8-COM[0m
-[0;32mI (338) app_init: App version:      599b31f-dirty[0m
-[0;32mI (344) app_init: Compile time:     Oct  5 2025 11:09:35[0m
-[0;32mI (350) app_init: ELF file SHA256:  f51e2cd21...[0m
-[0;32mI (355) app_init: ESP-IDF:          v5.3.4[0m
-[0;32mI (360) efuse_init: Min chip rev:     v0.0[0m
-[0;32mI (365) efuse_init: Max chip rev:     v0.99 [0m
-[0;32mI (370) efuse_init: Chip rev:         v0.2[0m
-[0;32mI (374) heap_init: Initializing. RAM available for dynamic allocation:[0m
-[0;32mI (382) heap_init: At 3FCA8C20 len 00040AF0 (258 KiB): RAM[0m
-[0;32mI (388) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
-[0;32mI (394) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
-[0;32mI (400) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
-[0;32mI (407) spi_flash: detected chip: generic[0m
-[0;32mI (411) spi_flash: flash io: dio[0m
-[0;33mW (415) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
-[0;33mW (428) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
-[0;32mI (439) sleep: Configure to isolate all GPIO pins in sleep state[0m
-[0;32mI (446) sleep: Enable automatic switching of GPIO sleep configuration[0m
-[0;32mI (453) main_task: Started on CPU0[0m
-[0;32mI (463) main_task: Calling app_main()[0m
-[0;32mI (463) APP: TANWA_BOARD TANWA board starting[0m
-[0;32mI (463) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (473) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
-[0;32mI (483) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (493) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
-[0;32mI (503) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
-[0;32mI (513) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (523) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (533) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (543) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (553) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (563) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (573) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (573) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (583) MCU_TWAI: TWAI driver installed[0m
-[0;32mI (593) CAN_API: TWAI driver started[0m
-[0;32mI (593) BOARD_CONFIG: Relay driver initialized[0m
-[0;32mI (603) BOARD_CONFIG: Initializing state machine...[0m
-[0;32mI (603) SMC: Initializing state machine[0m
-[0;32mI (613) BOARD_CONFIG: ### State machine initialization success ###[0m
-[0;32mI (623) pp: pp rom version: e7ae62f[0m
-[0;32mI (633) net80211: net80211 rom version: e7ae62f[0m
-[0;32mI (633) SMC: ON INIT[0m
-[0;32mI (633) SETUP_TASK: Setup task created successfully[0m
-[0;32mI (643) wifi:wifi driver task: 3fcb7ecc, prio:23, stack:6656, core=0[0m
-[0;32mI (643) wifi:wifi firmware version: d2d8792[0m
-[0;32mI (643) wifi:wifi certification version: v7.0[0m
-[0;32mI (653) wifi:config NVS flash: enabled[0m
-[0;32mI (653) wifi:config nano formating: disabled[0m
-[0;32mI (653) wifi:Init data frame dynamic rx buffer num: 32[0m
-[0;32mI (663) wifi:Init static rx mgmt buffer num: 5[0m
-[0;32mI (663) wifi:Init management short buffer num: 32[0m
-[0;32mI (673) wifi:Init dynamic tx buffer num: 32[0m
-[0;32mI (673) wifi:Init static tx FG buffer num: 2[0m
-[0;32mI (683) wifi:Init static rx buffer size: 1600[0m
-[0;32mI (683) wifi:Init static rx buffer num: 10[0m
-[0;32mI (683) wifi:Init dynamic rx buffer num: 32[0m
-[0;32mI (693) wifi_init: rx ba win: 6[0m
-[0;32mI (693) wifi_init: accept mbox: 6[0m
-[0;32mI (693) wifi_init: tcpip mbox: 32[0m
-[0;32mI (703) wifi_init: udp mbox: 6[0m
-[0;32mI (703) wifi_init: tcp mbox: 6[0m
-[0;32mI (713) wifi_init: tcp tx win: 5760[0m
-[0;32mI (713) wifi_init: tcp rx win: 5760[0m
-[0;32mI (713) wifi_init: tcp mss: 1440[0m
-[0;32mI (723) wifi_init: WiFi IRAM OP enabled[0m
-[0;32mI (723) wifi_init: WiFi RX IRAM OP enabled[0m
-[0;32mI (733) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
-[0;32mI (773) wifi:mode : sta (80:08:50:80:08:50)[0m
-[0;32mI (773) wifi:enable tsf[0m
-[0;32mI (773) ESPNOW: espnow [version: 1.0] init[0m
-[0;32mI (783) BOARD_CONFIG: ### ENS initialization success ###[0m
-[0;32mI (783) BOARD_CONFIG: Initializing shared memory...[0m
-[0;32mI (783) BOARD_CONFIG: ### Shared memory initialization success ###[0m
-[0;31mE (793) esp_timer: Task is already initialized[0m
-[0;32mI (803) TIMER: Timers number 3[0m
-[0;32mI (803) BOARD_CONFIG: ### Timers initialization success ###[0m
-[0;32mI (813) BOARD_CONFIG: Initializing LoRa...[0m
-[0;32mI (813) LORA_TASK: initialize_lora: lora global=0x3fc9f88c, lora_api.lora=0x3fc9f88c[0m
-[0;32mI (833) LORA_TASK: Reading LoRa registers[0m
-[0;32mI (833) LORA_TASK: lora_task_init: gb=0x3fca50f4, gb.lora=0x3fc9f88c, global lora=0x3fc9f88c, lora._spi_transmit=0x42013aa8[0m
-[0;32mI (843) LORA_TASK: LORA_READ: 0000, 0023[0m
-[0;32mI (843) LORA_TASK: LoRa Task started[0m
-[0;32mI (843) BOARD_CONFIG: ### LoRa initialization success ###[0m
-[0;32mI (853) BOARD_CONFIG: Initializing SD Card...[0m
-[0;32mI (863) SD_TASK: Initializing sd task[0m
-[0;32mI (863) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
-[0;32mI (873) sdspi_transaction: cmd=52, R1 response: command not supported[0m
-[0;32mI (923) sdspi_transaction: cmd=5, R1 response: command not supported[0m
-[0;32mI (943) SDCARD: SD card mounted[0m
-[0;32mI (1793) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (2633) LORA_TASK: IRQ received[0m
-[0;32mI (2803) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (3253) SD_TASK: Using data path /sdcard/data294.txt[0m
-[0;32mI (3253) SD_TASK: Using log path /sdcard/log0.txt[0m
-[0;32mI (3253) BOARD_CONFIG: ### SD Card initialization success ###[0m
-[0;32mI (3253) BOARD_CONFIG: SD CARD | Timer started[0m
-[0;32mI (3263) STATE_MACHINE: Changing state from 0 to 1[0m
-[0;32mI (3263) SD_TASK: RUNNING SD TASK[0m
-[5n[0;32mI (3283) SMC: ON IDLE[0m
-
-Type 'help' to get the list of commands.
-Use UP/DOWN arrows to navigate through command history.
-Press TAB when typing command name to auto-complete.
-[0;32mI (3383) APP_TASK: App task created successfully[0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (3813) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (4823) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (5833) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (6843) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (7853) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (8863) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (9873) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (10883) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (11893) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (12903) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (13913) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (14923) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (15933) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (16943) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (17953) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (18963) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (19973) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (20983) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (21993) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (23003) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (24013) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (25023) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (26033) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (27043) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (28053) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (29063) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (30073) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (31083) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (32093) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (33103) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (34113) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (35123) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (36133) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (37143) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (38153) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (39163) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (40173) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (41183) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (42193) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (43203) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (44213) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (45223) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (46233) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (47243) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (48253) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (49263) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (50273) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (51283) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (52293) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (53303) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (54313) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (55323) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (56333) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (57343) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (58353) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (59363) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (60373) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (61383) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (62393) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (63403) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (64413) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (65423) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (66433) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (67443) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (68453) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (69463) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (70473) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (71483) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (72493) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (73503) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (74513) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (75523) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (76533) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (77543) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (78553) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (79563) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (80573) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (81583) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (82593) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (83603) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (84613) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (85623) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (86633) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (87643) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (88653) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (89663) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (90673) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (91683) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (92693) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (93703) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (94713) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (95723) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (96733) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (97743) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (98753) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (99763) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (100773) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (101783) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mt[6C[0;32mI (102793) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mta[7C[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (103803) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (103963) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (103963) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (103963) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (103983) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (103993) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (104003) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (104013) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (104023) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (104033) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (104043) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (104043) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (104053) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (104063) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (104073) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (104083) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (104813) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (105823) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (106833) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (107843) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (108853) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (109863) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (110873) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (111883) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (112893) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (113903) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (114913) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (115923) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (116933) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (117943) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (118953) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (119963) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (120973) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (121983) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (122993) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (124003) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (125013) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (126023) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (127033) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (128043) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (129053) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (130063) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (131073) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (132083) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (133093) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (134103) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (135113) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (136123) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (137133) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (138143) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (139153) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (140163) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (141173) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (142183) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (143193) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (144203) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mt[6C[0K[0;32mtwi> [0mta[7C[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (145063) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (145063) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (145063) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (145083) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (145093) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (145103) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (145113) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (145123) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (145133) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (145143) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (145143) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (145153) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (145163) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (145173) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (145183) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [0;32mI (145213) ENS_TASK: Sending data to OBC, size: 60[0m
-[999C [6n [154D[0;32mtwi> [0m[0;32mI (146223) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (147233) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (148243) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (148333) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (148343) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (148343) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (148353) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (148363) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (148383) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (148383) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (148393) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (148403) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (148413) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (148423) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (148433) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (148433) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (148443) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (148463) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (149253) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (150263) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (151273) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (152283) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (153293) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (154303) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (155313) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (155853) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (155853) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (155853) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (155863) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (155873) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (155893) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (155903) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (155903) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (155913) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (155933) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (155933) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (155943) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (155943) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (155953) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (155973) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (156323) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (157293) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (157293) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (157303) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (157313) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (157323) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (157333) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (157343) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (157353) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (157353) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (157363) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (157383) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (157383) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (157393) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (157403) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (157403) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (157423) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (158153) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (158153) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (158153) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (158163) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (158173) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (158193) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (158203) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (158203) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (158223) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (158233) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (158233) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (158243) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (158243) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (158253) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (158263) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [0;32mI (158353) ENS_TASK: Sending data to OBC, size: 60[0m
-[999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (159003) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (159003) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (159003) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (159013) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (159033) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (159043) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (159053) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (159053) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (159073) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (159083) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (159083) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (159093) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (159093) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (159113) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (159123) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (159363) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (160003) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (160003) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (160013) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (160023) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (160033) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (160053) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (160053) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (160063) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (160073) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (160083) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (160093) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (160103) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (160103) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (160113) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (160123) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (160373) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (160933) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (160933) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (160943) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (160953) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (160963) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (160973) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (160983) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (160993) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (161003) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (161003) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (161023) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (161033) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (161033) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (161043) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (161053) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (161383) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (161883) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (161883) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (161883) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (161893) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (161913) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (161923) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (161933) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (161933) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (161953) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (161963) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (161963) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (161973) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (161983) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (161993) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (162003) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (162393) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (162733) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (162743) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (162743) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (162753) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (162763) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (162783) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (162783) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (162793) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (162803) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (162823) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (162823) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (162833) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (162833) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (162843) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (162853) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (163403) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (163583) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (163593) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (163593) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (163603) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (163613) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (163633) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (163633) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (163643) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (163653) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (163663) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (163673) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (163683) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (163683) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (163693) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (163713) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (164383) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (164383) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (164383) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (164403) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (164413) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (164413) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (164423) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (164443) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (164453) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (164453) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (164473) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (164473) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (164483) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (164493) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (164493) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (164513) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (165133) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (165133) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (165143) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (165153) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (165163) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (165173) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (165183) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (165193) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (165203) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (165203) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (165223) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (165233) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (165233) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (165243) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (165253) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (165423) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (165993) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (165993) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (165993) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (166003) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (166013) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (166033) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (166043) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (166043) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (166053) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (166073) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (166073) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (166083) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (166083) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (166093) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (166113) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (166433) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (166903) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (166913) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (166913) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (166923) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (166933) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (166953) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (166953) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (166963) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (166973) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (166983) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (166993) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (167003) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (167003) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (167013) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (167023) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (167443) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (167863) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (167863) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (167863) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (167873) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (167893) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (167903) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (167913) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (167913) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (167933) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (167943) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (167943) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (167953) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (167963) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (167973) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (167983) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (168453) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (168633) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (168633) CONSOLE_CONFIG: COM Data: I_Sense: 0.01, Abort Button: 1, Arm State: 0[0m
-[0;32mI (168633) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (168653) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (168663) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (168673) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (168683) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (168693) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (168703) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (168713) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (168713) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (168723) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (168733) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (168743) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (168753) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (169463) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (170473) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (171483) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (172493) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (173503) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (174513) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (175523) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (176533) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (177543) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (178273) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (178273) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (178273) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (178293) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (178303) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (178313) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (178313) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (178333) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (178343) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (178353) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (178353) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (178363) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (178373) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (178383) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (178393) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [0;32mI (178553) ENS_TASK: Sending data to OBC, size: 60[0m
-[154D[0;32mtwi> [0m[0;32mI (179563) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (180293) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (180293) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (180293) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (180313) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (180323) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (180343) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (180343) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (180353) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (180363) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (180373) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (180383) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (180393) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (180393) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (180403) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (180423) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [0;32mI (180573) ENS_TASK: Sending data to OBC, size: 60[0m
-[154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (181373) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (181373) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (181383) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (181393) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (181403) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (181413) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (181423) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (181433) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (181443) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (181443) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (181463) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (181473) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (181473) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (181483) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (181493) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [0;32mI (181583) ENS_TASK: Sending data to OBC, size: 60[0m
-[999C [6n [154D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (182303) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (182303) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (182303) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (182323) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (182333) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (182343) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (182353) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (182363) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (182373) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (182383) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (182383) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (182393) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (182403) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (182413) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (182423) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (182593) ENS_TASK: Sending data to OBC, size: 60[0m
-[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
-[0;32mI (183113) CONSOLE_CONFIG: TANWA Data:[0m
-[0;32mI (183113) CONSOLE_CONFIG: COM Data: I_Sense: 0.03, Abort Button: 1, Arm State: 0[0m
-[0;32mI (183113) CONSOLE_CONFIG: Relay States: [0, 0, 0, 0], Temperature 1: 2.87, Temperature 2: 0.00, Igniter Cont 1: 0, Igniter Cont 2: 0[0m
-[0;32mI (183123) CONSOLE_CONFIG: Weight Data: Rocket Weight: 0.00, Tank Weight: 0.00[0m
-[0;32mI (183133) CONSOLE_CONFIG: Sensor Temp Data: Temperature 1: 0.00, Temperature 2: 0.00, Temperature 3: 0.00[0m
-[0;32mI (183153) CONSOLE_CONFIG: Pressure Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
-[0;32mI (183163) CONSOLE_CONFIG: Pressure Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.00[0m
-[0;32mI (183163) CONSOLE_CONFIG: Solenoid Data: Temperature 1: 28, Temperature 2: 0, i_sense: 0[0m
-[0;32mI (183173) CONSOLE_CONFIG: Solenoid Data: Servo Angle 1: 0, Servo Angle 2: 0[0m
-[0;32mI (183193) CONSOLE_CONFIG: Solenoid Data: Servo Angle 3: 0, Servo Angle 4: 0[0m
-[0;32mI (183193) CONSOLE_CONFIG: Solenoid Data: Motor State 1: 1, Motor State 2: 1[0m
-[0;32mI (183203) CONSOLE_CONFIG: Solenoid States: [0, 0, 0, 0, 0, 0], Servo States: [0, 0, 0, 0][0m
-[0;32mI (183203) CONSOLE_CONFIG: Power Data: 12V Voltage: 0, 24V Voltage: 0, 12V Current: 0, 24V Current: 0[0m
-[0;32mI (183213) CONSOLE_CONFIG: Utility Data: I_Sense: 0, Temperature 1: 0, Temperature 2: 0[0m
-[0;32mI (183233) CONSOLE_CONFIG: Utility Switch States: [0, 0, 0, 0, 0, 0, 0, 0][0m
-[6n [999C [6n [154D[0;32mtwi> [0m[0;32mI (183603) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (184613) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (185623) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (186633) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (187643) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (188653) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (189663) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (190673) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (191683) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (192693) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (193703) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (194713) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (195723) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (196733) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (197743) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (198753) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (199763) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (200773) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (201783) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (202793) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (203803) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (204813) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (205823) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (206833) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (207843) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (208853) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (209863) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (210873) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (211883) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (212893) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (213903) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (214913) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (215923) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (216933) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (217943) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (218953) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (219963) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (220973) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (221983) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (222993) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (224003) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (225013) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (226023) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (227033) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (228043) ENS_TASK: Sending data to OBC, size: 60[0m
-[0;32mI (229053) ENS_TASK: Sending data to OBC, size: 60[0m

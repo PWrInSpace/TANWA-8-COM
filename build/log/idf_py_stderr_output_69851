@@ -1,9 +1,0 @@
-[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyUSB0 115200[0m
-[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
-[0m--- 0x400556d5: [0;33mstrlen[0m[0m in [0;32mROM[0m
-[0m--- 0x400556e5: [0;33mstrlen[0m[0m in [0;32mROM[0m
-[0m--- 0x42010e97: [0;33mlora_received[0m[0m at [0;32m/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/lora/lora.c[0m[0m:[1;31m299[0m
-[0m--- 0x4200fa45: [0;33mlora_task[0m[0m at [0;32m/home/alaive/Pulpit/PWrInSpace/TANWA-8-COM/components/app/lora_task.c[0m[0m:[1;31m454[0m
-[0m--- 0x40380ccd: [0;33mvPortTaskWrapper[0m[0m at [0;32m/home/alaive/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
-[0m--- 0x42022dd9: [0;33mtwai_intr_handler_main[0m[0m at [0;32m/home/alaive/esp/esp-idf/components/driver/twai/twai.c[0m[0m:[1;31m259[0m
-[0m
