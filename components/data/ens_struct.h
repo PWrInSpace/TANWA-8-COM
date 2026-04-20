@@ -21,6 +21,12 @@ typedef struct data_to_obc {
     float postFillN2_pres;
     float droidN2_press;
     float combChamber_pres;
+    //TANWA POWER DATA
+    float TANWA_24V_SYS_VOLTAGE;
+    float TANWA_24V_SYS_CURRENT;
+    float TANWA_24V_SOL_VOLTAGE;
+    float TANWA_24V_SOL_CURRENT;
+    //BOOLEANS
     bool soft_arm : 1;
     bool canWeighta_con : 1;
     bool canSensor_con : 1;

@@ -88,6 +88,7 @@ void app_task(void *arg) {
         tanwa_data_update_state((uint8_t) state_machine_get_current_state());
     
         uint8_t data[8] = {0};
+        //TODO!: DODAĆ 1 wiadomość która prosi o wszystkie dane a nie kazda płytka osobno
         can_send_message(CAN_SOL_GET_DATA_ID, data, 0);
         can_send_message(CAN_SOL_GET_STATUS_ID, data, 0);
         can_send_message(CAN_POWER_GET_DATA_ID, data, 0);

@@ -22,7 +22,11 @@ mcu_twai_config_t mcu_twai_config = {
         .bus_off_io = TWAI_IO_UNUSED,
         .tx_queue_len = 500,
         .rx_queue_len = 500,
-        .alerts_enabled = TWAI_ALERT_NONE, // for now - ToDo: change and test alerts
+        .alerts_enabled = TWAI_ALERT_BUS_OFF | 
+                                          TWAI_ALERT_BUS_RECOVERED | 
+                                          TWAI_ALERT_ERR_PASS | 
+                                          TWAI_ALERT_BUS_ERROR |
+                                          TWAI_ALERT_RX_DATA,
         .clkout_divider = 0,
         .intr_flags = ESP_INTR_FLAG_LEVEL1,
     },
