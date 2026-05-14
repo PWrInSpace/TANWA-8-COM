@@ -1,0 +1,333 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4-dirty 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr 16 2026 13:41:26[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (39) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (44) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=22620h (140832) map[0m
+[0;32mI (130) esp_image: segment 1: paddr=00032648 vaddr=3fc9ea00 size=058fch ( 22780) load[0m
+[0;32mI (135) esp_image: segment 2: paddr=00037f4c vaddr=40374000 size=080cch ( 32972) load[0m
+[0;32mI (143) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=9d640h (644672) map[0m
+[0;32mI (262) esp_image: segment 4: paddr=000dd668 vaddr=4037c0cc size=12860h ( 75872) load[0m
+[0;32mI (280) esp_image: segment 5: paddr=000efed0 vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (280) esp_image: segment 6: paddr=000efedc vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (296) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (296) boot: Disabling RNG early entropy source...[0m
+[0;32mI (309) cpu_start: Multicore app[0m
+[0;32mI (318) cpu_start: Pro cpu start user code[0m
+[0;32mI (318) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (318) app_init: Application information:[0m
+[0;32mI (321) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (326) app_init: App version:      60f7a61-dirty[0m
+[0;32mI (331) app_init: Compile time:     Apr 16 2026 13:40:50[0m
+[0;32mI (337) app_init: ELF file SHA256:  462f64d2e...[0m
+[0;32mI (343) app_init: ESP-IDF:          v5.3.4-dirty[0m
+[0;32mI (348) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (353) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (358) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (362) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (370) heap_init: At 3FCA85E8 len 00041128 (260 KiB): RAM[0m
+[0;32mI (376) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (382) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (388) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (395) spi_flash: detected chip: generic[0m
+[0;32mI (399) spi_flash: flash io: dio[0m
+[0;33mW (403) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (416) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (427) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (434) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (441) main_task: Started on CPU0[0m
+[0;32mI (451) main_task: Calling app_main()[0m
+[0;32mI (451) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (451) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (461) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (471) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (481) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (491) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (501) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (511) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (521) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (531) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (541) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (551) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (571) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (581) CAN_API: TWAI driver started[0m
+[0;32mI (581) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (591) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (591) SMC: Initializing state machine[0m
+[0;32mI (601) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (611) pp: pp rom version: e7ae62f[0m
+[0;32mI (611) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (611) SMC: ON INIT[0m
+[0;32mI (621) wifi:wifi driver task: 3fcb9f88, prio:23, stack:6656, core=0[0m
+[0;32mI (631) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (631) wifi:wifi certification version: v7.0[0m
+[0;32mI (631) wifi:config NVS flash: enabled[0m
+[0;32mI (631) wifi:config nano formating: disabled[0m
+[0;32mI (641) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (641) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (651) wifi:Init management short buffer num: 32[0m
+[0;32mI (651) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (661) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (661) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (661) wifi:Init static rx buffer num: 10[0m
+[0;32mI (671) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (671) wifi_init: rx ba win: 6[0m
+[0;32mI (681) wifi_init: accept mbox: 6[0m
+[0;32mI (681) wifi_init: tcpip mbox: 32[0m
+[0;32mI (681) wifi_init: udp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp tx win: 5760[0m
+[0;32mI (691) wifi_init: tcp rx win: 5760[0m
+[0;32mI (701) wifi_init: tcp mss: 1440[0m
+[0;32mI (701) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (711) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (711) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (751) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (761) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (771) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (771) wifi:enable tsf[0m
+[0;32mI (781) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (781) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (781) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (781) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (791) esp_timer: Task is already initialized[0m
+[0;32mI (801) TIMER: Timers number 3[0m
+[0;32mI (801) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (811) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (811) LORA_TASK: initialize_lora: lora global=0x3fc9f38c, lora_api.lora=0x3fc9f38c[0m
+[0;32mI (831) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (831) LORA_TASK: lora_task_init: gb=0x3fca4b3c, gb.lora=0x3fc9f38c, global lora=0x3fc9f38c, lora._spi_transmit=0x42012bb0[0m
+[0;32mI (841) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (841) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (841) LORA_TASK: LoRa Task started[0m
+[0;32mI (851) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (871) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (971) APP_TASK: App task created successfully[0m
+[6n [0;32mI (981) ENS_LOGIC: Setting mission state to 1[0m
+[999C [6n [145D[0;32mtwi> [0m[0;32mI (2631) LORA_TASK: IRQ received[0m
+[0K[0;32mtwi> [0mt[6C[0K[0;32mtwi> [0mta[7C[0K[0;32mtwi> [0mtan[8C[0K[0;32mtwi> [0mtanw[9C[0K[0;32mtwi> [0mtanwa[10C[0K[0;32mtwi> [0mtanwa-[11C[0K[0;32mtwi> [0mtanwa-d[12C[0K[0;32mtwi> [0mtanwa-da[13C[0K[0;32mtwi> [0mtanwa-dat[14C[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.04            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 0.00         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 kg | Tank Weight          |       0.00 kg |
+| Load Cell 1          |   -3048.41 kg | Load Cell 2          |   -3048.41 kg |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |     0.00 bar | Press 5         |     0.00 bar |
+| Press 2         |     0.00 bar | Press 6         |     0.00 bar |
+| Press 3         |     0.00 bar | Press 7         |     0.00 bar |
+| Press 4         |     0.00 bar | Press 8         |     0.00 bar |
+| Sensor Temp 1   |    61.33 C   | Sensor Temp 2   |    61.33 C   |
+| Sensor Temp 3   |    61.33 C   | Status          | OK           |
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [0] [0] [0] [0] |
+| Servo Angles:   0 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.13 V[0m | System Current       |     0.06 mA |
+| 24V Solenoid Voltage | [33m    1.69 V[0m | Solenoid Current     |     0.00 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (6631) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (6631) CONSOLE_CONFIG: Weights: 0, Solenoid: 0, Sensor: 0, Power: 0, Utility: 0[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0mt[6C[0K[0;32mtwi> [0mta[7C[0K[0;32mtwi> [0mtaw[8C[0K[0;32mtwi> [0mtawn[9C[0K[0;32mtwi> [0mtaw[8C[0K[0;32mtwi> [0mta[7C[0K[0;32mtwi> [0mtan[8C[0K[0;32mtwi> [0mtana[9C[0K[0;32mtwi> [0mtan[8C[0K[0;32mtwi> [0mtanw[9C[0K[0;32mtwi> [0mtanwa[10C[0K[0;32mtwi> [0mtanwa-[11C[0K[0;32mtwi> [0mtanwa-d[12C[0K[0;32mtwi> [0mtanwa-da[13C[0K[0;32mtwi> [0mtanwa-dat[14C[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.04            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 0.00         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 kg | Tank Weight          |       0.00 kg |
+| Load Cell 1          |   -3030.89 kg | Load Cell 2          |   -3030.89 kg |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |     0.00 bar | Press 5         |     0.00 bar |
+| Press 2         |     0.00 bar | Press 6         |     0.00 bar |
+| Press 3         |     0.01 bar | Press 7         |     0.00 bar |
+| Press 4         |     0.00 bar | Press 8         |     0.00 bar |
+| Sensor Temp 1   |    61.33 C   | Sensor Temp 2   |    61.33 C   |
+| Sensor Temp 3   |    61.33 C   | Status          | OK           |
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [0] [0] [0] [0] |
+| Servo Angles:   0 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.11 V[0m | System Current       |     0.06 mA |
+| 24V Solenoid Voltage | [33m    1.69 V[0m | Solenoid Current     |     0.00 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (50261) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (50261) CONSOLE_CONFIG: Weights: 0, Solenoid: 0, Sensor: 0, Power: 0, Utility: 0[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0mp[6C[0K[0;32mtwi> [0mpo[7C[0K[0;32mtwi> [0mpow[8C[0K[0;32mtwi> [0mpowe[9C[0K[0;32mtwi> [0mpow[8C[0K[0;32mtwi> [0mpowe[9C[0K[0;32mtwi> [0mpower[10C[0K[0;32mtwi> [0mpower=[11C[0K[0;32mtwi> [0mpower[10C[0K[0;32mtwi> [0mpower-[11C[0K[0;32mtwi> [0mpower-d[12C[0K[0;32mtwi> [0mpower-da[13C[0K[0;32mtwi> [0mpower-dat[14C[0K[0;32mtwi> [0mpower-data[15C[0K[0;32mtwi> [0mpower-data[15C
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.13 V[0m | System Current       |     0.06 mA |
+| 24V Solenoid Voltage | [33m    1.69 V[0m | Solenoid Current     |     0.00 mA |
+----------------------------------------------------------------------------
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0ms[6C[0K[0;32mtwi> [0mse[7C[0K[0;32mtwi> [0msen[8C[0K[0;32mtwi> [0msens[9C[0K[0;32mtwi> [0msenso[10C[0K[0;32mtwi> [0msensor[11C[0K[0;32mtwi> [0msensor-[12C[0K[0;32mtwi> [0msensor-d[13C[0K[0;32mtwi> [0msensor-da[14C[0K[0;32mtwi> [0msensor-dat[15C[0K[0;32mtwi> [0msensor-data[16C[0K[0;32mtwi> [0msensor-data[16C
+[0;32mI (58631) CONSOLE_CONFIG: Sensor Data: Temperature 1: 20, Temperature 2: -2147483648, Temperature 3: 1078897213[0m
+[0;32mI (58631) CONSOLE_CONFIG: PRESSURE Data: Pressure 1: 0.00, Pressure 2: 0.00, Pressure 3: 0.00, Pressure 4: 0.00[0m
+[0;32mI (58651) CONSOLE_CONFIG: PRESSURE Data: Pressure 5: 0.00, Pressure 6: 0.00, Pressure 7: 0.00, Pressure 8: 0.01[0m
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0m[5C[0K[0;32mtwi> [0m[5C[0K[0;32mtwi> [0m[5C[0K[0;32mtwi> [0ms[6C[0K[0;32mtwi> [0mse[7C[0K[0;32mtwi> [0mser[8C[0K[0;32mtwi> [0mserv[9C[0K[0;32mtwi> [0mservo[10C[0K[0;32mtwi> [0mservo-[11C[0K[0;32mtwi> [0mservo-o[12C[0K[0;32mtwi> [0mservo-op[13C[0K[0;32mtwi> [0mservo-ope[14C[0K[0;32mtwi> [0mservo-open[15C[0K[0;32mtwi> [0mservo-open [16C[0K[0;32mtwi> [0mservo-open 0[17C[0K[0;32mtwi> [0mservo-open 0 [18C[0K[0;32mtwi> [0mservo-open 0 1[19C[0K[0;32mtwi> [0mservo-open 0 10[20C[0K[0;32mtwi> [0mservo-open 0 100[21C[0K[0;32mtwi> [0mservo-open 0 1000[22C[0K[0;32mtwi> [0mservo-open 0 100[21C[0K[0;32mtwi> [0mservo-open 0 10[20C[0K[0;32mtwi> [0mservo-open 0 1[19C[0K[0;32mtwi> [0mservo-open 0 [18C[0K[0;32mtwi> [0mservo-open 0 0[19C[0K[0;32mtwi> [0mservo-open 0 0[19C
+[0;32mI (82281) CONSOLE_CONFIG: Servo 0 opened[0m
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0mservo-open 0 0[19C[0K[0;32mtwi> [0msensor-data[16C[0K[0;32mtwi> [0mpower-data[15C[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.04            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 0.00         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 kg | Tank Weight          |       0.00 kg |
+| Load Cell 1          |   -3012.66 kg | Load Cell 2          |   -3012.66 kg |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |     0.00 bar | Press 5         |     0.00 bar |
+| Press 2         |     0.00 bar | Press 6         |     0.00 bar |
+| Press 3         |     0.00 bar | Press 7         |     0.01 bar |
+| Press 4         |     0.00 bar | Press 8         |     0.00 bar |
+| Sensor Temp 1   |    61.33 C   | Sensor Temp 2   |    61.33 C   |
+| Sensor Temp 3   |    61.33 C   | Status          | OK           |
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [1] [0] [0] [0] |
+| Servo Angles: 170 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.10 V[0m | System Current       |     0.06 mA |
+| 24V Solenoid Voltage | [33m    1.69 V[0m | Solenoid Current     |     0.00 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (84611) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (84611) CONSOLE_CONFIG: Weights: 0, Solenoid: 0, Sensor: 0, Power: 0, Utility: 0[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mservo-open 0 0[19C[0K[0;32mtwi> [0mservo-open 0 [18C[0K[0;32mtwi> [0mservo-open 0 1[19C[0K[0;32mtwi> [0mservo-open 0 10[20C[0K[0;32mtwi> [0mservo-open 0 100[21C[0K[0;32mtwi> [0mservo-open 0 1000[22C[0K[0;32mtwi> [0mservo-open 0 1000[22C
+[0;32mI (94091) CONSOLE_CONFIG: Servo 0 opened[0m
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0ms[6C[0K[0;32mtwi> [0mse[7C[0K[0;32mtwi> [0mser[8C[0K[0;32mtwi> [0mserv[9C[0K[0;32mtwi> [0mservo[10C[0K[0;32mtwi> [0mservo-[11C[0K[0;32mtwi> [0mservo-c[12C[0K[0;32mtwi> [0mservo-cl[13C[0K[0;32mtwi> [0mservo-clo[14C[0K[0;32mtwi> [0mservo-clos[15C[0K[0;32mtwi> [0mservo-close[16C[0K[0;32mtwi> [0mservo-close [17C[0K[0;32mtwi> [0mservo-close  [18C[0K[0;32mtwi> [0mservo-close [17C[0K[0;32mtwi> [0mservo-close 0[18C[0K[0;32mtwi> [0mservo-close 0[18C
+[0;32mI (100251) CONSOLE_CONFIG: Servo 0 closed[0m
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0mservo-close 0[18C[0K[0;32mtwi> [0mservo-open 0 1000[22C[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.04            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 0.00         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 kg | Tank Weight          |       0.00 kg |
+| Load Cell 1          |   -3041.90 kg | Load Cell 2          |   -3041.90 kg |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |     0.00 bar | Press 5         |     0.00 bar |
+| Press 2         |     0.00 bar | Press 6         |     0.00 bar |
+| Press 3         |     0.00 bar | Press 7         |     0.00 bar |
+| Press 4         |     0.00 bar | Press 8         |     0.01 bar |
+| Sensor Temp 1   |    61.33 C   | Sensor Temp 2   |    61.33 C   |
+| Sensor Temp 3   |    61.33 C   | Status          | OK           |
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [0] [0] [0] [0] |
+| Servo Angles:  50 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.10 V[0m | System Current       |     0.06 mA |
+| 24V Solenoid Voltage | [33m    1.69 V[0m | Solenoid Current     |     0.00 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (102341) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (102341) CONSOLE_CONFIG: Weights: 0, Solenoid: 0, Sensor: 0, Power: 0, Utility: 0[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mservo-close 0[18C[0K[0;32mtwi> [0mservo-open 0 1000[22C[0K[0;32mtwi> [0mservo-open 0 1000[22C
+[0;32mI (117161) CONSOLE_CONFIG: Servo 0 opened[0m
+[6n [999C [6n [145D[0;32mtwi> [0m[0K[0;32mtwi> [0mservo-open 0 1000[22C[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.04            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        |

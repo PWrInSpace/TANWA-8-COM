@@ -167,10 +167,10 @@ void _data_to_transmit(uint8_t *buffer, size_t buffer_size, size_t *tx_data_size
     data_to_obc.heatingTankState = vent_state == RELAY_OFF; //VENT
     data_to_obc.heatingValveState = tanwa_data.com_data.relay_state2;
     data_to_obc.abortButton = tanwa_data.com_data.abort_button;
-    data_to_obc.TANWA_24V_SYS_VOLTAGE = tanwa_data.can_power_data.VOLTAGE_24V_SYS;
-    data_to_obc.TANWA_24V_SYS_CURRENT = tanwa_data.can_power_data.current_24V_SYS;
-    data_to_obc.TANWA_24V_SOL_VOLTAGE = tanwa_data.can_power_data.VOLTAGE_24V_SOL;
-    data_to_obc.TANWA_24V_SOL_CURRENT = tanwa_data.can_power_data.current_24V_SOL;
+    data_to_obc.TANWA_24V_SYS_VOLTAGE = 25.00;
+    data_to_obc.TANWA_24V_SYS_CURRENT = 25.00;
+    data_to_obc.TANWA_24V_SOL_VOLTAGE = 25.00;
+    data_to_obc.TANWA_24V_SOL_CURRENT = 25.00;
 
     
 
