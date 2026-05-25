@@ -45,5 +45,6 @@ esp_err_t board_config_init(void);
 esp_err_t tanwa_read_i_sense(float *i_sense);
 void buzzer_change_period(uint16_t period_ms);
 void buzzer_stop(void);
+void buzzer_toggle(bool state, uint8_t freq_s);
 
 #endif /* PWRINSPACE_BOARD_CONFIG_H */

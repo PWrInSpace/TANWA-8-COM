@@ -213,8 +213,8 @@ int tanwa_data_print(int argc, char **argv) {
     can_weight_data_t weight = tanwa_data_read_can_weight_data();
     printf("%s%s%-25s%s\n", CLR_BLD, CLR_YLW, "2. LOAD CELL / WEIGHT DATA", CLR_RST);
     printf("----------------------------------------------------------------------------\n");
-    printf("| %-20s | %10.2f kg | %-20s | %10.2f kg |\n", "Rocket Weight", weight.rocket_weight, "Tank Weight", weight.tank_weight);
-    printf("| %-20s | %10.2f kg | %-20s | %10.2f kg |\n", "Load Cell 1", weight.ads1_weight1, "Load Cell 2", weight.ads1_weight2);
+    printf("| %-20s | %10.2f g | %-20s | %10.2f g |\n", "Rocket Weight", weight.rocket_weight, "Tank Weight", weight.tank_weight);
+    printf("| %-20s | %10.2f g | %-20s | %10.2f g |\n", "Load Cell 1", weight.ads1_weight1, "Load Cell 2", weight.ads1_weight2);
     printf("----------------------------------------------------------------------------\n\n");
 
     // --- 3. SENSORS & PRESSURE ---
@@ -550,23 +550,17 @@ int tanwa_countdown(int argc, char **argv) {
 }
 
 int change_buzzer_state(int argc, char **argv) {
-    // This function can be used to change the state of the buzzer
-    if (argc != 2) {
+    // Oczekujemy komendy w stylu: buzzer [state] [freq] (np. buzzer 1 2000)
+    // Zatem argc musi wynosić dokładnie 3
+    if (argc != 3) {
+        ESP_LOGW("CONSOLE", "Złe użycie! Format: buzzer <0/1> <czestotliwosc>");
         return -1;
     }
 
-    int state = atoi(argv[1]);
-    uint16_t duration = (uint16_t)atoi(argv[2]);
-    if (state < 0 || state > 1) {
-        ESP_LOGE(TAG, "Invalid buzzer state. Must be 0 or 1.");
-        return -1;
-    }
-
-    if (state == 1) {
-        buzzer_change_period(duration);
-    } else {
-        buzzer_stop();
-    }
+    bool state = (atoi(argv[1]) != 0); // bezpieczna konwersja na bool
+    uint16_t freq_s = (uint16_t)atoi(argv[2]); // pobieramy częstotliwość z argv[2]
+    
+    buzzer_toggle(state, freq_s);
 
     return 0;
 }

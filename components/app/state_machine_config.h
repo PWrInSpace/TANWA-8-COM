@@ -7,9 +7,9 @@
 #ifndef PWRINSPACE_STATE_MACHINE_CONFIG_H_
 #define PWRINSPACE_STATE_MACHINE_CONFIG_H_
 
+#include "stdbool.h"
 #include "state_machine.h"
 
-#include "stdbool.h"
 
 typedef enum {
     INIT = 0,
