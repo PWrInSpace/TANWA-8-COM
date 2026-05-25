@@ -21,9 +21,12 @@
 
 #include "can_api.h"
 
+#include "app_task.h"
+
 #define TAG "SMC"
 
 extern led_state_display_struct_t led_state_display;
+extern volatile bool buzz_flg;
 
 
 static void on_init(void *arg) {
@@ -58,8 +61,7 @@ void close_valves(void) {
 
 static void on_idle(void *arg) {
 
-    buzzer_stop();
-
+    buzz_flg_off = true;
     igniter_disarm(&tanwa_hardware.igniter[0]);
     igniter_disarm(&tanwa_hardware.igniter[1]);
 
@@ -71,78 +73,87 @@ static void on_idle(void *arg) {
 
 static void on_recovery_arm(void *arg) {
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_ARMED);
+    buzz_flg_off = true;
     ESP_LOGI(TAG, "ON ARM");
 }
 
 static void on_fueling(void *arg) {
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_FUELING);
-    buzzer_change_period(5000);
+    buzz_flg_off = true;
     ESP_LOGI(TAG, "ON FUELING");
 }
 
 static void on_pressurizing(void *arg) {
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_PRESSURIZING);
-    buzzer_change_period(4000);
+    buzz_flg_off = true;
     ESP_LOGI(TAG, "ON PRESSURIZING");
 }
 
 static void on_armed_to_launch(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_ARMED_TO_LAUNCH);
-    buzzer_change_period(3000);
     //buzzer_timer_change_period(3000);
     ESP_LOGI(TAG, "ON ARMED TO LAUNCH");
 }
 
 static void on_ready_to_lauch(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_RDY_TO_LAUNCH);
-    buzzer_change_period(2000);
     ESP_LOGI(TAG, "ON READY_TO_LAUNCH");
 }
 
 static void on_countdown(void *arg) {
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_COUTDOWN);
-    buzzer_change_period(500);
+    buzz_flg = true;
     ESP_LOGI(TAG, "ON COUNTDOWN");
 
     return;
 }
 
 static void on_lift_off(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_LIFT_OFF);
     buzzer_stop();
     ESP_LOGI(TAG, "ON LIFT OFF");
 }
 
 static void on_burn(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_BURN);
     ESP_LOGI(TAG, "ON BURN");
 }
 
 static void on_flight(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_FLIGHT);
     ESP_LOGI(TAG, "ON FLIGHT");
 }
 
 static void on_first_stage_recovery(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_FIRST_STAGE);
     ESP_LOGI(TAG, "ON FIRST STAGE RECOVERY");
 }
 
 static void on_second_stage_recovery(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&led_state_display, LED_STATE_DISPLAY_STATE_SECOND_STAGE);
     ESP_LOGI(TAG, "ON FIRST STAGE RECOVERY");
 }
 
 static void on_ground(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&led_state_display, LED_STATE_DISPLAY_STATE_ON_GROUND);
     ESP_LOGI(TAG, "ON GROUND");
 }
 static void on_hold(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_HOLD);
     ESP_LOGI(TAG, "ON HOLD");
 }
 
 static void on_abort(void *arg) {
+    buzz_flg_off = true;
     //led_state_display_state_update(&TANWA_utility.led_state_display, LED_STATE_DISPLAY_STATE_ABORT);
     buzzer_change_period(1000);
     ESP_LOGI(TAG, "ON ABORT");

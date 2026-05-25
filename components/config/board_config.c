@@ -135,6 +135,7 @@ void _data_to_transmit(uint8_t *buffer, size_t buffer_size, size_t *tx_data_size
 
     data_to_obc_t data_to_obc;
 
+    data_to_obc.tanWaState = tanwa_data.state;
     data_to_obc.vbat = tanwa_data.can_power_data.VOLTAGE_24V_SYS;
     data_to_obc.thrust_val = tanwa_data.can_weight_data.ads1_weight2;
     data_to_obc.tankWeight_val = tanwa_data.can_weight_data.ads1_weight3;
@@ -148,7 +149,7 @@ void _data_to_transmit(uint8_t *buffer, size_t buffer_size, size_t *tx_data_size
     data_to_obc.postRegulatorN2_pres = tanwa_data.can_sensor_pressure_data.pressure6;
     data_to_obc.preRegulatorN2_pres = tanwa_data.can_sensor_pressure_data.pressure7;
     data_to_obc.postFillN2O_pres = tanwa_data.can_sensor_pressure_data.pressure8;
-    data_to_obc.soft_arm = tanwa_data.com_data.arm_state;
+        data_to_obc.soft_arm = tanwa_data.com_data.arm_state;
     data_to_obc.canWeighta_con = tanwa_data.can_connected_slaves.weights;
     data_to_obc.canSensor_con = tanwa_data.can_connected_slaves.sensor;
     data_to_obc.canSolenoid_con = tanwa_data.can_connected_slaves.solenoid;
@@ -344,20 +345,20 @@ esp_err_t board_config_init(void) {
 
     //HAS TO BE AFTER LORA- DOESN'T WORK OTHERWISE
 
-    // ESP_LOGI(TAG, "Initializing SD Card...");
+    ESP_LOGI(TAG, "Initializing SD Card...");
 
-    // if (!init_sd_card()) {
-    //     ESP_LOGE(TAG, "SD Card initialization failed");
-    // } else {
-    //     ESP_LOGI(TAG, "### SD Card initialization success ###");
-    // }
+    if (!init_sd_card()) {
+        ESP_LOGE(TAG, "SD Card initialization failed");
+    } else {
+        ESP_LOGI(TAG, "### SD Card initialization success ###");
+    }
 
     //SD CARD TIMER
-    // if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
-    //     ESP_LOGE(TAG, "SD CARD | Timer start failed");
-    // } else {
-    //     ESP_LOGI(TAG, "SD CARD | Timer started");
-    // }
+    if (!sys_timer_start(TIMER_SD_DATA, TIMER_SD_DATA_PERIOD_MS, TIMER_TYPE_PERIODIC)) {
+        ESP_LOGE(TAG, "SD CARD | Timer start failed");
+    } else {
+        ESP_LOGI(TAG, "SD CARD | Timer started");
+    }
 
     state_machine_change_state(IDLE);    
 
@@ -403,4 +404,12 @@ void buzzer_stop(void){
     uint8_t data[8] = {0};
     data[0] = 0;
     can_send_message(CAN_UTIL_CHANGE_BUZZER_STATE_ID, data, 3);
+}
+
+void buzzer_toggle(bool state, uint8_t freq_s){
+    uint8_t data[8] = {0};
+    data[0] = state;
+    data[1] = freq_s;
+    ESP_LOGI(TAG, "Toggling buzzer -> state: %d, freq_s: %d", state, freq_s);
+    can_send_message(CAN_UTIL_CHANGE_BUZZER_STATE_ID, data, 8);
 }

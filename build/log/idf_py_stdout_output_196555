@@ -1,0 +1,347 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4-dirty 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time May 14 2026 14:57:07[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (39) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (44) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=22670h (140912) map[0m
+[0;32mI (130) esp_image: segment 1: paddr=00032698 vaddr=3fc9ea00 size=058fch ( 22780) load[0m
+[0;32mI (135) esp_image: segment 2: paddr=00037f9c vaddr=40374000 size=0807ch ( 32892) load[0m
+[0;32mI (143) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=9d68ch (644748) map[0m
+[0;32mI (262) esp_image: segment 4: paddr=000dd6b4 vaddr=4037c07c size=128b0h ( 75952) load[0m
+[0;32mI (279) esp_image: segment 5: paddr=000eff6c vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (280) esp_image: segment 6: paddr=000eff78 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (296) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (296) boot: Disabling RNG early entropy source...[0m
+[0;32mI (309) cpu_start: Multicore app[0m
+[0;32mI (318) cpu_start: Pro cpu start user code[0m
+[0;32mI (318) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (318) app_init: Application information:[0m
+[0;32mI (321) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (326) app_init: App version:      7855005-dirty[0m
+[0;32mI (331) app_init: Compile time:     May 14 2026 14:57:02[0m
+[0;32mI (337) app_init: ELF file SHA256:  a16224198...[0m
+[0;32mI (343) app_init: ESP-IDF:          v5.3.4-dirty[0m
+[0;32mI (348) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (353) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (358) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (362) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (370) heap_init: At 3FCA85F0 len 00041120 (260 KiB): RAM[0m
+[0;32mI (376) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (382) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (388) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (395) spi_flash: detected chip: generic[0m
+[0;32mI (399) spi_flash: flash io: dio[0m
+[0;33mW (403) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (416) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (427) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (434) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (441) main_task: Started on CPU0[0m
+[0;32mI (451) main_task: Calling app_main()[0m
+[0;32mI (451) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (451) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (461) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (471) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (481) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (491) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (501) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (511) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (521) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (531) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (541) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (551) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (561) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (571) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (581) CAN_API: TWAI driver started[0m
+[0;32mI (581) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (591) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (591) SMC: Initializing state machine[0m
+[0;32mI (601) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (611) pp: pp rom version: e7ae62f[0m
+[0;32mI (611) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (611) SMC: ON INIT[0m
+[0;32mI (621) wifi:wifi driver task: 3fcb9f90, prio:23, stack:6656, core=0[0m
+[0;32mI (631) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (631) wifi:wifi certification version: v7.0[0m
+[0;32mI (631) wifi:config NVS flash: enabled[0m
+[0;32mI (631) wifi:config nano formating: disabled[0m
+[0;32mI (641) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (641) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (651) wifi:Init management short buffer num: 32[0m
+[0;32mI (651) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (661) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (661) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (661) wifi:Init static rx buffer num: 10[0m
+[0;32mI (671) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (671) wifi_init: rx ba win: 6[0m
+[0;32mI (681) wifi_init: accept mbox: 6[0m
+[0;32mI (681) wifi_init: tcpip mbox: 32[0m
+[0;32mI (681) wifi_init: udp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp mbox: 6[0m
+[0;32mI (691) wifi_init: tcp tx win: 5760[0m
+[0;32mI (691) wifi_init: tcp rx win: 5760[0m
+[0;32mI (701) wifi_init: tcp mss: 1440[0m
+[0;32mI (701) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (711) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (711) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (751) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (761) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (771) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (771) wifi:enable tsf[0m
+[0;32mI (781) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (781) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (781) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (781) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (791) esp_timer: Task is already initialized[0m
+[0;32mI (801) TIMER: Timers number 3[0m
+[0;32mI (801) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (811) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (811) LORA_TASK: initialize_lora: lora global=0x3fc9f38c, lora_api.lora=0x3fc9f38c[0m
+[0;32mI (831) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (831) LORA_TASK: lora_task_init: gb=0x3fca4b3c, gb.lora=0x3fc9f38c, global lora=0x3fc9f38c, lora._spi_transmit=0x42012bfc[0m
+[0;32mI (841) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (841) LORA_TASK: LoRa Task started[0m
+[0;32mI (841) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (851) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (871) SMC: ON IDLE[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (951) APP_TASK: App task created successfully[0m
+[6n [999C [6n [137D[0;32mtwi> [0m[0K[0;32mtwi> [0mc[6C[0K[0;32mtwi> [0mch[7C[0K[0;32mtwi> [0mcha[8C[0K[0;32mtwi> [0mchan[9C[0;32mI (2031) ENS_LOGIC: Setting mission state to 1[0m
+[0K[0;32mtwi> [0mchang[10C[0K[0;32mtwi> [0mchange[11C[0K[0;32mtwi> [0mchange-[12C[0K[0;32mtwi> [0mchange-s[13C[0K[0;32mtwi> [0mchange-st[14C[0;32mI (2631) LORA_TASK: IRQ received[0m
+[0K[0;32mtwi> [0mchange-sta[15C[0K[0;32mtwi> [0mchange-stat[16C[0K[0;32mtwi> [0mchange-state[17C[0K[0;32mtwi> [0mchange-state [18C[0K[0;32mtwi> [0mchange-state 6[19C[0K[0;32mtwi> [0mchange-state 6[19C
+[0;32mI (36761) STATE_MACHINE: Changing state from 1 to 6[0m
+[6n [0;32mI (36771) SMC: ON READY_TO_LAUNCH[0m
+[999C [6n [137D[0;32mtwi> [0m[0K[0;32mtwi> [0mchange-state 6[19C[0K[0;32mtwi> [0mchange-state 6[19C
+[0;32mI (43511) STATE_MACHINE: Changing state from 6 to 6[0m
+[6n [0;32mI (43521) SMC: ON READY_TO_LAUNCH[0m
+[999C [6n [137D[0;32mtwi> [0m[0K[0;32mtwi> [0mchange-state 6[19C[0K[0;32mtwi> [0mchange-state [18C[0K[0;32mtwi> [0mchange-state 7[19C[0K[0;32mtwi> [0mchange-state 7[19C
+[0;32mI (45621) STATE_MACHINE: Changing state from 6 to 7[0m
+[6n [0;32mI (45631) SMC: ON COUNTDOWN[0m
+[999C [6n [137D[0;32mtwi> [0m[0K[0;32mtwi> [0mchange-state 7[19C[0K[0;32mtwi> [0mchange-state [18C[0K[0;32mtwi> [0mchange-state 6[19C[0K[0;32mtwi> [0mchange-state 6[19C
+[0;32mI (48091) STATE_MACHINE: Changing state from 7 to 6[0m
+[6n [0;32mI (48101) SMC: ON READY_TO_LAUNCH[0m
+[999C [6n [137D[0;32mtwi> [0m[0K[0;32mtwi> [0mr[6C[0K[0;32mtwi> [0mre[7C[0K[0;32mtwi> [0mres[8C[0K[0;32mtwi> [0mrese[9C[0K[0;32mtwi> [0mreset[10C[0K[0;32mtwi> [0mreset[10C
+[0;32mI (52221) CONSOLE_CONFIG: Resetting device...[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x8 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40375eb8
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (31) boot: ESP-IDF v5.3.4-dirty 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time May 14 2026 14:57:07[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v0.2[0m
+[0;32mI (39) boot: efuse block revision: v1.3[0m
+[0;32mI (43) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (48) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (53) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (57) boot: Enabling RNG early entropy source...[0m
+[0;32mI (63) boot: Partition Table:[0m
+[0;32mI (66) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (74) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (81) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (89) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (96) boot: End of partition table[0m
+[0;32mI (100) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=22670h (140912) map[0m
+[0;32mI (134) esp_image: segment 1: paddr=00032698 vaddr=3fc9ea00 size=058fch ( 22780) load[0m
+[0;32mI (140) esp_image: segment 2: paddr=00037f9c vaddr=40374000 size=0807ch ( 32892) load[0m
+[0;32mI (148) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=9d68ch (644748) map[0m
+[0;32mI (266) esp_image: segment 4: paddr=000dd6b4 vaddr=4037c07c size=128b0h ( 75952) load[0m
+[0;32mI (284) esp_image: segment 5: paddr=000eff6c vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (284) esp_image: segment 6: paddr=000eff78 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (300) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (300) boot: Disabling RNG early entropy source...[0m
+[0;32mI (313) cpu_start: Multicore app[0m
+[0;32mI (322) cpu_start: Pro cpu start user code[0m
+[0;32mI (322) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (322) app_init: Application information:[0m
+[0;32mI (325) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (330) app_init: App version:      7855005-dirty[0m
+[0;32mI (336) app_init: Compile time:     May 14 2026 14:57:02[0m
+[0;32mI (342) app_init: ELF file SHA256:  a16224198...[0m
+[0;32mI (347) app_init: ESP-IDF:          v5.3.4-dirty[0m
+[0;32mI (352) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (357) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (362) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (367) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (374) heap_init: At 3FCA85F0 len 00041120 (260 KiB): RAM[0m
+[0;32mI (380) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (386) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (392) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (400) spi_flash: detected chip: generic[0m
+[0;32mI (403) spi_flash: flash io: dio[0m
+[0;33mW (407) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (421) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (431) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (438) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (446) main_task: Started on CPU0[0m
+[0;32mI (456) main_task: Calling app_main()[0m
+[0;32mI (456) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (456) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (466) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (476) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (486) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (496) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (506) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (516) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (526) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (536) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (546) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (556) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (566) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (566) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (576) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (586) CAN_API: TWAI driver started[0m
+[0;32mI (586) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (596) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (596) SMC: Initializing state machine[0m
+[0;32mI (606) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (616) pp: pp rom version: e7ae62f[0m
+[0;32mI (616) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (616) SMC: ON INIT[0m
+[0;32mI (626) wifi:wifi driver task: 3fcb9f90, prio:23, stack:6656, core=0[0m
+[0;32mI (636) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (636) wifi:wifi certification version: v7.0[0m
+[0;32mI (636) wifi:config NVS flash: enabled[0m
+[0;32mI (636) wifi:config nano formating: disabled[0m
+[0;32mI (646) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (646) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (656) wifi:Init management short buffer num: 32[0m
+[0;32mI (656) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (666) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (666) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (666) wifi:Init static rx buffer num: 10[0m
+[0;32mI (676) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (676) wifi_init: rx ba win: 6[0m
+[0;32mI (686) wifi_init: accept mbox: 6[0m
+[0;32mI (686) wifi_init: tcpip mbox: 32[0m
+[0;32mI (686) wifi_init: udp mbox: 6[0m
+[0;32mI (696) wifi_init: tcp mbox: 6[0m
+[0;32mI (696) wifi_init: tcp tx win: 5760[0m
+[0;32mI (696) wifi_init: tcp rx win: 5760[0m
+[0;32mI (706) wifi_init: tcp mss: 1440[0m
+[0;32mI (706) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (716) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (716) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (766) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (766) wifi:enable tsf[0m
+[0;32mI (766) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (766) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (766) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (776) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (776) esp_timer: Task is already initialized[0m
+[0;32mI (786) TIMER: Timers number 3[0m
+[0;32mI (786) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (796) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (796) LORA_TASK: initialize_lora: lora global=0x3fc9f38c, lora_api.lora=0x3fc9f38c[0m
+[0;32mI (806) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (816) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (816) LORA_TASK: lora_task_init: gb=0x3fca4b3c, gb.lora=0x3fc9f38c, global lora=0x3fc9f38c, lora._spi_transmit=0x42012bfc[0m
+[0;32mI (826) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (836) LORA_TASK: LoRa Task started[0m
+[0;32mI (836) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (846) STATE_MACHINE: Changing state from 0 to 1[0m
+[5n[0;32mI (866) SMC: ON IDLE[0m
+[0;32mI (866) ENS_LOGIC: Setting mission state to 1[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (966) APP_TASK: App task created successfully[0m
+[6n [999C [6n [137D[0;32mtwi> [0m[0;32mI (2616) LORA_TASK: IRQ received[0m
+[0K[0;32mtwi> [0mc[6C[0K[0;32mtwi> [0mch[7C[0K[0;32mtwi> [0mcha[8C[0K[0;32mtwi> [0mchan[9C[0K[0;32mtwi> [0mchang[10C[0K[0;32mtwi> [0mchange[11C[0K[0;32mtwi> [0mchange-[12C[0K[0;32mtwi> [0mchange-s[13C[0K[0;32mtwi> [0mchange-st[14C[0K[0;32mtwi> [0mchange-sta[15C[0K[0;32mtwi> [0mchange-stat[16C[0K[0;32mtwi> [0mchange-state[17C[0K[0;32mtwi> [0mchange-state [18C[0K[0;32mtwi> [0mchange-state 6[19C[0K[0;32mtwi> [0mchange-state 6[19C
+[0;32mI (5876) STATE_MACHINE: Changing state from 1 to 6[0m
+[6n [0;32mI (5886) SMC: ON READY_TO_LAUNCH[0m
+[999C [6n [137D[0;32mtwi> [0m[0K[0;32mtwi> [0mchange-state 6[19C[0K[0;32mtwi> [0mchange-state [18C[0K[0;32mtwi> [0mchange-state 7[19C[0K[0;32mtwi> [0mchange-state 7[19C
+[0;32mI (7476) STATE_MACHINE: Changing state from 6 to 7[0m
+[6n [0;32mI (7486) SMC: ON COUNTDOWN[0m
+[999C [6n [137D[0;32mtwi> [0m[0;32mI (11026) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (11276) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (11616) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (11746) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (11926) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (12056) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (12446) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (12576) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (12716) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (12806) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (12916) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (13016) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (13116) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (13206) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (13276) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (13366) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (13436) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (13526) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (14146) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (14256) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (14536) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (14646) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (14856) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (14956) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (15076) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (15156) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (15346) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (15436) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (15506) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (15596) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (16276) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (16426) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (16606) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (16726) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (16866) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (16976) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (17286) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (17386) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (17476) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (17556) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (17646) CAN_COMMANDS: Utility Status Data: C8 00 08 00[0m
+[0;32mI (17756) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (20036) CAN_COMMANDS: Utility Status Data: C8 00 01 00[0m
+[0;32mI (20526) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (20956) CAN_COMMANDS: Utility Status Data: C8 00 01 00[0m
+[0;32mI (21716) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (22076) CAN_COMMANDS: Utility Status Data: C8 00 01 00[0m
+[0;32mI (22466) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (22776) CAN_COMMANDS: Utility Status Data: C8 00 01 00[0m
+[0;32mI (23056) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (23356) CAN_COMMANDS: Utility Status Data: C8 00 01 00[0m
+[0;32mI (23586) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0;32mI (23816) CAN_COMMANDS: Utility Status Data: C8 00 01 00[0m
+[0;32mI (24006) CAN_COMMANDS: Utility Status Data: C8 00 00 00[0m
+[0K[0;32mtwi> [0mc[6C[0K[0;32mtwi> [0mch[7C[0K[0;32mtwi> [0mcha[8C[0K[0;32mtwi> [0mchan[9C[0K[0;32mtwi> [0mchang[10C[0K[0;32mtwi> [0mchange[11C[0K[0;32mtwi> [0mchange-[12C[0K[0;32mtwi> [0mchange-s[13C[0K[0;32mtwi> [0mchange-st[14C[0K[0;32mtwi> [0mchange-sta[15C[0K[0;32mtwi> [0mchange-stat[16C[0K[0;32mtwi> [0mchange-state[17C[0K[0;32mtwi> [0mchange-state [18C[0K[0;32mtwi> [0mchange-state 6[19C[0K[0;32mtwi> [0mchange-state 6[19C
+[0;32mI (45856) STATE_MACHINE: Changing state from 7 to 6[0m
+[6n [0;32mI (45866) SMC: ON READY_TO_LAUNCH[0m
+[999C [6n [137D[0;32mtwi> [0m[0K[0;32mtwi> [0mchange-state 6[19C[0K[0;32mtwi> [0mchange-state [18C[0K[0;32mtwi> [0mchange-state 7[19C[0K[0;32mtwi> [0mchange-state 7[19C
+[0;32mI (47836) STATE_MACHINE: Changing state from 6 to 7[0m
+[6n [0;32mI (47846) SMC: ON COUNTDOWN[0m
+[999C [6n [137D[0;32mtwi> [0m

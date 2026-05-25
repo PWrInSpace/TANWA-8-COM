@@ -22,7 +22,7 @@
 #include "system_timer.h"
 #include "timers_config.h"
 #include "mcu_twai_config.h"
-
+#include "state_machine_config.h"
 #define APP_TASK_STACK_SIZE CONFIG_APP_TASK_STACK_SIZE
 #define APP_TASK_PRIORITY 5
 #define APP_TASK_CORE_ID 0
@@ -35,6 +35,9 @@ static volatile TickType_t app_task_freq = APP_TASK_FREQUENCY;
 static SemaphoreHandle_t app_task_freq_mutex = NULL;
 
 extern mcu_twai_config_t mcu_twai_config;
+
+volatile bool buzz_flg = false;
+volatile  bool buzz_flg_off = false;
 
 esp_err_t app_task_init(void) {
 
@@ -75,7 +78,16 @@ void app_task(void *arg) {
     TickType_t local_freq;
 
     while(1) {
-
+        if(buzz_flg) {
+            buzzer_toggle(true, 1);
+            ESP_LOGI(TAG, "Buzzing...");
+            buzz_flg = false;
+        }
+        if(buzz_flg_off) {
+            buzzer_toggle(false, 0);
+            ESP_LOGI(TAG, "Buzzing stopped");
+            buzz_flg_off = false;
+        }
         if (xSemaphoreTake(app_task_freq_mutex, (TickType_t) 10) == pdTRUE) {
             local_freq = app_task_freq;
             xSemaphoreGive(app_task_freq_mutex);

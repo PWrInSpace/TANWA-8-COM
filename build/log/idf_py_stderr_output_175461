@@ -1,0 +1,16 @@
+[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyUSB0 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x42012be4: [0;33m_lora_spi_transmit[0m[0m at [0;32m/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/mcu_config/mcu_spi_config.c[0m[0m:[1;31m68[0m
+[0m--- 0x4002e79e: [0;33m_strtol_l$isra$0[0m[0m in [0;32mROM[0m
+[0m--- 0x400554b9: [0;33mstrcmp[0m[0m in [0;32mROM[0m
+[0m--- 0x400554dd: [0;33mstrcmp[0m[0m in [0;32mROM[0m
+[0m--- 0x4002e79b: [0;33m_strtol_l$isra$0[0m[0m in [0;32mROM[0m
+[0m--- 0x4002e8cb: [0;33mstrtol[0m[0m in [0;32mROM[0m
+[0m--- 0x4002e72d: [0;33matoi[0m[0m in [0;32mROM[0m
+[0m--- 0x4200ec75: [0;33mchange_buzzer_state[0m[0m at [0;32m/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/config/console_config.c[0m[0m:[1;31m559[0m
+[0m--- 0x420133a7: [0;33mesp_console_run[0m[0m at [0;32m/home/mateo/esp/esp-idf/components/console/commands.c[0m[0m:[1;31m237[0m
+[0m--- 0x420135ca: [0;33mesp_console_repl_task[0m[0m at [0;32m/home/mateo/esp/esp-idf/components/console/esp_console_common.c[0m[0m:[1;31m177[0m
+[0m--- 0x40380b8d: [0;33mvPortTaskWrapper[0m[0m at [0;32m/home/mateo/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
+[0m--- 0x40375eb8: [0;33mesp_restart_noos[0m[0m at [0;32m/home/mateo/esp/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c[0m[0m:[1;31m160[0m
+[0m--- 0x42012be4: [0;33m_lora_spi_transmit[0m[0m at [0;32m/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/mcu_config/mcu_spi_config.c[0m[0m:[1;31m68[0m
+[0m

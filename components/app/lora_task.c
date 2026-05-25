@@ -113,11 +113,11 @@ void turn_of_receive_window_timer(void) {
     }
 }
 
-static size_t on_lora_receive(uint8_t *rx_buffer, size_t buffer_len) {
+static size_t   on_lora_receive(uint8_t *rx_buffer, size_t buffer_len) {
     size_t len = 0;
     // if (lora_received(&gb.lora) == LORA_OK) {
     //     len = lora_receive_packet(&gb.lora, rx_buffer, buffer_len);
-    //     rx_buffer[len] = '\0';
+    //     rx_buffer[len] = '\0';   
     //     ESP_LOGD(TAG, "Received %s, len %d", rx_buffer, len);
     //     lora_map_d0_interrupt(&gb.lora, LORA_IRQ_D0_RXDONE);
     //     lora_set_receive_mode(&gb.lora);
