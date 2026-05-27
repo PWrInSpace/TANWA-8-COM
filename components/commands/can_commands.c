@@ -516,4 +516,20 @@ esp_err_t parse_weights(uint8_t *data, uint8_t length) {
     return ESP_OK;
 }
 
+esp_err_t cal_sensor(uint8_t *data, uint8_t length) {
+    ESP_LOGI(TAG, "Calibrating sensor...");
+    uint8_t data_buff[8] = {0}; // Przygotuj dane kalibracyjne, jeśli są potrzebne
+    memcpy(data_buff, data, sizeof(data_buff));
+    can_send_message(CAN_SENSOR_CAL_ID, data, 8); 
+    return ESP_OK;
+}
+
+esp_err_t cal_weights(uint8_t *data, uint8_t length) {
+    ESP_LOGI(TAG, "Calibrating weights...");
+    uint8_t data_buff[8] = {0}; // Przygotuj dane kalibracyjne, jeśli są potrzebne
+    memcpy(data_buff, data, sizeof(data_buff));
+    can_send_message(CAN_WEIGHTS_CAL_ID, data, 8);
+    return ESP_OK;
+}
+
 

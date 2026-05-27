@@ -565,6 +565,56 @@ int change_buzzer_state(int argc, char **argv) {
     return 0;
 }
 
+int cal_weights_cmd(int argc, char **argv) {
+    // This function can be used to calibrate weight sensor
+    if(argc < 3) {
+        ESP_LOGE(TAG, "Usage: channel | cal-weight | <calibration_value>");
+        return -1;
+    }
+
+    uint8_t channel = (uint8_t)atoi(argv[1]);
+    if(channel > 3) {
+        ESP_LOGE(TAG, "Invalid channel. Must be between 0 and 3.");
+        return -1;
+    }   
+
+    uint8_t ads_num = (uint8_t)atoi(argv[2]);
+    if(ads_num > 1) {
+        ESP_LOGE(TAG, "Invalid ADS number. Must be 0 or 1.");
+        return -1;
+    }
+
+    uint32_t calibration_value = atof(argv[3]);
+uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    memcpy(&data[2], &calibration_value, sizeof(uint32_t));
+    data[1] = channel; // Set channel
+    data[0] = ads_num; // Set ADS number
+    can_send_message(CAN_WEIGHTS_CAL_ID, data, 1);
+    ESP_LOGI(TAG, "Weight sensor calibration value set to %d", calibration_value);
+    return 0;
+}
+int cal_sensor_cmd(int argc, char **argv) {
+    // This function can be used to calibrate sensor
+    if(argc < 3) {
+        ESP_LOGE(TAG, "Usage: channel | cal-sensor | <calibration_value>");
+        return -1;
+    }
+
+    uint8_t sensor_id = (uint8_t)atoi(argv[1]);
+    if(sensor_id > 2) {
+        ESP_LOGE(TAG, "Invalid sensor ID. Must be between 0 and 2.");
+        return -1;
+    }
+
+    uint32_t calibration_value = atof(argv[2]);
+    uint8_t data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+    memcpy(&data[1], &calibration_value, sizeof(uint32_t));
+    data[0] = sensor_id; // Set sensor ID
+    can_send_message(CAN_SENSOR_CAL_ID, data, 1);
+    ESP_LOGI(TAG, "Sensor %d calibration value set to %d", sensor_id, calibration_value);
+    return 0;
+}   
+
  // Place for the console configuration
 
  static esp_console_cmd_t cmd [] = {
@@ -597,6 +647,8 @@ int change_buzzer_state(int argc, char **argv) {
     {"change-state", "Change state of the system", NULL, tanwa_change_state, NULL, NULL, NULL},
     {"countdown", "Start countdown", NULL, tanwa_countdown, NULL, NULL, NULL},
     {"buzzer", "Change buzzer state", NULL, change_buzzer_state, NULL, NULL, NULL},
+    {"cal-weight", "Calibrate weight sensor", NULL, cal_weights_cmd, NULL, NULL, NULL},
+    {"cal-sensor", "Calibrate sensor", NULL, cal_sensor_cmd, NULL, NULL, NULL}
 };
 
 esp_err_t console_config_init() {
