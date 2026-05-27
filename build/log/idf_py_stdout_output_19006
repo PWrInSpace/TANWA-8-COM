@@ -1,0 +1,45 @@
+[1/21] Performing build step for 'bootloader'
+[1/1] cd /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/bootloader/esp-idf/esptool_py && /home/mateo/.espressif/python_env/idf5.3_py3.12_env/bin/python /home/mateo/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/bootloader/bootloader.bin
+Bootloader binary size 0x5430 bytes. 0x2bd0 bytes (34%) free.
+[2/21] No install step for 'bootloader'
+[3/21] Completed 'bootloader'
+[4/21] Building C object esp-idf/app/CMakeFiles/__idf_app.dir/app_task.c.obj
+/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/app/app_task.c: In function 'app_task':
+/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/app/app_task.c:78:16: warning: variable 'local_freq' set but not used [-Wunused-but-set-variable]
+   78 |     TickType_t local_freq;
+      |                ^~~~~~~~~~
+[5/21] Building C object esp-idf/app/CMakeFiles/__idf_app.dir/state_machine_config.c.obj
+[6/21] Building C object esp-idf/app/CMakeFiles/__idf_app.dir/timers_config.c.obj
+[7/21] Building C object esp-idf/data/CMakeFiles/__idf_data.dir/board_data.c.obj
+[8/21] Building C object esp-idf/app/CMakeFiles/__idf_app.dir/lora_task.c.obj
+/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/app/lora_task.c: In function 'create_porotobuf_data_frame':
+/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/app/lora_task.c:221:18: warning: unused variable 'tanwa_data' [-Wunused-variable]
+  221 |     tanwa_data_t tanwa_data = tanwa_data_read();
+      |                  ^~~~~~~~~~
+/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/app/lora_task.c: At top level:
+/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/app/lora_task.c:66:13: warning: 'wait_until_irq' defined but not used [-Wunused-function]
+   66 | static bool wait_until_irq(void) {
+      |             ^~~~~~~~~~~~~~
+[9/21] Building C object esp-idf/commands/CMakeFiles/__idf_commands.dir/can_commands.c.obj
+[10/21] Linking C static library esp-idf/data/libdata.a
+[11/21] Building C object esp-idf/config/CMakeFiles/__idf_config.dir/board_config.c.obj
+/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/config/board_config.c: In function 'board_config_init':
+/home/mateo/Desktop/pwrinspace/TANWA-8-COM/components/config/board_config.c:273:13: warning: unused variable 'ret' [-Wunused-variable]
+  273 |     uint8_t ret = 0;
+      |             ^~~
+[12/21] Building C object esp-idf/app/CMakeFiles/__idf_app.dir/sd_task.c.obj
+[13/21] Linking C static library esp-idf/app/libapp.a
+[14/21] Building C object esp-idf/config/CMakeFiles/__idf_config.dir/console_config.c.obj
+[15/21] Building C object esp-idf/commands/CMakeFiles/__idf_commands.dir/cmd_commands.c.obj
+[16/21] Linking C static library esp-idf/config/libconfig.a
+[17/21] Linking C static library esp-idf/commands/libcommands.a
+[18/21] Generating ld/sections.ld
+[19/21] Linking CXX executable TANWA-8-COM.elf
+[20/21] Generating binary image from built executable
+esptool.py v4.10.0
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+Generated /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/TANWA-8-COM.bin
+[21/21] cd /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/esp-idf/esptool_py && /home/mateo/.espressif/python_env/idf5.3_py3.12_env/bin/python /home/mateo/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/partition_table/partition-table.bin /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/TANWA-8-COM.bin
+TANWA-8-COM.bin binary size 0xee550 bytes. Smallest app partition is 0x100000 bytes. 0x11ab0 bytes (7%) free.

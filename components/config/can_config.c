@@ -22,6 +22,7 @@ can_command_t can_commands[] = {
     {CAN_SENSOR_PRESSURE2_ID, parse_sensor_pressure2},
     {CAN_SENSOR_TEMPERATURE_ID, parse_sensor_temperature},
     {CAN_SENSOR_PRESSURE_INFO_ID, parse_sensor_pressure_info},
+    {CAN_SENSOR_CAL_ID, cal_sensor},
     {CAN_UTIL_STATUS_ID, parse_util_status},
     {CAN_UTIL_DATA_ID, parse_util_data},
     {CAN_WEIGHTS_STATUS_ID, parse_weights_status},
@@ -32,6 +33,7 @@ can_command_t can_commands[] = {
     {CAN_WEIGHTS_ADS2_ALL_CH_WEIGHT2_ID, parse_weights_ads2_all_ch_weight2},
     {CAN_WEIGHTS_ADS_CH_WEIGHT_ID, parse_weights_ads_ch_weight},
     {CAN_WEIGHTS_WEIGHTS_ID, parse_weights},
+    {CAN_WEIGHTS_CAL_ID, cal_weights},
 };
 
 esp_err_t can_config_init(void) {

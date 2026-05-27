@@ -47,6 +47,7 @@ typedef enum {
     CAN_SENSOR_PRESSURE2_ID = 0x3D12,
     CAN_SENSOR_TEMPERATURE_ID = 0x3D20,
     CAN_SENSOR_PRESSURE_INFO_ID = 0x3D30,
+    CAN_SENSOR_CAL_ID = 0x1D40,
 
     //Utility commands
     CAN_UTIL_RESET_ID = 0x0E00,
@@ -70,6 +71,7 @@ typedef enum {
     CAN_WEIGHTS_GET_ADS_ALL_WEIGHT_ID = 0x2F90,
     CAN_WEIGHTS_GET_ADS_CH_WEIGHT_ID = 0x0F80,
     CAN_WEIGHTS_GET_WEIGHTS_ID = 0x2F40,
+    CAN_WEIGHTS_CAL_ID = 0x1F50,
 
     CAN_WEIGHTS_STATUS_ID = 0x3F40,
     CAN_WEIGHTS_BOARD_DATA_ID = 0x3F11,
@@ -116,6 +118,8 @@ esp_err_t parse_weights_ads2_all_ch_weight1(uint8_t *data, uint8_t length);
 esp_err_t parse_weights_ads2_all_ch_weight2(uint8_t *data, uint8_t length);
 esp_err_t parse_weights_ads_ch_weight(uint8_t *data, uint8_t length);
 esp_err_t parse_weights(uint8_t *data, uint8_t length);
+esp_err_t cal_sensor(uint8_t *data, uint8_t length);
+esp_err_t cal_weights(uint8_t *data, uint8_t length);
 
 
 #endif //PWRINSPACE_CAN_COMMANDS_H
