@@ -41,6 +41,9 @@ static struct {
     TimerHandle_t receive_window_timer;
     TaskHandle_t task;
 
+    const uint16_t *state_periods;
+    size_t state_periods_count;
+    int last_period_state;
 } gb;
 
 static size_t lora_packet(uint8_t* buffer, size_t buffer_size);
@@ -66,8 +69,6 @@ lora_api_config_t lora_api = {
 static bool wait_until_irq(void) {
     return ulTaskNotifyTake(pdTRUE, portMAX_DELAY) == pdTRUE ? true : false;
 }
-
-
 
 void IRAM_ATTR lora_task_irq_notify(void *arg) {
 
@@ -98,7 +99,27 @@ static void lora_change_state_to_receive() {
     gb.lora_state = LORA_RECEIVE;
 }
 
+void lora_set_state_periods(const uint16_t *periods_ms, size_t count) {
+    gb.state_periods = periods_ms;
+    gb.state_periods_count = count;
+    gb.last_period_state = -1;
+}
+
+static void apply_state_period(void) {
+    if (gb.state_periods == NULL) return;
+
+    state_t state = state_machine_get_current_state();
+    if ((int)state == gb.last_period_state || (size_t)state >= gb.state_periods_count) return;
+
+    if (lora_change_period(gb.state_periods[state])) {
+        gb.last_period_state = (int)state;
+        ESP_LOGI(TAG, "Telemetry period %u ms (state %d)", gb.state_periods[state], (int)state);
+    }
+}
+
 void turn_on_receive_window_timer(void) {
+    apply_state_period();
+
     if (xTimerIsTimerActive(gb.receive_window_timer) == pdTRUE) {
         xTimerReset(gb.receive_window_timer, portMAX_DELAY);
         //ESP_LOGE(TAG, "TIMER IS ACTIVE");
@@ -210,80 +231,52 @@ static size_t add_prefix(uint8_t* buffer, size_t size) {
 }
 
 void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
-
     //ESP_LOGI(TAG, "Creating LoRa data frame");
     if (frame == NULL) {
         ESP_LOGE(TAG, "Frame is NULL");
         return;
     }
 
-
     tanwa_data_t tanwa_data = tanwa_data_read();
 
+    frame->tanwa_state = tanwa_data.state;
+    frame->tanwa_battery = tanwa_data.can_power_data.VOLTAGE_24V_SYS;
 
-   // fill struct with 0
-    // mcb
-    //frame->obc_state = data.mcb.state;
-    // frame->tanwa_state = tanwa_data.state;
-    // frame->uptime = tanwa_data.uptime;;
-    // frame->pressure_injector_fuel = tanwa_data.can_sensor_pressure_data.pressure7;
-    // frame->pressure_injector_oxi = tanwa_data.can_sensor_pressure_data.pressure6;
-    // frame->pressure_combustion_chamber = tanwa_data.can_sensor_pressure_data.pressure8;
-    // frame->pressure_n2 = tanwa_data.can_sensor_pressure_data.pressure5;
+    frame->engine_thrust = tanwa_data.can_weight_data.ads1_weight2;
+    frame->rocket_weight = tanwa_data.can_weight_data.ads1_weight4;
+    frame->tank_weight = tanwa_data.can_weight_data.ads1_weight3;
 
-    // frame->igniter_cont1.is_present = true;
-    // frame->igniter_cont2.is_present = true;
-    // frame->igniter_cont1.value = tanwa_data.com_data.igniter_cont_1;
-    // frame->igniter_cont2.value = tanwa_data.com_data.igniter_cont_2;
+    frame->temp_injector = tanwa_data.can_sensor_temp_data.temperature1;
+    frame->temp_combustion_chamber = tanwa_data.can_sensor_temp_data.temperature2;
 
-    // //ESP_LOGI(TAG, "IGNITER CONT 1: %d", tanwa_data.com_data.igniter_cont_1);
-    // //ESP_LOGI(TAG, "IGNITER CONT 2: %d", tanwa_data.com_data.igniter_cont_2);
-    // frame->status_oxy.is_present = true;
-    // frame->status_fuel.is_present = true;
-    // frame->status_n2.is_present = true;
-    // frame->status_oxy.value = tanwa_data.can_solenoid_data.servo_state2;
-    // frame->status_fuel.value = tanwa_data.can_solenoid_data.servo_state1;
-    // frame->status_n2.value = tanwa_data.can_solenoid_data.servo_state3;
+    frame->pressure_fuel = tanwa_data.can_sensor_pressure_data.pressure1;
+    frame->pressure_n2 = tanwa_data.can_sensor_pressure_data.pressure2;
+    frame->pressure_droid = tanwa_data.can_sensor_pressure_data.pressure3;
+    frame->pressure_oxy = tanwa_data.can_sensor_pressure_data.pressure4;
+    frame->pressure_injector_fuel = tanwa_data.can_sensor_pressure_data.pressure5;
+    frame->pressure_injector_oxi = tanwa_data.can_sensor_pressure_data.pressure6;
+    frame->pressure_combustion_chamber = tanwa_data.can_sensor_pressure_data.pressure7;
+    frame->pressure_cutoff = tanwa_data.can_sensor_pressure_data.pressure8;
 
-    // frame->status_arm.is_present = true;
-    // frame->status_arm.value = tanwa_data.com_data.arm_state;
-    // //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_data.arm_state);
+    frame->status_arm.is_present = true;
+    frame->status_arm.value = tanwa_data.com_data.arm_state;
+    frame->igniter_cont1.is_present = true;
+    frame->igniter_cont1.value = tanwa_data.com_data.igniter_cont_1;
+    frame->igniter_cont2.is_present = true;
+    frame->igniter_cont2.value = tanwa_data.com_data.igniter_cont_2;
 
-    // //ESP_LOGI(TAG, "ARM STATE: %d", tanwa_data.com_liquid_data.arm_state);
-    // frame->tanwa_battery = tanwa_data.can_power_data.voltage_24V;
-    // frame->temp_injector = tanwa_data.can_sensor_temp_data.temperature1;
-    // frame->temp_combustion_chamber = tanwa_data.can_sensor_temp_data.temperature2;
-    // frame->temp_external_tank = tanwa_data.can_sensor_temp_data.temperature3;
-    // // hx rck
-    // frame->engine_thrust = tanwa_data.can_weight_data.ads1_weight2;
-    // frame->rocket_weight = tanwa_data.can_weight_data.ads1_weight3;
-    // frame->tank_weight = tanwa_data.can_weight_data.ads1_weight4;
-
-    // frame->engine_work_time = tanwa_data.engine_work_time;
-    // frame->pressure_fuel = tanwa_data.can_sensor_pressure_data.pressure2;
-    // frame->pressure_droid = tanwa_data.can_sensor_pressure_data.pressure3;
-    // frame->pressure_cutoff = tanwa_data.can_sensor_pressure_data.pressure4;
-    // frame->pressure_oxy = tanwa_data.can_sensor_pressure_data.pressure1;
-
-    // frame->status_fill_n2o.is_present = true;
-    // frame->status_depr_n2o.is_present = true;
-    // frame->status_vent_n2o.is_present = true;
-    // frame->status_qd_n2o.is_present = true;
-    // frame->status_fill_n2o.value = tanwa_data.can_solenoid_data.state_sol1;
-    // frame->status_depr_n2o.value = tanwa_data.can_solenoid_data.state_sol2;
-    // frame->status_vent_n2o.value = !tanwa_hardware.relay[0].state; // inverting because relay is active low
-    // frame->status_qd_n2o.value = tanwa_data.can_solenoid_data.state_sol5;
-    // frame->status_fill_n2.is_present = true;
-    // frame->status_depr_n2.is_present = true;
-    // frame->status_qd_n2.is_present = true;
-    // frame->status_vent_eth.is_present = true;
-    // frame->status_vent_n2.is_present = true;
-    // frame->status_fill_n2.value = tanwa_data.can_solenoid_data.state_sol3;
-    // frame->status_depr_n2.value = tanwa_data.can_solenoid_data.state_sol4;
-    // frame->status_qd_n2.value = tanwa_data.can_solenoid_data.state_sol6;
-    // frame->status_vent_eth.value = tanwa_hardware.relay[1].state; // inverting because relay is active low
-    // frame->status_vent_n2.value = tanwa_hardware.relay[2].state; // inverting because relay is active
-
+    frame->status_fill_n2o.is_present = true;
+    frame->status_fill_n2o.value = tanwa_data.can_solenoid_data.state_sol1;
+    frame->status_depr_n2o.is_present = true;
+    frame->status_depr_n2o.value = tanwa_data.can_solenoid_data.state_sol2;
+    frame->status_fill_n2.is_present = true;
+    frame->status_fill_n2.value = tanwa_data.can_solenoid_data.state_sol3;
+    frame->status_depr_n2.is_present = true;
+    frame->status_depr_n2.value = tanwa_data.can_solenoid_data.state_sol4;
+    frame->status_qd_n2o.is_present = true;
+    frame->status_qd_n2o.value = tanwa_data.can_solenoid_data.state_sol5;
+    frame->status_qd_n2.is_present = true;
+    frame->status_qd_n2.value = tanwa_data.can_solenoid_data.state_sol6;
 }
 
 static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {
@@ -400,7 +393,7 @@ bool lora_task_init(lora_api_config_t *cfg) {
     return true;
 }
 
-bool lora_change_frequency(uint32_t frequency_khz) 
+bool lora_change_frequency(uint32_t frequency_khz)
 {
     if (frequency_khz < 4e5 || frequency_khz > 1e6) {
         return false;
@@ -411,6 +404,37 @@ bool lora_change_frequency(uint32_t frequency_khz)
     return true;
 }
 
+bool lora_change_period(uint32_t period_ms) {
+    if (period_ms < LORA_TASK_MIN_TRANSMIT_MS || period_ms > LORA_TASK_MAX_TRANSMIT_MS) return false;
+    if (gb.receive_window_timer == NULL) return false;
+
+    if (xTimerChangePeriod(gb.receive_window_timer, pdMS_TO_TICKS(period_ms), portMAX_DELAY) != pdPASS) return false;
+
+    lora_api.transmiting_period = period_ms;
+    return true;
+}
+
+static void lora_change_state_to_transmit(void) {
+    if (gb.lora_state == LORA_TRANSMIT) return;
+    lora_map_d0_interrupt(&lora, LORA_IRQ_D0_TXDONE);
+    gb.lora_state = LORA_TRANSMIT;
+}
+
+static void transmint_packet(void) {
+    size_t size = 0;
+    if (gb.get_tx_packet_fnc != NULL) {
+        size = gb.get_tx_packet_fnc(gb.tx_buffer, gb.tx_buffer_size);
+    }
+
+    if (size > 0 && size <= gb.tx_buffer_size) {
+        lora_send_packet(&lora, gb.tx_buffer, (int16_t)size);
+    }
+}
+
+static void on_lora_transmit(void) {
+    lora_change_state_to_receive();
+    turn_on_receive_window_timer();
+}
 
 void lora_task(void* pvParameters) {
     ESP_LOGI(TAG, "LoRa Task started");
@@ -419,57 +443,20 @@ void lora_task(void* pvParameters) {
     size_t rx_packet_size = 0;
 
     while (1) {
-        if (ulTaskNotifyTake(pdTRUE, portMAX_DELAY) == pdTRUE) {
-            ESP_LOGI(TAG, "IRQ received");
-            if (gb.lora == NULL) {
-                if(lora_received(&lora) == LORA_OK) {
-                    rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
-                    if (rx_packet_size > 0 && lora_api.process_rx_packet_fnc != NULL) {
-                        ESP_LOGI(TAG, "Processing packet");
-                        lora_api.process_rx_packet_fnc(rx_buffer, rx_packet_size);
-                        vTaskDelay(pdMS_TO_TICKS(100));
-                    }
-                }
-            } else if (lora_received(gb.lora) == LORA_OK) {
-                rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
-                if (rx_packet_size > 0 && lora_api.process_rx_packet_fnc != NULL) {
-                    ESP_LOGI(TAG, "Processing packet");
-                    lora_api.process_rx_packet_fnc(rx_buffer, rx_packet_size);
-                    vTaskDelay(pdMS_TO_TICKS(100));
-                }
+        if (wait_until_irq() == true) {
+            if (gb.lora_state == LORA_TRANSMIT) {
+                on_lora_transmit();
+                continue;
             }
+
+            rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
+            if (rx_packet_size > 0 && lora_api.process_rx_packet_fnc != NULL) {
+                lora_api.process_rx_packet_fnc(rx_buffer, rx_packet_size);
+            }
+
+            lora_change_state_to_transmit();
+            transmint_packet();
+            turn_on_receive_window_timer();
         }
-        vTaskDelay(pdMS_TO_TICKS(30));
     }
 }
-
-// void lora_task(void *arg) 
-// {
-//     uint8_t rx_buffer[256];
-//     size_t rx_packet_size = 0;
-
-//     while (1) {
-//         if (wait_until_irq() == true) {
-//             // on transmit
-//             if (gb.lora_state == LORA_TRANSMIT) {
-//                 //ESP_LOGI(TAG, "ON transmit");
-//                 on_lora_transmit();
-//             // on receive
-//             } else {
-//                 //ESP_LOGI(TAG, "ON receive");
-//                 rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
-//                 if (rx_packet_size > 0 && lora_api.process_rx_packet_fnc != NULL) {
-//                     //ESP_LOGI(TAG, "*****************Processing packet");
-//                     lora_api.process_rx_packet_fnc(rx_buffer, rx_packet_size);
-//                     vTaskDelay(pdMS_TO_TICKS(100));
-//                 }
-//                 lora_change_state_to_transmit();
-//                 //ESP_LOGI(TAG, "Transmitting packet");
-//                 transmint_packet();
-//                 // qucik fix
-//                 turn_on_receive_window_timer();
-//             }
-//         }
-//         vTaskDelay(pdMS_TO_TICKS(10));
-//     }
-// }

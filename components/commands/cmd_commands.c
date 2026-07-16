@@ -357,7 +357,7 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
             }
             case CMD_LORA_TRANSMIT_T: {
                 ESP_LOGI(TAG, "LORA | Transmit P");
-                //lora_change_period(payload);
+                lora_change_period((uint32_t)payload);
                 break;
             }
             case CMD_SEND_SETTINGS: {
@@ -507,6 +507,33 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
             case CMD_FIRE: {
                 ESP_LOGI(TAG, "LORA | Fire igniter");
                 tanwa_fire();
+                break;
+            }
+            case CMD_VENT_OPEN: {
+                ESP_LOGI(TAG, "LORA | Vent close");
+                relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[0]));
+                if (err != RELAY_DRIVER_OK) {
+                    ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
+                }
+                break;
+            }
+            case CMD_VENT_CLOSE: {
+                if (payload == 0) {
+                    ESP_LOGI(TAG, "LORA | Vent open");
+                    relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[0]));
+                    if (err != RELAY_DRIVER_OK) {
+                        ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
+                    }
+                } else {
+                    relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[0]));
+                    vTaskDelay(pdMS_TO_TICKS((uint32_t)payload));
+                    err = relay_close(&(tanwa_hardware.relay[0]));
+                    if (err != RELAY_DRIVER_OK) {
+                        ESP_LOGE(TAG, "Relay time open error | %d", (uint8_t)err);
+                    } else {
+                        ESP_LOGI(TAG, "LORA | Vent open time %d ms", (uint32_t)payload);
+                    }
+                }
                 break;
             }
             default: {

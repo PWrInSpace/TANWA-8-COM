@@ -13,7 +13,9 @@
 #define LORA_TASK_SPREADING_FACTOR 1
 #define LORA_TASK_TX_POWER 2
 #define LORA_TASK_RECEIVE_WINDOW 1500
-#define LORA_TASK_TRANSMIT_MS 1800
+#define LORA_TASK_TRANSMIT_MS 1000
+#define LORA_TASK_MIN_TRANSMIT_MS 100
+#define LORA_TASK_MAX_TRANSMIT_MS 60000
 
 #define PRIVILAGE_MASK 0x01
 #define BORADCAST_DEV_ID 0x00
@@ -59,6 +61,22 @@ bool initialize_lora(uint32_t frequency_khz, uint32_t transmiting_period);
 void lora_task_irq_notify(void *arg);
 
 bool lora_change_frequency(uint32_t frequency_khz);
+
+/**
+ * @brief Change the telemetry transmit / receive-window period at runtime
+ *
+ * @param period_ms new period in ms
+ * @return true on success, false if out of range or timer not ready
+ */
+bool lora_change_period(uint32_t period_ms);
+
+/**
+ * @brief Provide a per-mission-state telemetry period table
+ *
+ * @param periods_ms table of periods in ms, indexed by state_t
+ * @param count number of entries in the table
+ */
+void lora_set_state_periods(const uint16_t *periods_ms, size_t count);
 
 /**
  * @brief Initialize lora task
