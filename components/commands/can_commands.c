@@ -12,6 +12,30 @@
 
 #define TAG "CAN_COMMANDS"
 
+#include "esp_timer.h"
+
+#define SLAVE_TIMEOUT_MS 3000
+
+static int64_t last_solenoid_time = 0;
+static int64_t last_power_time    = 0;
+static int64_t last_sensor_time   = 0;
+static int64_t last_util_time     = 0;
+static int64_t last_weights_time  = 0;
+
+static void update_slave_connection_bit(int board_index, uint8_t status_value) {
+
+    can_connected_slaves_t slaves = tanwa_data_read_can_connected_slaves();
+    switch(board_index) {
+        case 0: slaves.solenoid = status_value; break;
+        case 1: slaves.power    = status_value; break;
+        case 2: slaves.sensor   = status_value; break;
+        case 3: slaves.utility  = status_value; break;
+        case 4: slaves.weights  = status_value; break;
+    }
+
+    tanwa_data_update_can_connected_slaves(&slaves);
+}
+
 esp_err_t switch_update(bool *switch_states, bool *prev_switch_states) {
     if (switch_states == NULL || prev_switch_states == NULL) {
         ESP_LOGE(TAG, "Switch states pointer is NULL");
@@ -63,6 +87,9 @@ esp_err_t parse_solenoid_status(uint8_t *data, uint8_t length) {
         ESP_LOGE(TAG, "Frame too short");
         return ESP_ERR_INVALID_ARG;
     }
+
+    update_slave_connection_bit(0, 1); // Mark Solenoid as connected (1)
+    last_solenoid_time = esp_timer_get_time() / 1000;
 
     can_solenoid_status_t status = tanwa_data_read_can_solenoid_status();
     status.i_sense = data[2];
@@ -145,11 +172,16 @@ esp_err_t parse_power_status(uint8_t *data, uint8_t length) {
         ESP_LOGE(TAG, "Frame too short");
         return ESP_ERR_INVALID_ARG;
     }
+
+    update_slave_connection_bit(1, 1); // Mark Power as connected (1)
+    last_power_time = esp_timer_get_time() / 1000;
+
     can_power_status_t status;
     status.i_sense = data[2];
     status.temperature1 = data[0];
     status.temperature2 = data[1];
     tanwa_data_update_can_power_status(&status);
+   // ESP_LOGI(TAG, "Updated power status: %d", status.temperature1);
     
     return ESP_OK;
 }
@@ -216,11 +248,15 @@ esp_err_t parse_sensor_status(uint8_t *data, uint8_t length) {
         return ESP_ERR_INVALID_ARG;
     }
 
+    update_slave_connection_bit(2, 1); // Mark Sensor as connected (1)
+    last_sensor_time = esp_timer_get_time() / 1000;
+
     can_sensor_status_t status;
     status.i_sense = data[2];
     status.temperature1 = data[0];
     status.temperature2 = data[1];
     tanwa_data_update_can_sensor_status(&status);
+    //ESP_LOGI(TAG, "Updated sensor status: %d", status.temperature1);
     
     return ESP_OK;
 }
@@ -310,6 +346,13 @@ esp_err_t parse_sensor_temperature(uint8_t *data, uint8_t length) {
     return ESP_OK;
 }
 
+esp_err_t parse_utility_status_info()
+{
+    //ESP_LOGI(TAG,"Got Utility  Status");
+    update_slave_connection_bit(3, 1);
+    return ESP_OK;
+}
+
 esp_err_t parse_sensor_pressure_info(uint8_t *data, uint8_t length) {
     
     ESP_LOGI(TAG, "ADS NUMBER: %d", data[0]);
@@ -319,7 +362,7 @@ esp_err_t parse_sensor_pressure_info(uint8_t *data, uint8_t length) {
     return ESP_OK;
 }
 
-esp_err_t parse_util_status(uint8_t *data, uint8_t length) {
+esp_err_t parse_util_data(uint8_t *data, uint8_t length) {
 
     ESP_LOGI(TAG, "Utility Status Data: %02X %02X %02X %02X", data[0], data[1], data[2], data[3]);
     
@@ -327,6 +370,10 @@ esp_err_t parse_util_status(uint8_t *data, uint8_t length) {
         ESP_LOGE(TAG, "Frame too short");
         return ESP_ERR_INVALID_ARG;
     }
+
+   // update_slave_connection_bit(3, 1);
+    //last_util_time = esp_timer_get_time() / 1000;
+
     can_utility_status_t status = tanwa_data_read_can_utility_status();
     status.i_sense = data[2];
     status.temperature1 = data[0];
@@ -361,15 +408,15 @@ esp_err_t parse_util_status(uint8_t *data, uint8_t length) {
     status.switch_state8 = switch_states[7];
 
     tanwa_data_update_can_utility_status(&status);
+    //ESP_LOGI(TAG, "Updated utility data: %d", status.temperature1);
     
     return ESP_OK;
 }
 
-esp_err_t parse_util_data(uint8_t *data, uint8_t length) {
+esp_err_t parse_util_status(uint8_t *data, uint8_t length) {
     
-    for(int i = 0; i < length; i++) {
-        ESP_LOGI("CAN_COMMANDS", "Utility data byte %d: %02X", i, data[i]);
-    }
+    ESP_LOGI(TAG,"Got Utility  Status");
+    update_slave_connection_bit(3, 1);
     
     return ESP_OK;
 }
@@ -381,11 +428,15 @@ esp_err_t parse_weights_status(uint8_t *data, uint8_t length) {
         return ESP_ERR_INVALID_ARG;
     }
 
+    update_slave_connection_bit(4, 1); // Mark Weights as connected (1)
+    last_weights_time = esp_timer_get_time() / 1000;
+
     can_weight_status_t status;
     status.i_sense = data[2];
     status.temperature_1 = data[0];
     status.temperature_2 = data[1];
     tanwa_data_update_can_weight_status(&status);
+    //ESP_LOGI(TAG, "Updated weight status: %d", status.temperature_1);
     
     return ESP_OK;
 }
@@ -532,4 +583,37 @@ esp_err_t cal_weights(uint8_t *data, uint8_t length) {
     return ESP_OK;
 }
 
+void can_watchdog_task(void *pvParameters) {
+    ESP_LOGI(TAG, "CAN Watchdog task started");
+
+    while(1) {
+        // Run checks exactly every 500ms
+        vTaskDelay(pdMS_TO_TICKS(500));
+        
+        int64_t current_time = esp_timer_get_time() / 1000;
+        can_connected_slaves_t live_slaves = tanwa_data_read_can_connected_slaves();
+
+        if (live_slaves.utility && (current_time - last_util_time > SLAVE_TIMEOUT_MS)) {
+            update_slave_connection_bit(3, 0);
+            ESP_LOGW(TAG, "Utility board connection lost!");
+        }
+        if (live_slaves.solenoid && (current_time - last_solenoid_time > SLAVE_TIMEOUT_MS)) {
+            update_slave_connection_bit(0, 0);
+            ESP_LOGW(TAG, "Solenoid board connection lost!");
+        }
+        if (live_slaves.power && (current_time - last_power_time > SLAVE_TIMEOUT_MS)) {
+            update_slave_connection_bit(1, 0);
+            ESP_LOGW(TAG, "Power board connection lost!");
+        }
+        if (live_slaves.sensor && (current_time - last_sensor_time > SLAVE_TIMEOUT_MS)) {
+            update_slave_connection_bit(2, 0);
+            ESP_LOGW(TAG, "Sensor board connection lost!");
+        }
+        
+        if (live_slaves.weights && (current_time - last_weights_time > SLAVE_TIMEOUT_MS)) {
+            update_slave_connection_bit(4, 0);
+            ESP_LOGW(TAG, "Weights board connection lost!");
+        }
+    }
+}
 

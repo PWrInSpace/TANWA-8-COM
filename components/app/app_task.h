@@ -6,6 +6,7 @@
 void app_task(void *arg);
 esp_err_t app_task_init(void);
 esp_err_t app_task_deinit(void);
+void app_task(void *arg);
 
 
 #include "stdbool.h"

@@ -98,8 +98,13 @@ void tanwa_data_update_com_data(com_data_t *data) {
 }
 
 can_connected_slaves_t tanwa_data_read_can_connected_slaves(void) {
+
     if (xSemaphoreTake(tanwa_data_mutex, portMAX_DELAY) == pdTRUE) {
-        can_connected_slaves_t slaves = tanwa_data.can_connected_slaves;
+    //    ESP_LOGI(TAG, "Reading connected slaves");
+        can_connected_slaves_t slaves = {0};
+        memcpy(&slaves, &tanwa_data.can_connected_slaves, sizeof(can_connected_slaves_t));
+            ESP_LOGI(TAG, "Connected slaves - Weights: %d, Solenoid: %d, Sensor: %d, Utility: %d, Power: %d",
+                    slaves.weights, slaves.solenoid, slaves.sensor, slaves.utility, slaves.power);
         xSemaphoreGive(tanwa_data_mutex);
         return slaves;
     } else {

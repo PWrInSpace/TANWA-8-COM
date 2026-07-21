@@ -456,9 +456,9 @@ int print_pressure_info(int argc, char **argv) {
 int print_can_connected_slaves(int argc, char **argv) {
     // This function can be used to print CAN connected slaves
     can_connected_slaves_t slaves = tanwa_data_read_can_connected_slaves();
-    ESP_LOGI(TAG, "CAN Connected Slaves:");
-    ESP_LOGI(TAG, "Weights: %d, Solenoid: %d, Sensor: %d, Power: %d, Utility: %d",
-             slaves.weights, slaves.solenoid, slaves.sensor, slaves.power, slaves.utility);
+   // ESP_LOGI(TAG, "CAN Connected Slaves:");
+    //ESP_LOGI(TAG, "Weights: %d, Solenoid: %d, Sensor: %d, Power: %d, Utility: %d",
+        //     slaves.weights, slaves.solenoid, slaves.sensor, slaves.power, slaves.utility);
     return 0;
 }
 

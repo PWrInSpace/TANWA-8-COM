@@ -174,8 +174,9 @@ void _data_to_transmit(uint8_t *buffer, size_t buffer_size, size_t *tx_data_size
     data_to_obc.TANWA_24V_SOL_CURRENT = tanwa_data.can_power_data.current_24V_SOL;
 
     
-
-    if (buffer == NULL || tx_data_size == NULL) {
+     //ESP_LOGI(TAG, "Tanwa Board States: Power, Solenoid, Sensor, Utility, Weights: %d, %d, %d, %d, %d", 
+    //     data_to_obc.canPower_con, data_to_obc.canSolenoid_con, data_to_obc.canSensor_con, data_to_obc.canUtility_con, data_to_obc.canWeighta_con);
+     if (buffer == NULL || tx_data_size == NULL) {
         ESP_LOGE(TAG, "Buffer or tx_data_size is NULL");
         return;
     }

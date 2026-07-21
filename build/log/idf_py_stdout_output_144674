@@ -1,0 +1,77 @@
+[1/5] cd /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/esp-idf/esptool_py && /home/mateo/.espressif/python_env/idf5.3_py3.12_env/bin/python /home/mateo/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/partition_table/partition-table.bin /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/TANWA-8-COM.bin
+TANWA-8-COM.bin binary size 0xef280 bytes. Smallest app partition is 0x100000 bytes. 0x10d80 bytes (7%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/bootloader/esp-idf/esptool_py && /home/mateo/.espressif/python_env/idf5.3_py3.12_env/bin/python /home/mateo/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x0 /home/mateo/Desktop/pwrinspace/TANWA-8-COM/build/bootloader/bootloader.bin
+Bootloader binary size 0x5430 bytes. 0x2bd0 bytes (34%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] cd /home/mateo/esp/esp-idf/components/esptool_py && /opt/st/stm32cubeclt_1.21.0/CMake/bin/cmake -D IDF_PATH=/home/mateo/esp/esp-idf -D "SERIAL_TOOL=/home/mateo/.espressif/python_env/idf5.3_py3.12_env/bin/python;;/home/mateo/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32s3" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/mateo/Desktop/pwrinspace/TANWA-8-COM/build -P /home/mateo/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32s3 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 80m --flash_size 2MB 0x0 bootloader/bootloader.bin 0x10000 TANWA-8-COM.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.10.0
+Serial port /dev/ttyUSB0
+Connecting....
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE
+Crystal is 40MHz
+MAC: 98:88:e0:1c:3b:6c
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00000000 to 0x00005fff...
+Flash will be erased from 0x00010000 to 0x000fffff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 21552 bytes to 13256...
+Writing at 0x00000000... (100 %)
+Wrote 21552 bytes (13256 compressed) at 0x00000000 in 0.5 seconds (effective 371.1 kbit/s)...
+Hash of data verified.
+Compressed 979584 bytes to 590459...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001e44a... (5 %)
+Writing at 0x0002b4c4... (8 %)
+Writing at 0x00034f11... (10 %)
+Writing at 0x0003eacd... (13 %)
+Writing at 0x00044c94... (16 %)
+Writing at 0x0004b085... (18 %)
+Writing at 0x000519dc... (21 %)
+Writing at 0x000580a9... (24 %)
+Writing at 0x0005dff6... (27 %)
+Writing at 0x00064700... (29 %)
+Writing at 0x0006a75b... (32 %)
+Writing at 0x000708ae... (35 %)
+Writing at 0x000767e3... (37 %)
+Writing at 0x0007ce7e... (40 %)
+Writing at 0x0008207f... (43 %)
+Writing at 0x0008717c... (45 %)
+Writing at 0x0008c6d7... (48 %)
+Writing at 0x00091e88... (51 %)
+Writing at 0x0009731d... (54 %)
+Writing at 0x0009c8dc... (56 %)
+Writing at 0x000a30d2... (59 %)
+Writing at 0x000a8800... (62 %)
+Writing at 0x000ae462... (64 %)
+Writing at 0x000b41a0... (67 %)
+Writing at 0x000b9a48... (70 %)
+Writing at 0x000bf73d... (72 %)
+Writing at 0x000c51f1... (75 %)
+Writing at 0x000ca73e... (78 %)
+Writing at 0x000d1fdd... (81 %)
+Writing at 0x000d9318... (83 %)
+Writing at 0x000e0cc3... (86 %)
+Writing at 0x000e6c44... (89 %)
+Writing at 0x000ecd8c... (91 %)
+Writing at 0x000f2e27... (94 %)
+Writing at 0x000f9609... (97 %)
+Writing at 0x000fef2f... (100 %)
+Wrote 979584 bytes (590459 compressed) at 0x00010000 in 13.2 seconds (effective 593.4 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 743.3 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

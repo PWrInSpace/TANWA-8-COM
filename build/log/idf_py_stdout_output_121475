@@ -1,0 +1,599 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1828
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xce8
+load:0x403cb700,len:0x2eb8
+entry 0x403c8918
+[0;32mI (27) boot: ESP-IDF v5.3.4-dirty 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time May 27 2026 04:13:45[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (39) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (44) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=25c48h (154696) map[0m
+[0;32mI (132) esp_image: segment 1: paddr=00035c70 vaddr=3fc9ef00 size=059f8h ( 23032) load[0m
+[0;32mI (138) esp_image: segment 2: paddr=0003b670 vaddr=40374000 size=049a8h ( 18856) load[0m
+[0;32mI (143) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a8c84h (691332) map[0m
+[0;32mI (273) esp_image: segment 4: paddr=000e8cac vaddr=403789a8 size=16528h ( 91432) load[0m
+[0;32mI (294) esp_image: segment 5: paddr=000ff1dc vaddr=50000000 size=00004h (     4) load[0m
+[0;32mI (294) esp_image: segment 6: paddr=000ff1e8 vaddr=600fe000 size=0006ch (   108) load[0m
+[0;32mI (310) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (310) boot: Disabling RNG early entropy source...[0m
+[0;32mI (323) cpu_start: Multicore app[0m
+[0;32mI (332) cpu_start: Pro cpu start user code[0m
+[0;32mI (332) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (332) app_init: Application information:[0m
+[0;32mI (335) app_init: Project name:     TANWA-8-COM[0m
+[0;32mI (340) app_init: App version:      6de1fa1-dirty[0m
+[0;32mI (346) app_init: Compile time:     May 27 2026 04:13:39[0m
+[0;32mI (352) app_init: ELF file SHA256:  97f02a4d1...[0m
+[0;32mI (357) app_init: ESP-IDF:          v5.3.4-dirty[0m
+[0;32mI (362) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (367) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (372) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (377) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (384) heap_init: At 3FCA8C90 len 00040A80 (258 KiB): RAM[0m
+[0;32mI (390) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (396) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (403) heap_init: At 600FE06C len 00001F7C (7 KiB): RTCRAM[0m
+[0;32mI (410) spi_flash: detected chip: generic[0m
+[0;32mI (413) spi_flash: flash io: dio[0m
+[0;33mW (417) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (431) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (441) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (448) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (456) main_task: Started on CPU0[0m
+[0;32mI (466) main_task: Calling app_main()[0m
+[0;32mI (466) APP: TANWA_BOARD TANWA board starting[0m
+[0;32mI (466) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 1| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (476) gpio: GPIO[17]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (486) gpio: GPIO[18]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (496) gpio: GPIO[16]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 1| Intr:1 [0m
+[0;32mI (506) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:2 [0m
+[0;32mI (516) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (526) gpio: GPIO[19]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (536) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (546) gpio: GPIO[14]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (556) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (566) gpio: GPIO[47]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (576) gpio: GPIO[48]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (576) gpio: GPIO[37]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (586) MCU_TWAI: TWAI driver installed[0m
+[0;32mI (596) CAN_API: TWAI driver started[0m
+[0;32mI (596) CAN_COMMANDS: CAN Watchdog task started[0m
+[0;32mI (606) BOARD_CONFIG: Relay driver initialized[0m
+[0;32mI (606) BOARD_CONFIG: Initializing state machine...[0m
+[0;32mI (616) SMC: Initializing state machine[0m
+[0;32mI (616) BOARD_CONFIG: ### State machine initialization success ###[0m
+[0;32mI (636) pp: pp rom version: e7ae62f[0m
+[0;32mI (636) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (636) SMC: ON INIT[0m
+[0;32mI (636) SETUP_TASK: Setup task created successfully[0m
+[0;32mI (646) wifi:wifi driver task: 3fcbb38c, prio:23, stack:6656, core=0[0m
+[0;32mI (656) wifi:wifi firmware version: d2d8792[0m
+[0;32mI (656) wifi:wifi certification version: v7.0[0m
+[0;32mI (656) wifi:config NVS flash: enabled[0m
+[0;32mI (656) wifi:config nano formating: disabled[0m
+[0;32mI (666) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (666) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (676) wifi:Init management short buffer num: 32[0m
+[0;32mI (676) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (686) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (686) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (686) wifi:Init static rx buffer num: 10[0m
+[0;32mI (696) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (696) wifi_init: rx ba win: 6[0m
+[0;32mI (706) wifi_init: accept mbox: 6[0m
+[0;32mI (706) wifi_init: tcpip mbox: 32[0m
+[0;32mI (706) wifi_init: udp mbox: 6[0m
+[0;32mI (716) wifi_init: tcp mbox: 6[0m
+[0;32mI (716) wifi_init: tcp tx win: 5760[0m
+[0;32mI (726) wifi_init: tcp rx win: 5760[0m
+[0;32mI (726) wifi_init: tcp mss: 1440[0m
+[0;32mI (726) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (736) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (736) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (786) wifi:mode : sta (80:08:50:80:08:50)[0m
+[0;32mI (786) wifi:enable tsf[0m
+[0;32mI (786) ESPNOW: espnow [version: 1.0] init[0m
+[0;32mI (786) BOARD_CONFIG: ### ENS initialization success ###[0m
+[0;32mI (786) BOARD_CONFIG: Initializing shared memory...[0m
+[0;32mI (796) BOARD_CONFIG: ### Shared memory initialization success ###[0m
+[0;31mE (796) esp_timer: Task is already initialized[0m
+[0;32mI (806) TIMER: Timers number 3[0m
+[0;32mI (806) BOARD_CONFIG: ### Timers initialization success ###[0m
+[0;32mI (816) BOARD_CONFIG: Initializing LoRa...[0m
+[0;32mI (816) LORA_TASK: initialize_lora: lora global=0x3fc9f8d4, lora_api.lora=0x3fc9f8d4[0m
+[0;32mI (836) LORA_TASK: Reading LoRa registers[0m
+[0;32mI (836) LORA_TASK: lora_task_init: gb=0x3fca5134, gb.lora=0x3fc9f8d4, global lora=0x3fc9f8d4, lora._spi_transmit=0x42014694[0m
+[0;32mI (846) LORA_TASK: LORA_READ: 0000, 0023[0m
+[0;32mI (846) LORA_TASK: LoRa Task started[0m
+[0;32mI (846) BOARD_CONFIG: ### LoRa initialization success ###[0m
+[0;32mI (856) BOARD_CONFIG: Initializing SD Card...[0m
+[0;32mI (866) SD_TASK: Initializing sd task[0m
+[0;32mI (866) gpio: GPIO[15]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (916) sdspi_transaction: cmd=5, R1 response: command not supported[0m
+[0;32mI (936) SDCARD: SD card mounted[0m
+[0;32mI (1026) SD_TASK: Using data path /sdcard/data52.txt[0m
+[0;32mI (1026) SD_TASK: Using log path /sdcard/log0.txt[0m
+[0;32mI (1026) BOARD_CONFIG: ### SD Card initialization success ###[0m
+[0;32mI (1036) BOARD_CONFIG: SD CARD | Timer started[0m
+[0;32mI (1046) STATE_MACHINE: Changing state from 0 to 1[0m
+[0;32mI (1036) SD_TASK: RUNNING SD TASK[0m
+[5n[0;32mI (1066) SMC: ON IDLE[0m
+[0;33mW (1096) CAN_DIAG: Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: 128[0m
+[0;32mI (1106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+[0;32mI (1196) BOARD_CONFIG: Toggling buzzer -> state: 0, freq_s: 0[0m
+[0;32mI (1206) APP_TASK: Buzzing stopped[0m
+[0;32mI (1196) APP_TASK: App task created successfully[0m
+[6n [0;32mI (1216) APP_TASK: Status task created successfully[0m
+[0;32mI (1216) APP_TASK: Requesting status updates from all boards...[0m
+[999C [6n [145D[0;32mtwi> [0m[0;32mI (1606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0K[0;32mtwi> [0mt[6C[0K[0;32mtwi> [0mta[7C[0;32mI (2106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0K[0;32mtwi> [0mtan[8C[0K[0;32mtwi> [0mtanw[9C[0K[0;32mtwi> [0mtanwa[10C[0K[0;32mtwi> [0mtanwa-[11C[0K[0;32mtwi> [0mtanwa-d[12C[0;32mI (2606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (2636) LORA_TASK: IRQ received[0m
+[0K[0;32mtwi> [0mtanwa-da[13C[0K[0;32mtwi> [0mtanwa-dat[14C[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C[0;33mW (2996) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 48[0m
+
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.02            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 2.87         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 g | Tank Weight          |       0.00 g |
+| Load Cell 1          |       0.00 g | Load Cell 2          |       0.00 g |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |     0.00 bar | Press 5         |     0.00 bar |
+| Press 2         |     0.00 bar | Press 6         |     0.00 bar |
+| Press 3         |     0.00 bar | Press 7         |     0.00 bar |
+| Press 4         |     0.00 bar | Press 8         |     0.00 bar |
+[0;32mI (3106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+| Sensor Temp 1   |     0.00 C   | Sensor Temp 2   |     0.00 C   |
+| Sensor Temp 3   |     0.00 C   | Status          | OK           |
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [0] [0] [0] [0] |
+| Servo Angles:   0 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m    0.00 V[0m | System Current       |     0.00 mA |
+| 24V Solenoid Voltage | [33m    0.00 V[0m | Solenoid Current     |     0.00 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (3196) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (3206) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (3216) CONSOLE_CONFIG: Weights: 0, Solenoid: 0, Sensor: 0, Power: 0, Utility: 0[0m
+[0;32mI (3226) APP_TASK: Requesting status updates from all boards...[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [999C [6n [145D[0;32mtwi> [0m[0;32mI (3606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (4106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (4606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (5106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (5236) APP_TASK: Requesting status updates from all boards...[0m
+[0;33mW (5496) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 110[0m
+[0;32mI (5606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (6106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (6606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (7106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (7236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (7606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;33mW (7996) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 167[0m
+[0;32mI (8106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (8606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (9106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (9236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (9606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (10106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;33mW (10496) CAN_DIAG: Błędy magistrali (Brak ACK/BitError). TEC: 128, Oczekujące TX: 223[0m
+[0;32mI (10606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (11106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (11236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (11606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (11606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 0, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (11616) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 0, Power: 0[0m
+[0;32mI (11616) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (11636) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 0, Power: 1[0m
+[0;32mI (11636) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (11646) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 0, Power: 1[0m
+[0;32mI (11656) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 0, Power: 1[0m
+[0;32mI (11656) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (11676) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 0, Power: 1[0m
+[0;32mI (11686) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (11686) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (11696) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (11696) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (11706) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (11716) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (11726) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (11736) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (11736) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (11746) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (11746) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (11766) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (11776) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (11776) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (11786) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (11786) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (11796) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (12106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (12606) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (13106) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (13236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (13236) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (13246) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 0, Utility: 1, Power: 1[0m
+[0;32mI (13246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (13256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (13256) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (13276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (13276) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (13286) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (13296) TANWA_DATA: Connected slaves - Weights: 0, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (13296) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (13306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (13316) CAN_COMMANDS: Updated power status: 1[0m
+[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.03            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 2.87         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 g | Tank Weight          |       0.00 g |
+| Load Cell 1          |   -5848.64 g | Load Cell 2          |   -5848.64 g |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |     0.00 bar | Press 5         |     0.00 bar |
+| Press 2         |     0.00 bar | Press 6         |     0.00 bar |
+| Press 3         |     0.00 bar | Press 7         |     0.00 bar |
+| Press 4         |     0.00 bar | Press 8         |     0.00 bar |
+| Sensor Temp 1   |     0.00 C   | Sensor Temp 2   |     0.00 C   |
+| Sensor Temp 3   |     0.00 C   | Status          | OK           |
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [0] [0] [0] [0] |
+| Servo Angles:   0 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.64 V[0m | System Current       |     0.09 mA |
+| 24V Solenoid Voltage | [33m   23.65 V[0m | Solenoid Current     |     0.05 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (13526) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (13536) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (13536) CONSOLE_CONFIG: Weights: 1, Solenoid: 1, Sensor: 1, Power: 1, Utility: 1[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [0;32mI (13606) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[999C [6n [145D[0;32mtwi> [0m[0;32mI (14106) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (14606) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (15106) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (15236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (15236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (15246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (15246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (15256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (15256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (15276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (15276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (15286) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (15296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (15296) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (15306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (15316) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (15606) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0K[0;32mtwi> [0mtanwa-data[15C[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.03            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 2.87         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 g | Tank Weight          |       0.00 g |
+| Load Cell 1          |   -5863.24 g | Load Cell 2          |   -5863.24 g |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |    41.48 bar | Press 5         |   322.33 bar |
+| Press 2         |     4.21 bar | Press 6         |    42.54 bar |
+| Press 3         |     4.27 bar | Press 7         |    42.24 bar |
+| Press 4         |     0.00 bar | Press 8         |     0.00 bar |
+| Sensor Temp 1   |     0.00 C   | Sensor Temp 2   |     0.00 C   |
+| Sensor Temp 3   |     0.00 C   | Status          | OK           |
+[0;32mI (16106) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [0] [0] [0] [0] |
+| Servo Angles:   0 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.64 V[0m | System Current       |     0.07 mA |
+| 24V Solenoid Voltage | [33m   23.64 V[0m | Solenoid Current     |     0.03 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (16196) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (16196) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (16206) CONSOLE_CONFIG: Weights: 1, Solenoid: 1, Sensor: 1, Power: 1, Utility: 1[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [999C [6n [145D[0;32mtwi> [0m[0;32mI (16626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (17126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (17236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (17236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (17246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (17246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (17256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (17256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (17276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (17276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (17286) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (17296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (17296) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (17306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (17316) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (17626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (18126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.03            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 2.87         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 g | Tank Weight          |       0.00 g |
+| Load Cell 1          |   -5861.27 g | Load Cell 2          |   -5861.27 g |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |    41.45 bar | Press 5         |   322.68 bar |
+| Press 2         |     4.21 bar | Press 6         |    42.55 bar |
+| Press 3         |     4.28 bar | Press 7         |    42.29 bar |
+| Press 4         |     0.00 bar | Press 8         |     0.97 bar |
+| Sensor Temp 1   |     0.00 C   | Sensor Temp 2   |     0.00 C   |
+| Sensor Temp 3   |     0.00 C   | Status          | OK           |
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [0] [0] [0] [0] |
+| Servo Angles:   0 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.64 V[0m | System Current       |     0.07 mA |
+| 24V Solenoid Voltage | [33m   23.64 V[0m | Solenoid Current     |     0.03 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (18526) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (18536) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (18546) CONSOLE_CONFIG: Weights: 1, Solenoid: 1, Sensor: 1, Power: 1, Utility: 1[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [0;32mI (18626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[999C [6n [145D[0;32mtwi> [0m[0;32mI (19126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (19236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (19236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (19246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (19246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (19256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (19256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (19276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (19276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (19286) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (19296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (19296) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (19306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (19316) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (19626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (20126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (20626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (21126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (21236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (21236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (21246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (21246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (21256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (21256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (21276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (21276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (21286) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (21296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (21296) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (21306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (21316) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (21626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (22126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (22626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (23126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (23236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (23236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (23246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (23246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (23256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (23256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (23276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (23276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (23286) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (23296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (23296) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (23306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (23316) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (23626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (24126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (24626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0K[0;32mtwi> [0mtanwa-data[15C[0;32mI (25126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (25236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (25236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (25246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (25246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (25256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (25256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (25276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (25276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (25286) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (25296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (25296) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (25306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (25316) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (25626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0K[0;32mtwi> [0mtanwa-data[15C
+
+[1m[36m======================== [ TANWA SYSTEM DATA REPORT ] ========================[0m
+[1m[33m1. COM & IGNITION DATA   [0m
+----------------------------------------------------------------------------
+| I_Sense              | 0.03            | Abort Button         | PRESSED      |
+| Arm State            | [32mDISARMED       [0m | Temp Internal        | 2.87         |
+----------------------------------------------------------------------------
+
+[1m[33m2. LOAD CELL / WEIGHT DATA[0m
+----------------------------------------------------------------------------
+| Rocket Weight        |       0.00 g | Tank Weight          |       0.00 g |
+| Load Cell 1          |   -5852.08 g | Load Cell 2          |   -5852.08 g |
+----------------------------------------------------------------------------
+
+[1m[33m3. SENSORS & PRESSURE    [0m
+----------------------------------------------------------------------------
+| Press 1         |    41.35 bar | Press 5         |   324.54 bar |
+| Press 2         |     4.20 bar | Press 6         |    42.54 bar |
+| Press 3         |     4.27 bar | Press 7         |    42.27 bar |
+| Press 4         |     0.00 bar | Press 8         |    42.05 bar |
+| Sensor Temp 1   |     0.00 C   | Sensor Temp 2   |     0.00 C   |
+| Sensor Temp 3   |     0.00 C   | Status          | OK           |
+----------------------------------------------------------------------------
+
+[1m[33m4. SOLENOIDS & SERVOS    [0m
+----------------------------------------------------------------------------
+| Solenoids: [0] [0] [0] [0] [0] [0] | Servos: [0] [0] [0] [0] |
+| Servo Angles:   0 deg |   0 deg |   0 deg |   0 deg                  |
+----------------------------------------------------------------------------
+
+[1m[33m5. POWER SYSTEM STATUS   [0m
+----------------------------------------------------------------------------
+| 24V System Voltage   | [33m   24.64 V[0m | System Current       |     0.07 mA |
+| 24V Solenoid Voltage | [33m   23.64 V[0m | Solenoid Current     |     0.03 mA |
+----------------------------------------------------------------------------
+
+[1m[33m6. SYSTEM STATUS         [0m
+| Current State        | [1m[32m1                   [0m |
+[0;32mI (25926) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (25936) CONSOLE_CONFIG: CAN Connected Slaves:[0m
+[0;32mI (25946) CONSOLE_CONFIG: Weights: 1, Solenoid: 1, Sensor: 1, Power: 1, Utility: 1[0m
+
+[1m[36m================================ [ END OF REPORT ] ================================[0m
+
+[6n [999C [6n [145D[0;32mtwi> [0m[0;32mI (26126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (26626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (27126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (27236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (27236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (27246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (27246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (27256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (27256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (27276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (27276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (27286) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (27296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (27296) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (27306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (27316) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (27626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (28126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (28626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (29126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (29236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (29236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (29246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (29246) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (29256) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (29256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (29276) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (29276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (29286) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (29296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (29296) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (29306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (29316) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (29626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (30126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (30626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (31126) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (31236) APP_TASK: Requesting status updates from all boards...[0m
+[0;32mI (31236) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (31246) CAN_COMMANDS: Utility Status Data: 00 00 00 00[0m
+[0;32mI (31246) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (31256) CAN_COMMANDS: Updated utility status: 0[0m
+[0;32mI (31256) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (31276) CAN_COMMANDS: Updated weight status: 0[0m
+[0;32mI (31276) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (31286) CAN_COMMANDS: Updated power status: 0[0m
+[0;32mI (31296) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (31296) CAN_COMMANDS: Updated power status: 1[0m
+[0;32mI (31306) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m
+[0;32mI (31326) CAN_COMMANDS: Updated sensor status: 0[0m
+[0;32mI (31626) TANWA_DATA: Connected slaves - Weights: 1, Solenoid: 1, Sensor: 1, Utility: 1, Power: 1[0m

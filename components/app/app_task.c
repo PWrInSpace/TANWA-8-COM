@@ -39,6 +39,20 @@ extern mcu_twai_config_t mcu_twai_config;
 volatile bool buzz_flg = false;
 volatile  bool buzz_flg_off = false;
 
+void status_task(void *arg) {
+    uint8_t data[8] = {0};
+    while(1) {
+        ESP_LOGI(TAG, "Requesting status updates from all boards...");
+        can_send_message(CAN_SOL_GET_STATUS_ID, data, 0);
+        can_send_message(CAN_POWER_GET_STATUS_ID, data, 0);
+        can_send_message(CAN_SENSOR_GET_STATUS_ID, data, 0);
+        can_send_message(CAN_UTIL_GET_STATUS_ID, data, 0);
+        can_send_message(CAN_POWER_GET_STATUS_ID, data, 0);
+        can_send_message(CAN_WEIGHTS_GET_STATUS_ID, data, 0);
+        vTaskDelay(pdMS_TO_TICKS(2000));    
+    }
+}
+
 esp_err_t app_task_init(void) {
 
     app_task_freq_mutex = xSemaphoreCreateMutex();
@@ -47,6 +61,12 @@ esp_err_t app_task_init(void) {
         ESP_LOGI("APP_TASK", "App task created successfully");
     } else {
         ESP_LOGE("APP_TASK", "Failed to create app task");
+        return ESP_FAIL;
+    }
+    if(xTaskCreatePinnedToCore(status_task, "status_task", 4096, NULL, 4, NULL, APP_TASK_CORE_ID) == pdPASS) {
+        ESP_LOGI("APP_TASK", "Status task created successfully");
+    } else {
+        ESP_LOGE("APP_TASK", "Failed to create status task");
         return ESP_FAIL;
     }
 
@@ -102,14 +122,14 @@ void app_task(void *arg) {
         uint8_t data[8] = {0};
         //TODO!: DODAĆ 1 wiadomość która prosi o wszystkie dane a nie kazda płytka osobno
         can_send_message(CAN_SOL_GET_DATA_ID, data, 0);
-        can_send_message(CAN_SOL_GET_STATUS_ID, data, 0);
+        
         can_send_message(CAN_POWER_GET_DATA_ID, data, 0);
-        can_send_message(CAN_POWER_GET_STATUS_ID, data, 0);
-        can_send_message(CAN_SENSOR_GET_STATUS_ID, data, 0);
+
         can_send_message(CAN_SENSOR_GET_TEMPERATURE_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_PRESSURE_ID, data, 0);
         can_send_message(CAN_WEIGHTS_GET_ADS_CH_WEIGHT_ID, data, 0);
-        can_send_message(CAN_UTIL_GET_STATUS_ID, data, 0);
+        
+
         
         tanwa_read_i_sense(&i_sense);
 

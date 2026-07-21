@@ -11,6 +11,10 @@
 #include "freertos/task.h"
 #include "freertos/queue.h"
 
+#include "esp_timer.h"
+
+#include "can_commands.h"
+
 #define CAN_TASK_STACK_SIZE CONFIG_CAN_TASK_STACK_SIZE
 #define CAN_TASK_PRIORITY 8
 #define CAN_TASK_CORE_ID 0
@@ -18,6 +22,7 @@
 #define TWAI_MAX_MESSAGE_LENGTH 8
 
 #define TAG "CAN_API"
+
 
 static struct {
     can_command_t *commands;
@@ -102,6 +107,11 @@ esp_err_t can_task_init(void) {
 
     if(xTaskCreatePinnedToCore(can_task, "CAN Task", CAN_TASK_STACK_SIZE, NULL, 9, &gb.task_handle, CAN_TASK_CORE_ID) != pdPASS) {
         ESP_LOGE(TAG, "Failed to create CAN task");
+        return ESP_FAIL;
+    }
+
+    if(xTaskCreatePinnedToCore(can_watchdog_task, "CAN Watchdog", 3072, NULL, 8, NULL, CAN_TASK_CORE_ID) != pdPASS) {
+        ESP_LOGE(TAG, "Failed to create CAN Watchdog task");
         return ESP_FAIL;
     }
 

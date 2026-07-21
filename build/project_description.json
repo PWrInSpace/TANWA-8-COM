@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "TANWA-8-COM",
-    "project_version":    "a4a1c74-dirty",
+    "project_version":    "6de1fa1-dirty",
     "project_path":       "/home/mateo/Desktop/pwrinspace/TANWA-8-COM",
     "idf_path":           "/home/mateo/esp/esp-idf",
     "build_dir":          "/home/mateo/Desktop/pwrinspace/TANWA-8-COM/build",

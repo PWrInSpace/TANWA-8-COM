@@ -56,6 +56,7 @@ typedef enum {
     CAN_UTIL_SET_BUZZER_ID = 0x2ED0,
     CAN_UTIL_SET_BUZZER_FREQ_ID = 0x2EC0,
     CAN_UTIL_CHANGE_BUZZER_STATE_ID = 0x0EEE,
+    CAN_UTIL_NEW_STATUS_CMD = 0x3EF9,
 
     CAN_UTIL_STATUS_ID = 0x0EE0,
     CAN_UTIL_DATA_ID = 0x3ED0,
@@ -120,6 +121,9 @@ esp_err_t parse_weights_ads_ch_weight(uint8_t *data, uint8_t length);
 esp_err_t parse_weights(uint8_t *data, uint8_t length);
 esp_err_t cal_sensor(uint8_t *data, uint8_t length);
 esp_err_t cal_weights(uint8_t *data, uint8_t length);
+void can_commands_check_timeouts(void);
+void can_watchdog_task(void *pvParameters);
+esp_err_t parse_utility_status_info();
 
 
 #endif //PWRINSPACE_CAN_COMMANDS_H
