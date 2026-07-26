@@ -30,6 +30,36 @@
 #define LORA_TASK_PRIORITY 4
 #define LORA_TASK_CORE 1
 
+#define TELEMETRY_SCALE_BATTERY 100
+#define TELEMETRY_SCALE_PRESSURE 100
+#define TELEMETRY_SCALE_TEMP 100
+#define TELEMETRY_SCALE_WEIGHT 100
+#define TELEMETRY_SCALE_THRUST 100
+
+#define SCALE_TO_U32(v, s) ((uint32_t)((v) * (s) + 0.5f))
+#define SCALE_TO_I32(v, s) ((int32_t)((v) * (s) + ((v) >= 0 ? 0.5f : -0.5f)))
+
+#define TANWA_FLAG_CAN_WEIGHTS 0
+#define TANWA_FLAG_CAN_UTILITY 1
+#define TANWA_FLAG_CAN_SENSOR 2
+#define TANWA_FLAG_CAN_POWER 3
+#define TANWA_FLAG_CAN_SOLENOID 4
+#define TANWA_FLAG_IGNITER1_CONT 5
+#define TANWA_FLAG_IGNITER2_CONT 6
+#define TANWA_FLAG_SOFT_ARM 7
+#define TANWA_FLAG_ABORT_BUTTON 8
+#define TANWA_FLAG_FILL_N2O 9
+#define TANWA_FLAG_DEPR_N2O 10
+#define TANWA_FLAG_FILL_N2 11
+#define TANWA_FLAG_DEPR_N2 12
+#define TANWA_FLAG_DROID_N2O 13
+#define TANWA_FLAG_DROID_N2 14
+#define TANWA_FLAG_HEATING_TANK  15
+#define TANWA_FLAG_HEATING_VALVE 16
+
+#define SET_FLAG(word, bit, cond) ((word) |= ((cond) ? (1UL << (bit)) : 0UL))
+#define FRAME_SET(field, v) do { (field).is_present = true; (field).value = (v); } while (0) // do-while(0) intentional: makes the multi-statement macro a single statement
+
 static struct {
     lora_struct_t *lora;
     lora_task_process_rx_packet process_packet_fnc;
@@ -212,7 +242,7 @@ static void lora_process(uint8_t* packet, size_t packet_size) {
     size_t decoded_size = 0;
     decoded_size = lo_ra_command_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
     if (decoded_size > 0) {
-        if(lora_command_parsing(received->lora_dev_id, received->command, received->payload) == false) {
+        if(lora_command_parsing(received->lora_dev_id.value, received->command.value, received->payload.value) == false) {
             ESP_LOGE(TAG, "Unable to prcess command :C");
             return;
         }
@@ -239,44 +269,44 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
 
     tanwa_data_t tanwa_data = tanwa_data_read();
 
-    frame->tanwa_state = tanwa_data.state;
-    frame->tanwa_battery = tanwa_data.can_power_data.VOLTAGE_24V_SYS;
+    relay_driver_state_t vent_state;
+    relay_get_state(&(tanwa_hardware.relay[0]), &vent_state);
 
-    frame->engine_thrust = tanwa_data.can_weight_data.ads1_weight2;
-    frame->rocket_weight = tanwa_data.can_weight_data.ads1_weight4;
-    frame->tank_weight = tanwa_data.can_weight_data.ads1_weight3;
+    FRAME_SET(frame->tanwa_battery, SCALE_TO_U32(tanwa_data.can_power_data.VOLTAGE_24V_SYS, TELEMETRY_SCALE_BATTERY));
+    FRAME_SET(frame->tanwa_state, tanwa_data.state);
+    FRAME_SET(frame->tanwa_thrust, SCALE_TO_I32(tanwa_data.can_weight_data.ads1_weight2, TELEMETRY_SCALE_THRUST));
+    FRAME_SET(frame->tanwa_tank_weight, SCALE_TO_U32(tanwa_data.can_weight_data.ads1_weight3, TELEMETRY_SCALE_WEIGHT));
+    FRAME_SET(frame->tanwa_temp_post_n2o_fill, SCALE_TO_I32(tanwa_data.can_sensor_temp_data.temperature1, TELEMETRY_SCALE_TEMP));
+    FRAME_SET(frame->tanwa_temp_filling_wall, SCALE_TO_I32(tanwa_data.can_sensor_temp_data.temperature2, TELEMETRY_SCALE_TEMP));
 
-    frame->temp_injector = tanwa_data.can_sensor_temp_data.temperature1;
-    frame->temp_combustion_chamber = tanwa_data.can_sensor_temp_data.temperature2;
+    FRAME_SET(frame->tanwa_post_fill_n2o_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure8, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_cutoff_n2o_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure5, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_droid_n2o_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure3, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_pre_reg_n2_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure7, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_post_reg_n2_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure6, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_post_fill_n2_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure1, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_droid_n2_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure2, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_comb_chamber_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure4, TELEMETRY_SCALE_PRESSURE));
 
-    frame->pressure_fuel = tanwa_data.can_sensor_pressure_data.pressure1;
-    frame->pressure_n2 = tanwa_data.can_sensor_pressure_data.pressure2;
-    frame->pressure_droid = tanwa_data.can_sensor_pressure_data.pressure3;
-    frame->pressure_oxy = tanwa_data.can_sensor_pressure_data.pressure4;
-    frame->pressure_injector_fuel = tanwa_data.can_sensor_pressure_data.pressure5;
-    frame->pressure_injector_oxi = tanwa_data.can_sensor_pressure_data.pressure6;
-    frame->pressure_combustion_chamber = tanwa_data.can_sensor_pressure_data.pressure7;
-    frame->pressure_cutoff = tanwa_data.can_sensor_pressure_data.pressure8;
-
-    frame->status_arm.is_present = true;
-    frame->status_arm.value = tanwa_data.com_data.arm_state;
-    frame->igniter_cont1.is_present = true;
-    frame->igniter_cont1.value = tanwa_data.com_data.igniter_cont_1;
-    frame->igniter_cont2.is_present = true;
-    frame->igniter_cont2.value = tanwa_data.com_data.igniter_cont_2;
-
-    frame->status_fill_n2o.is_present = true;
-    frame->status_fill_n2o.value = tanwa_data.can_solenoid_data.state_sol1;
-    frame->status_depr_n2o.is_present = true;
-    frame->status_depr_n2o.value = tanwa_data.can_solenoid_data.state_sol2;
-    frame->status_fill_n2.is_present = true;
-    frame->status_fill_n2.value = tanwa_data.can_solenoid_data.state_sol3;
-    frame->status_depr_n2.is_present = true;
-    frame->status_depr_n2.value = tanwa_data.can_solenoid_data.state_sol4;
-    frame->status_qd_n2o.is_present = true;
-    frame->status_qd_n2o.value = tanwa_data.can_solenoid_data.state_sol5;
-    frame->status_qd_n2.is_present = true;
-    frame->status_qd_n2.value = tanwa_data.can_solenoid_data.state_sol6;
+    uint32_t flags = 0;
+    SET_FLAG(flags, TANWA_FLAG_CAN_WEIGHTS, tanwa_data.can_connected_slaves.weights);
+    SET_FLAG(flags, TANWA_FLAG_CAN_UTILITY, tanwa_data.can_connected_slaves.utility);
+    SET_FLAG(flags, TANWA_FLAG_CAN_SENSOR, tanwa_data.can_connected_slaves.sensor);
+    SET_FLAG(flags, TANWA_FLAG_CAN_POWER, tanwa_data.can_connected_slaves.power);
+    SET_FLAG(flags, TANWA_FLAG_CAN_SOLENOID, tanwa_data.can_connected_slaves.solenoid);
+    SET_FLAG(flags, TANWA_FLAG_IGNITER1_CONT, tanwa_data.com_data.igniter_cont_1);
+    SET_FLAG(flags, TANWA_FLAG_IGNITER2_CONT, tanwa_data.com_data.igniter_cont_2);
+    SET_FLAG(flags, TANWA_FLAG_SOFT_ARM, tanwa_data.com_data.arm_state);
+    SET_FLAG(flags, TANWA_FLAG_ABORT_BUTTON, tanwa_data.com_data.abort_button);
+    SET_FLAG(flags, TANWA_FLAG_FILL_N2O, tanwa_data.can_solenoid_data.state_sol1);
+    SET_FLAG(flags, TANWA_FLAG_DEPR_N2O, tanwa_data.can_solenoid_data.state_sol2);
+    SET_FLAG(flags, TANWA_FLAG_FILL_N2, tanwa_data.can_solenoid_data.state_sol3);
+    SET_FLAG(flags, TANWA_FLAG_DEPR_N2, tanwa_data.can_solenoid_data.state_sol4);
+    SET_FLAG(flags, TANWA_FLAG_DROID_N2O, tanwa_data.can_solenoid_data.state_sol5);
+    SET_FLAG(flags, TANWA_FLAG_DROID_N2, tanwa_data.can_solenoid_data.state_sol6);
+    SET_FLAG(flags, TANWA_FLAG_HEATING_TANK, vent_state == RELAY_OFF);
+    SET_FLAG(flags, TANWA_FLAG_HEATING_VALVE, tanwa_data.com_data.relay_state2);
+    FRAME_SET(frame->tanwa_flags, flags);
 }
 
 static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {

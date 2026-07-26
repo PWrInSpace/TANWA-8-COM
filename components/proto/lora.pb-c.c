@@ -29,7 +29,7 @@
  */
 
 #include <limits.h>
-#include "lora.h"
+#include "lora.pb-c.h"
 
 #if CHAR_BIT != 8
 #    error "Number of bits in a char must be 8."
