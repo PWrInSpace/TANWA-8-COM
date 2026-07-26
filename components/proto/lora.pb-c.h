@@ -47,84 +47,66 @@ struct lo_ra_frame_repeated_t {
 
 struct lo_ra_frame_t {
     struct pbtools_message_base_t base;
-    uint32_t tanwa_state;
-    uint32_t uptime;
-    int32_t engine_work_time;
-    float pressure_fuel;
-    float pressure_n2;
-    float pressure_droid;
-    float pressure_oxy;
-    float pressure_injector_fuel;
-    float pressure_injector_oxi;
-    float pressure_combustion_chamber;
     struct {
         bool is_present;
-        bool value;
-    } status_fill_n2o;
+        uint32_t value;
+    } tanwa_battery;
     struct {
         bool is_present;
-        bool value;
-    } status_depr_n2o;
+        uint32_t value;
+    } tanwa_state;
     struct {
         bool is_present;
-        bool value;
-    } status_vent_n2o;
+        uint32_t value;
+    } tanwa_flags;
     struct {
         bool is_present;
-        bool value;
-    } status_arm;
+        int32_t value;
+    } tanwa_thrust;
     struct {
         bool is_present;
-        bool value;
-    } igniter_cont1;
+        uint32_t value;
+    } tanwa_tank_weight;
     struct {
         bool is_present;
-        bool value;
-    } igniter_cont2;
-    float tanwa_battery;
-    float engine_thrust;
-    float rocket_weight;
-    float tank_weight;
-    float temp_injector;
-    float temp_combustion_chamber;
-    float temp_external_tank;
+        int32_t value;
+    } tanwa_temp_post_n2o_fill;
     struct {
         bool is_present;
-        bool value;
-    } status_oxy;
+        int32_t value;
+    } tanwa_temp_filling_wall;
     struct {
         bool is_present;
-        bool value;
-    } status_fuel;
+        uint32_t value;
+    } tanwa_post_fill_n2o_pres;
     struct {
         bool is_present;
-        bool value;
-    } status_n2;
+        uint32_t value;
+    } tanwa_cutoff_n2o_pres;
     struct {
         bool is_present;
-        bool value;
-    } status_qd_n2o;
+        uint32_t value;
+    } tanwa_droid_n2o_pres;
     struct {
         bool is_present;
-        bool value;
-    } status_fill_n2;
+        uint32_t value;
+    } tanwa_pre_reg_n2_pres;
     struct {
         bool is_present;
-        bool value;
-    } status_depr_n2;
+        uint32_t value;
+    } tanwa_post_reg_n2_pres;
     struct {
         bool is_present;
-        bool value;
-    } status_qd_n2;
+        uint32_t value;
+    } tanwa_post_fill_n2_pres;
     struct {
         bool is_present;
-        bool value;
-    } status_vent_eth;
+        uint32_t value;
+    } tanwa_droid_n2_pres;
     struct {
         bool is_present;
-        bool value;
-    } status_vent_n2;
-    float pressure_cutoff;
+        uint32_t value;
+    } tanwa_comb_chamber_pres;
 };
 
 /**
@@ -137,28 +119,22 @@ struct lo_ra_command_repeated_t {
 
 struct lo_ra_command_t {
     struct pbtools_message_base_t base;
-    uint32_t lora_dev_id;
-    uint32_t sys_dev_id;
-    uint32_t command;
-    int32_t payload;
-};
-
-/**
- * Message LoRaSettings.
- */
-struct lo_ra_settings_repeated_t {
-    int length;
-    struct lo_ra_settings_t *items_p;
-};
-
-struct lo_ra_settings_t {
-    struct pbtools_message_base_t base;
-    int32_t lora_freq_khz;
-    int32_t lora_transmit_ms;
-    int32_t countdown_time;
-    int32_t ingition_time;
-    uint32_t flash_enable;
-    uint32_t buzzer_enable;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } lora_dev_id;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } sys_dev_id;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } command;
+    struct {
+        bool is_present;
+        int32_t value;
+    } payload;
 };
 
 /**
@@ -194,24 +170,6 @@ int lo_ra_command_encode(
 
 int lo_ra_command_decode(
     struct lo_ra_command_t *self_p,
-    const uint8_t *encoded_p,
-    size_t size);
-
-/**
- * Encoding and decoding of LoRaSettings.
- */
-struct lo_ra_settings_t *
-lo_ra_settings_new(
-    void *workspace_p,
-    size_t size);
-
-int lo_ra_settings_encode(
-    struct lo_ra_settings_t *self_p,
-    uint8_t *encoded_p,
-    size_t size);
-
-int lo_ra_settings_decode(
-    struct lo_ra_settings_t *self_p,
     const uint8_t *encoded_p,
     size_t size);
 
@@ -260,28 +218,6 @@ void lo_ra_command_decode_repeated_inner(
     struct pbtools_decoder_t *decoder_p,
     struct pbtools_repeated_info_t *repeated_info_p,
     struct lo_ra_command_repeated_t *repeated_p);
-
-void lo_ra_settings_init(
-    struct lo_ra_settings_t *self_p,
-    struct pbtools_heap_t *heap_p);
-
-void lo_ra_settings_encode_inner(
-    struct pbtools_encoder_t *encoder_p,
-    struct lo_ra_settings_t *self_p);
-
-void lo_ra_settings_decode_inner(
-    struct pbtools_decoder_t *decoder_p,
-    struct lo_ra_settings_t *self_p);
-
-void lo_ra_settings_encode_repeated_inner(
-    struct pbtools_encoder_t *encoder_p,
-    int field_number,
-    struct lo_ra_settings_repeated_t *repeated_p);
-
-void lo_ra_settings_decode_repeated_inner(
-    struct pbtools_decoder_t *decoder_p,
-    struct pbtools_repeated_info_t *repeated_info_p,
-    struct lo_ra_settings_repeated_t *repeated_p);
 
 #ifdef __cplusplus
 }

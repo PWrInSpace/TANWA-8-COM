@@ -1,55 +1,52 @@
 syntax = "proto3";
 
 message LoRaFrame {
-    uint32 tanwa_state = 1;
-    uint32 uptime = 2;
-    int32 engine_work_time = 3;
-    
-    float pressure_fuel = 4;
-    float pressure_N2 = 5;
-    float pressure_droid = 6;
-    float pressure_oxy = 7;
+    // === Tanwa ===
+    optional fixed32 tanwa_battery = 1;
+    optional uint32 tanwa_state = 2;
 
-    float pressure_injector_fuel = 8;
-    float pressure_injector_oxi = 9;
-    float pressure_combustion_chamber = 10;
+    // 8 bytes
 
-    optional bool status_fill_n2o = 11;
-    optional bool status_depr_n2o = 12;
-    optional bool status_vent_n2o = 13;
-    optional bool status_arm = 14;
-    optional bool igniter_cont1 = 15;
-    optional bool igniter_cont2 = 16;
-    
-    float tanwa_battery = 17;
-    
-    float engine_thrust = 18;
-    float rocket_weight = 19;
-    float tank_weight = 20;
+    // === Tanwa CAN connections & status ===
+    // bit0: CAN_Weights_connection
+    // bit1: CAN_Utility_connection
+    // bit2: CAN_Sensor_connection
+    // bit3: CAN_Power_connection
+    // bit4: CAN_Solenoid_connection
+    // bit5: igniter_1_continuity
+    // bit6: igniter_2_continuity
+    // bit7: soft_arm
+    // bit8: abort_button
+    // bit9: fill_N2O_state
+    // bit10: depr_N2O_state
+    // bit11: fill_N2_state
+    // bit12: depr_N2_state
+    // bit13: droid_N2O_state
+    // bit14: droid_N2_state
+    // bit15: heating_tank_state
+    // bit16: heating_valves_state
+    optional fixed32 tanwa_flags = 3;
 
-    float temp_injector = 21;
-    float temp_combustion_chamber = 22;
-    float temp_external_tank = 23;
+    optional sint32 tanwa_thrust = 4;
+    optional uint32 tanwa_tank_weight = 5;
+    optional sint32 tanwa_temp_post_n2o_fill = 6;
+    optional sint32 tanwa_temp_filling_wall = 7;
 
-
-    optional bool status_oxy = 24;
-    optional bool status_fuel = 25;
-    optional bool status_n2 = 26;
-    optional bool status_qd_n2o = 27;
-    optional bool status_fill_n2 = 28;
-    optional bool status_depr_n2 = 29;
-    optional bool status_qd_n2 = 30;
-    optional bool status_vent_eth = 31;
-    optional bool status_vent_n2 = 32;
-    
-    float pressure_cutoff = 33;
-
+    // Tanwa pressures as individual floats (previously packed pairs).
+    // Use float to preserve fractional values; tags 34..41 reserved for these 8 pressures.
+    optional uint32 tanwa_post_fill_n2o_pres = 8;
+    optional uint32 tanwa_cutoff_n2o_pres = 9;
+    optional uint32 tanwa_droid_n2o_pres = 10;
+    optional uint32 tanwa_pre_reg_n2_pres = 11;
+    optional uint32 tanwa_post_reg_n2_pres = 12;
+    optional uint32 tanwa_post_fill_n2_pres = 13;
+    optional uint32 tanwa_droid_n2_pres = 14;
+    optional uint32 tanwa_comb_chamber_pres = 15;
 }
 
 message LoRaCommand {
-    //Command frame
-    uint32 lora_dev_id = 1;
-    uint32 sys_dev_id = 2;
-    uint32 command = 3;
-    int32 payload = 4;
+    optional uint32 lora_dev_id = 1;
+    optional uint32 sys_dev_id = 2;
+    optional uint32 command = 3;
+    optional int32 payload = 4;
 }
