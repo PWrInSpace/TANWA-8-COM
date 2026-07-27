@@ -77,35 +77,35 @@ struct lo_ra_frame_t {
     } tanwa_temp_filling_wall;
     struct {
         bool is_present;
-        uint32_t value;
+        int32_t value;
     } tanwa_post_fill_n2o_pres;
     struct {
         bool is_present;
-        uint32_t value;
+        int32_t value;
     } tanwa_cutoff_n2o_pres;
     struct {
         bool is_present;
-        uint32_t value;
+        int32_t value;
     } tanwa_droid_n2o_pres;
     struct {
         bool is_present;
-        uint32_t value;
+        int32_t value;
     } tanwa_pre_reg_n2_pres;
     struct {
         bool is_present;
-        uint32_t value;
+        int32_t value;
     } tanwa_post_reg_n2_pres;
     struct {
         bool is_present;
-        uint32_t value;
+        int32_t value;
     } tanwa_post_fill_n2_pres;
     struct {
         bool is_present;
-        uint32_t value;
+        int32_t value;
     } tanwa_droid_n2_pres;
     struct {
         bool is_present;
-        uint32_t value;
+        int32_t value;
     } tanwa_comb_chamber_pres;
 };
 

@@ -62,28 +62,28 @@ void lo_ra_frame_encode_inner(
     struct lo_ra_frame_t *self_p)
 {
     if (self_p->tanwa_comb_chamber_pres.is_present) {
-        pbtools_encoder_write_uint32_always(encoder_p, 15, self_p->tanwa_comb_chamber_pres.value);
+        pbtools_encoder_write_sint32_always(encoder_p, 15, self_p->tanwa_comb_chamber_pres.value);
     }
     if (self_p->tanwa_droid_n2_pres.is_present) {
-        pbtools_encoder_write_uint32_always(encoder_p, 14, self_p->tanwa_droid_n2_pres.value);
+        pbtools_encoder_write_sint32_always(encoder_p, 14, self_p->tanwa_droid_n2_pres.value);
     }
     if (self_p->tanwa_post_fill_n2_pres.is_present) {
-        pbtools_encoder_write_uint32_always(encoder_p, 13, self_p->tanwa_post_fill_n2_pres.value);
+        pbtools_encoder_write_sint32_always(encoder_p, 13, self_p->tanwa_post_fill_n2_pres.value);
     }
     if (self_p->tanwa_post_reg_n2_pres.is_present) {
-        pbtools_encoder_write_uint32_always(encoder_p, 12, self_p->tanwa_post_reg_n2_pres.value);
+        pbtools_encoder_write_sint32_always(encoder_p, 12, self_p->tanwa_post_reg_n2_pres.value);
     }
     if (self_p->tanwa_pre_reg_n2_pres.is_present) {
-        pbtools_encoder_write_uint32_always(encoder_p, 11, self_p->tanwa_pre_reg_n2_pres.value);
+        pbtools_encoder_write_sint32_always(encoder_p, 11, self_p->tanwa_pre_reg_n2_pres.value);
     }
     if (self_p->tanwa_droid_n2o_pres.is_present) {
-        pbtools_encoder_write_uint32_always(encoder_p, 10, self_p->tanwa_droid_n2o_pres.value);
+        pbtools_encoder_write_sint32_always(encoder_p, 10, self_p->tanwa_droid_n2o_pres.value);
     }
     if (self_p->tanwa_cutoff_n2o_pres.is_present) {
-        pbtools_encoder_write_uint32_always(encoder_p, 9, self_p->tanwa_cutoff_n2o_pres.value);
+        pbtools_encoder_write_sint32_always(encoder_p, 9, self_p->tanwa_cutoff_n2o_pres.value);
     }
     if (self_p->tanwa_post_fill_n2o_pres.is_present) {
-        pbtools_encoder_write_uint32_always(encoder_p, 8, self_p->tanwa_post_fill_n2o_pres.value);
+        pbtools_encoder_write_sint32_always(encoder_p, 8, self_p->tanwa_post_fill_n2o_pres.value);
     }
     if (self_p->tanwa_temp_filling_wall.is_present) {
         pbtools_encoder_write_sint32_always(encoder_p, 7, self_p->tanwa_temp_filling_wall.value);
@@ -154,42 +154,42 @@ void lo_ra_frame_decode_inner(
 
         case 8:
             self_p->tanwa_post_fill_n2o_pres.is_present = true;
-            self_p->tanwa_post_fill_n2o_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_post_fill_n2o_pres.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 9:
             self_p->tanwa_cutoff_n2o_pres.is_present = true;
-            self_p->tanwa_cutoff_n2o_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_cutoff_n2o_pres.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 10:
             self_p->tanwa_droid_n2o_pres.is_present = true;
-            self_p->tanwa_droid_n2o_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_droid_n2o_pres.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 11:
             self_p->tanwa_pre_reg_n2_pres.is_present = true;
-            self_p->tanwa_pre_reg_n2_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_pre_reg_n2_pres.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 12:
             self_p->tanwa_post_reg_n2_pres.is_present = true;
-            self_p->tanwa_post_reg_n2_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_post_reg_n2_pres.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 13:
             self_p->tanwa_post_fill_n2_pres.is_present = true;
-            self_p->tanwa_post_fill_n2_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_post_fill_n2_pres.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 14:
             self_p->tanwa_droid_n2_pres.is_present = true;
-            self_p->tanwa_droid_n2_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_droid_n2_pres.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 15:
             self_p->tanwa_comb_chamber_pres.is_present = true;
-            self_p->tanwa_comb_chamber_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_comb_chamber_pres.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         default:
