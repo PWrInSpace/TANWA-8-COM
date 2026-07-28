@@ -509,7 +509,7 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 tanwa_fire();
                 break;
             }
-            case CMD_VENT_OPEN: {
+            case CMD_VENT_OPEN: { // Vent is normally open, so the logic is reversed
                 ESP_LOGI(TAG, "LORA | Vent close");
                 relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[0]));
                 if (err != RELAY_DRIVER_OK) {
@@ -517,7 +517,7 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 }
                 break;
             }
-            case CMD_VENT_CLOSE: {
+            case CMD_VENT_CLOSE: { // Vent is normally open, so the logic is reversed
                 if (payload == 0) {
                     ESP_LOGI(TAG, "LORA | Vent open");
                     relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[0]));
@@ -748,7 +748,7 @@ void ens_command_parsing(uint8_t* buffer, size_t len) {
             tanwa_fire();
             break;
         }
-        case CMD_VENT_OPEN: {
+        case CMD_VENT_OPEN: { // Vent is normally open, so the logic is reversed
 
             ESP_LOGI(TAG, "ESP_NOW | Vent close");
             relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[0]));
@@ -757,7 +757,7 @@ void ens_command_parsing(uint8_t* buffer, size_t len) {
             }
             break;
         }
-        case CMD_VENT_CLOSE: {
+        case CMD_VENT_CLOSE: { // Vent is normally open, so the logic is reversed
 
             if(cmd->cmd.payload == 0){
                 ESP_LOGI(TAG, "ESP_NOW | Vent open");
