@@ -525,9 +525,7 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                         ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
                     }
                 } else {
-                    relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[0]));
-                    vTaskDelay(pdMS_TO_TICKS((uint32_t)payload));
-                    err = relay_close(&(tanwa_hardware.relay[0]));
+                    relay_driver_err_t err = relay_time_open(&(tanwa_hardware.relay[0]), (uint32_t)payload);
                     if (err != RELAY_DRIVER_OK) {
                         ESP_LOGE(TAG, "Relay time open error | %d", (uint8_t)err);
                     } else {

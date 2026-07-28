@@ -189,33 +189,33 @@ void _data_to_transmit(uint8_t *buffer, size_t buffer_size, size_t *tx_data_size
     *tx_data_size = sizeof(data_to_obc_t);
 } 
 
-// ens_init_struct_t ens_init_struct = {
-//     ._data_to_transmit = _data_to_transmit, // Set to NULL for now, will be set later
-//     ._on_data_rx = ens_command_parsing, // Set to NULL for now, will be set later
-//     .disable_sleep = false,
-//     .tx_nack_timeout_ms = 1000, // Default timeout for NACK
-//     .dev_mac_address = {0x80, 0x08, 0x50, 0x80, 0x08, 0x50}// Default MAC
-// };
+ens_init_struct_t ens_init_struct = {
+    ._data_to_transmit = _data_to_transmit, // Set to NULL for now, will be set later
+    ._on_data_rx = ens_command_parsing, // Set to NULL for now, will be set later
+    .disable_sleep = false,
+    .tx_nack_timeout_ms = 1000, // Default timeout for NACK
+    .dev_mac_address = {0x80, 0x08, 0x50, 0x80, 0x08, 0x50}// Default MAC
+};
 
-// uint16_t ens_periods[ENS_ENUM_MAX] = {
-//     [INIT_MS] = 1000, // 1 second
-//     [IDLE_MS] = 500, // 1 second
-//     [ARMED_MS] = 300, // 1 second
-//     [FILLING_MS] = 300, // 1 second
-//     [PRESSURIZING_MS] = 300, // 1 second
-//     [ARMED_TO_LAUNCH_MS] = 200, // 1 second
-//     [RDY_TO_LAUNCH_MS] = 200, // 1 second
-//     [COUNTDOWN_MS] = 100, // 500 ms
-//     [LIFT_OFF_MS] = 50, // 1 second
-//     [BURN_MS] = 200, // 1 second
-//     [FLIGHT_MS] = 500, // 1 second
-//     [FIRST_STAGE_MS] = 500, // 1 second
-//     [SECOND_STAGE_MS] = 500, // 1 second
-//     [ON_GROUND_MS] = 1000, // 1 second
-//     [HOLD_MS] = 500, // 1 second
-//     [ABORT_MS] = 500, // 1 second
-//     [SLEEP_MS] = 15000, // 15 seconds
-// };
+uint16_t ens_periods[ENS_ENUM_MAX] = {
+    [INIT_MS] = 1000, // 1 second
+    [IDLE_MS] = 500, // 1 second
+    [ARMED_MS] = 300, // 1 second
+    [FILLING_MS] = 300, // 1 second
+    [PRESSURIZING_MS] = 300, // 1 second
+    [ARMED_TO_LAUNCH_MS] = 200, // 1 second
+    [RDY_TO_LAUNCH_MS] = 200, // 1 second
+    [COUNTDOWN_MS] = 100, // 500 ms
+    [LIFT_OFF_MS] = 50, // 1 second
+    [BURN_MS] = 200, // 1 second
+    [FLIGHT_MS] = 500, // 1 second
+    [FIRST_STAGE_MS] = 500, // 1 second
+    [SECOND_STAGE_MS] = 500, // 1 second
+    [ON_GROUND_MS] = 1000, // 1 second
+    [HOLD_MS] = 500, // 1 second
+    [ABORT_MS] = 500, // 1 second
+    [SLEEP_MS] = 15000, // 15 seconds
+};
 
 uint16_t lora_periods[] = {
     [INIT] = 1000,
@@ -330,11 +330,11 @@ esp_err_t board_config_init(void) {
         
     }
 
-    // if(ens_init(&ens_init_struct, ens_periods) != ENS_OK) {
-    //     ESP_LOGE(TAG, "ENS initialization failed");
-    // } else {
-    //     ESP_LOGI(TAG, "### ENS initialization success ###");
-    // }
+    if(ens_init(&ens_init_struct, ens_periods) != ENS_OK) {
+        ESP_LOGE(TAG, "ENS initialization failed");
+    } else {
+        ESP_LOGI(TAG, "### ENS initialization success ###");
+    }
 
     ESP_LOGI(TAG, "Initializing shared memory...");
 

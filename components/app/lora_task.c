@@ -144,6 +144,8 @@ static void apply_state_period(void) {
     if (lora_change_period(gb.state_periods[state])) {
         gb.last_period_state = (int)state;
         ESP_LOGI(TAG, "Telemetry period %u ms (state %d)", gb.state_periods[state], (int)state);
+    } else {
+        ESP_LOGW(TAG, "Failed to set telemetry period %u ms (state %d)", gb.state_periods[state], (int)state);
     }
 }
 
@@ -242,8 +244,14 @@ static void lora_process(uint8_t* packet, size_t packet_size) {
     size_t decoded_size = 0;
     decoded_size = lo_ra_command_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
     if (decoded_size > 0) {
-        if(lora_command_parsing(received->lora_dev_id.value, received->command.value, received->payload.value) == false) {
-            ESP_LOGE(TAG, "Unable to prcess command :C");
+        if (!received->lora_dev_id.is_present || !received->command.is_present) {
+            ESP_LOGE(TAG, "Incomplete LoRa command (missing id/command)");
+            return;
+        }
+
+        int32_t payload = received->payload.is_present ? received->payload.value : 0;
+        if (lora_command_parsing(received->lora_dev_id.value, received->command.value, payload) == false) {
+            ESP_LOGE(TAG, "Unable to process command :C");
             return;
         }
     } else {
@@ -269,9 +277,6 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
 
     tanwa_data_t tanwa_data = tanwa_data_read();
 
-    relay_driver_state_t vent_state;
-    relay_get_state(&(tanwa_hardware.relay[0]), &vent_state);
-
     FRAME_SET(frame->tanwa_battery, SCALE_TO_U32(tanwa_data.can_power_data.VOLTAGE_24V_SYS, TELEMETRY_SCALE_BATTERY));
     FRAME_SET(frame->tanwa_state, tanwa_data.state);
     FRAME_SET(frame->tanwa_thrust, SCALE_TO_I32(tanwa_data.can_weight_data.ads1_weight2, TELEMETRY_SCALE_THRUST));
@@ -279,14 +284,14 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     FRAME_SET(frame->tanwa_temp_post_n2o_fill, SCALE_TO_I32(tanwa_data.can_sensor_temp_data.temperature1, TELEMETRY_SCALE_TEMP));
     FRAME_SET(frame->tanwa_temp_filling_wall, SCALE_TO_I32(tanwa_data.can_sensor_temp_data.temperature2, TELEMETRY_SCALE_TEMP));
 
-    FRAME_SET(frame->tanwa_post_fill_n2o_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure8, TELEMETRY_SCALE_PRESSURE));
-    FRAME_SET(frame->tanwa_cutoff_n2o_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure5, TELEMETRY_SCALE_PRESSURE));
-    FRAME_SET(frame->tanwa_droid_n2o_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure3, TELEMETRY_SCALE_PRESSURE));
-    FRAME_SET(frame->tanwa_pre_reg_n2_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure7, TELEMETRY_SCALE_PRESSURE));
-    FRAME_SET(frame->tanwa_post_reg_n2_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure6, TELEMETRY_SCALE_PRESSURE));
-    FRAME_SET(frame->tanwa_post_fill_n2_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure1, TELEMETRY_SCALE_PRESSURE));
-    FRAME_SET(frame->tanwa_droid_n2_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure2, TELEMETRY_SCALE_PRESSURE));
-    FRAME_SET(frame->tanwa_comb_chamber_pres, SCALE_TO_U32(tanwa_data.can_sensor_pressure_data.pressure4, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_post_fill_n2o_pres, SCALE_TO_I32(tanwa_data.can_sensor_pressure_data.pressure8, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_cutoff_n2o_pres, SCALE_TO_I32(tanwa_data.can_sensor_pressure_data.pressure5, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_droid_n2o_pres, SCALE_TO_I32(tanwa_data.can_sensor_pressure_data.pressure3, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_pre_reg_n2_pres, SCALE_TO_I32(tanwa_data.can_sensor_pressure_data.pressure7, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_post_reg_n2_pres, SCALE_TO_I32(tanwa_data.can_sensor_pressure_data.pressure6, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_post_fill_n2_pres, SCALE_TO_I32(tanwa_data.can_sensor_pressure_data.pressure1, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_droid_n2_pres, SCALE_TO_I32(tanwa_data.can_sensor_pressure_data.pressure2, TELEMETRY_SCALE_PRESSURE));
+    FRAME_SET(frame->tanwa_comb_chamber_pres, SCALE_TO_I32(tanwa_data.can_sensor_pressure_data.pressure4, TELEMETRY_SCALE_PRESSURE));
 
     uint32_t flags = 0;
     SET_FLAG(flags, TANWA_FLAG_CAN_WEIGHTS, tanwa_data.can_connected_slaves.weights);
@@ -304,7 +309,7 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
     SET_FLAG(flags, TANWA_FLAG_DEPR_N2, tanwa_data.can_solenoid_data.state_sol4);
     SET_FLAG(flags, TANWA_FLAG_DROID_N2O, tanwa_data.can_solenoid_data.state_sol5);
     SET_FLAG(flags, TANWA_FLAG_DROID_N2, tanwa_data.can_solenoid_data.state_sol6);
-    SET_FLAG(flags, TANWA_FLAG_HEATING_TANK, vent_state == RELAY_OFF);
+    SET_FLAG(flags, TANWA_FLAG_HEATING_TANK, tanwa_data.com_data.relay_state3);
     SET_FLAG(flags, TANWA_FLAG_HEATING_VALVE, tanwa_data.com_data.relay_state2);
     FRAME_SET(frame->tanwa_flags, flags);
 }
