@@ -190,7 +190,7 @@ static size_t   on_lora_receive(uint8_t *rx_buffer, size_t buffer_len) {
     if(lora_received(use_lora) == LORA_OK) {
         len = lora_receive_packet(use_lora, rx_buffer, buffer_len);
         rx_buffer[len] = '\0';
-        ESP_LOGD(TAG, "Received %s, len %d", rx_buffer, len);
+        ESP_LOGI(TAG, "Received %s, len %d", rx_buffer, len);
     }
     return len;
 }
@@ -240,23 +240,23 @@ static void lora_process(uint8_t* packet, size_t packet_size) {
 
     //ESP_LOGI(TAG, "Received packet: %s", packet + prefix_size);
 
-    struct lo_ra_command_t* received = lo_ra_command_new(&lora_api.workspace, sizeof(lora_api.workspace));
-    size_t decoded_size = 0;
-    decoded_size = lo_ra_command_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
-    if (decoded_size > 0) {
-        if (!received->lora_dev_id.is_present || !received->command.is_present) {
-            ESP_LOGE(TAG, "Incomplete LoRa command (missing id/command)");
-            return;
-        }
+    // struct lo_ra_command_t* received = lo_ra_command_new(&lora_api.workspace, sizeof(lora_api.workspace));
+    // size_t decoded_size = 0;
+    // decoded_size = lo_ra_command_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
+    // if (decoded_size > 0) {
+    //     if (!received->lora_dev_id.is_present || !received->command.is_present) {
+    //         ESP_LOGE(TAG, "Incomplete LoRa command (missing id/command)");
+    //         return;
+    //     }
 
-        int32_t payload = received->payload.is_present ? received->payload.value : 0;
-        if (lora_command_parsing(received->lora_dev_id.value, received->command.value, payload) == false) {
-            ESP_LOGE(TAG, "Unable to process command :C");
-            return;
-        }
-    } else {
-        ESP_LOGE(TAG, "Unable to decode received package");
-    }
+    //     int32_t payload = received->payload.is_present ? received->payload.value : 0;
+    //     if (lora_command_parsing(received->lora_dev_id.value, received->command.value, payload) == false) {
+    //         ESP_LOGE(TAG, "Unable to process command :C");
+    //         return;
+    //     }
+    // } else {
+    //     ESP_LOGE(TAG, "Unable to decode received package");
+    // }
 }
 static size_t add_prefix(uint8_t* buffer, size_t size) {
     if (size < 6) {
@@ -268,7 +268,7 @@ static size_t add_prefix(uint8_t* buffer, size_t size) {
     return sizeof(PACKET_PREFIX) - 1;
 }
 
-void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
+void create_porotobuf_data_frame(struct obc_tanwa_frame_t *frame) {
     //ESP_LOGI(TAG, "Creating LoRa data frame");
     if (frame == NULL) {
         ESP_LOGE(TAG, "Frame is NULL");
@@ -317,9 +317,13 @@ void create_porotobuf_data_frame(struct lo_ra_frame_t *frame) {
 static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {
     
     //ESP_LOGI(TAG, "Creating LoRa data packet");
-    lora_api.frame = lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
+    lora_api.frame = obc_lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
+    lora_api.frame->frame = obc_lo_ra_frame_frame_tanwa_frame_e;
+    struct obc_tanwa_frame_t tanwa_frame = {0};
+    lora_api.frame->tanwa_frame_p = &tanwa_frame;
+
     //ESP_LOGI(TAG, "LoRa frame created");
-    create_porotobuf_data_frame(lora_api.frame);
+    create_porotobuf_data_frame(lora_api.frame->tanwa_frame_p);
 
     // ESP_LOGI(TAG, "FRAME:");
     // for (int i = 0; i < sizeof(struct lo_ra_frame_t); ++i) {
@@ -330,7 +334,7 @@ static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {
     uint8_t data_size = 0;
     uint8_t prefix_size = 0;
     prefix_size = add_prefix(buffer, size);
-    data_size = lo_ra_frame_encode(lora_api.frame, buffer + prefix_size, size - prefix_size);
+    data_size = obc_lo_ra_frame_encode(lora_api.frame, buffer + prefix_size, size - prefix_size);
 
     //ESP_LOGI(TAG, "LoRa frame packed size: %d", data_size);
 
@@ -387,7 +391,7 @@ bool lora_task_init(lora_api_config_t *cfg) {
      gb.lora = &lora;
 
     memset(lora_api.workspace, 0, sizeof(lora_api.workspace));
-    lora_api.frame = lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
+    lora_api.frame = obc_lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
 
     lora_init(&lora);
     lora_set_frequency(&lora, cfg->frequency_khz * 1e3);
@@ -463,6 +467,7 @@ static void transmint_packet(void) {
 
     if (size > 0 && size <= gb.tx_buffer_size) {
         lora_send_packet(&lora, gb.tx_buffer, (int16_t)size);
+        ESP_LOGW(TAG, "Sending packet");
     }
 }
 
@@ -471,27 +476,29 @@ static void on_lora_transmit(void) {
     turn_on_receive_window_timer();
 }
 
-void lora_task(void* pvParameters) {
-    ESP_LOGI(TAG, "LoRa Task started");
-
-    uint8_t rx_buffer[256];
+void lora_task(void *arg) {
+    uint8_t rx_buffer[512];
     size_t rx_packet_size = 0;
 
     while (1) {
         if (wait_until_irq() == true) {
+            // on transmit
             if (gb.lora_state == LORA_TRANSMIT) {
+                //ESP_LOGI(TAG, "ON transmit");
                 on_lora_transmit();
-                continue;
+            // on receive
+            } else {
+                rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
+                if (rx_packet_size > 0 && gb.process_packet_fnc != NULL) {
+                    gb.process_packet_fnc(rx_buffer, rx_packet_size);
+                    vTaskDelay(pdMS_TO_TICKS(100));
+                }
+                lora_change_state_to_transmit();
+                transmint_packet();
+                // qucik fix
+                turn_on_receive_window_timer();
             }
-
-            rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
-            if (rx_packet_size > 0 && lora_api.process_rx_packet_fnc != NULL) {
-                lora_api.process_rx_packet_fnc(rx_buffer, rx_packet_size);
-            }
-
-            lora_change_state_to_transmit();
-            transmint_packet();
-            turn_on_receive_window_timer();
         }
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }

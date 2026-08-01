@@ -351,9 +351,9 @@ esp_err_t board_config_init(void) {
     }
 
 
-     ESP_LOGI(TAG, "Initializing LoRa...");
+    ESP_LOGI(TAG, "Initializing LoRa...");
 
-     if (!initialize_lora(LORA_TASK_FREQUENCY_KHZ, LORA_TASK_TRANSMIT_MS)) {
+    if (!initialize_lora(LORA_TASK_FREQUENCY_KHZ, LORA_TASK_TRANSMIT_MS)) {
         ESP_LOGE(TAG, "LoRa initialization failed");
     } else {
         ESP_LOGI(TAG, "### LoRa initialization success ###");

@@ -38,14 +38,154 @@ extern "C" {
 #include "pbtools.h"
 
 /**
- * Message LoRaFrame.
+ * Message obc.MCBFrame.
  */
-struct lo_ra_frame_repeated_t {
+struct obc_mcb_frame_repeated_t {
     int length;
-    struct lo_ra_frame_t *items_p;
+    struct obc_mcb_frame_t *items_p;
 };
 
-struct lo_ra_frame_t {
+struct obc_mcb_frame_t {
+    struct pbtools_message_base_t base;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } mcb_state;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } uptime_ms;
+    struct {
+        bool is_present;
+        int32_t value;
+    } flight_time_ms;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } mcb_batt;
+    struct {
+        bool is_present;
+        float value;
+    } gps_lat;
+    struct {
+        bool is_present;
+        float value;
+    } gps_long;
+    struct {
+        bool is_present;
+        bool value;
+    } gps_sat_ok;
+    struct {
+        bool is_present;
+        int32_t value;
+    } altitude_m;
+    struct {
+        bool is_present;
+        int32_t value;
+    } velocity_m_s;
+    struct {
+        bool is_present;
+        int32_t value;
+    } mcb_temperature;
+    struct {
+        bool is_present;
+        float value;
+    } euler_fi;
+    struct {
+        bool is_present;
+        float value;
+    } euler_psi;
+    struct {
+        bool is_present;
+        float value;
+    } euler_theta;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } recovery_flags;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } pitot_battery;
+    struct {
+        bool is_present;
+        int32_t value;
+    } pitot_altitude;
+    struct {
+        bool is_present;
+        int32_t value;
+    } pitot_velocity;
+    struct {
+        bool is_present;
+        int32_t value;
+    } pitot_temperature;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } main_vent_flags;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } n2_vent_bit_data_a;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } ox_vent_eth_main_bit_data_a;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } ox_vent_eth_main_bit_data_b;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } ox_vent_eth_main_bit_data_c;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } ox_main_bit_data_a;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } ox_main_bit_data_b;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } eth_vent_bit_data_a;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } eth_vent_bit_data_b;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } auto_vent_setting;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } payload_battery;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } esp_now_connected_flags;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } esp_now_wkup_flags;
+    struct {
+        bool is_present;
+        uint32_t value;
+    } errors;
+};
+
+/**
+ * Message obc.TanwaFrame.
+ */
+struct obc_tanwa_frame_repeated_t {
+    int length;
+    struct obc_tanwa_frame_t *items_p;
+};
+
+struct obc_tanwa_frame_t {
     struct pbtools_message_base_t base;
     struct {
         bool is_present;
@@ -77,47 +217,47 @@ struct lo_ra_frame_t {
     } tanwa_temp_filling_wall;
     struct {
         bool is_present;
-        int32_t value;
+        uint32_t value;
     } tanwa_post_fill_n2o_pres;
     struct {
         bool is_present;
-        int32_t value;
+        uint32_t value;
     } tanwa_cutoff_n2o_pres;
     struct {
         bool is_present;
-        int32_t value;
+        uint32_t value;
     } tanwa_droid_n2o_pres;
     struct {
         bool is_present;
-        int32_t value;
+        uint32_t value;
     } tanwa_pre_reg_n2_pres;
     struct {
         bool is_present;
-        int32_t value;
+        uint32_t value;
     } tanwa_post_reg_n2_pres;
     struct {
         bool is_present;
-        int32_t value;
+        uint32_t value;
     } tanwa_post_fill_n2_pres;
     struct {
         bool is_present;
-        int32_t value;
+        uint32_t value;
     } tanwa_droid_n2_pres;
     struct {
         bool is_present;
-        int32_t value;
+        uint32_t value;
     } tanwa_comb_chamber_pres;
 };
 
 /**
- * Message LoRaCommand.
+ * Message obc.AppFrame.
  */
-struct lo_ra_command_repeated_t {
+struct obc_app_frame_repeated_t {
     int length;
-    struct lo_ra_command_t *items_p;
+    struct obc_app_frame_t *items_p;
 };
 
-struct lo_ra_command_t {
+struct obc_app_frame_t {
     struct pbtools_message_base_t base;
     struct {
         bool is_present;
@@ -138,86 +278,203 @@ struct lo_ra_command_t {
 };
 
 /**
- * Encoding and decoding of LoRaFrame.
+ * Enum obc.LoRaFrame.frame.
  */
-struct lo_ra_frame_t *
-lo_ra_frame_new(
+enum obc_lo_ra_frame_frame_e {
+    obc_lo_ra_frame_frame_none_e = 0,
+    obc_lo_ra_frame_frame_mcb_frame_e = 1,
+    obc_lo_ra_frame_frame_tanwa_frame_e = 2,
+    obc_lo_ra_frame_frame_app_frame_e = 3
+};
+
+/**
+ * Message obc.LoRaFrame.
+ */
+struct obc_lo_ra_frame_repeated_t {
+    int length;
+    struct obc_lo_ra_frame_t *items_p;
+};
+
+struct obc_lo_ra_frame_t {
+    struct pbtools_message_base_t base;
+    enum obc_lo_ra_frame_frame_e frame;
+    union {
+        struct obc_mcb_frame_t *mcb_frame_p;
+        struct obc_tanwa_frame_t *tanwa_frame_p;
+        struct obc_app_frame_t *app_frame_p;
+    };
+};
+
+/**
+ * Encoding and decoding of obc.MCBFrame.
+ */
+struct obc_mcb_frame_t *
+obc_mcb_frame_new(
     void *workspace_p,
     size_t size);
 
-int lo_ra_frame_encode(
-    struct lo_ra_frame_t *self_p,
+int obc_mcb_frame_encode(
+    struct obc_mcb_frame_t *self_p,
     uint8_t *encoded_p,
     size_t size);
 
-int lo_ra_frame_decode(
-    struct lo_ra_frame_t *self_p,
+int obc_mcb_frame_decode(
+    struct obc_mcb_frame_t *self_p,
     const uint8_t *encoded_p,
     size_t size);
 
 /**
- * Encoding and decoding of LoRaCommand.
+ * Encoding and decoding of obc.TanwaFrame.
  */
-struct lo_ra_command_t *
-lo_ra_command_new(
+struct obc_tanwa_frame_t *
+obc_tanwa_frame_new(
     void *workspace_p,
     size_t size);
 
-int lo_ra_command_encode(
-    struct lo_ra_command_t *self_p,
+int obc_tanwa_frame_encode(
+    struct obc_tanwa_frame_t *self_p,
     uint8_t *encoded_p,
     size_t size);
 
-int lo_ra_command_decode(
-    struct lo_ra_command_t *self_p,
+int obc_tanwa_frame_decode(
+    struct obc_tanwa_frame_t *self_p,
+    const uint8_t *encoded_p,
+    size_t size);
+
+/**
+ * Encoding and decoding of obc.AppFrame.
+ */
+struct obc_app_frame_t *
+obc_app_frame_new(
+    void *workspace_p,
+    size_t size);
+
+int obc_app_frame_encode(
+    struct obc_app_frame_t *self_p,
+    uint8_t *encoded_p,
+    size_t size);
+
+int obc_app_frame_decode(
+    struct obc_app_frame_t *self_p,
+    const uint8_t *encoded_p,
+    size_t size);
+
+int obc_lo_ra_frame_mcb_frame_alloc(
+    struct obc_lo_ra_frame_t *self_p);
+
+int obc_lo_ra_frame_tanwa_frame_alloc(
+    struct obc_lo_ra_frame_t *self_p);
+
+int obc_lo_ra_frame_app_frame_alloc(
+    struct obc_lo_ra_frame_t *self_p);
+
+/**
+ * Encoding and decoding of obc.LoRaFrame.
+ */
+struct obc_lo_ra_frame_t *
+obc_lo_ra_frame_new(
+    void *workspace_p,
+    size_t size);
+
+int obc_lo_ra_frame_encode(
+    struct obc_lo_ra_frame_t *self_p,
+    uint8_t *encoded_p,
+    size_t size);
+
+int obc_lo_ra_frame_decode(
+    struct obc_lo_ra_frame_t *self_p,
     const uint8_t *encoded_p,
     size_t size);
 
 /* Internal functions. Do not use! */
 
-void lo_ra_frame_init(
-    struct lo_ra_frame_t *self_p,
+void obc_mcb_frame_init(
+    struct obc_mcb_frame_t *self_p,
     struct pbtools_heap_t *heap_p);
 
-void lo_ra_frame_encode_inner(
+void obc_mcb_frame_encode_inner(
     struct pbtools_encoder_t *encoder_p,
-    struct lo_ra_frame_t *self_p);
+    struct obc_mcb_frame_t *self_p);
 
-void lo_ra_frame_decode_inner(
+void obc_mcb_frame_decode_inner(
     struct pbtools_decoder_t *decoder_p,
-    struct lo_ra_frame_t *self_p);
+    struct obc_mcb_frame_t *self_p);
 
-void lo_ra_frame_encode_repeated_inner(
+void obc_mcb_frame_encode_repeated_inner(
     struct pbtools_encoder_t *encoder_p,
     int field_number,
-    struct lo_ra_frame_repeated_t *repeated_p);
+    struct obc_mcb_frame_repeated_t *repeated_p);
 
-void lo_ra_frame_decode_repeated_inner(
+void obc_mcb_frame_decode_repeated_inner(
     struct pbtools_decoder_t *decoder_p,
     struct pbtools_repeated_info_t *repeated_info_p,
-    struct lo_ra_frame_repeated_t *repeated_p);
+    struct obc_mcb_frame_repeated_t *repeated_p);
 
-void lo_ra_command_init(
-    struct lo_ra_command_t *self_p,
+void obc_tanwa_frame_init(
+    struct obc_tanwa_frame_t *self_p,
     struct pbtools_heap_t *heap_p);
 
-void lo_ra_command_encode_inner(
+void obc_tanwa_frame_encode_inner(
     struct pbtools_encoder_t *encoder_p,
-    struct lo_ra_command_t *self_p);
+    struct obc_tanwa_frame_t *self_p);
 
-void lo_ra_command_decode_inner(
+void obc_tanwa_frame_decode_inner(
     struct pbtools_decoder_t *decoder_p,
-    struct lo_ra_command_t *self_p);
+    struct obc_tanwa_frame_t *self_p);
 
-void lo_ra_command_encode_repeated_inner(
+void obc_tanwa_frame_encode_repeated_inner(
     struct pbtools_encoder_t *encoder_p,
     int field_number,
-    struct lo_ra_command_repeated_t *repeated_p);
+    struct obc_tanwa_frame_repeated_t *repeated_p);
 
-void lo_ra_command_decode_repeated_inner(
+void obc_tanwa_frame_decode_repeated_inner(
     struct pbtools_decoder_t *decoder_p,
     struct pbtools_repeated_info_t *repeated_info_p,
-    struct lo_ra_command_repeated_t *repeated_p);
+    struct obc_tanwa_frame_repeated_t *repeated_p);
+
+void obc_app_frame_init(
+    struct obc_app_frame_t *self_p,
+    struct pbtools_heap_t *heap_p);
+
+void obc_app_frame_encode_inner(
+    struct pbtools_encoder_t *encoder_p,
+    struct obc_app_frame_t *self_p);
+
+void obc_app_frame_decode_inner(
+    struct pbtools_decoder_t *decoder_p,
+    struct obc_app_frame_t *self_p);
+
+void obc_app_frame_encode_repeated_inner(
+    struct pbtools_encoder_t *encoder_p,
+    int field_number,
+    struct obc_app_frame_repeated_t *repeated_p);
+
+void obc_app_frame_decode_repeated_inner(
+    struct pbtools_decoder_t *decoder_p,
+    struct pbtools_repeated_info_t *repeated_info_p,
+    struct obc_app_frame_repeated_t *repeated_p);
+
+void obc_lo_ra_frame_init(
+    struct obc_lo_ra_frame_t *self_p,
+    struct pbtools_heap_t *heap_p);
+
+void obc_lo_ra_frame_encode_inner(
+    struct pbtools_encoder_t *encoder_p,
+    struct obc_lo_ra_frame_t *self_p);
+
+void obc_lo_ra_frame_decode_inner(
+    struct pbtools_decoder_t *decoder_p,
+    struct obc_lo_ra_frame_t *self_p);
+
+void obc_lo_ra_frame_encode_repeated_inner(
+    struct pbtools_encoder_t *encoder_p,
+    int field_number,
+    struct obc_lo_ra_frame_repeated_t *repeated_p);
+
+void obc_lo_ra_frame_decode_repeated_inner(
+    struct pbtools_decoder_t *decoder_p,
+    struct pbtools_repeated_info_t *repeated_info_p,
+    struct obc_lo_ra_frame_repeated_t *repeated_p);
 
 #ifdef __cplusplus
 }
