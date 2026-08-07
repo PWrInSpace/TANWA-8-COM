@@ -77,7 +77,8 @@ static struct {
 } gb;
 
 static size_t lora_packet(uint8_t* buffer, size_t buffer_size);
-static void lora_process(uint8_t* packet, size_t packet_size); 
+static void lora_process(uint8_t* packet, size_t packet_size);
+static void transmint_packet(void);
 
 lora_struct_t lora = {
     ._spi_transmit = _lora_spi_transmit,
@@ -220,11 +221,7 @@ static uint8_t calculate_checksum(uint8_t* buffer, size_t size) {
 }
 
 static void lora_process(uint8_t* packet, size_t packet_size) {
-    if (packet_size > 40) {
-        ESP_LOGI(TAG, "Recevied packet is too big");
-        // errors_set(ERROR_TYPE_LAST_EXCEPTION, ERROR_EXCP_LORA_DECODE, 100);
-        return;
-    }
+    ESP_LOGI(TAG, "Received packet");
 
     if (check_prefix(packet, packet_size) == false) {
         ESP_LOGE(TAG, "LoRa invalid prefix");
@@ -238,26 +235,40 @@ static void lora_process(uint8_t* packet, size_t packet_size) {
         return;
     }
 
-    //ESP_LOGI(TAG, "Received packet: %s", packet + prefix_size);
+    struct obc_lo_ra_frame_t* received = obc_lo_ra_frame_new(&lora_api.workspace, sizeof(lora_api.workspace));
 
-    // struct lo_ra_command_t* received = lo_ra_command_new(&lora_api.workspace, sizeof(lora_api.workspace));
-    // size_t decoded_size = 0;
-    // decoded_size = lo_ra_command_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
-    // if (decoded_size > 0) {
-    //     if (!received->lora_dev_id.is_present || !received->command.is_present) {
-    //         ESP_LOGE(TAG, "Incomplete LoRa command (missing id/command)");
-    //         return;
-    //     }
+    size_t decoded_size = obc_lo_ra_frame_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
 
-    //     int32_t payload = received->payload.is_present ? received->payload.value : 0;
-    //     if (lora_command_parsing(received->lora_dev_id.value, received->command.value, payload) == false) {
-    //         ESP_LOGE(TAG, "Unable to process command :C");
-    //         return;
-    //     }
-    // } else {
-    //     ESP_LOGE(TAG, "Unable to decode received package");
-    // }
+    if (received->frame != obc_lo_ra_frame_frame_app_frame_e && received->frame == obc_lo_ra_frame_frame_mcb_frame_e) {
+        ESP_LOGE(TAG, "Received frame is not an app or mcb frame");
+        return;
+    }
+
+    if (decoded_size == 0) {
+        ESP_LOGE(TAG, "Unable to decode received package");
+        return;
+    }
+
+    if (received->frame == obc_lo_ra_frame_frame_app_frame_e) {
+        if (!received->app_frame_p->lora_dev_id.is_present || !received->app_frame_p->command.is_present) {
+            ESP_LOGE(TAG, "Incomplete LoRa command (missing id/command)");
+            return;
+        }
+
+        int32_t payload = received->app_frame_p->payload.is_present ? received->app_frame_p->payload.value : 0;
+
+        if (lora_command_parsing(received->app_frame_p->lora_dev_id.value, received->app_frame_p->command.value, payload) == false) {
+            ESP_LOGE(TAG, "Unable to process command :C");
+            return;
+        }
+    }
+
+    if (received->frame == obc_lo_ra_frame_frame_mcb_frame_e) {
+        // w tym przypadku nie musimy dokonywać żadnego parsowanie, jedynie potrzebujemy informacji o tym że ramka doszła
+        transmint_packet();
+    }
 }
+
 static size_t add_prefix(uint8_t* buffer, size_t size) {
     if (size < 6) {
         return 0;
@@ -494,7 +505,7 @@ void lora_task(void *arg) {
                     vTaskDelay(pdMS_TO_TICKS(100));
                 }
                 lora_change_state_to_transmit();
-                transmint_packet();
+                // transmint_packet(); // aktualnie tanwa nie nadaje samoczynnie
                 // qucik fix
                 turn_on_receive_window_timer();
             }

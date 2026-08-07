@@ -1,1 +1,3 @@
 build/
+.idea
+cmake-build-debug-esp-idf-v5.3.4
