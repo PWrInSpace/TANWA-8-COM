@@ -308,6 +308,7 @@ void tanwa_heating_valve_start(void) {
         ESP_LOGI(TAG, "Heating valve started");
     }
 }
+
 void tanwa_heating_valve_stop(void) {
     relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[1]));
     if (err != RELAY_DRIVER_OK) {

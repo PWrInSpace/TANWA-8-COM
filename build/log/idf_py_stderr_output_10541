@@ -1,4 +1,0 @@
-[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyUSB1 115200[0m
-[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
-[0;33m--- Warning: Checksum mismatch between flashed and built applications. Checksum of built application is c6a96cb9603860cabe8f8be49323c68eda82d6e31558022ff1ea41f83ea586cc[0m
-[0m
