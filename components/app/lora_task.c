@@ -132,6 +132,7 @@ static void lora_change_state_to_receive() {
     }
 
     lora_map_d0_interrupt(&lora, LORA_IRQ_D0_RXDONE);
+    lora_write_reg(&lora, REG_IRQ_FLAGS, 0xFF); // W1C: kasuje WSZYSTKIE flagi, DIO0 spada
     lora_set_receive_mode(&lora);
     gb.lora_state = LORA_RECEIVE;
 }
@@ -508,6 +509,19 @@ void lora_task(void *arg) {
 
             // Wyczyść ewentualne zaległe powiadomienia z przerwań
             ulTaskNotifyTake(pdTRUE, 0);
+
+            // Safety net: jeżeli ramka wpadła w oknie między set_receive_mode a
+            // wyzerowaniem notyfikacji, flaga RX_DONE dalej wisi w rejestrze,
+            // a DIO0 jest HIGH — bez tego POSEDGE już nie strzeli.
+            if (lora_read_reg(gb.lora, REG_IRQ_FLAGS) & IRQ_RX_DONE_MASK) {
+                rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
+                if (rx_packet_size > 0) {
+                    lora_set_receive_mode(gb.lora);
+                } else {
+                    // CRC error / śmieć — i tak zdejmij flagi, żeby DIO0 zszedł
+                    lora_write_reg(gb.lora, REG_IRQ_FLAGS, 0xFF);
+                }
+            }
 
             while (1) {
                 TickType_t current_tick = xTaskGetTickCount();
