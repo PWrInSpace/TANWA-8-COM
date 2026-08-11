@@ -60,6 +60,9 @@
 #define SET_FLAG(word, bit, cond) ((word) |= ((cond) ? (1UL << (bit)) : 0UL))
 #define FRAME_SET(field, v) do { (field).is_present = true; (field).value = (v); } while (0) // do-while(0) intentional: makes the multi-statement macro a single statement
 
+static uint8_t message_buffer[2048];
+static StaticMessageBuffer_t message_buffer_static;
+
 static struct {
     lora_struct_t *lora;
     lora_task_process_rx_packet process_packet_fnc;
@@ -67,9 +70,12 @@ static struct {
     lora_state_t lora_state;
     uint8_t tx_buffer[512]; // Buffer for LoRa transmission
     size_t tx_buffer_size;
+    MessageBufferHandle_t rx_queue;
 
     TimerHandle_t receive_window_timer;
     TaskHandle_t task;
+    uint32_t receive_window_period;
+    TaskHandle_t receive_task;
 
     const uint16_t *state_periods;
     size_t state_periods_count;
@@ -78,7 +84,7 @@ static struct {
 
 static size_t lora_packet(uint8_t* buffer, size_t buffer_size);
 static void lora_process(uint8_t* packet, size_t packet_size);
-static void transmint_packet(void);
+static void transmit_packet(void);
 
 lora_struct_t lora = {
     ._spi_transmit = _lora_spi_transmit,
@@ -130,6 +136,12 @@ static void lora_change_state_to_receive() {
     gb.lora_state = LORA_RECEIVE;
 }
 
+static void lora_change_state_to_transmit(void) {
+    if (gb.lora_state == LORA_TRANSMIT) return;
+    lora_map_d0_interrupt(&lora, LORA_IRQ_D0_TXDONE);
+    gb.lora_state = LORA_TRANSMIT;
+}
+
 void lora_set_state_periods(const uint16_t *periods_ms, size_t count) {
     gb.state_periods = periods_ms;
     gb.state_periods_count = count;
@@ -169,29 +181,12 @@ void turn_of_receive_window_timer(void) {
 
 static size_t   on_lora_receive(uint8_t *rx_buffer, size_t buffer_len) {
     size_t len = 0;
-    // if (lora_received(&gb.lora) == LORA_OK) {
-    //     len = lora_receive_packet(&gb.lora, rx_buffer, buffer_len);
-    //     rx_buffer[len] = '\0';   
-    //     ESP_LOGD(TAG, "Received %s, len %d", rx_buffer, len);
-    //     lora_map_d0_interrupt(&gb.lora, LORA_IRQ_D0_RXDONE);
-    //     lora_set_receive_mode(&gb.lora);
-    // }
-    turn_of_receive_window_timer();
-
-    //ESP_LOGI(TAG, "Waiting for D0 RXDONE interrupt");
-    
-    lora_struct_t *use_lora = gb.lora ? gb.lora : &lora;
-    ESP_LOGD(TAG, "on_lora_receive: use_lora=%p, gb.lora=%p, global lora=%p", (void*)use_lora, (void*)gb.lora, (void*)&lora);
-    lora_map_d0_interrupt(use_lora, LORA_IRQ_D0_TXDONE);
-    if (use_lora == NULL) {
-        ESP_LOGE(TAG, "on_lora_receive: no lora instance available");
-        return 0;
-    }
-
-    if(lora_received(use_lora) == LORA_OK) {
-        len = lora_receive_packet(use_lora, rx_buffer, buffer_len);
+    if (lora_received(gb.lora) == LORA_OK) {
+        len = lora_receive_packet(gb.lora, rx_buffer, buffer_len);
         rx_buffer[len] = '\0';
-        ESP_LOGI(TAG, "Received %s, len %d", rx_buffer, len);
+        ESP_LOGI(TAG, "Received %d bytes", len);
+        xMessageBufferSend(gb.rx_queue, rx_buffer, len, 100);
+        ESP_LOGD(TAG, "Received, len %d", len);
     }
     return len;
 }
@@ -230,16 +225,16 @@ static void lora_process(uint8_t* packet, size_t packet_size) {
 
 
     uint8_t prefix_size = sizeof(PACKET_PREFIX) - 1;
-    if (calculate_checksum(packet + prefix_size, packet_size - prefix_size - 1) != packet[packet_size - 1]) {
-        ESP_LOGE(TAG, "Invalid checksum");
-        return;
-    }
+    // if (calculate_checksum(packet + prefix_size, packet_size - prefix_size - 1) != packet[packet_size - 1]) {
+    //     ESP_LOGE(TAG, "Invalid checksum");
+    //     return;
+    // }
 
     struct obc_lo_ra_frame_t* received = obc_lo_ra_frame_new(&lora_api.workspace, sizeof(lora_api.workspace));
 
-    size_t decoded_size = obc_lo_ra_frame_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
+    size_t decoded_size = obc_lo_ra_frame_decode(received, packet + prefix_size, packet_size - prefix_size);
 
-    if (received->frame != obc_lo_ra_frame_frame_app_frame_e && received->frame == obc_lo_ra_frame_frame_mcb_frame_e) {
+    if (received->frame != obc_lo_ra_frame_frame_app_frame_e && received->frame != obc_lo_ra_frame_frame_mcb_frame_e) {
         ESP_LOGE(TAG, "Received frame is not an app or mcb frame");
         return;
     }
@@ -265,7 +260,8 @@ static void lora_process(uint8_t* packet, size_t packet_size) {
 
     if (received->frame == obc_lo_ra_frame_frame_mcb_frame_e) {
         // w tym przypadku nie musimy dokonywać żadnego parsowanie, jedynie potrzebujemy informacji o tym że ramka doszła
-        transmint_packet();
+        transmit_packet();
+        lora_set_receive_mode(&lora);
     }
 }
 
@@ -347,8 +343,6 @@ static size_t lora_create_data_packet(uint8_t* buffer, size_t size) {
     prefix_size = add_prefix(buffer, size);
     data_size = obc_lo_ra_frame_encode(lora_api.frame, buffer + prefix_size, size - prefix_size);
 
-    //ESP_LOGI(TAG, "LoRa frame packed size: %d", data_size);
-
     return prefix_size + data_size;
 }
 
@@ -359,7 +353,6 @@ static size_t lora_packet(uint8_t* buffer, size_t buffer_size)
 
     return size;
 }
-
 
 bool initialize_lora(uint32_t frequency_khz, uint32_t transmiting_period) {
     if(_lora_add_device() == false) {
@@ -382,6 +375,16 @@ bool initialize_lora(uint32_t frequency_khz, uint32_t transmiting_period) {
     return true;
 }
 
+static void lora_receive_task(void *arg) {
+    uint8_t msg[255];
+
+    while (1) {
+        size_t msg_size = xMessageBufferReceive(gb.rx_queue, &msg, 255, portMAX_DELAY);
+        ESP_LOGI(TAG, "Received %d", msg_size);
+        gb.process_packet_fnc(msg, msg_size);
+    }
+}
+
 bool lora_task_init(lora_api_config_t *cfg) {
     assert(cfg != NULL);
     if (cfg == NULL) {
@@ -394,6 +397,8 @@ bool lora_task_init(lora_api_config_t *cfg) {
 
     gb.process_packet_fnc = cfg->process_rx_packet_fnc;
     gb.get_tx_packet_fnc = cfg->get_tx_packet_fnc;
+    gb.receive_window_period = cfg->transmiting_period;
+    gb.rx_queue = xMessageBufferCreateStatic(2048, message_buffer, &message_buffer_static);
     gb.tx_buffer_size = 512;
     // Ensure the gb.lora instance is initialized with the global `lora`
     // so that function pointers and configuration are available to the task.
@@ -424,7 +429,7 @@ bool lora_task_init(lora_api_config_t *cfg) {
     ESP_LOGD(TAG, "Starting timer");
 
     lora_change_state_to_receive();
-    turn_on_receive_window_timer();
+    // turn_on_receive_window_timer();
 
     ESP_LOGI(TAG, "Reading LoRa registers");
     int16_t read_val_one = lora_read_reg(&lora, 0x0d);
@@ -434,6 +439,9 @@ bool lora_task_init(lora_api_config_t *cfg) {
 
     xTaskCreatePinnedToCore(lora_task, "LoRa task", LORA_TASK_STACK_SIZE, NULL, LORA_TASK_PRIORITY,
                             &gb.task, LORA_TASK_CORE);
+
+    xTaskCreatePinnedToCore(lora_receive_task, "Receive task", LORA_TASK_STACK_SIZE, NULL, LORA_TASK_PRIORITY - 1,
+                            &gb.receive_task, LORA_TASK_CORE);
 
     if (gb.task == NULL) {
         ESP_LOGI(TAG, "Failed to create LoRa task");
@@ -464,13 +472,7 @@ bool lora_change_period(uint32_t period_ms) {
     return true;
 }
 
-static void lora_change_state_to_transmit(void) {
-    if (gb.lora_state == LORA_TRANSMIT) return;
-    lora_map_d0_interrupt(&lora, LORA_IRQ_D0_TXDONE);
-    gb.lora_state = LORA_TRANSMIT;
-}
-
-static void transmint_packet(void) {
+static void transmit_packet(void) {
     size_t size = 0;
     if (gb.get_tx_packet_fnc != NULL) {
         size = gb.get_tx_packet_fnc(gb.tx_buffer, gb.tx_buffer_size);
@@ -492,22 +494,44 @@ void lora_task(void *arg) {
     size_t rx_packet_size = 0;
 
     while (1) {
-        if (wait_until_irq() == true) {
-            // on transmit
-            if (gb.lora_state == LORA_TRANSMIT) {
-                //ESP_LOGI(TAG, "ON transmit");
-                on_lora_transmit();
+        //on transmit
+        if (gb.lora_state == LORA_TRANSMIT) {
+            ESP_LOGI(TAG, "ON transmit");
+            lora_change_state_to_receive();
+
             // on receive
-            } else {
-                rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
-                if (rx_packet_size > 0 && gb.process_packet_fnc != NULL) {
-                    gb.process_packet_fnc(rx_buffer, rx_packet_size);
-                    vTaskDelay(pdMS_TO_TICKS(100));
+        } else {
+            ESP_LOGI(TAG, "ON receive");
+
+            TickType_t start_tick = xTaskGetTickCount();
+            TickType_t delay_ticks = pdMS_TO_TICKS(gb.receive_window_period);
+
+            // Wyczyść ewentualne zaległe powiadomienia z przerwań
+            ulTaskNotifyTake(pdTRUE, 0);
+
+            while (1) {
+                TickType_t current_tick = xTaskGetTickCount();
+                if (current_tick - start_tick >= delay_ticks) {
+                    break;  // Czas okienka minął
                 }
+                TickType_t remaining_ticks = delay_ticks - (current_tick - start_tick);
+
+                // Czekamy na przerwanie (RXDONE) przez pozostały czas
+                if (ulTaskNotifyTake(pdTRUE, remaining_ticks) == pdTRUE) {
+                    // Wybudzono nas przerwaniem - jest ramka!
+                    rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
+
+                    if (rx_packet_size > 0) {
+                        // lora_receive_packet przełącza układ w tryb Idle,
+                        // więc musimy z powrotem przełączyć go na tryb odbioru ciągłego
+                        // (Continuous RX)
+                        lora_set_receive_mode(gb.lora);
+                    }
+                }
+            }
+            if (state_machine_get_current_state() >= LIFT_OFF) {
                 lora_change_state_to_transmit();
-                // transmint_packet(); // aktualnie tanwa nie nadaje samoczynnie
-                // qucik fix
-                turn_on_receive_window_timer();
+                transmit_packet();
             }
         }
         vTaskDelay(pdMS_TO_TICKS(10));

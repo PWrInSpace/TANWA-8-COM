@@ -407,7 +407,7 @@ static size_t convert_data_to_frame(char *buf, size_t buf_size, void* data, size
         tanwa_data->can_weight_data.rocket_weight, tanwa_data->can_weight_data.tank_weight,
         tanwa_data->can_weight_status.i_sense, tanwa_data->can_weight_status.temperature_1, tanwa_data->can_weight_status.temperature_2);
 
-        ESP_LOGI(TAG, "WAGI %f %f %f %f", tanwa_data->can_weight_data.ads1_weight1, tanwa_data->can_weight_data.ads1_weight2, tanwa_data->can_weight_data.ads1_weight3, tanwa_data->can_weight_data.ads1_weight4);
+        // ESP_LOGI(TAG, "WAGI %f %f %f %f", tanwa_data->can_weight_data.ads1_weight1, tanwa_data->can_weight_data.ads1_weight2, tanwa_data->can_weight_data.ads1_weight3, tanwa_data->can_weight_data.ads1_weight4);
     return frame_size;
 }
 

@@ -120,8 +120,8 @@ void handle_can_alerts(uint32_t alerts) {
 
     // --- 1. BUS OFF ---
 if (alerts & TWAI_ALERT_BUS_OFF) {
-    ESP_LOGE("CAN_DIAG", "Bus-Off! TEC:%lu, REC:%lu. Czekam na stabilizację...", 
-             status.tx_error_counter, status.rx_error_counter);
+    // ESP_LOGE("CAN_DIAG", "Bus-Off! TEC:%lu, REC:%lu. Czekam na stabilizację...",
+             // status.tx_error_counter, status.rx_error_counter);
     
     twai_clear_transmit_queue();
     
@@ -140,20 +140,20 @@ if (alerts & TWAI_ALERT_BUS_OFF) {
             twai_status_info_t post_status;
             twai_get_status_info(&post_status);
             
-            ESP_LOGI("CAN_DIAG", "========================================");
-            ESP_LOGI("CAN_DIAG", "Alert: BUS RECOVERED! Driver zrestartowany.");
-            ESP_LOGI("CAN_DIAG", "Nowa sesja -> Stan: RUNNING, TEC: %lu, REC: %lu", 
-                     post_status.tx_error_counter, post_status.rx_error_counter);
-            ESP_LOGI("CAN_DIAG", "========================================");
+            // ESP_LOGI("CAN_DIAG", "========================================");
+            // ESP_LOGI("CAN_DIAG", "Alert: BUS RECOVERED! Driver zrestartowany.");
+            // ESP_LOGI("CAN_DIAG", "Nowa sesja -> Stan: RUNNING, TEC: %lu, REC: %lu",
+                     // post_status.tx_error_counter, post_status.rx_error_counter);
+            // ESP_LOGI("CAN_DIAG", "========================================");
         } else {
-            ESP_LOGE("CAN_DIAG", "Błąd restartu po recovery: %s", esp_err_to_name(err));
+            // ESP_LOGE("CAN_DIAG", "Błąd restartu po recovery: %s", esp_err_to_name(err));
         }
         last_log_time = now; 
     }
 
     // --- 3. ERROR PASSIVE (Ostrzeżenie przed Bus-Off) ---
     if (alerts & TWAI_ALERT_ERR_PASS) {
-        ESP_LOGW("CAN_DIAG", "Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: %lu", status.tx_error_counter);
+        // ESP_LOGW("CAN_DIAG", "Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: %lu", status.tx_error_counter);
         // Jeśli szyna nie odpowiada, usuwamy zatory, żeby zrobić miejsce na świeże próby Heartbeata
         if (status.msgs_to_tx > 15) twai_clear_transmit_queue();
     }
@@ -161,8 +161,8 @@ if (alerts & TWAI_ALERT_BUS_OFF) {
     // --- 4. BŁĘDY TRANSMISJI (Cykliczne) ---
     if (alerts & (TWAI_ALERT_TX_FAILED | TWAI_ALERT_BUS_ERROR)) {
         if (can_log_periodic) {
-            ESP_LOGW("CAN_DIAG", "Błędy magistrali (Brak ACK/BitError). TEC: %lu, Oczekujące TX: %lu", 
-                     status.tx_error_counter, status.msgs_to_tx);
+            // ESP_LOGW("CAN_DIAG", "Błędy magistrali (Brak ACK/BitError). TEC: %lu, Oczekujące TX: %lu",
+                     // status.tx_error_counter, status.msgs_to_tx);
             last_log_time = now;
         }
     }
