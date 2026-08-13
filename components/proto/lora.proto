@@ -54,8 +54,8 @@ message MCBFrame {
     optional fixed32 ox_main_bit_data_a = 24;
     optional fixed32 ox_main_bit_data_b = 25;
 
-    optional fixed32 eth_vent_bit_data_a = 26;
-    optional fixed32 eth_vent_bit_data_b = 27;
+    optional fixed32 eth_vent_n2_main_bit_data_a = 26;
+    optional fixed32 eth_vent_n2_main_bit_data_b = 27;
 
     optional uint32 auto_vent_setting = 28;
 

@@ -150,11 +150,11 @@ struct obc_mcb_frame_t {
     struct {
         bool is_present;
         uint32_t value;
-    } eth_vent_bit_data_a;
+    } eth_vent_n2_main_bit_data_a;
     struct {
         bool is_present;
         uint32_t value;
-    } eth_vent_bit_data_b;
+    } eth_vent_n2_main_bit_data_b;
     struct {
         bool is_present;
         uint32_t value;

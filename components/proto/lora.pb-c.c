@@ -65,8 +65,8 @@ void obc_mcb_frame_init(
     self_p->ox_vent_eth_main_bit_data_c.is_present = false;
     self_p->ox_main_bit_data_a.is_present = false;
     self_p->ox_main_bit_data_b.is_present = false;
-    self_p->eth_vent_bit_data_a.is_present = false;
-    self_p->eth_vent_bit_data_b.is_present = false;
+    self_p->eth_vent_n2_main_bit_data_a.is_present = false;
+    self_p->eth_vent_n2_main_bit_data_b.is_present = false;
     self_p->auto_vent_setting.is_present = false;
     self_p->payload_battery.is_present = false;
     self_p->esp_now_connected_flags.is_present = false;
@@ -93,11 +93,11 @@ void obc_mcb_frame_encode_inner(
     if (self_p->auto_vent_setting.is_present) {
         pbtools_encoder_write_uint32_always(encoder_p, 28, self_p->auto_vent_setting.value);
     }
-    if (self_p->eth_vent_bit_data_b.is_present) {
-        pbtools_encoder_write_fixed32_always(encoder_p, 27, self_p->eth_vent_bit_data_b.value);
+    if (self_p->eth_vent_n2_main_bit_data_b.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 27, self_p->eth_vent_n2_main_bit_data_b.value);
     }
-    if (self_p->eth_vent_bit_data_a.is_present) {
-        pbtools_encoder_write_fixed32_always(encoder_p, 26, self_p->eth_vent_bit_data_a.value);
+    if (self_p->eth_vent_n2_main_bit_data_a.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 26, self_p->eth_vent_n2_main_bit_data_a.value);
     }
     if (self_p->ox_main_bit_data_b.is_present) {
         pbtools_encoder_write_fixed32_always(encoder_p, 25, self_p->ox_main_bit_data_b.value);
@@ -311,13 +311,13 @@ void obc_mcb_frame_decode_inner(
             break;
 
         case 26:
-            self_p->eth_vent_bit_data_a.is_present = true;
-            self_p->eth_vent_bit_data_a.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
+            self_p->eth_vent_n2_main_bit_data_a.is_present = true;
+            self_p->eth_vent_n2_main_bit_data_a.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 27:
-            self_p->eth_vent_bit_data_b.is_present = true;
-            self_p->eth_vent_bit_data_b.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
+            self_p->eth_vent_n2_main_bit_data_b.is_present = true;
+            self_p->eth_vent_n2_main_bit_data_b.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 28:
