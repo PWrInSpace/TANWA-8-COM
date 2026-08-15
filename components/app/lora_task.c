@@ -188,7 +188,6 @@ static uint8_t calculate_checksum(uint8_t *buffer, size_t size) {
 }
 
 static void lora_process(uint8_t *packet, size_t packet_size) {
-    ESP_LOGI(TAG, "Received packet");
 
     if (check_prefix(packet, packet_size) == false) {
         ESP_LOGE(TAG, "LoRa invalid prefix");
@@ -470,12 +469,10 @@ void lora_task(void *arg) {
     while (1) {
         //on transmit
         if (gb.lora_state == LORA_TRANSMIT) {
-            ESP_LOGI(TAG, "ON transmit");
             lora_change_state_to_receive();
 
             // on receive
         } else {
-            ESP_LOGI(TAG, "ON receive");
 
             TickType_t start_tick = xTaskGetTickCount();
             TickType_t delay_ticks = pdMS_TO_TICKS(gb.receive_window_period);
