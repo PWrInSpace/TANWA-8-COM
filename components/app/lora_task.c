@@ -16,7 +16,11 @@
 #include "state_machine.h"
 #include "board_data.h"
 #include "esp_log.h"
+#include "esp_random.h"
 #include "stdatomic.h"
+
+#define LORA_INDEPENDENT_TX_JITTER_MS 120
+#define LORA_RESYNC_TIMEOUT_MS 3000
 
 #define TAG "LORA_TASK"
 
@@ -116,22 +120,19 @@ static void notify_end_of_rx_window(void) {
 
 static void on_receive_window_timer(TimerHandle_t timer) { notify_end_of_rx_window(); }
 
-static void lora_change_state_to_receive() {
-    ESP_LOGD(TAG, "Changing state to receive");
-    if (gb.lora_state == LORA_RECEIVE) {
-        return;
-    }
-
+static void lora_enter_receive(void) {
     lora_map_d0_interrupt(&lora, LORA_IRQ_D0_RXDONE);
     lora_write_reg(&lora, REG_IRQ_FLAGS, 0xFF); // W1C: kasuje WSZYSTKIE flagi, DIO0 spada
     lora_set_receive_mode(&lora);
     gb.lora_state = LORA_RECEIVE;
 }
 
-static void lora_change_state_to_transmit(void) {
-    if (gb.lora_state == LORA_TRANSMIT) return;
-    lora_map_d0_interrupt(&lora, LORA_IRQ_D0_TXDONE);
-    gb.lora_state = LORA_TRANSMIT;
+static void lora_change_state_to_receive(void) {
+    ESP_LOGD(TAG, "Changing state to receive");
+    if (gb.lora_state == LORA_RECEIVE) {
+        return;
+    }
+    lora_enter_receive();
 }
 
 void lora_set_state_periods(const uint16_t *periods_ms, size_t count) {
@@ -256,8 +257,8 @@ void create_porotobuf_data_frame(struct obc_tanwa_frame_t *frame) {
 
     FRAME_SET(frame->tanwa_battery, SCALE_TO_U32(tanwa_data.can_power_data.VOLTAGE_24V_SYS, TELEMETRY_SCALE_BATTERY));
     FRAME_SET(frame->tanwa_state, tanwa_data.state);
-    FRAME_SET(frame->tanwa_thrust, SCALE_TO_I32(tanwa_data.can_weight_data.ads1_weight2, TELEMETRY_SCALE_THRUST));
-    FRAME_SET(frame->tanwa_tank_weight, SCALE_TO_U32(tanwa_data.can_weight_data.ads1_weight3, TELEMETRY_SCALE_WEIGHT));
+    FRAME_SET(frame->tanwa_thrust, SCALE_TO_I32(tanwa_data.can_weight_data.ads1_weight3, TELEMETRY_SCALE_THRUST));
+    FRAME_SET(frame->tanwa_tank_weight, SCALE_TO_U32(tanwa_data.can_weight_data.ads1_weight4, TELEMETRY_SCALE_WEIGHT));
     FRAME_SET(frame->tanwa_temp_post_n2o_fill,
               SCALE_TO_I32(tanwa_data.can_sensor_temp_data.temperature1, TELEMETRY_SCALE_TEMP));
     FRAME_SET(frame->tanwa_temp_filling_wall,
@@ -447,6 +448,7 @@ bool lora_change_period(uint32_t period_ms) {
     if (period_ms < LORA_TASK_MIN_TRANSMIT_MS || period_ms > LORA_TASK_MAX_TRANSMIT_MS) return false;
 
     lora_api.transmiting_period = period_ms;
+    gb.receive_window_period = period_ms;
     return true;
 }
 
@@ -460,25 +462,32 @@ static void transmit_packet(void) {
         lora_send_packet(&lora, gb.tx_buffer, (int16_t) size);
         ESP_LOGW(TAG, "Sending packet");
     }
+
+    lora_enter_receive();
+    ulTaskNotifyTake(pdTRUE, 0);
 }
 
 void lora_task(void *arg) {
     uint8_t rx_buffer[512];
     size_t rx_packet_size = 0;
+    TickType_t last_sync_tick = xTaskGetTickCount();
 
     while (1) {
-        //on transmit
+        apply_state_period();
+
         if (gb.lora_state == LORA_TRANSMIT) {
-            lora_change_state_to_receive();
+            lora_enter_receive();
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
+        }
 
-            // on receive
-        } else {
+        TickType_t start_tick = xTaskGetTickCount();
+        TickType_t delay_ticks = pdMS_TO_TICKS(gb.receive_window_period);
+        bool transmitted = false;
 
-            TickType_t start_tick = xTaskGetTickCount();
-            TickType_t delay_ticks = pdMS_TO_TICKS(gb.receive_window_period);
-
-            // Wyczyść ewentualne zaległe powiadomienia z przerwań
-            ulTaskNotifyTake(pdTRUE, 0);
+        //na kazym oknie zaczynamy od czystego RX (aby nie bylo problemow z rejestrami)
+        lora_enter_receive();
+        ulTaskNotifyTake(pdTRUE, 0);
 
             // Safety net: jeżeli ramka wpadła w oknie między set_receive_mode a
             // wyzerowaniem notyfikacji, flaga RX_DONE dalej wisi w rejestrze,
@@ -505,24 +514,35 @@ void lora_task(void *arg) {
                     // Wybudzono nas przerwaniem - jest ramka!
                     rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
 
-                    if (atomic_load(&gb.do_transmit)) {
-                        transmit_packet();
-                        atomic_store(&gb.do_transmit, false);
-                    }
-
                     if (rx_packet_size > 0) {
                         // lora_receive_packet przełącza układ w tryb Idle,
                         // więc musimy z powrotem przełączyć go na tryb odbioru ciągłego
                         // (Continuous RX)
                         lora_set_receive_mode(gb.lora);
-                    }
+                } else {
+                    // to jest jakis dzik case, nie ma ramki - zdejmij flagi, żeby DIO0 zszedł
+                    lora_write_reg(gb.lora, REG_IRQ_FLAGS, 0xFF);
+                }
+
+                if (atomic_exchange(&gb.do_transmit, false)) {
+                    transmit_packet();
+                    transmitted = true;
+                    last_sync_tick = xTaskGetTickCount();
                 }
             }
-            if (state_machine_get_current_state() >= COUNTDOWN) {
-                lora_change_state_to_transmit();
-                transmit_packet();
-            }
+
+        //logika  zamiast uzalezneinai od obc state
+        TickType_t since_sync = xTaskGetTickCount() - last_sync_tick;
+        if (!transmitted && since_sync >= pdMS_TO_TICKS(LORA_RESYNC_TIMEOUT_MS)) {
+            uint32_t jitter_ms = esp_random() % (LORA_INDEPENDENT_TX_JITTER_MS + 1);
+            vTaskDelay(pdMS_TO_TICKS(jitter_ms));
+            ESP_LOGI(TAG, "Independent TX after %lu ms without MCB, jitter %lu ms",
+                     (unsigned long)pdTICKS_TO_MS(since_sync), (unsigned long)jitter_ms);
+            transmit_packet();
+            last_sync_tick = xTaskGetTickCount();
         }
+
         vTaskDelay(pdMS_TO_TICKS(10));
     }
+}
 }

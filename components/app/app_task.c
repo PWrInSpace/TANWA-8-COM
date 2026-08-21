@@ -109,6 +109,8 @@ void app_task(void *arg) {
         can_send_message(CAN_SENSOR_GET_TEMPERATURE_ID, data, 0);
         can_send_message(CAN_SENSOR_GET_PRESSURE_ID, data, 0);
         can_send_message(CAN_WEIGHTS_GET_ADS_CH_WEIGHT_ID, data, 0);
+        can_send_message(CAN_WEIGHTS_GET_WEIGHTS_ID, data, 0);
+        can_send_message(CAN_WEIGHTS_GET_STATUS_ID, data, 0);
         can_send_message(CAN_UTIL_GET_STATUS_ID, data, 0);
         
         tanwa_read_i_sense(&i_sense);

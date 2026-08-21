@@ -213,8 +213,9 @@ int tanwa_data_print(int argc, char **argv) {
     can_weight_data_t weight = tanwa_data_read_can_weight_data();
     printf("%s%s%-25s%s\n", CLR_BLD, CLR_YLW, "2. LOAD CELL / WEIGHT DATA", CLR_RST);
     printf("----------------------------------------------------------------------------\n");
-    printf("| %-20s | %10.2f g | %-20s | %10.2f g |\n", "Rocket Weight", weight.rocket_weight, "Tank Weight", weight.tank_weight);
-    printf("| %-20s | %10.2f g | %-20s | %10.2f g |\n", "Load Cell 1", weight.ads1_weight1, "Load Cell 2", weight.ads1_weight2);
+    printf("| %-20s | %10.2f g | %-20s | %10.2f g |\n", "Thrust (ch1)", weight.ads1_weight2, "Matka (ch2)", weight.ads1_weight3);
+    printf("| %-20s | %10.2f g | %-20s | %10.2f g |\n", "Load Cell 0", weight.ads1_weight1, "Load Cell 3", weight.ads1_weight4);
+    printf("| %-20s | %10.2f g | %-20s | %10.2f g |\n", "Rocket sum", weight.rocket_weight, "Tank sum", weight.tank_weight);
     printf("----------------------------------------------------------------------------\n\n");
 
     // --- 3. SENSORS & PRESSURE ---

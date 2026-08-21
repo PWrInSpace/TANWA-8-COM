@@ -290,15 +290,19 @@ lora_err_t lora_send_packet(lora_struct_t *lora, uint8_t *buf, int16_t size) {
   ret |= lora_start_transmission(lora);
   //ESP_LOGI(TAG, "Transmission started");
 
+  int timeout_ms = 500;
   while (!lora_check_tx_done(lora)) {
-    int8_t read_reg = lora_read_reg(lora,REG_IRQ_FLAGS);
-    //ESP_LOGI(TAG, "Waiting for TX done, IRQ_FLAGS: 0x%02X", read_reg);
+    if (timeout_ms <= 0) {
+      ESP_LOGE(TAG, "TX_DONE timeout — resetting radio to idle");
+      lora_idle(lora);
+      lora_write_reg(lora, REG_IRQ_FLAGS, 0xFF);
+      return LORA_TRANSMIT_ERR;
+    }
     lora->_delay(2);
+    timeout_ms -= 2;
   }
 
-  //ESP_LOGI(TAG, "Transmission done");
   ret |= lora_write_irq_flags(lora);
-  //ESP_LOGI(TAG, "Packet sent");
   return ret == LORA_OK ? LORA_OK : LORA_TRANSMIT_ERR;
 }
 
@@ -334,6 +338,8 @@ int16_t lora_receive_packet(lora_struct_t *lora, uint8_t *buf, int16_t size) {
   for (int16_t i = 0; i < len; i++) {
     buf[i] = lora_read_reg(lora, REG_FIFO);
   }
+
+  lora_write_reg(lora, REG_FIFO_ADDR_PTR, 0x00);
 
   return len;
 }

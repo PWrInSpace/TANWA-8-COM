@@ -462,18 +462,15 @@ esp_err_t parse_weights_ads2_all_ch_weight2(uint8_t *data, uint8_t length) {
 }
 
 esp_err_t parse_weights_ads_ch_weight(uint8_t *data, uint8_t length) {
-
-    //ESP_LOGI(TAG, "ADS Channel Weight Data: %02X %02X %02X %02X %02X", data[0], data[1], data[2], data[3], data[4]);
-
-    // Sprawdź, czy długość danych jest wystarczająca
-    
+    /* WEIGHTS 0x0F20: [0..3]=float, [4]=dev, [5]=channel (0-3).
+     * ch1 = hamownia / thrust → ads1_weight2
+     * ch2 = matka / bottle  → ads1_weight3 */
     if (length < 6) {
         ESP_LOGE(TAG, "Frame too short");
         return ESP_ERR_INVALID_ARG;
     }
 
     uint8_t ch_number = data[5];
-
     can_weight_data_t weight_data = tanwa_data_read_can_weight_data();
 
     switch (ch_number) {
@@ -491,7 +488,7 @@ esp_err_t parse_weights_ads_ch_weight(uint8_t *data, uint8_t length) {
             break;
         default:
             ESP_LOGE(TAG, "Invalid channel number: %d", ch_number);
-            return ESP_ERR_INVALID_ARG; 
+            return ESP_ERR_INVALID_ARG;
     }
     tanwa_data_update_can_weight_data(&weight_data);
 
@@ -507,7 +504,6 @@ esp_err_t parse_weights(uint8_t *data, uint8_t length) {
 
     can_weight_data_t weights_data = tanwa_data_read_can_weight_data();
 
-    // Odczytaj float z czterech bajtów (little-endian)
     memcpy(&weights_data.rocket_weight, &data[4], sizeof(float));
     memcpy(&weights_data.tank_weight, &data[0], sizeof(float));
 
