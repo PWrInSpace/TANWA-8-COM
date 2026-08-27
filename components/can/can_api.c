@@ -12,8 +12,8 @@
 #include "freertos/queue.h"
 
 #define CAN_TASK_STACK_SIZE CONFIG_CAN_TASK_STACK_SIZE
-#define CAN_TASK_PRIORITY CONFIG_CAN_TASK_PRIORITY
-#define CAN_TASK_CORE_ID CONFIG_CAN_TASK_CORE_ID
+#define CAN_TASK_PRIORITY 8
+#define CAN_TASK_CORE_ID 0
 
 #define TWAI_MAX_MESSAGE_LENGTH 8
 
@@ -29,11 +29,15 @@ esp_err_t can_start(void) {
     esp_err_t err;
 
     // Start the TWAI driver
+    //vTaskDelay(pdMS_TO_TICKS(1000)); // Short delay to ensure proper startup
     err = twai_start();
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "Failed to start TWAI driver: %s", esp_err_to_name(err));
         return err;
     }
+    ESP_LOGI(TAG, "TWAI driver started");
+
+    //can_send_message(CAN_SENSOR_DATA_ID, NULL, 0); // Request sensor data on startup
 
     return ESP_OK;
 }
@@ -66,10 +70,11 @@ esp_err_t can_send_message(uint32_t id, uint8_t *data, uint8_t length) {
     message.data_length_code = length;
     memcpy(message.data, data, length);
 
+    //ESP_LOGI(TAG, "Data: %02X %02X %02X %02X %02X %02X %02X %02X", message.data[0], message.data[1], message.data[2], message.data[3], message.data[4], message.data[5], message.data[6], message.data[7]);
+
     // Send the message
-    err = twai_transmit(&message, pdMS_TO_TICKS(100));
+    err = twai_transmit(&message, pdMS_TO_TICKS(50));
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to send CAN message: %s", esp_err_to_name(err));
         return err;
     }
 
@@ -95,7 +100,7 @@ esp_err_t can_task_init(void) {
         return ESP_ERR_INVALID_STATE;
     }
 
-    if(xTaskCreatePinnedToCore(can_task, "CAN Task", CAN_TASK_STACK_SIZE, NULL, CAN_TASK_PRIORITY, &gb.task_handle, CAN_TASK_CORE_ID) != pdPASS) {
+    if(xTaskCreatePinnedToCore(can_task, "CAN Task", CAN_TASK_STACK_SIZE, NULL, 9, &gb.task_handle, CAN_TASK_CORE_ID) != pdPASS) {
         ESP_LOGE(TAG, "Failed to create CAN task");
         return ESP_FAIL;
     }
@@ -103,25 +108,106 @@ esp_err_t can_task_init(void) {
     return ESP_OK;
 }
 
-void can_task(void *arg) {
-    esp_err_t err;
-    twai_message_t message;
+void handle_can_alerts(uint32_t alerts) {
+    if (alerts == 0) return;
 
-     while (1) {
-        // Receive a message
-        err = twai_receive(&message, pdMS_TO_TICKS(10));
+    twai_status_info_t status;
+    twai_get_status_info(&status);
+
+    static uint32_t last_log_time = 0;
+    uint32_t now = xTaskGetTickCount();
+    bool can_log_periodic = (now - last_log_time) >= pdMS_TO_TICKS(2500);
+
+    // --- 1. BUS OFF ---
+if (alerts & TWAI_ALERT_BUS_OFF) {
+    // ESP_LOGE("CAN_DIAG", "Bus-Off! TEC:%lu, REC:%lu. Czekam na stabilizację...",
+             // status.tx_error_counter, status.rx_error_counter);
+    
+    twai_clear_transmit_queue();
+    
+    // Kluczowe: Dajemy 100ms odpoczynku zanim w ogóle zaczniemy recovery
+    vTaskDelay(pdMS_TO_TICKS(100)); 
+    twai_initiate_recovery();
+}
+    
+    // --- 2. BUS RECOVERED
+    if (alerts & TWAI_ALERT_BUS_RECOVERED) {
+        vTaskDelay(pdMS_TO_TICKS(200)); 
+        twai_clear_transmit_queue(); 
+        
+        esp_err_t err = twai_start();
         if (err == ESP_OK) {
-            // Process the received message
+            twai_status_info_t post_status;
+            twai_get_status_info(&post_status);
+            
+            // ESP_LOGI("CAN_DIAG", "========================================");
+            // ESP_LOGI("CAN_DIAG", "Alert: BUS RECOVERED! Driver zrestartowany.");
+            // ESP_LOGI("CAN_DIAG", "Nowa sesja -> Stan: RUNNING, TEC: %lu, REC: %lu",
+                     // post_status.tx_error_counter, post_status.rx_error_counter);
+            // ESP_LOGI("CAN_DIAG", "========================================");
+        } else {
+            // ESP_LOGE("CAN_DIAG", "Błąd restartu po recovery: %s", esp_err_to_name(err));
+        }
+        last_log_time = now; 
+    }
+
+    // --- 3. ERROR PASSIVE (Ostrzeżenie przed Bus-Off) ---
+    if (alerts & TWAI_ALERT_ERR_PASS) {
+        // ESP_LOGW("CAN_DIAG", "Alert: ERROR PASSIVE! Sprawdź fizyczne połączenie. TEC: %lu", status.tx_error_counter);
+        // Jeśli szyna nie odpowiada, usuwamy zatory, żeby zrobić miejsce na świeże próby Heartbeata
+        if (status.msgs_to_tx > 15) twai_clear_transmit_queue();
+    }
+
+    // --- 4. BŁĘDY TRANSMISJI (Cykliczne) ---
+    if (alerts & (TWAI_ALERT_TX_FAILED | TWAI_ALERT_BUS_ERROR)) {
+        if (can_log_periodic) {
+            // ESP_LOGW("CAN_DIAG", "Błędy magistrali (Brak ACK/BitError). TEC: %lu, Oczekujące TX: %lu",
+                     // status.tx_error_counter, status.msgs_to_tx);
+            last_log_time = now;
+        }
+    }
+}
+
+#define CAN_HEARTBEAT_CHECK_ID 0x1FFFFFFF
+void can_task(void *arg) {
+    twai_message_t message;
+    uint32_t alerts;
+    twai_status_info_t status;
+    
+    TickType_t last_msg_time = xTaskGetTickCount();
+    const TickType_t timeout = pdMS_TO_TICKS(5000);
+
+    while (1) {
+        if (twai_read_alerts(&alerts, 0) == ESP_OK) {
+            handle_can_alerts(alerts);
+        }
+
+        esp_err_t err = twai_receive(&message, pdMS_TO_TICKS(100));
+
+        if (err == ESP_OK) {
+            last_msg_time = xTaskGetTickCount();
+            
             for (size_t i = 0; i < gb.num_commands; i++) {
                 if (gb.commands[i].message_id == message.identifier) {
                     gb.commands[i].handler(message.data, message.data_length_code);
                     break;
                 }
             }
-        } else if (err != ESP_ERR_TIMEOUT) {
-            ESP_LOGE(TAG, "Failed to receive CAN message: %s", esp_err_to_name(err));
+        } else {
+            twai_get_status_info(&status);
+            if (status.state == TWAI_STATE_RUNNING) {
+                TickType_t now = xTaskGetTickCount();
+                if ((now - last_msg_time) >= timeout) {
+                    
+                    uint8_t dummy = 0;
+                    if (can_send_message(CAN_HEARTBEAT_CHECK_ID, &dummy, 0) != ESP_OK) {
+                        twai_clear_transmit_queue();
+                    }
+                    
+                    last_msg_time = now;
+                }
+            }
         }
-        vTaskDelay(pdMS_TO_TICKS(10)); // Adjust delay as needed
     }
 }
 

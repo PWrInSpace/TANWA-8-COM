@@ -5,13 +5,17 @@
 #include <stdint.h>
 
 #include "lora.h"
+#include "lora.pb-c.h"
 
 #define LORA_TASK_CRC_ENABLE 0
-#define LORA_TASK_FREQUENCY_KHZ 868000
+#define LORA_TASK_FREQUENCY_KHZ 868300
 #define LORA_TASK_BANDWIDTH 8
-#define LORA_TASK_SPREADING_FACTOR 1
+#define LORA_TASK_SPREADING_FACTOR 7
+#define LORA_TASK_TX_POWER 2
 #define LORA_TASK_RECEIVE_WINDOW 1500
-#define LORA_TASK_TRANSMIT_MS 1800
+#define LORA_TASK_TRANSMIT_MS 500
+#define LORA_TASK_MIN_TRANSMIT_MS 100
+#define LORA_TASK_MAX_TRANSMIT_MS 60000
 
 #define PRIVILAGE_MASK 0x01
 #define BORADCAST_DEV_ID 0x00
@@ -36,6 +40,7 @@ typedef struct {
     uint32_t frequency_khz;
     uint32_t transmiting_period;
     uint8_t workspace[256]; // Workspace for LoRa task
+    struct obc_lo_ra_frame_t *frame;    // LoRa frame structure
 } lora_api_config_t;
 
 /**
@@ -56,6 +61,22 @@ bool initialize_lora(uint32_t frequency_khz, uint32_t transmiting_period);
 void lora_task_irq_notify(void *arg);
 
 bool lora_change_frequency(uint32_t frequency_khz);
+
+/**
+ * @brief Change the telemetry transmit / receive-window period at runtime
+ *
+ * @param period_ms new period in ms
+ * @return true on success, false if out of range or timer not ready
+ */
+bool lora_change_period(uint32_t period_ms);
+
+/**
+ * @brief Provide a per-mission-state telemetry period table
+ *
+ * @param periods_ms table of periods in ms, indexed by state_t
+ * @param count number of entries in the table
+ */
+void lora_set_state_periods(const uint16_t *periods_ms, size_t count);
 
 /**
  * @brief Initialize lora task

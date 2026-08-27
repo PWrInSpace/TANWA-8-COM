@@ -3,6 +3,8 @@
 
 #include "board_config.h"
 #include "board_data.h"
+#include "can_commands.h"
+#include "can_api.h"
 
 #include "mcu_gpio_config.h"
 #include "state_machine_config.h"
@@ -10,14 +12,25 @@
 #include "sd_task.h"
 
 #include "esp_log.h"
+#include "esp_timer.h"
 
 #define TAG "TIMERS"
 
 void on_sd_timer(void *arg){
     tanwa_data_t tanwa_data = tanwa_data_read();
-    if (SDT_send_data(&tanwa_data, sizeof(tanwa_data)) == false) {
+    uint64_t timestamp = esp_timer_get_time();
+
+    void* data = malloc(sizeof(tanwa_data_t) + sizeof(uint64_t));
+    if (data == NULL) {
+        ESP_LOGE(TAG, "Failed to allocate memory for data");
+        return;
+    }
+    memcpy(data, &timestamp, sizeof(uint64_t));
+    memcpy((uint8_t*)data + sizeof(uint64_t), &tanwa_data, sizeof(tanwa_data_t));
+    if (SDT_send_data(data, sizeof(tanwa_data_t) + sizeof(uint64_t)) == false) {
         ESP_LOGE(TAG, "Error while sending data to sd card");
     }
+    free(data);
 }
 
 void on_abort_button_timer(void *arg){
@@ -56,8 +69,13 @@ void on_ignition_timer(void *arg){
 
     sys_timer_start(TIMER_IGNITION_OFF, IGNITION_OFF_TIMER, TIMER_TYPE_ONE_SHOT);
 
-    return;
+    uint16_t measure_time = 40;
 
+    uint8_t data[8] = {1, 0, 0, 0, 0, 0, 0, 0};
+    memcpy(&data[1], &measure_time, sizeof(uint16_t));
+    can_send_message(CAN_WEIGHTS_START_MEASURE_ID, data, 3);
+
+    return;
 }
 
 static void on_ignition_off(void *arg){
@@ -79,28 +97,9 @@ bool initialize_timers(void) {
     {.timer_id = TIMER_SD_DATA, .timer_callback_fnc = on_sd_timer, .timer_arg = NULL},
     //{.timer_id = TIMER_BUZZER, .timer_callback_fnc = on_buzzer_timer, .timer_arg = NULL},
     {.timer_id = TIMER_ABORT_BUTTON, .timer_callback_fnc = on_abort_button_timer, .timer_arg = NULL},
-    //{.timer_id = TIMER_DISCONNECT, .timer_callback_fnc = on_disconnect_timer, .timer_arg = NULL},
-    //{.timer_id = TIMER_IGNITION, .timer_callback_fnc = on_ignition_timer, .timer_arg = NULL},
-    //{.timer_id = TIMER_BURN, .timer_callback_fnc = on_burn_timer, .timer_arg = NULL},
-    //{.timer_id = TIMER_AFTER_BURNOUT, .timer_callback_fnc = on_after_burnout_timer, .timer_arg = NULL},
-    //{.timer_id = TIMER_FUEL_INITIAL, .timer_callback_fnc = on_fuel_initial, .timer_arg = NULL},
-    //{.timer_id = TIMER_OXIDIZER_FULL, .timer_callback_fnc = on_oxidizer_full, .timer_arg = NULL},
-    //{.timer_id = TIMER_FUEL_FULL, .timer_callback_fnc = on_fuel_full, .timer_arg = NULL},
     {.timer_id = TIMER_IGNITION_OFF, .timer_callback_fnc = on_ignition_off, .timer_arg = NULL}
     };
     return sys_timer_init(timers, sizeof(timers) / sizeof(timers[0]));
-}
-
-bool buzzer_timer_start(uint32_t period_ms) {
-    return sys_timer_start(TIMER_BUZZER, period_ms, TIMER_TYPE_PERIODIC);
-}
-
-bool buzzer_timer_change_period(uint32_t period_ms) {
-    if (!sys_timer_stop(TIMER_BUZZER)) {
-        ESP_LOGE(TAG, "Failed to stop buzzer timer");
-        return false;
-    }
-    return sys_timer_start(TIMER_BUZZER, period_ms, TIMER_TYPE_PERIODIC);
 }
 
 bool abort_button_timer_start_once(uint32_t period_ms) {

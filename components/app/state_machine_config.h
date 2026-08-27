@@ -7,18 +7,25 @@
 #ifndef PWRINSPACE_STATE_MACHINE_CONFIG_H_
 #define PWRINSPACE_STATE_MACHINE_CONFIG_H_
 
+#include "stdbool.h"
 #include "state_machine.h"
 
-#include "stdbool.h"
 
 typedef enum {
     INIT = 0,
     IDLE,
+    RECOVERY_ARM,
+    FILLING,
+    PRESSURIZING,
     ARMED_TO_LAUNCH,
     RDY_TO_LAUNCH,
     COUNTDOWN,
-    FIRE,
-    AFTER_BURNOUT,
+    LIFT_OFF,
+    BURN,
+    FLIGHT,
+    FIRST_STAGE_RECOVERY,
+    SECOND_STAGE_RECOVERY,
+    ON_GROUND,
     HOLD,
     ABORT,
 } state_t;

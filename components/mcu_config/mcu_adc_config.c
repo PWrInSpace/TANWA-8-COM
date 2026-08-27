@@ -11,7 +11,7 @@
 
 mcu_adc_config_t mcu_adc_config = {                                                        
   .adc_cal = {1.0f, 5.742f, 5.180f},                     
-  .adc_chan = {VBAT_CHANNEL, IGNITER_1_CHANNEL, IGNITER_2_CHANNEL}, 
+  .adc_chan = {ISENSE_CHANNEL, IGNITER_1_CHANNEL, IGNITER_2_CHANNEL}, 
   .adc_chan_num = MAX_CHANNEL_INDEX,
   .oneshot_unit_init_cfg = {                                  
     .unit_id = ADC_UNIT_1,                               
@@ -59,6 +59,6 @@ bool _mcu_adc_read_voltage(uint8_t channel, float* adc_voltage) {
   if (!_mcu_adc_read_raw(channel, &vRaw)) {
     return false;
   }
-  *adc_voltage = mcu_adc_config.adc_cal[channel] * (float)vRaw / 4095.0f * 3.3f;
+  *adc_voltage = mcu_adc_config.adc_cal[channel] * (float)vRaw / 4095.0f * 1.0f;
   return true;
 }

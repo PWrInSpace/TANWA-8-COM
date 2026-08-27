@@ -25,8 +25,8 @@ typedef struct {
 
 typedef struct {
     uint8_t i_sense;
-    uint8_t tempture_1;
-    uint8_t tempture_2;
+    uint8_t temperature_1;
+    uint8_t temperature_2;
 } can_weight_status_t;
 
 typedef struct {
@@ -38,6 +38,8 @@ typedef struct {
     float ads2_weight2;
     float ads2_weight3;
     float ads2_weight4;
+    float rocket_weight;
+    float tank_weight;
 } can_weight_data_t;
 
 typedef struct {
@@ -73,9 +75,11 @@ typedef struct {
 } can_sensor_status_t;
 
 typedef struct {
-    int16_t temperature1;
-    int16_t temperature2;
-    int16_t temperature3;
+    float temperature1;
+    float temperature2;
+    float temperature3;
+    float temperature1_pt100;
+    float temperature2_pt100;
 } can_sensor_temp_data_t;
 
 typedef struct {
@@ -110,10 +114,10 @@ typedef struct {
 } can_power_status_t;
 
 typedef struct {
-    uint16_t voltage_12V;
-    uint16_t volatage_24V;
-    uint16_t current_12V;
-    uint16_t current_24V;
+    uint16_t VOLTAGE_24V_SOL;
+    uint16_t VOLTAGE_24V_SYS;
+    uint16_t current_24V_SYS;
+    uint16_t current_24V_SOL;
 } can_power_data_t;
 
 #endif // PWRINSPACE_SLAVE_STRUCTS_H_

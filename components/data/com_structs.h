@@ -16,7 +16,7 @@
 #include <stdint.h>
 
 typedef struct {
-    float vbat;
+    float i_sense;
     bool abort_button;
     bool arm_state;
     bool relay_state1;

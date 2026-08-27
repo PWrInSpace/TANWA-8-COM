@@ -8,6 +8,7 @@
 #include "driver/twai.h"
 #include "esp_err.h"
 
+
 /*!
  * \brief TWAI configuration structure
  * \param tx_gpio_num GPIO number for TX pin
@@ -22,6 +23,8 @@ typedef struct {
   twai_timing_config_t t_config;
   twai_filter_config_t f_config;
 } mcu_twai_config_t;
+
+extern mcu_twai_config_t mcu_twai_config;
 
 /*!
  * \brief TWAI initialization, initializes and starts TWAI driver

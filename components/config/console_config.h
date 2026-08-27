@@ -21,4 +21,8 @@
  */
 esp_err_t console_config_init();
 
+int print_can_connected_slaves(int argc, char **argv);
+
+int change_buzzer_state(int argc, char **argv);
+
 #endif /* PWRINSPACE_CONSOLE_CONFIG_H_ */

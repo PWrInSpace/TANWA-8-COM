@@ -33,6 +33,7 @@ typedef enum {
     RELAY_2_GPIO = CONFIG_RELAY_2_GPIO,
     RELAY_3_GPIO = CONFIG_RELAY_3_GPIO,
     RELAY_4_GPIO = CONFIG_RELAY_4_GPIO,
+    CAN_STB_GPIO = CONFIG_CAN_STB,
 } mcu_gpio_cfg_t;
 
 // ADD GPIO PINS INDICES HERE
@@ -49,6 +50,7 @@ typedef enum {
     RELAY_2_GPIO_INDEX,
     RELAY_3_GPIO_INDEX,
     RELAY_4_GPIO_INDEX,
+    CAN_STB_GPIO_INDEX,
     MAX_GPIO_INDEX,
 } mcu_gpio_index_cfg_t;
 

@@ -30,80 +30,155 @@
 
 #include <limits.h>
 #include "lora.pb-c.h"
-#include "pbtools.h"
 
 #if CHAR_BIT != 8
 #    error "Number of bits in a char must be 8."
 #endif
 
-void lo_ra_frame_init(
-    struct lo_ra_frame_t *self_p,
+void obc_mcb_frame_init(
+    struct obc_mcb_frame_t *self_p,
     struct pbtools_heap_t *heap_p)
 {
     self_p->base.heap_p = heap_p;
-    self_p->tanwa_state = 0;
-    self_p->uptime = 0;
-    self_p->engine_work_time = 0;
-    self_p->pressure_fuel = 0;
-    self_p->pressure_after_fill = 0;
-    self_p->pressure_before_fill = 0;
-    self_p->pressure_oxy = 0;
-    self_p->pressure_injector_fuel = 0;
-    self_p->pressure_injector_oxi = 0;
-    self_p->pressure_combustion_chamber = 0;
-    self_p->status_fill = 0;
-    self_p->status_depr = 0;
-    self_p->status_vent = 0;
-    self_p->status_arm.is_present = false;
-    self_p->igniter_cont1 = 0;
-    self_p->igniter_cont2 = 0;
-    self_p->tanwa_battery = 0;
-    self_p->engine_thrust = 0;
-    self_p->rocket_weight = 0;
-    self_p->tank_weight = 0;
-    self_p->temp_injector = 0;
-    self_p->temp_combustion_chamber = 0;
-    self_p->temp_external_tank = 0;
-    self_p->status_oxy = 0;
-    self_p->status_fuel = 0;
+    self_p->mcb_state.is_present = false;
+    self_p->uptime_ms.is_present = false;
+    self_p->flight_time_ms.is_present = false;
+    self_p->mcb_batt.is_present = false;
+    self_p->gps_lat.is_present = false;
+    self_p->gps_long.is_present = false;
+    self_p->gps_sat_ok.is_present = false;
+    self_p->altitude_m.is_present = false;
+    self_p->velocity_m_s.is_present = false;
+    self_p->mcb_temperature.is_present = false;
+    self_p->euler_fi.is_present = false;
+    self_p->euler_psi.is_present = false;
+    self_p->euler_theta.is_present = false;
+    self_p->recovery_flags.is_present = false;
+    self_p->pitot_battery.is_present = false;
+    self_p->pitot_altitude.is_present = false;
+    self_p->pitot_velocity.is_present = false;
+    self_p->pitot_temperature.is_present = false;
+    self_p->main_vent_flags.is_present = false;
+    self_p->n2_vent_bit_data_a.is_present = false;
+    self_p->ox_vent_eth_main_bit_data_a.is_present = false;
+    self_p->ox_vent_eth_main_bit_data_b.is_present = false;
+    self_p->ox_vent_eth_main_bit_data_c.is_present = false;
+    self_p->ox_main_bit_data_a.is_present = false;
+    self_p->ox_main_bit_data_b.is_present = false;
+    self_p->eth_vent_n2_main_bit_data_a.is_present = false;
+    self_p->eth_vent_n2_main_bit_data_b.is_present = false;
+    self_p->auto_vent_setting.is_present = false;
+    self_p->payload_battery.is_present = false;
+    self_p->esp_now_connected_flags.is_present = false;
+    self_p->esp_now_wkup_flags.is_present = false;
+    self_p->errors.is_present = false;
 }
 
-void lo_ra_frame_encode_inner(
+void obc_mcb_frame_encode_inner(
     struct pbtools_encoder_t *encoder_p,
-    struct lo_ra_frame_t *self_p)
+    struct obc_mcb_frame_t *self_p)
 {
-    pbtools_encoder_write_bool(encoder_p, 25, self_p->status_fuel);
-    pbtools_encoder_write_bool(encoder_p, 24, self_p->status_oxy);
-    pbtools_encoder_write_float(encoder_p, 23, self_p->temp_external_tank);
-    pbtools_encoder_write_float(encoder_p, 22, self_p->temp_combustion_chamber);
-    pbtools_encoder_write_float(encoder_p, 21, self_p->temp_injector);
-    pbtools_encoder_write_float(encoder_p, 20, self_p->tank_weight);
-    pbtools_encoder_write_float(encoder_p, 19, self_p->rocket_weight);
-    pbtools_encoder_write_float(encoder_p, 18, self_p->engine_thrust);
-    pbtools_encoder_write_float(encoder_p, 17, self_p->tanwa_battery);
-    pbtools_encoder_write_bool(encoder_p, 16, self_p->igniter_cont2);
-    pbtools_encoder_write_bool(encoder_p, 15, self_p->igniter_cont1);
-    if (self_p->status_arm.is_present) {
-        pbtools_encoder_write_bool_always(encoder_p, 14, self_p->status_arm.value);
+    if (self_p->errors.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 32, self_p->errors.value);
     }
-    pbtools_encoder_write_bool(encoder_p, 13, self_p->status_vent);
-    pbtools_encoder_write_bool(encoder_p, 12, self_p->status_depr);
-    pbtools_encoder_write_bool(encoder_p, 11, self_p->status_fill);
-    pbtools_encoder_write_float(encoder_p, 10, self_p->pressure_combustion_chamber);
-    pbtools_encoder_write_float(encoder_p, 9, self_p->pressure_injector_oxi);
-    pbtools_encoder_write_float(encoder_p, 8, self_p->pressure_injector_fuel);
-    pbtools_encoder_write_float(encoder_p, 7, self_p->pressure_oxy);
-    pbtools_encoder_write_float(encoder_p, 6, self_p->pressure_before_fill);
-    pbtools_encoder_write_float(encoder_p, 5, self_p->pressure_after_fill);
-    pbtools_encoder_write_float(encoder_p, 4, self_p->pressure_fuel);
-    pbtools_encoder_write_int32(encoder_p, 3, self_p->engine_work_time);
-    pbtools_encoder_write_uint32(encoder_p, 2, self_p->uptime);
-    pbtools_encoder_write_uint32(encoder_p, 1, self_p->tanwa_state);
+    if (self_p->esp_now_wkup_flags.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 31, self_p->esp_now_wkup_flags.value);
+    }
+    if (self_p->esp_now_connected_flags.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 30, self_p->esp_now_connected_flags.value);
+    }
+    if (self_p->payload_battery.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 29, self_p->payload_battery.value);
+    }
+    if (self_p->auto_vent_setting.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 28, self_p->auto_vent_setting.value);
+    }
+    if (self_p->eth_vent_n2_main_bit_data_b.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 27, self_p->eth_vent_n2_main_bit_data_b.value);
+    }
+    if (self_p->eth_vent_n2_main_bit_data_a.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 26, self_p->eth_vent_n2_main_bit_data_a.value);
+    }
+    if (self_p->ox_main_bit_data_b.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 25, self_p->ox_main_bit_data_b.value);
+    }
+    if (self_p->ox_main_bit_data_a.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 24, self_p->ox_main_bit_data_a.value);
+    }
+    if (self_p->ox_vent_eth_main_bit_data_c.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 23, self_p->ox_vent_eth_main_bit_data_c.value);
+    }
+    if (self_p->ox_vent_eth_main_bit_data_b.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 22, self_p->ox_vent_eth_main_bit_data_b.value);
+    }
+    if (self_p->ox_vent_eth_main_bit_data_a.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 21, self_p->ox_vent_eth_main_bit_data_a.value);
+    }
+    if (self_p->n2_vent_bit_data_a.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 20, self_p->n2_vent_bit_data_a.value);
+    }
+    if (self_p->main_vent_flags.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 19, self_p->main_vent_flags.value);
+    }
+    if (self_p->pitot_temperature.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 18, self_p->pitot_temperature.value);
+    }
+    if (self_p->pitot_velocity.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 17, self_p->pitot_velocity.value);
+    }
+    if (self_p->pitot_altitude.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 16, self_p->pitot_altitude.value);
+    }
+    if (self_p->pitot_battery.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 15, self_p->pitot_battery.value);
+    }
+    if (self_p->recovery_flags.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 14, self_p->recovery_flags.value);
+    }
+    if (self_p->euler_theta.is_present) {
+        pbtools_encoder_write_float_always(encoder_p, 13, self_p->euler_theta.value);
+    }
+    if (self_p->euler_psi.is_present) {
+        pbtools_encoder_write_float_always(encoder_p, 12, self_p->euler_psi.value);
+    }
+    if (self_p->euler_fi.is_present) {
+        pbtools_encoder_write_float_always(encoder_p, 11, self_p->euler_fi.value);
+    }
+    if (self_p->mcb_temperature.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 10, self_p->mcb_temperature.value);
+    }
+    if (self_p->velocity_m_s.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 9, self_p->velocity_m_s.value);
+    }
+    if (self_p->altitude_m.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 8, self_p->altitude_m.value);
+    }
+    if (self_p->gps_sat_ok.is_present) {
+        pbtools_encoder_write_bool_always(encoder_p, 7, self_p->gps_sat_ok.value);
+    }
+    if (self_p->gps_long.is_present) {
+        pbtools_encoder_write_float_always(encoder_p, 6, self_p->gps_long.value);
+    }
+    if (self_p->gps_lat.is_present) {
+        pbtools_encoder_write_float_always(encoder_p, 5, self_p->gps_lat.value);
+    }
+    if (self_p->mcb_batt.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 4, self_p->mcb_batt.value);
+    }
+    if (self_p->flight_time_ms.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 3, self_p->flight_time_ms.value);
+    }
+    if (self_p->uptime_ms.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 2, self_p->uptime_ms.value);
+    }
+    if (self_p->mcb_state.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 1, self_p->mcb_state.value);
+    }
 }
 
-void lo_ra_frame_decode_inner(
+void obc_mcb_frame_decode_inner(
     struct pbtools_decoder_t *decoder_p,
-    struct lo_ra_frame_t *self_p)
+    struct obc_mcb_frame_t *self_p)
 {
     int wire_type;
 
@@ -111,104 +186,163 @@ void lo_ra_frame_decode_inner(
         switch (pbtools_decoder_read_tag(decoder_p, &wire_type)) {
 
         case 1:
-            self_p->tanwa_state = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->mcb_state.is_present = true;
+            self_p->mcb_state.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
             break;
 
         case 2:
-            self_p->uptime = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->uptime_ms.is_present = true;
+            self_p->uptime_ms.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
             break;
 
         case 3:
-            self_p->engine_work_time = pbtools_decoder_read_int32(decoder_p, wire_type);
+            self_p->flight_time_ms.is_present = true;
+            self_p->flight_time_ms.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 4:
-            self_p->pressure_fuel = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->mcb_batt.is_present = true;
+            self_p->mcb_batt.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
             break;
 
         case 5:
-            self_p->pressure_after_fill = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->gps_lat.is_present = true;
+            self_p->gps_lat.value = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 
         case 6:
-            self_p->pressure_before_fill = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->gps_long.is_present = true;
+            self_p->gps_long.value = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 
         case 7:
-            self_p->pressure_oxy = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->gps_sat_ok.is_present = true;
+            self_p->gps_sat_ok.value = pbtools_decoder_read_bool(decoder_p, wire_type);
             break;
 
         case 8:
-            self_p->pressure_injector_fuel = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->altitude_m.is_present = true;
+            self_p->altitude_m.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 9:
-            self_p->pressure_injector_oxi = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->velocity_m_s.is_present = true;
+            self_p->velocity_m_s.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 10:
-            self_p->pressure_combustion_chamber = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->mcb_temperature.is_present = true;
+            self_p->mcb_temperature.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 11:
-            self_p->status_fill = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->euler_fi.is_present = true;
+            self_p->euler_fi.value = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 
         case 12:
-            self_p->status_depr = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->euler_psi.is_present = true;
+            self_p->euler_psi.value = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 
         case 13:
-            self_p->status_vent = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->euler_theta.is_present = true;
+            self_p->euler_theta.value = pbtools_decoder_read_float(decoder_p, wire_type);
             break;
 
         case 14:
-            self_p->status_arm.is_present = true;
-            self_p->status_arm.value = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->recovery_flags.is_present = true;
+            self_p->recovery_flags.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 15:
-            self_p->igniter_cont1 = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->pitot_battery.is_present = true;
+            self_p->pitot_battery.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
             break;
 
         case 16:
-            self_p->igniter_cont2 = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->pitot_altitude.is_present = true;
+            self_p->pitot_altitude.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 17:
-            self_p->tanwa_battery = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->pitot_velocity.is_present = true;
+            self_p->pitot_velocity.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 18:
-            self_p->engine_thrust = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->pitot_temperature.is_present = true;
+            self_p->pitot_temperature.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 19:
-            self_p->rocket_weight = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->main_vent_flags.is_present = true;
+            self_p->main_vent_flags.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 20:
-            self_p->tank_weight = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->n2_vent_bit_data_a.is_present = true;
+            self_p->n2_vent_bit_data_a.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 21:
-            self_p->temp_injector = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->ox_vent_eth_main_bit_data_a.is_present = true;
+            self_p->ox_vent_eth_main_bit_data_a.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 22:
-            self_p->temp_combustion_chamber = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->ox_vent_eth_main_bit_data_b.is_present = true;
+            self_p->ox_vent_eth_main_bit_data_b.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 23:
-            self_p->temp_external_tank = pbtools_decoder_read_float(decoder_p, wire_type);
+            self_p->ox_vent_eth_main_bit_data_c.is_present = true;
+            self_p->ox_vent_eth_main_bit_data_c.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 24:
-            self_p->status_oxy = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->ox_main_bit_data_a.is_present = true;
+            self_p->ox_main_bit_data_a.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 25:
-            self_p->status_fuel = pbtools_decoder_read_bool(decoder_p, wire_type);
+            self_p->ox_main_bit_data_b.is_present = true;
+            self_p->ox_main_bit_data_b.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
+            break;
+
+        case 26:
+            self_p->eth_vent_n2_main_bit_data_a.is_present = true;
+            self_p->eth_vent_n2_main_bit_data_a.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
+            break;
+
+        case 27:
+            self_p->eth_vent_n2_main_bit_data_b.is_present = true;
+            self_p->eth_vent_n2_main_bit_data_b.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
+            break;
+
+        case 28:
+            self_p->auto_vent_setting.is_present = true;
+            self_p->auto_vent_setting.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 29:
+            self_p->payload_battery.is_present = true;
+            self_p->payload_battery.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 30:
+            self_p->esp_now_connected_flags.is_present = true;
+            self_p->esp_now_connected_flags.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
+            break;
+
+        case 31:
+            self_p->esp_now_wkup_flags.is_present = true;
+            self_p->esp_now_wkup_flags.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
+            break;
+
+        case 32:
+            self_p->errors.is_present = true;
+            self_p->errors.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         default:
@@ -218,47 +352,47 @@ void lo_ra_frame_decode_inner(
     }
 }
 
-void lo_ra_frame_encode_repeated_inner(
+void obc_mcb_frame_encode_repeated_inner(
     struct pbtools_encoder_t *encoder_p,
     int field_number,
-    struct lo_ra_frame_repeated_t *repeated_p)
+    struct obc_mcb_frame_repeated_t *repeated_p)
 {
     pbtools_encode_repeated_inner(
         encoder_p,
         field_number,
         (struct pbtools_repeated_message_t *)repeated_p,
-        sizeof(struct lo_ra_frame_t),
-        (pbtools_message_encode_inner_t)lo_ra_frame_encode_inner);
+        sizeof(struct obc_mcb_frame_t),
+        (pbtools_message_encode_inner_t)obc_mcb_frame_encode_inner);
 }
 
-void lo_ra_frame_decode_repeated_inner(
+void obc_mcb_frame_decode_repeated_inner(
     struct pbtools_decoder_t *decoder_p,
     struct pbtools_repeated_info_t *repeated_info_p,
-    struct lo_ra_frame_repeated_t *repeated_p)
+    struct obc_mcb_frame_repeated_t *repeated_p)
 {
     pbtools_decode_repeated_inner(
         decoder_p,
         repeated_info_p,
         (struct pbtools_repeated_message_t *)repeated_p,
-        sizeof(struct lo_ra_frame_t),
-        (pbtools_message_init_t)lo_ra_frame_init,
-        (pbtools_message_decode_inner_t)lo_ra_frame_decode_inner);
+        sizeof(struct obc_mcb_frame_t),
+        (pbtools_message_init_t)obc_mcb_frame_init,
+        (pbtools_message_decode_inner_t)obc_mcb_frame_decode_inner);
 }
 
-struct lo_ra_frame_t *
-lo_ra_frame_new(
+struct obc_mcb_frame_t *
+obc_mcb_frame_new(
     void *workspace_p,
     size_t size)
 {
     return (pbtools_message_new(
                 workspace_p,
                 size,
-                sizeof(struct lo_ra_frame_t),
-                (pbtools_message_init_t)lo_ra_frame_init));
+                sizeof(struct obc_mcb_frame_t),
+                (pbtools_message_init_t)obc_mcb_frame_init));
 }
 
-int lo_ra_frame_encode(
-    struct lo_ra_frame_t *self_p,
+int obc_mcb_frame_encode(
+    struct obc_mcb_frame_t *self_p,
     uint8_t *encoded_p,
     size_t size)
 {
@@ -266,11 +400,11 @@ int lo_ra_frame_encode(
                 &self_p->base,
                 encoded_p,
                 size,
-                (pbtools_message_encode_inner_t)lo_ra_frame_encode_inner));
+                (pbtools_message_encode_inner_t)obc_mcb_frame_encode_inner));
 }
 
-int lo_ra_frame_decode(
-    struct lo_ra_frame_t *self_p,
+int obc_mcb_frame_decode(
+    struct obc_mcb_frame_t *self_p,
     const uint8_t *encoded_p,
     size_t size)
 {
@@ -278,153 +412,85 @@ int lo_ra_frame_decode(
                 &self_p->base,
                 encoded_p,
                 size,
-                (pbtools_message_decode_inner_t)lo_ra_frame_decode_inner));
+                (pbtools_message_decode_inner_t)obc_mcb_frame_decode_inner));
 }
 
-void lo_ra_command_init(
-    struct lo_ra_command_t *self_p,
+void obc_tanwa_frame_init(
+    struct obc_tanwa_frame_t *self_p,
     struct pbtools_heap_t *heap_p)
 {
     self_p->base.heap_p = heap_p;
-    self_p->lora_dev_id = 0;
-    self_p->sys_dev_id = 0;
-    self_p->command = 0;
-    self_p->payload = 0;
+    self_p->tanwa_battery.is_present = false;
+    self_p->tanwa_state.is_present = false;
+    self_p->tanwa_flags.is_present = false;
+    self_p->tanwa_thrust.is_present = false;
+    self_p->tanwa_tank_weight.is_present = false;
+    self_p->tanwa_temp_post_n2o_fill.is_present = false;
+    self_p->tanwa_temp_filling_wall.is_present = false;
+    self_p->tanwa_post_fill_n2o_pres.is_present = false;
+    self_p->tanwa_cutoff_n2o_pres.is_present = false;
+    self_p->tanwa_droid_n2o_pres.is_present = false;
+    self_p->tanwa_pre_reg_n2_pres.is_present = false;
+    self_p->tanwa_post_reg_n2_pres.is_present = false;
+    self_p->tanwa_post_fill_n2_pres.is_present = false;
+    self_p->tanwa_droid_n2_pres.is_present = false;
+    self_p->tanwa_comb_chamber_pres.is_present = false;
 }
 
-void lo_ra_command_encode_inner(
+void obc_tanwa_frame_encode_inner(
     struct pbtools_encoder_t *encoder_p,
-    struct lo_ra_command_t *self_p)
+    struct obc_tanwa_frame_t *self_p)
 {
-    pbtools_encoder_write_int32(encoder_p, 4, self_p->payload);
-    pbtools_encoder_write_uint32(encoder_p, 3, self_p->command);
-    pbtools_encoder_write_uint32(encoder_p, 2, self_p->sys_dev_id);
-    pbtools_encoder_write_uint32(encoder_p, 1, self_p->lora_dev_id);
-}
-
-void lo_ra_command_decode_inner(
-    struct pbtools_decoder_t *decoder_p,
-    struct lo_ra_command_t *self_p)
-{
-    int wire_type;
-
-    while (pbtools_decoder_available(decoder_p)) {
-        switch (pbtools_decoder_read_tag(decoder_p, &wire_type)) {
-
-        case 1:
-            self_p->lora_dev_id = pbtools_decoder_read_uint32(decoder_p, wire_type);
-            break;
-
-        case 2:
-            self_p->sys_dev_id = pbtools_decoder_read_uint32(decoder_p, wire_type);
-            break;
-
-        case 3:
-            self_p->command = pbtools_decoder_read_uint32(decoder_p, wire_type);
-            break;
-
-        case 4:
-            self_p->payload = pbtools_decoder_read_int32(decoder_p, wire_type);
-            break;
-
-        default:
-            pbtools_decoder_skip_field(decoder_p, wire_type);
-            break;
-        }
+    if (self_p->tanwa_comb_chamber_pres.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 15, self_p->tanwa_comb_chamber_pres.value);
+    }
+    if (self_p->tanwa_droid_n2_pres.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 14, self_p->tanwa_droid_n2_pres.value);
+    }
+    if (self_p->tanwa_post_fill_n2_pres.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 13, self_p->tanwa_post_fill_n2_pres.value);
+    }
+    if (self_p->tanwa_post_reg_n2_pres.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 12, self_p->tanwa_post_reg_n2_pres.value);
+    }
+    if (self_p->tanwa_pre_reg_n2_pres.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 11, self_p->tanwa_pre_reg_n2_pres.value);
+    }
+    if (self_p->tanwa_droid_n2o_pres.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 10, self_p->tanwa_droid_n2o_pres.value);
+    }
+    if (self_p->tanwa_cutoff_n2o_pres.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 9, self_p->tanwa_cutoff_n2o_pres.value);
+    }
+    if (self_p->tanwa_post_fill_n2o_pres.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 8, self_p->tanwa_post_fill_n2o_pres.value);
+    }
+    if (self_p->tanwa_temp_filling_wall.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 7, self_p->tanwa_temp_filling_wall.value);
+    }
+    if (self_p->tanwa_temp_post_n2o_fill.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 6, self_p->tanwa_temp_post_n2o_fill.value);
+    }
+    if (self_p->tanwa_tank_weight.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 5, self_p->tanwa_tank_weight.value);
+    }
+    if (self_p->tanwa_thrust.is_present) {
+        pbtools_encoder_write_sint32_always(encoder_p, 4, self_p->tanwa_thrust.value);
+    }
+    if (self_p->tanwa_flags.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 3, self_p->tanwa_flags.value);
+    }
+    if (self_p->tanwa_state.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 2, self_p->tanwa_state.value);
+    }
+    if (self_p->tanwa_battery.is_present) {
+        pbtools_encoder_write_fixed32_always(encoder_p, 1, self_p->tanwa_battery.value);
     }
 }
 
-void lo_ra_command_encode_repeated_inner(
-    struct pbtools_encoder_t *encoder_p,
-    int field_number,
-    struct lo_ra_command_repeated_t *repeated_p)
-{
-    pbtools_encode_repeated_inner(
-        encoder_p,
-        field_number,
-        (struct pbtools_repeated_message_t *)repeated_p,
-        sizeof(struct lo_ra_command_t),
-        (pbtools_message_encode_inner_t)lo_ra_command_encode_inner);
-}
-
-void lo_ra_command_decode_repeated_inner(
+void obc_tanwa_frame_decode_inner(
     struct pbtools_decoder_t *decoder_p,
-    struct pbtools_repeated_info_t *repeated_info_p,
-    struct lo_ra_command_repeated_t *repeated_p)
-{
-    pbtools_decode_repeated_inner(
-        decoder_p,
-        repeated_info_p,
-        (struct pbtools_repeated_message_t *)repeated_p,
-        sizeof(struct lo_ra_command_t),
-        (pbtools_message_init_t)lo_ra_command_init,
-        (pbtools_message_decode_inner_t)lo_ra_command_decode_inner);
-}
-
-struct lo_ra_command_t *
-lo_ra_command_new(
-    void *workspace_p,
-    size_t size)
-{
-    return (pbtools_message_new(
-                workspace_p,
-                size,
-                sizeof(struct lo_ra_command_t),
-                (pbtools_message_init_t)lo_ra_command_init));
-}
-
-int lo_ra_command_encode(
-    struct lo_ra_command_t *self_p,
-    uint8_t *encoded_p,
-    size_t size)
-{
-    return (pbtools_message_encode(
-                &self_p->base,
-                encoded_p,
-                size,
-                (pbtools_message_encode_inner_t)lo_ra_command_encode_inner));
-}
-
-int lo_ra_command_decode(
-    struct lo_ra_command_t *self_p,
-    const uint8_t *encoded_p,
-    size_t size)
-{
-    return (pbtools_message_decode(
-                &self_p->base,
-                encoded_p,
-                size,
-                (pbtools_message_decode_inner_t)lo_ra_command_decode_inner));
-}
-
-void lo_ra_settings_init(
-    struct lo_ra_settings_t *self_p,
-    struct pbtools_heap_t *heap_p)
-{
-    self_p->base.heap_p = heap_p;
-    self_p->lora_freq_khz = 0;
-    self_p->lora_transmit_ms = 0;
-    self_p->countdown_time = 0;
-    self_p->ingition_time = 0;
-    self_p->flash_enable = 0;
-    self_p->buzzer_enable = 0;
-}
-
-void lo_ra_settings_encode_inner(
-    struct pbtools_encoder_t *encoder_p,
-    struct lo_ra_settings_t *self_p)
-{
-    pbtools_encoder_write_uint32(encoder_p, 6, self_p->buzzer_enable);
-    pbtools_encoder_write_uint32(encoder_p, 5, self_p->flash_enable);
-    pbtools_encoder_write_int32(encoder_p, 4, self_p->ingition_time);
-    pbtools_encoder_write_int32(encoder_p, 3, self_p->countdown_time);
-    pbtools_encoder_write_int32(encoder_p, 2, self_p->lora_transmit_ms);
-    pbtools_encoder_write_int32(encoder_p, 1, self_p->lora_freq_khz);
-}
-
-void lo_ra_settings_decode_inner(
-    struct pbtools_decoder_t *decoder_p,
-    struct lo_ra_settings_t *self_p)
+    struct obc_tanwa_frame_t *self_p)
 {
     int wire_type;
 
@@ -432,27 +498,78 @@ void lo_ra_settings_decode_inner(
         switch (pbtools_decoder_read_tag(decoder_p, &wire_type)) {
 
         case 1:
-            self_p->lora_freq_khz = pbtools_decoder_read_int32(decoder_p, wire_type);
+            self_p->tanwa_battery.is_present = true;
+            self_p->tanwa_battery.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 2:
-            self_p->lora_transmit_ms = pbtools_decoder_read_int32(decoder_p, wire_type);
+            self_p->tanwa_state.is_present = true;
+            self_p->tanwa_state.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
             break;
 
         case 3:
-            self_p->countdown_time = pbtools_decoder_read_int32(decoder_p, wire_type);
+            self_p->tanwa_flags.is_present = true;
+            self_p->tanwa_flags.value = pbtools_decoder_read_fixed32(decoder_p, wire_type);
             break;
 
         case 4:
-            self_p->ingition_time = pbtools_decoder_read_int32(decoder_p, wire_type);
+            self_p->tanwa_thrust.is_present = true;
+            self_p->tanwa_thrust.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
             break;
 
         case 5:
-            self_p->flash_enable = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_tank_weight.is_present = true;
+            self_p->tanwa_tank_weight.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
             break;
 
         case 6:
-            self_p->buzzer_enable = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            self_p->tanwa_temp_post_n2o_fill.is_present = true;
+            self_p->tanwa_temp_post_n2o_fill.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
+            break;
+
+        case 7:
+            self_p->tanwa_temp_filling_wall.is_present = true;
+            self_p->tanwa_temp_filling_wall.value = pbtools_decoder_read_sint32(decoder_p, wire_type);
+            break;
+
+        case 8:
+            self_p->tanwa_post_fill_n2o_pres.is_present = true;
+            self_p->tanwa_post_fill_n2o_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 9:
+            self_p->tanwa_cutoff_n2o_pres.is_present = true;
+            self_p->tanwa_cutoff_n2o_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 10:
+            self_p->tanwa_droid_n2o_pres.is_present = true;
+            self_p->tanwa_droid_n2o_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 11:
+            self_p->tanwa_pre_reg_n2_pres.is_present = true;
+            self_p->tanwa_pre_reg_n2_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 12:
+            self_p->tanwa_post_reg_n2_pres.is_present = true;
+            self_p->tanwa_post_reg_n2_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 13:
+            self_p->tanwa_post_fill_n2_pres.is_present = true;
+            self_p->tanwa_post_fill_n2_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 14:
+            self_p->tanwa_droid_n2_pres.is_present = true;
+            self_p->tanwa_droid_n2_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 15:
+            self_p->tanwa_comb_chamber_pres.is_present = true;
+            self_p->tanwa_comb_chamber_pres.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
             break;
 
         default:
@@ -462,47 +579,47 @@ void lo_ra_settings_decode_inner(
     }
 }
 
-void lo_ra_settings_encode_repeated_inner(
+void obc_tanwa_frame_encode_repeated_inner(
     struct pbtools_encoder_t *encoder_p,
     int field_number,
-    struct lo_ra_settings_repeated_t *repeated_p)
+    struct obc_tanwa_frame_repeated_t *repeated_p)
 {
     pbtools_encode_repeated_inner(
         encoder_p,
         field_number,
         (struct pbtools_repeated_message_t *)repeated_p,
-        sizeof(struct lo_ra_settings_t),
-        (pbtools_message_encode_inner_t)lo_ra_settings_encode_inner);
+        sizeof(struct obc_tanwa_frame_t),
+        (pbtools_message_encode_inner_t)obc_tanwa_frame_encode_inner);
 }
 
-void lo_ra_settings_decode_repeated_inner(
+void obc_tanwa_frame_decode_repeated_inner(
     struct pbtools_decoder_t *decoder_p,
     struct pbtools_repeated_info_t *repeated_info_p,
-    struct lo_ra_settings_repeated_t *repeated_p)
+    struct obc_tanwa_frame_repeated_t *repeated_p)
 {
     pbtools_decode_repeated_inner(
         decoder_p,
         repeated_info_p,
         (struct pbtools_repeated_message_t *)repeated_p,
-        sizeof(struct lo_ra_settings_t),
-        (pbtools_message_init_t)lo_ra_settings_init,
-        (pbtools_message_decode_inner_t)lo_ra_settings_decode_inner);
+        sizeof(struct obc_tanwa_frame_t),
+        (pbtools_message_init_t)obc_tanwa_frame_init,
+        (pbtools_message_decode_inner_t)obc_tanwa_frame_decode_inner);
 }
 
-struct lo_ra_settings_t *
-lo_ra_settings_new(
+struct obc_tanwa_frame_t *
+obc_tanwa_frame_new(
     void *workspace_p,
     size_t size)
 {
     return (pbtools_message_new(
                 workspace_p,
                 size,
-                sizeof(struct lo_ra_settings_t),
-                (pbtools_message_init_t)lo_ra_settings_init));
+                sizeof(struct obc_tanwa_frame_t),
+                (pbtools_message_init_t)obc_tanwa_frame_init));
 }
 
-int lo_ra_settings_encode(
-    struct lo_ra_settings_t *self_p,
+int obc_tanwa_frame_encode(
+    struct obc_tanwa_frame_t *self_p,
     uint8_t *encoded_p,
     size_t size)
 {
@@ -510,11 +627,11 @@ int lo_ra_settings_encode(
                 &self_p->base,
                 encoded_p,
                 size,
-                (pbtools_message_encode_inner_t)lo_ra_settings_encode_inner));
+                (pbtools_message_encode_inner_t)obc_tanwa_frame_encode_inner));
 }
 
-int lo_ra_settings_decode(
-    struct lo_ra_settings_t *self_p,
+int obc_tanwa_frame_decode(
+    struct obc_tanwa_frame_t *self_p,
     const uint8_t *encoded_p,
     size_t size)
 {
@@ -522,5 +639,357 @@ int lo_ra_settings_decode(
                 &self_p->base,
                 encoded_p,
                 size,
-                (pbtools_message_decode_inner_t)lo_ra_settings_decode_inner));
+                (pbtools_message_decode_inner_t)obc_tanwa_frame_decode_inner));
+}
+
+void obc_app_frame_init(
+    struct obc_app_frame_t *self_p,
+    struct pbtools_heap_t *heap_p)
+{
+    self_p->base.heap_p = heap_p;
+    self_p->lora_dev_id.is_present = false;
+    self_p->sys_dev_id.is_present = false;
+    self_p->command.is_present = false;
+    self_p->payload.is_present = false;
+}
+
+void obc_app_frame_encode_inner(
+    struct pbtools_encoder_t *encoder_p,
+    struct obc_app_frame_t *self_p)
+{
+    if (self_p->payload.is_present) {
+        pbtools_encoder_write_int32_always(encoder_p, 4, self_p->payload.value);
+    }
+    if (self_p->command.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 3, self_p->command.value);
+    }
+    if (self_p->sys_dev_id.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 2, self_p->sys_dev_id.value);
+    }
+    if (self_p->lora_dev_id.is_present) {
+        pbtools_encoder_write_uint32_always(encoder_p, 1, self_p->lora_dev_id.value);
+    }
+}
+
+void obc_app_frame_decode_inner(
+    struct pbtools_decoder_t *decoder_p,
+    struct obc_app_frame_t *self_p)
+{
+    int wire_type;
+
+    while (pbtools_decoder_available(decoder_p)) {
+        switch (pbtools_decoder_read_tag(decoder_p, &wire_type)) {
+
+        case 1:
+            self_p->lora_dev_id.is_present = true;
+            self_p->lora_dev_id.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 2:
+            self_p->sys_dev_id.is_present = true;
+            self_p->sys_dev_id.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 3:
+            self_p->command.is_present = true;
+            self_p->command.value = pbtools_decoder_read_uint32(decoder_p, wire_type);
+            break;
+
+        case 4:
+            self_p->payload.is_present = true;
+            self_p->payload.value = pbtools_decoder_read_int32(decoder_p, wire_type);
+            break;
+
+        default:
+            pbtools_decoder_skip_field(decoder_p, wire_type);
+            break;
+        }
+    }
+}
+
+void obc_app_frame_encode_repeated_inner(
+    struct pbtools_encoder_t *encoder_p,
+    int field_number,
+    struct obc_app_frame_repeated_t *repeated_p)
+{
+    pbtools_encode_repeated_inner(
+        encoder_p,
+        field_number,
+        (struct pbtools_repeated_message_t *)repeated_p,
+        sizeof(struct obc_app_frame_t),
+        (pbtools_message_encode_inner_t)obc_app_frame_encode_inner);
+}
+
+void obc_app_frame_decode_repeated_inner(
+    struct pbtools_decoder_t *decoder_p,
+    struct pbtools_repeated_info_t *repeated_info_p,
+    struct obc_app_frame_repeated_t *repeated_p)
+{
+    pbtools_decode_repeated_inner(
+        decoder_p,
+        repeated_info_p,
+        (struct pbtools_repeated_message_t *)repeated_p,
+        sizeof(struct obc_app_frame_t),
+        (pbtools_message_init_t)obc_app_frame_init,
+        (pbtools_message_decode_inner_t)obc_app_frame_decode_inner);
+}
+
+struct obc_app_frame_t *
+obc_app_frame_new(
+    void *workspace_p,
+    size_t size)
+{
+    return (pbtools_message_new(
+                workspace_p,
+                size,
+                sizeof(struct obc_app_frame_t),
+                (pbtools_message_init_t)obc_app_frame_init));
+}
+
+int obc_app_frame_encode(
+    struct obc_app_frame_t *self_p,
+    uint8_t *encoded_p,
+    size_t size)
+{
+    return (pbtools_message_encode(
+                &self_p->base,
+                encoded_p,
+                size,
+                (pbtools_message_encode_inner_t)obc_app_frame_encode_inner));
+}
+
+int obc_app_frame_decode(
+    struct obc_app_frame_t *self_p,
+    const uint8_t *encoded_p,
+    size_t size)
+{
+    return (pbtools_message_decode(
+                &self_p->base,
+                encoded_p,
+                size,
+                (pbtools_message_decode_inner_t)obc_app_frame_decode_inner));
+}
+
+int obc_lo_ra_frame_mcb_frame_alloc(
+    struct obc_lo_ra_frame_t *self_p)
+{
+    self_p->frame = obc_lo_ra_frame_frame_mcb_frame_e;
+
+    return (pbtools_sub_message_alloc(
+                (struct pbtools_message_base_t **)&self_p->mcb_frame_p,
+                self_p->base.heap_p,
+                sizeof(struct obc_mcb_frame_t),
+                (pbtools_message_init_t)obc_mcb_frame_init));
+}
+
+int obc_lo_ra_frame_tanwa_frame_alloc(
+    struct obc_lo_ra_frame_t *self_p)
+{
+    self_p->frame = obc_lo_ra_frame_frame_tanwa_frame_e;
+
+    return (pbtools_sub_message_alloc(
+                (struct pbtools_message_base_t **)&self_p->tanwa_frame_p,
+                self_p->base.heap_p,
+                sizeof(struct obc_tanwa_frame_t),
+                (pbtools_message_init_t)obc_tanwa_frame_init));
+}
+
+int obc_lo_ra_frame_app_frame_alloc(
+    struct obc_lo_ra_frame_t *self_p)
+{
+    self_p->frame = obc_lo_ra_frame_frame_app_frame_e;
+
+    return (pbtools_sub_message_alloc(
+                (struct pbtools_message_base_t **)&self_p->app_frame_p,
+                self_p->base.heap_p,
+                sizeof(struct obc_app_frame_t),
+                (pbtools_message_init_t)obc_app_frame_init));
+}
+
+static void obc_lo_ra_frame_mcb_frame_decode(
+    struct pbtools_decoder_t *decoder_p,
+    int wire_type,
+    struct obc_lo_ra_frame_t *self_p)
+{
+    self_p->frame = obc_lo_ra_frame_frame_mcb_frame_e;
+    pbtools_decoder_sub_message_decode(
+        decoder_p,
+        wire_type,
+        (struct pbtools_message_base_t **)&self_p->mcb_frame_p,
+        sizeof(struct obc_mcb_frame_t),
+        (pbtools_message_init_t)obc_mcb_frame_init,
+        (pbtools_message_decode_inner_t)obc_mcb_frame_decode_inner);
+}
+
+static void obc_lo_ra_frame_tanwa_frame_decode(
+    struct pbtools_decoder_t *decoder_p,
+    int wire_type,
+    struct obc_lo_ra_frame_t *self_p)
+{
+    self_p->frame = obc_lo_ra_frame_frame_tanwa_frame_e;
+    pbtools_decoder_sub_message_decode(
+        decoder_p,
+        wire_type,
+        (struct pbtools_message_base_t **)&self_p->tanwa_frame_p,
+        sizeof(struct obc_tanwa_frame_t),
+        (pbtools_message_init_t)obc_tanwa_frame_init,
+        (pbtools_message_decode_inner_t)obc_tanwa_frame_decode_inner);
+}
+
+static void obc_lo_ra_frame_app_frame_decode(
+    struct pbtools_decoder_t *decoder_p,
+    int wire_type,
+    struct obc_lo_ra_frame_t *self_p)
+{
+    self_p->frame = obc_lo_ra_frame_frame_app_frame_e;
+    pbtools_decoder_sub_message_decode(
+        decoder_p,
+        wire_type,
+        (struct pbtools_message_base_t **)&self_p->app_frame_p,
+        sizeof(struct obc_app_frame_t),
+        (pbtools_message_init_t)obc_app_frame_init,
+        (pbtools_message_decode_inner_t)obc_app_frame_decode_inner);
+}
+
+void obc_lo_ra_frame_init(
+    struct obc_lo_ra_frame_t *self_p,
+    struct pbtools_heap_t *heap_p)
+{
+    self_p->base.heap_p = heap_p;
+    self_p->frame = 0;
+}
+
+void obc_lo_ra_frame_encode_inner(
+    struct pbtools_encoder_t *encoder_p,
+    struct obc_lo_ra_frame_t *self_p)
+{
+    switch (self_p->frame) {
+
+    case obc_lo_ra_frame_frame_mcb_frame_e:
+        pbtools_encoder_sub_message_encode_always(
+            encoder_p,
+            1,
+            &self_p->mcb_frame_p->base,
+            (pbtools_message_encode_inner_t)obc_mcb_frame_encode_inner);
+        break;
+
+    case obc_lo_ra_frame_frame_tanwa_frame_e:
+        pbtools_encoder_sub_message_encode_always(
+            encoder_p,
+            2,
+            &self_p->tanwa_frame_p->base,
+            (pbtools_message_encode_inner_t)obc_tanwa_frame_encode_inner);
+        break;
+
+    case obc_lo_ra_frame_frame_app_frame_e:
+        pbtools_encoder_sub_message_encode_always(
+            encoder_p,
+            3,
+            &self_p->app_frame_p->base,
+            (pbtools_message_encode_inner_t)obc_app_frame_encode_inner);
+        break;
+
+    default:
+        break;
+    }
+}
+
+void obc_lo_ra_frame_decode_inner(
+    struct pbtools_decoder_t *decoder_p,
+    struct obc_lo_ra_frame_t *self_p)
+{
+    int wire_type;
+
+    while (pbtools_decoder_available(decoder_p)) {
+        switch (pbtools_decoder_read_tag(decoder_p, &wire_type)) {
+
+        case 1:
+            obc_lo_ra_frame_mcb_frame_decode(
+                decoder_p,
+                wire_type,
+                self_p);
+            break;
+
+        case 2:
+            obc_lo_ra_frame_tanwa_frame_decode(
+                decoder_p,
+                wire_type,
+                self_p);
+            break;
+
+        case 3:
+            obc_lo_ra_frame_app_frame_decode(
+                decoder_p,
+                wire_type,
+                self_p);
+            break;
+
+        default:
+            pbtools_decoder_skip_field(decoder_p, wire_type);
+            break;
+        }
+    }
+}
+
+void obc_lo_ra_frame_encode_repeated_inner(
+    struct pbtools_encoder_t *encoder_p,
+    int field_number,
+    struct obc_lo_ra_frame_repeated_t *repeated_p)
+{
+    pbtools_encode_repeated_inner(
+        encoder_p,
+        field_number,
+        (struct pbtools_repeated_message_t *)repeated_p,
+        sizeof(struct obc_lo_ra_frame_t),
+        (pbtools_message_encode_inner_t)obc_lo_ra_frame_encode_inner);
+}
+
+void obc_lo_ra_frame_decode_repeated_inner(
+    struct pbtools_decoder_t *decoder_p,
+    struct pbtools_repeated_info_t *repeated_info_p,
+    struct obc_lo_ra_frame_repeated_t *repeated_p)
+{
+    pbtools_decode_repeated_inner(
+        decoder_p,
+        repeated_info_p,
+        (struct pbtools_repeated_message_t *)repeated_p,
+        sizeof(struct obc_lo_ra_frame_t),
+        (pbtools_message_init_t)obc_lo_ra_frame_init,
+        (pbtools_message_decode_inner_t)obc_lo_ra_frame_decode_inner);
+}
+
+struct obc_lo_ra_frame_t *
+obc_lo_ra_frame_new(
+    void *workspace_p,
+    size_t size)
+{
+    return (pbtools_message_new(
+                workspace_p,
+                size,
+                sizeof(struct obc_lo_ra_frame_t),
+                (pbtools_message_init_t)obc_lo_ra_frame_init));
+}
+
+int obc_lo_ra_frame_encode(
+    struct obc_lo_ra_frame_t *self_p,
+    uint8_t *encoded_p,
+    size_t size)
+{
+    return (pbtools_message_encode(
+                &self_p->base,
+                encoded_p,
+                size,
+                (pbtools_message_encode_inner_t)obc_lo_ra_frame_encode_inner));
+}
+
+int obc_lo_ra_frame_decode(
+    struct obc_lo_ra_frame_t *self_p,
+    const uint8_t *encoded_p,
+    size_t size)
+{
+    return (pbtools_message_decode(
+                &self_p->base,
+                encoded_p,
+                size,
+                (pbtools_message_decode_inner_t)obc_lo_ra_frame_decode_inner));
 }
