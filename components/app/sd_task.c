@@ -1,6 +1,8 @@
 // Copyright 2022 PWr in Space, Kuba
 #include "sd_task.h"
 
+#include <string.h>
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/timers.h"
 
@@ -106,6 +108,39 @@ static void get_data_from_queue_and_save(FILE * data_file) {
     }
 }
 
+static const char *SD_DATA_HEADER =
+    "timestamp;state;"
+    "abort_button;arm_state;i_sense;igniter_cont_1;igniter_cont_2;"
+    "relay_state1;relay_state2;relay_state3;relay_state4;"
+    "temperature_1;temperature_2;"
+    "can_power_con;can_sensor_con;can_solenoid_con;can_utility_con;can_weights_con;"
+    "current_24V_SOL;VOLTAGE_24V_SOL;"
+    "VOLTAGE_24V_SYS;VOLTAGE_24V_SYS;"
+    "power_i_sense;power_temperature1;power_temperature2;"
+    "pressure1;pressure2;pressure3;pressure4;"
+    "pressure5;pressure6;pressure7;pressure8;"
+    "sensor_temperature1;sensor_temperature2;sensor_temperature3;"
+    "temperature1_pt100;temperature2_pt100;"
+    "sensor_i_sense;sensor_temperature1;sensor_temperature2;"
+    "state_sol1;state_sol2;state_sol3;"
+    "state_sol4;state_sol5;state_sol6;"
+    "servo_state1;servo_state2;servo_state3;servo_state4;"
+    "servo_angle1;servo_angle2;"
+    "servo_angle3;servo_angle4;"
+    "motor_state1;motor_state2;"
+    "solenoid_i_sense;solenoid_temperature1;solenoid_temperature2;"
+    "utility_i_sense;utility_temperature1;utility_temperature2;"
+    "utility_switch_state1;utility_switch_state2;"
+    "utility_switch_state3;utility_switch_state4;"
+    "utility_switch_state5;utility_switch_state6;"
+    "utility_switch_state7;utility_switch_state8;"
+    "ads1_weight1;ads1_weight2;"
+    "ads1_weight3;ads1_weight4;"
+    "ads2_weight1;ads2_weight2;"
+    "ads2_weight3;ads2_weight4;"
+    "rocket_weight;tank_weight;"
+    "weight_i_sense;weight_temperature_1;weight_temperature_2\n";
+
 static void prepare_data_file_and_save(void) {
     xSemaphoreTake(mem.spi_mutex, portMAX_DELAY);
     FILE *data_file = fopen(mem.data_path, "a");
@@ -113,6 +148,12 @@ static void prepare_data_file_and_save(void) {
         ESP_LOGE(TAG, "Can not open the file %s", mem.data_path);
         // return;
     }
+
+    // Write header if file is empty
+    if (data_file != NULL && ftell(data_file) == 0) {
+        fwrite(SD_DATA_HEADER, 1, strlen(SD_DATA_HEADER), data_file);
+    }
+
     xSemaphoreGive(mem.spi_mutex);
 
     int received_data_counter = 0;

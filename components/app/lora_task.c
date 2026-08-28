@@ -54,6 +54,7 @@
 #define TANWA_FLAG_DROID_N2 14
 #define TANWA_FLAG_HEATING_TANK  15
 #define TANWA_FLAG_HEATING_VALVE 16
+#define TANWA_FLAG_EXTERNAL_SWITCH 17
 
 #define SET_FLAG(word, bit, cond) ((word) |= ((cond) ? (1UL << (bit)) : 0UL))
 #define FRAME_SET(field, v) do { (field).is_present = true; (field).value = (v); } while (0) // do-while(0) intentional: makes the multi-statement macro a single statement
@@ -299,6 +300,7 @@ void create_porotobuf_data_frame(struct obc_tanwa_frame_t *frame) {
     SET_FLAG(flags, TANWA_FLAG_DROID_N2, tanwa_data.can_solenoid_data.state_sol6);
     SET_FLAG(flags, TANWA_FLAG_HEATING_TANK, tanwa_data.com_data.relay_state3);
     SET_FLAG(flags, TANWA_FLAG_HEATING_VALVE, tanwa_data.com_data.relay_state2);
+    SET_FLAG(flags, TANWA_FLAG_EXTERNAL_SWITCH, tanwa_data.com_data.relay_state4);
     FRAME_SET(frame->tanwa_flags, flags);
 }
 

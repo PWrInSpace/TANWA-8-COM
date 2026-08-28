@@ -509,14 +509,6 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 tanwa_fire();
                 break;
             }
-            case CMD_VENT_OPEN: { // Vent is normally open, so the logic is reversed
-                ESP_LOGI(TAG, "LORA | Vent close");
-                relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[0]));
-                if (err != RELAY_DRIVER_OK) {
-                    ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
-                }
-                break;
-            }
             case CMD_VENT_CLOSE: { // Vent is normally open, so the logic is reversed
                 if (payload == 0) {
                     ESP_LOGI(TAG, "LORA | Vent open");
@@ -531,6 +523,22 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                     } else {
                         ESP_LOGI(TAG, "LORA | Vent open time %d ms", (uint32_t)payload);
                     }
+                }
+                break;
+            }
+            case CMD_EXTERNAL_SWITCH_ON: {
+                ESP_LOGI(TAG, "LORA | External switch ON");
+                relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[3]));
+                if (err != RELAY_DRIVER_OK) {
+                    ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
+                }
+                break;
+            }
+            case CMD_EXTERNAL_SWITCH_OFF: {
+                ESP_LOGI(TAG, "LORA | External switch OFF");
+                relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[3]));
+                if (err != RELAY_DRIVER_OK) {
+                    ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
                 }
                 break;
             }
