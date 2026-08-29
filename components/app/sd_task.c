@@ -115,7 +115,7 @@ static const char *SD_DATA_HEADER =
     "temperature_1;temperature_2;"
     "can_power_con;can_sensor_con;can_solenoid_con;can_utility_con;can_weights_con;"
     "current_24V_SOL;VOLTAGE_24V_SOL;"
-    "VOLTAGE_24V_SYS;VOLTAGE_24V_SYS;"
+    "VOLTAGE_24V_SYS;current_24V_SYS;"
     "power_i_sense;power_temperature1;power_temperature2;"
     "pressure1;pressure2;pressure3;pressure4;"
     "pressure5;pressure6;pressure7;pressure8;"
