@@ -419,7 +419,7 @@ static size_t convert_data_to_frame(char *buf, size_t buf_size, void* data, size
         tanwa_data->com_data.temperature_1, tanwa_data->com_data.temperature_2,
         tanwa_data->can_connected_slaves.power, tanwa_data->can_connected_slaves.sensor, tanwa_data->can_connected_slaves.solenoid, tanwa_data->can_connected_slaves.utility, tanwa_data->can_connected_slaves.weights,
         tanwa_data->can_power_data.current_24V_SOL, tanwa_data->can_power_data.VOLTAGE_24V_SOL,
-        tanwa_data->can_power_data.VOLTAGE_24V_SYS, tanwa_data->can_power_data.VOLTAGE_24V_SYS,
+        tanwa_data->can_power_data.VOLTAGE_24V_SYS, tanwa_data->can_power_data.current_24V_SYS,
         tanwa_data->can_power_status.i_sense, tanwa_data->can_power_status.temperature1, tanwa_data->can_power_status.temperature2,
 
         tanwa_data->can_sensor_pressure_data.pressure1, tanwa_data->can_sensor_pressure_data.pressure2, tanwa_data->can_sensor_pressure_data.pressure3, tanwa_data->can_sensor_pressure_data.pressure4,
