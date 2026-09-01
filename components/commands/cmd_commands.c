@@ -534,6 +534,11 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 }
                 break;
             }
+            case CMD_LORA_SYNC: {
+                ESP_LOGI(TAG, "LORA | Sync");
+                lora_on_sync_received();
+                break;
+            }
             default: {
                 ESP_LOGI(TAG, "LORA command: %d", command);
                 ESP_LOGW(TAG, "LORA | Unknown command");

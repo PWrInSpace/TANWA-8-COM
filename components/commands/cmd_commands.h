@@ -65,6 +65,7 @@ typedef enum {
     CMD_FIRE = 0x60, //FIREBALL, DOO DOO DOO DOO DO DOO (FIREBALL) ~PITBULL 2k10
     CMD_VENT_OPEN = 0x70,
     CMD_VENT_CLOSE = 0x71,
+    CMD_LORA_SYNC = 0xBA,
 
 } cmd_command_t;
 
