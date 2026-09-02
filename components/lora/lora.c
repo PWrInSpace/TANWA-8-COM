@@ -5,7 +5,7 @@
 
 #define TAG "LORA"
 
-#define LORA_TX_TIMEOUT_US 3000000LL
+#define LORA_TX_TIMEOUT_US 200000LL
 
 /* Fallback externs to MCU helpers in case the lora struct doesn't have pointers set */
 extern bool _lora_spi_transmit(uint8_t _in[2], uint8_t _val[2]);
