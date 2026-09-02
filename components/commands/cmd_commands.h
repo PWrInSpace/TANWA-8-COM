@@ -67,6 +67,7 @@ typedef enum {
     CMD_VENT_CLOSE = 0x71,
     CMD_EXTERNAL_SWITCH_ON = 0x72,
     CMD_EXTERNAL_SWITCH_OFF = 0x73,
+    CMD_LORA_SYNC = 0xBA,
 
 } cmd_command_t;
 

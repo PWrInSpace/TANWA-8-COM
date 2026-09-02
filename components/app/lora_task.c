@@ -5,7 +5,6 @@
 #include "freertos/projdefs.h"
 #include "freertos/semphr.h"
 #include "freertos/task.h"
-#include "freertos/timers.h"
 #include "lora.pb-c.h"
 #include "cmd_commands.h"
 #include "board_config.h"
@@ -16,11 +15,8 @@
 #include "state_machine.h"
 #include "board_data.h"
 #include "esp_log.h"
-#include "esp_random.h"
+#include "esp_timer.h"
 #include "stdatomic.h"
-
-#define LORA_INDEPENDENT_TX_JITTER_MS 120
-#define LORA_RESYNC_TIMEOUT_MS 3000
 
 #define TAG "LORA_TASK"
 
@@ -78,7 +74,11 @@ static struct {
     const uint16_t *state_periods;
     size_t state_periods_count;
     int last_period_state;
-    atomic_bool do_transmit;
+    atomic_bool sync_armed;
+    TickType_t sync_tick;
+    int64_t sync_start_us;
+    uint32_t tx_frame_count;
+    uint64_t tx_total_time_us;
 } gb;
 
 static size_t lora_packet(uint8_t *buffer, size_t buffer_size);
@@ -113,13 +113,6 @@ void IRAM_ATTR lora_task_irq_notify(void *arg) {
         portYIELD_FROM_ISR();
     }
 }
-
-static void notify_end_of_rx_window(void) {
-    xTaskNotifyGive(gb.task);
-    //ESP_LOGI(TAG, "END OF WINDOW");
-}
-
-static void on_receive_window_timer(TimerHandle_t timer) { notify_end_of_rx_window(); }
 
 static void lora_enter_receive(void) {
     lora_map_d0_interrupt(&lora, LORA_IRQ_D0_RXDONE);
@@ -206,8 +199,8 @@ static void lora_process(uint8_t *packet, size_t packet_size) {
 
     size_t decoded_size = obc_lo_ra_frame_decode(received, packet + prefix_size, packet_size - prefix_size - 1);
 
-    if (received->frame != obc_lo_ra_frame_frame_app_frame_e && received->frame != obc_lo_ra_frame_frame_mcb_frame_e) {
-        ESP_LOGE(TAG, "Received frame is not an app or mcb frame");
+    if (received->frame != obc_lo_ra_frame_frame_app_frame_e) {
+        ESP_LOGE(TAG, "Received frame is not an app frame");
         return;
     }
 
@@ -216,24 +209,17 @@ static void lora_process(uint8_t *packet, size_t packet_size) {
         return;
     }
 
-    if (received->frame == obc_lo_ra_frame_frame_app_frame_e) {
-        if (!received->app_frame_p->lora_dev_id.is_present || !received->app_frame_p->command.is_present) {
-            ESP_LOGE(TAG, "Incomplete LoRa command (missing id/command)");
-            return;
-        }
-
-        int32_t payload = received->app_frame_p->payload.is_present ? received->app_frame_p->payload.value : 0;
-
-        if (lora_command_parsing(received->app_frame_p->lora_dev_id.value, received->app_frame_p->command.value,
-                                 payload) == false) {
-            ESP_LOGE(TAG, "Unable to process command :C");
-            return;
-        }
+    if (!received->app_frame_p->lora_dev_id.is_present || !received->app_frame_p->command.is_present) {
+        ESP_LOGE(TAG, "Incomplete LoRa command (missing id/command)");
+        return;
     }
 
-    if (received->frame == obc_lo_ra_frame_frame_mcb_frame_e) {
-        // w tym przypadku nie musimy dokonywać żadnego parsowanie, jedynie potrzebujemy informacji o tym że ramka doszła
-        atomic_store(&gb.do_transmit, true);
+    int32_t payload = received->app_frame_p->payload.is_present ? received->app_frame_p->payload.value : 0;
+
+    if (lora_command_parsing(received->app_frame_p->lora_dev_id.value, received->app_frame_p->command.value,
+                             payload) == false) {
+        ESP_LOGE(TAG, "Unable to process command :C");
+        return;
     }
 }
 
@@ -395,7 +381,7 @@ bool lora_task_init(lora_api_config_t *cfg) {
     /* Use pointer to the global initialized `lora` instance so all
         callers operate on the same object (avoids stale copies). */
     gb.lora = &lora;
-    gb.do_transmit = ATOMIC_VAR_INIT(false);
+    gb.sync_armed = ATOMIC_VAR_INIT(false);
 
     memset(lora_api.workspace, 0, sizeof(lora_api.workspace));
     lora_api.frame = obc_lo_ra_frame_new(lora_api.workspace, sizeof(lora_api.workspace));
@@ -454,6 +440,58 @@ bool lora_change_period(uint32_t period_ms) {
     return true;
 }
 
+void lora_on_sync_received(void) {
+    gb.sync_tick = xTaskGetTickCount();
+    gb.sync_start_us = esp_timer_get_time();
+    atomic_store(&gb.sync_armed, true);
+    // ESP_LOGI(TAG, "Sync armed — RX for %u ms, then Tanwa TX", LORA_SYNC_POST_RX_MS);
+    if (gb.task != NULL) {
+        xTaskNotifyGive(gb.task);
+    }
+}
+
+static void handle_pending_rx(uint8_t *rx_buffer, size_t buffer_len) {
+    size_t rx_packet_size = on_lora_receive(rx_buffer, buffer_len);
+    if (rx_packet_size > 0) {
+        lora_set_receive_mode(gb.lora);
+    } else {
+        lora_write_reg(gb.lora, REG_IRQ_FLAGS, 0xFF);
+    }
+}
+
+static TickType_t sync_remaining_ticks(void) {
+    if (!atomic_load(&gb.sync_armed)) {
+        return portMAX_DELAY;
+    }
+
+    TickType_t elapsed = xTaskGetTickCount() - gb.sync_tick;
+    TickType_t post_rx_ticks = pdMS_TO_TICKS(LORA_SYNC_POST_RX_MS);
+    if (elapsed >= post_rx_ticks) {
+        return 0;
+    }
+    return post_rx_ticks - elapsed;
+}
+
+static bool try_transmit_after_sync(void) {
+    if (!atomic_load(&gb.sync_armed)) {
+        return false;
+    }
+
+    if (sync_remaining_ticks() > 0) {
+        return false;
+    }
+
+    // uint32_t elapsed_ms = (uint32_t)((esp_timer_get_time() - gb.sync_start_us) / 1000);
+    // uint32_t sec_in_window = elapsed_ms / 1000;
+    // uint32_t ms_in_window = elapsed_ms % 1000;
+
+    atomic_store(&gb.sync_armed, false);
+    // ESP_LOGI(TAG, "Sync TX start: sec %u, ms %u into %u ms window (elapsed %u ms)",
+    //          sec_in_window, ms_in_window, LORA_SYNC_POST_RX_MS, elapsed_ms);
+    transmit_packet();
+    return true;
+}
+
 static void transmit_packet(void) {
     size_t size = 0;
     if (gb.get_tx_packet_fnc != NULL) {
@@ -461,8 +499,16 @@ static void transmit_packet(void) {
     }
 
     if (size > 0 && size <= gb.tx_buffer_size) {
-        lora_send_packet(&lora, gb.tx_buffer, (int16_t) size);
-        ESP_LOGW(TAG, "Sending packet");
+        if (lora_send_packet(&lora, gb.tx_buffer, (int16_t) size) == LORA_OK) {
+            gb.tx_frame_count++;
+            gb.tx_total_time_us += lora.last_tx_duration_us;
+            // ESP_LOGI(TAG, "TX frame #%u: %zu B, airtime %u us (%.1f ms), total %llu us / %u frames",
+            //          gb.tx_frame_count, size, lora.last_tx_duration_us,
+            //          lora.last_tx_duration_us / 1000.0f,
+            //          (unsigned long long)gb.tx_total_time_us, gb.tx_frame_count);
+        } else {
+            ESP_LOGE(TAG, "TX failed, frame size %zu B", size);
+        }
     }
 
     lora_enter_receive();
@@ -471,80 +517,28 @@ static void transmit_packet(void) {
 
 void lora_task(void *arg) {
     uint8_t rx_buffer[512];
-    size_t rx_packet_size = 0;
-    TickType_t last_sync_tick = xTaskGetTickCount();
+
+    lora_enter_receive();
+    ulTaskNotifyTake(pdTRUE, 0);
 
     while (1) {
-        apply_state_period();
-
-        if (gb.lora_state == LORA_TRANSMIT) {
+        if (gb.lora_state != LORA_RECEIVE) {
             lora_enter_receive();
-            vTaskDelay(pdMS_TO_TICKS(10));
+        }
+
+        if (lora_read_reg(gb.lora, REG_IRQ_FLAGS) & IRQ_RX_DONE_MASK) {
+            handle_pending_rx(rx_buffer, sizeof(rx_buffer));
+        }
+
+        if (try_transmit_after_sync()) {
             continue;
         }
 
-        TickType_t start_tick = xTaskGetTickCount();
-        TickType_t delay_ticks = pdMS_TO_TICKS(gb.receive_window_period);
-        bool transmitted = false;
-
-        //na kazym oknie zaczynamy od czystego RX (aby nie bylo problemow z rejestrami)
-        lora_enter_receive();
-        ulTaskNotifyTake(pdTRUE, 0);
-
-            // Safety net: jeżeli ramka wpadła w oknie między set_receive_mode a
-            // wyzerowaniem notyfikacji, flaga RX_DONE dalej wisi w rejestrze,
-            // a DIO0 jest HIGH — bez tego POSEDGE już nie strzeli.
-            if (lora_read_reg(gb.lora, REG_IRQ_FLAGS) & IRQ_RX_DONE_MASK) {
-                rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
-                if (rx_packet_size > 0) {
-                    lora_set_receive_mode(gb.lora);
-                } else {
-                    // CRC error / śmieć — i tak zdejmij flagi, żeby DIO0 zszedł
-                    lora_write_reg(gb.lora, REG_IRQ_FLAGS, 0xFF);
-                }
-            }
-
-            while (1) {
-                TickType_t current_tick = xTaskGetTickCount();
-                if (current_tick - start_tick >= delay_ticks) {
-                    break; // Czas okienka minął
-                }
-                TickType_t remaining_ticks = delay_ticks - (current_tick - start_tick);
-
-                // Czekamy na przerwanie (RXDONE) przez pozostały czas
-                if (ulTaskNotifyTake(pdTRUE, remaining_ticks) == pdTRUE) {
-                    // Wybudzono nas przerwaniem - jest ramka!
-                    rx_packet_size = on_lora_receive(rx_buffer, sizeof(rx_buffer));
-
-                    if (rx_packet_size > 0) {
-                        // lora_receive_packet przełącza układ w tryb Idle,
-                        // więc musimy z powrotem przełączyć go na tryb odbioru ciągłego
-                        // (Continuous RX)
-                        lora_set_receive_mode(gb.lora);
-                } else {
-                    // to jest jakis dzik case, nie ma ramki - zdejmij flagi, żeby DIO0 zszedł
-                    lora_write_reg(gb.lora, REG_IRQ_FLAGS, 0xFF);
-                }
-
-                if (atomic_exchange(&gb.do_transmit, false)) {
-                    transmit_packet();
-                    transmitted = true;
-                    last_sync_tick = xTaskGetTickCount();
-                }
-            }
-
-        //logika  zamiast uzalezneinai od obc state
-        TickType_t since_sync = xTaskGetTickCount() - last_sync_tick;
-        if (!transmitted && since_sync >= pdMS_TO_TICKS(LORA_RESYNC_TIMEOUT_MS)) {
-            uint32_t jitter_ms = esp_random() % (LORA_INDEPENDENT_TX_JITTER_MS + 1);
-            vTaskDelay(pdMS_TO_TICKS(jitter_ms));
-            ESP_LOGI(TAG, "Independent TX after %lu ms without MCB, jitter %lu ms",
-                     (unsigned long)pdTICKS_TO_MS(since_sync), (unsigned long)jitter_ms);
-            transmit_packet();
-            last_sync_tick = xTaskGetTickCount();
+        TickType_t wait_ticks = sync_remaining_ticks();
+        if (ulTaskNotifyTake(pdTRUE, wait_ticks) == pdTRUE) {
+            handle_pending_rx(rx_buffer, sizeof(rx_buffer));
         }
 
-        vTaskDelay(pdMS_TO_TICKS(10));
+        try_transmit_after_sync();
     }
-}
 }

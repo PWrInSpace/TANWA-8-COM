@@ -16,6 +16,7 @@
 #define LORA_TASK_TRANSMIT_MS 500
 #define LORA_TASK_MIN_TRANSMIT_MS 100
 #define LORA_TASK_MAX_TRANSMIT_MS 60000
+#define LORA_SYNC_POST_RX_MS 400
 
 #define PRIVILAGE_MASK 0x01
 #define BORADCAST_DEV_ID 0x00
@@ -88,5 +89,11 @@ void lora_set_state_periods(const uint16_t *periods_ms, size_t count);
 bool lora_task_init(lora_api_config_t *cfg);
 
 void lora_task(void* pvParameters);
+
+/**
+ * @brief Arm post-sync RX window; Tanwa frame is sent after LORA_SYNC_POST_RX_MS.
+ * Called when GS sends CMD_LORA_SYNC (0xBA).
+ */
+void lora_on_sync_received(void);
 
 #endif
