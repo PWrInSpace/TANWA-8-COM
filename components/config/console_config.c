@@ -616,6 +616,34 @@ int cal_sensor_cmd(int argc, char **argv) {
     return 0;
 }   
 
+int external_pwr(int argc, char **argv) {
+    if (argc < 2) {
+        ESP_LOGE(TAG, "Usage: external-pwr <on/off>");
+        return -1;
+    }
+
+    if (strcmp(argv[1], "on") == 0) {
+        relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[3]));
+        if (err != RELAY_DRIVER_OK) {
+            ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
+            return -1;
+        }
+        ESP_LOGI(TAG, "External power ON");
+    } else if (strcmp(argv[1], "off") == 0) {
+        relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[3]));
+        if (err != RELAY_DRIVER_OK) {
+            ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
+            return -1;
+        }
+        ESP_LOGI(TAG, "External power OFF");
+    } else {
+        ESP_LOGE(TAG, "Invalid argument. Use 'on' or 'off'");
+        return -1;
+    }
+
+    return 0;
+}
+
  // Place for the console configuration
 
  static esp_console_cmd_t cmd [] = {
@@ -649,7 +677,8 @@ int cal_sensor_cmd(int argc, char **argv) {
     {"countdown", "Start countdown", NULL, tanwa_countdown, NULL, NULL, NULL},
     {"buzzer", "Change buzzer state", NULL, change_buzzer_state, NULL, NULL, NULL},
     {"cal-weight", "Calibrate weight sensor", NULL, cal_weights_cmd, NULL, NULL, NULL},
-    {"cal-sensor", "Calibrate sensor", NULL, cal_sensor_cmd, NULL, NULL, NULL}
+    {"cal-sensor", "Calibrate sensor", NULL, cal_sensor_cmd, NULL, NULL, NULL},
+    {"external-pwr", "Control external power switch (on/off)", NULL, external_pwr, NULL, NULL, NULL}
 };
 
 esp_err_t console_config_init() {

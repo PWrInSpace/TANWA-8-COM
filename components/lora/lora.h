@@ -146,6 +146,7 @@ typedef struct {
   uint8_t d0_gpio_num;
   int16_t implicit_header;
   int32_t frequency;
+  uint32_t last_tx_duration_us;
 } lora_struct_t;
 
 /*!

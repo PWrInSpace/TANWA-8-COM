@@ -1,0 +1,12 @@
+# This file was generated using idf.py save-defconfig. It can be edited manually.
+# Espressif IoT Development Framework (ESP-IDF) 5.3.3 Project Minimal Configuration
+#
+CONFIG_IDF_TARGET="esp32s3"
+CONFIG_LORA_RS=18
+CONFIG_LORA_D0=16
+CONFIG_RELAY_1_GPIO=14
+CONFIG_RELAY_3_GPIO=47
+CONFIG_RELAY_4_GPIO=48
+CONFIG_PM_SLP_IRAM_OPT=y
+CONFIG_FREERTOS_HZ=1000
+CONFIG_LWIP_DHCP_OPTIONS_LEN=69
