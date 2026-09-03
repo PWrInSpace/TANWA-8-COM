@@ -1,7 +1,11 @@
 // Copyright 2023 PWr in Space, Krzysztof Gliwiński
 #include "lora.h"
 
+#include "esp_timer.h"
+
 #define TAG "LORA"
+
+#define LORA_TX_TIMEOUT_US 3000000LL
 
 /* Fallback externs to MCU helpers in case the lora struct doesn't have pointers set */
 extern bool _lora_spi_transmit(uint8_t _in[2], uint8_t _val[2]);
@@ -282,27 +286,43 @@ lora_err_t lora_write_irq_flags(lora_struct_t *lora) {
 
 lora_err_t lora_send_packet(lora_struct_t *lora, uint8_t *buf, int16_t size) {
 
-  //ESP_LOGI(TAG, "Sending packet of size %d", size);
   lora_err_t ret = LORA_OK;
-  //ESP_LOGI(TAG, "Packet size: %d", size);
   ret |= lora_fill_fifo_buf_to_send(lora, buf, size);
-  //ESP_LOGI(TAG, "FIFO filled");
-  ret |= lora_start_transmission(lora);
-  //ESP_LOGI(TAG, "Transmission started");
-
-  int timeout_ms = 500;
-  while (!lora_check_tx_done(lora)) {
-    if (timeout_ms <= 0) {
-      ESP_LOGE(TAG, "TX_DONE timeout — resetting radio to idle");
-      lora_idle(lora);
-      lora_write_reg(lora, REG_IRQ_FLAGS, 0xFF);
-      return LORA_TRANSMIT_ERR;
-    }
-    lora->_delay(2);
-    timeout_ms -= 2;
+  if (ret != LORA_OK) {
+    return LORA_TRANSMIT_ERR;
   }
 
+  ret |= lora_write_reg(lora, REG_IRQ_FLAGS, 0xFF);
+  ret |= lora_map_d0_interrupt(lora, LORA_IRQ_D0_TXDONE);
+
+  int64_t tx_start_us = esp_timer_get_time();
+  int64_t deadline_us = tx_start_us + LORA_TX_TIMEOUT_US;
+  ret |= lora_start_transmission(lora);
+  if (ret != LORA_OK) {
+    lora_map_d0_interrupt(lora, LORA_IRQ_D0_RXDONE);
+    return LORA_TRANSMIT_ERR;
+  }
+
+  while (!lora_check_tx_done(lora)) {
+    if (esp_timer_get_time() >= deadline_us) {
+      uint8_t op_mode = lora_read_reg(lora, REG_OP_MODE);
+      uint8_t irq_flags = lora_read_reg(lora, REG_IRQ_FLAGS);
+      ESP_LOGE(TAG, "TX_DONE timeout — op_mode=0x%02x irq=0x%02x", op_mode, irq_flags);
+      lora->last_tx_duration_us = 0;
+      lora_idle(lora);
+      lora_write_reg(lora, REG_IRQ_FLAGS, 0xFF);
+      lora_map_d0_interrupt(lora, LORA_IRQ_D0_RXDONE);
+      return LORA_TRANSMIT_ERR;
+    }
+    if (lora->_delay != NULL) {
+      lora->_delay(1);
+    }
+  }
+
+  lora->last_tx_duration_us = (uint32_t)(esp_timer_get_time() - tx_start_us);
+
   ret |= lora_write_irq_flags(lora);
+  ret |= lora_map_d0_interrupt(lora, LORA_IRQ_D0_RXDONE);
   return ret == LORA_OK ? LORA_OK : LORA_TRANSMIT_ERR;
 }
 

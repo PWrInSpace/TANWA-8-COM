@@ -38,7 +38,7 @@ void close_valves(void) {
     //relay_close(&tanwa_hardware.relay[0]);
     relay_close(&tanwa_hardware.relay[1]);
     relay_close(&tanwa_hardware.relay[2]);
-    relay_close(&tanwa_hardware.relay[3]);
+    // relay_close(&tanwa_hardware.relay[3]);
 
     uint8_t data[8] = {0};
     can_send_message(CAN_SOL_CLOSE_SOL_ID, data, 1);

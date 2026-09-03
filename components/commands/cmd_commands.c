@@ -534,6 +534,27 @@ bool lora_command_parsing(uint32_t lora_id, uint32_t command, int32_t payload) {
                 }
                 break;
             }
+            case CMD_EXTERNAL_SWITCH_ON: {
+                ESP_LOGI(TAG, "LORA | External switch ON");
+                relay_driver_err_t err = relay_open(&(tanwa_hardware.relay[3]));
+                if (err != RELAY_DRIVER_OK) {
+                    ESP_LOGE(TAG, "Relay open error | %d", (uint8_t)err);
+                }
+                break;
+            }
+            case CMD_EXTERNAL_SWITCH_OFF: {
+                ESP_LOGI(TAG, "LORA | External switch OFF");
+                relay_driver_err_t err = relay_close(&(tanwa_hardware.relay[3]));
+                if (err != RELAY_DRIVER_OK) {
+                    ESP_LOGE(TAG, "Relay close error | %d", (uint8_t)err);
+                }
+                break;
+            }
+            case CMD_LORA_SYNC: {
+                ESP_LOGI(TAG, "LORA | Sync");
+                lora_on_sync_received();
+                break;
+            }
             default: {
                 ESP_LOGI(TAG, "LORA command: %d", command);
                 ESP_LOGW(TAG, "LORA | Unknown command");
