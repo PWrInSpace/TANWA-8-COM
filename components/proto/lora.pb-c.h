@@ -73,10 +73,6 @@ struct obc_mcb_frame_t {
     } gps_long;
     struct {
         bool is_present;
-        bool value;
-    } gps_sat_ok;
-    struct {
-        bool is_present;
         int32_t value;
     } altitude_m;
     struct {
@@ -89,32 +85,12 @@ struct obc_mcb_frame_t {
     } mcb_temperature;
     struct {
         bool is_present;
-        float value;
-    } euler_fi;
-    struct {
-        bool is_present;
-        float value;
-    } euler_psi;
-    struct {
-        bool is_present;
-        float value;
-    } euler_theta;
-    struct {
-        bool is_present;
         uint32_t value;
     } recovery_flags;
     struct {
         bool is_present;
         uint32_t value;
     } pitot_battery;
-    struct {
-        bool is_present;
-        int32_t value;
-    } pitot_altitude;
-    struct {
-        bool is_present;
-        int32_t value;
-    } pitot_velocity;
     struct {
         bool is_present;
         int32_t value;
@@ -167,10 +143,6 @@ struct obc_mcb_frame_t {
         bool is_present;
         uint32_t value;
     } esp_now_connected_flags;
-    struct {
-        bool is_present;
-        uint32_t value;
-    } esp_now_wkup_flags;
     struct {
         bool is_present;
         uint32_t value;

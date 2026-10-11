@@ -9,13 +9,9 @@ message MCBFrame {
     optional uint32 mcb_batt = 4;
     optional float gps_lat = 5;
     optional float gps_long = 6;
-    optional bool gps_sat_ok = 7;
     optional sint32 altitude_m = 8;
     optional sint32 velocity_m_s = 9;
     optional sint32 mcb_temperature = 10;
-    optional float euler_fi = 11;
-    optional float euler_psi = 12;
-    optional float euler_theta = 13;
 
     // === Recovery bitfield ===
     // bit0: separation_switch_1
@@ -32,8 +28,6 @@ message MCBFrame {
 
     // === Pitot ===
     optional uint32 pitot_battery = 15;
-    optional sint32 pitot_altitude = 16;
-    optional sint32 pitot_velocity = 17;
     optional sint32 pitot_temperature = 18;
 
     // === Main/Vent bitfield ===
@@ -71,15 +65,6 @@ message MCBFrame {
     // bit5: n2_vent_connected
     // bit6: pitot_connected
     optional fixed32 esp_now_connected_flags = 30;
-
-    // === ESP-NOW wake-up bitfield ===
-    // bit0: payload_wkup
-    // bit1: eth_vent_valve_wkup
-    // bit2: ox_main_wkup
-    // bit3: ox_vent_eth_main_wkup
-    // bit4: n2_vent_wkup
-    // bit5: pitot_wkup
-    optional fixed32 esp_now_wkup_flags = 31;
 
     optional fixed32 errors = 32;
 }
